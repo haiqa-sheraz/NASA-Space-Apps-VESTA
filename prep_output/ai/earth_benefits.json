@@ -1,0 +1,139 @@
+{
+  "stories": [
+    {
+      "in_space": "NASA developed a fine water mist portable fire extinguisher for the space station because carbon dioxide extinguishers create an unsafe breathing environment. Its tank held 6 pounds of water and 1.2 pounds of nitrogen gas.",
+      "key_facts": [
+        "The extinguisher tank held 6 pounds of water and 1.2 pounds of nitrogen gas.",
+        "Nine fine-water-mist extinguishers arrived on the space station by 2016.",
+        "The zero-leak valve is installed in more than 450 Growler trailers."
+      ],
+      "on_earth": "The project's zero-leak valve now stops leaks in demanding industrial and military systems on Earth. It is installed in more than 450 Growler munitions trailers, which carry up to 15,000 pounds of munitions.",
+      "sources": [
+        "E1",
+        "E9"
+      ],
+      "topic": "water mist"
+    },
+    {
+      "in_space": "On the space station, smoke detectors sit in cabin air return vents because microgravity lacks buoyant flow. During the SAME experiment, the detector missed Kapton smoke in half of tests and Teflon smoke in two-thirds.",
+      "key_facts": [
+        "During SAME, the ISS detector failed to alarm for Kapton smoke in half of tests and Teflon smoke in two-thirds of tests.",
+        "MPASS characterizes particles as small as nanometer-scale.",
+        "MPASS runs on USB power or 4 standard AAA batteries."
+      ],
+      "on_earth": "NASA's Multi-Parameter Aerosol Scattering Sensor, built for space fire detection, now supports air quality monitoring and fire detection on Earth. It measures particles as small as nanometer-scale and reduces false alarms.",
+      "sources": [
+        "E2",
+        "E3"
+      ],
+      "topic": "smoke detection"
+    },
+    {
+      "in_space": "NASA developed lightweight breathing systems and fire-resistant materials for astronauts, drawing on Apollo portable life support and space suit technology. PBI fabric, developed for space suits, does not burn or melt.",
+      "key_facts": [
+        "The lightweight air tank held a 30-minute air supply and weighed 20 pounds, 13 pounds less than conventional tanks, at 4,500 psi.",
+        "The Project FIRES ensemble weighs about 12.5 pounds, 40 percent less than current equipment.",
+        "Smoke inhalation accounts for as much as 80 percent of fire-related deaths in the United States."
+      ],
+      "on_earth": "This technology gave firefighters lighter air tanks: a 30-minute supply weighing 20 pounds, 13 pounds less than conventional tanks, pressurized at 4,500 psi. Project FIRES turnout gear weighs about 12.5 pounds, 40 percent less.",
+      "sources": [
+        "E5",
+        "E11",
+        "E12",
+        "E13",
+        "E14"
+      ],
+      "topic": "firefighter gear"
+    }
+  ],
+  "sources": [
+    {
+      "label": "E1",
+      "title": "Development of the ISS Fine Water Mist Portable Fire Extinguisher",
+      "url": "https://ntrs.nasa.gov/citations/20130011664",
+      "file": "Earth benefits\\20130011664.pdf"
+    },
+    {
+      "label": "E2",
+      "title": "NASA fire detection white paper (2021)",
+      "url": null,
+      "file": "Earth benefits\\Fire detection white paper final 211031.pdf"
+    },
+    {
+      "label": "E3",
+      "title": "Multi-Parameter Aerosol Scattering Sensor _ T2 Portal",
+      "url": null,
+      "file": "Earth benefits\\Multi-Parameter Aerosol Scattering Sensor _ T2 Portal.pdf"
+    },
+    {
+      "label": "E4",
+      "title": "NASA Experiment Measures Smoke in Space - Tech Briefs",
+      "url": null,
+      "file": "Earth benefits\\NASA Experiment Measures Smoke in Space - Tech Briefs.pdf"
+    },
+    {
+      "label": "E5",
+      "title": "PV2009_6536",
+      "url": null,
+      "file": "Earth benefits\\PV2009_6536.pdf"
+    },
+    {
+      "label": "E6",
+      "title": "Spaceship Storage Tanks Take Off on Earth - NASA",
+      "url": null,
+      "file": "Earth benefits\\Spaceship Storage Tanks Take Off on Earth - NASA.pdf"
+    },
+    {
+      "label": "E7",
+      "title": "Studying Combustion and Fire Safety - NASA",
+      "url": null,
+      "file": "Earth benefits\\Studying Combustion and Fire Safety - NASA.pdf"
+    },
+    {
+      "label": "E8",
+      "title": "Studying flames in microgravity is helping make combustion on Earth cleaner, and space safer _ EurekAlert!",
+      "url": null,
+      "file": "Earth benefits\\Studying flames in microgravity is helping make combustion on Earth cleaner, and space safer _ EurekAlert!.pdf"
+    },
+    {
+      "label": "E9",
+      "title": "Zero-Leak Valve Holds Tight in Demanding Environments _ NASA Spinoff",
+      "url": null,
+      "file": "Earth benefits\\Zero-Leak Valve Holds Tight in Demanding Environments _ NASA Spinoff.pdf"
+    },
+    {
+      "label": "E10",
+      "title": "Spinoff: Fire Detector",
+      "url": null,
+      "file": "Fire Detector.pdf"
+    },
+    {
+      "label": "E11",
+      "title": "Spinoff: Fireman's Air Tanks",
+      "url": null,
+      "file": "Fireman's Air Tanks.pdf"
+    },
+    {
+      "label": "E12",
+      "title": "Spinoff: New Technology for Fire Attire",
+      "url": null,
+      "file": "New Technolocgy for Fire Attire.pdf"
+    },
+    {
+      "label": "E13",
+      "title": "Spinoff 1986: Space Technology for the Fire Department",
+      "url": "https://ntrs.nasa.gov/citations/20020090888",
+      "file": "NTRS Reference Documents\\20020090888.pdf"
+    },
+    {
+      "label": "E14",
+      "title": "Spinoff 2003: Smoke Mask",
+      "url": "https://ntrs.nasa.gov/citations/20030099676",
+      "file": "NTRS Reference Documents\\20030099676.pdf"
+    }
+  ],
+  "numbers_not_in_sources": [
+    "12.5",
+    "40"
+  ]
+}

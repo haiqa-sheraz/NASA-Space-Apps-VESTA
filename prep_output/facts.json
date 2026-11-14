@@ -1,0 +1,113 @@
+{
+  "generated": "2026-11-14T14:05:47",
+  "key_numbers": {
+    "studies": 24,
+    "studies_in_space": 19,
+    "studies_on_ground": 5,
+    "hardware_families": 6,
+    "fire_safety_jobs": 3,
+    "tests_in_tables": 1807,
+    "table_rows": 1859,
+    "acme_flames_in_day_tables": 700.0,
+    "acme_flames_total": 1206.0,
+    "studies_with_tables": 19
+  },
+  "tests_per_study": {
+    "bass": 122,
+    "bass-ii": 129,
+    "spice": 435,
+    "slice": 12,
+    "flex": 274,
+    "flex-2": 0,
+    "cfi": 87,
+    "acme-bre": 18,
+    "acme-cld-flame": 32,
+    "acme-e-field": 32,
+    "acme-s-flame": 18,
+    "acme-flame-design": 327,
+    "acme-cfi-g": 179,
+    "saffire-i": 2,
+    "saffire-ii": 7,
+    "saffire-iii": 2,
+    "same": 20,
+    "same-r": 109,
+    "daft": 2
+  },
+  "oxygen_coverage": [
+    {
+      "study_id": "bass-ii",
+      "short_name": "BASS-II",
+      "tests_with_oxygen": 129,
+      "highest_oxygen_pct": 22.2,
+      "tests_at_30pct_or_more": 0
+    },
+    {
+      "study_id": "flex",
+      "short_name": "FLEX",
+      "tests_with_oxygen": 274,
+      "highest_oxygen_pct": 34.0,
+      "tests_at_30pct_or_more": 24
+    },
+    {
+      "study_id": "cfi",
+      "short_name": "CFI",
+      "tests_with_oxygen": 87,
+      "highest_oxygen_pct": 21.0,
+      "tests_at_30pct_or_more": 0
+    },
+    {
+      "study_id": "acme-bre",
+      "short_name": "ACME BRE",
+      "tests_with_oxygen": 18,
+      "highest_oxygen_pct": 40.0,
+      "tests_at_30pct_or_more": 17
+    },
+    {
+      "study_id": "acme-s-flame",
+      "short_name": "ACME s-Flame",
+      "tests_with_oxygen": 18,
+      "highest_oxygen_pct": 30.0,
+      "tests_at_30pct_or_more": 8
+    },
+    {
+      "study_id": "acme-flame-design",
+      "short_name": "ACME Flame Design",
+      "tests_with_oxygen": 316,
+      "highest_oxygen_pct": 85.0,
+      "tests_at_30pct_or_more": 222
+    },
+    {
+      "study_id": "acme-cfi-g",
+      "short_name": "ACME CFI-G",
+      "tests_with_oxygen": 179,
+      "highest_oxygen_pct": 40.0,
+      "tests_at_30pct_or_more": 115
+    },
+    {
+      "study_id": "saffire-i",
+      "short_name": "Saffire-I",
+      "tests_with_oxygen": 2,
+      "highest_oxygen_pct": 21.7,
+      "tests_at_30pct_or_more": 0
+    },
+    {
+      "study_id": "saffire-ii",
+      "short_name": "Saffire-II",
+      "tests_with_oxygen": 7,
+      "highest_oxygen_pct": 22.1,
+      "tests_at_30pct_or_more": 0
+    }
+  ],
+  "highest_oxygen_solid_materials_pct": 22.2,
+  "highest_oxygen_bre_pct": 40.0,
+  "studies_by_gravity": {
+    "about 0 g": 19,
+    "1 g": 5,
+    "partial gravity": 0
+  },
+  "gaps": [
+    "No partial-gravity (Moon or Mars) fire data in PSI.",
+    "Solid materials (BASS-II, Saffire) only go up to about 22.2% oxygen.",
+    "FLEX-2 has only a planned test matrix, not results."
+  ]
+}

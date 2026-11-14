@@ -1,0 +1,39 @@
+# Design files (kept private)
+design/
+
+# Raw NASA data: large (one PDF is 90 MB), and some files are copyrighted non-NASA articles
+data/
+
+# Data prep: keep the clean outputs, skip caches, debug files and full-text chunks
+prep_output/ocr_cache/
+prep_output/debug/
+prep_output/chunks.jsonl
+
+# Model test results
+results/
+results_v2/
+results_v3/
+
+# Keys and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Website build files (for later)
+node_modules/
+.next/
+.netlify/
+dist/
+build/
+
+# System and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/

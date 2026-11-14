@@ -1,0 +1,179 @@
+{
+  "study_id": "acme-cfi-g",
+  "model": "nvidia/nemotron-3.5-super-vl:free",
+  "seconds": 12.8,
+  "generated": "2026-11-14T14:32:26",
+  "sources": [
+    {
+      "label": "D1",
+      "title": "ACME CFI-G final report (PSI-159)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+      "file": "PSI\\ACME CFI-G PSI-159\\PSI-159_Reports_FinalRpt_ACME.CFI-G.pdf"
+    },
+    {
+      "label": "D2",
+      "title": "ACME on the ISS (poster, NTRS 20210015913)",
+      "url": null,
+      "file": "NTRS Reference Documents\\PS-03403 ACME on the ISS.pdf"
+    },
+    {
+      "label": "D3",
+      "title": "ACME: Advanced Combustion via Microgravity Experiments (poster, NTRS 20220015583)",
+      "url": null,
+      "file": "NTRS Reference Documents\\PS-03790 ACME poster 13thUSNCM 2023.pdf"
+    }
+  ],
+  "numbers_not_in_sources": [],
+  "word_counts": {
+    "summary_simple": 51,
+    "summary_expert": 64
+  },
+  "profile": {
+    "summary_simple": "NASA studied cool flames in space using gases like propane, ethane, and butane. Cool flames burn at low temperatures and are hard to see. Scientists want to understand them to build better engines and keep astronauts safe from fire on the space station. The tests ran on the ISS in 2021.",
+    "summary_expert": "ACME CFI-G tested gaseous cool diffusion flames in microgravity aboard the ISS from March to October 2021. Tests used ethane, propane, and n-butane at oxygen levels from 17.969 to 39.97 percent and pressures from 0.5 to 3.0001 atm. The spherical burner was 6.35 mm in diameter. Diagnostics included cameras, radiometers, PMTs, and thermocouples. Of 179 tests, 102 self-extinguished and 31 ended when flow terminated.",
+    "experiment_goal": "The study set out to determine the conditions under which cool diffusion flames occur for gaseous fuels in microgravity.",
+    "key_facts": {
+      "fuels": [
+        "30% butane",
+        "30% propane",
+        "50% butane",
+        "30% ethane",
+        "propane",
+        "ethane"
+      ],
+      "sample_shapes": [
+        "spherical porous burner",
+        "6.35 mm diameter"
+      ],
+      "oxygen": "17.969 to 39.97 percent",
+      "pressure": "0.5 to 3.0001 atm",
+      "airflow": null,
+      "gravity": "microgravity aboard the ISS",
+      "what_changed": [
+        "fuel type and concentration",
+        "oxygen concentration",
+        "pressure",
+        "flow rate",
+        "normal versus inverse flame configuration"
+      ],
+      "sensors": [
+        "intensified video camera",
+        "radiometers",
+        "photomultiplier tubes",
+        "thermocouples",
+        "gas chromatograph",
+        "SAMS acceleration sensor"
+      ],
+      "number_of_tests": "179"
+    },
+    "results": [
+      {
+        "result_simple": "Scientists saw steady spherical cool diffusion flames burning gases for the first time.",
+        "result_expert": "Spherical cool diffusion flames burning gases were observed for the first time, only for normal n-butane flames at 2 bar with an ambient oxygen mole fraction of 0.39.",
+        "safety_meaning": "Cool flames can ignite after hot flames appear to go out, so crew must not assume a fire is fully extinguished.",
+        "job": "detect",
+        "source": "D1 p23",
+        "source_detail": {
+          "title": "ACME CFI-G final report (PSI-159)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+          "page": 23
+        }
+      },
+      {
+        "result_simple": "The cool flames were much smaller than the hot flames that created them.",
+        "result_expert": "The hot flames that spawned the cool diffusion flames were 2.6 times as large as the cool flames.",
+        "safety_meaning": "Small, low-temperature flames may be easy to miss during cabin fire checks.",
+        "job": "detect",
+        "source": "D1 p23",
+        "source_detail": {
+          "title": "ACME CFI-G final report (PSI-159)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+          "page": 23
+        }
+      },
+      {
+        "result_simple": "Cool flames lived in fuel-rich areas near a mixture fraction of 0.53.",
+        "result_expert": "The observed cool diffusion flames resided in rich regions near a mixture fraction of 0.53.",
+        "safety_meaning": "Fuel-rich pockets can sustain hidden combustion even when visible flames are gone.",
+        "job": "detect",
+        "source": "D1 p23",
+        "source_detail": {
+          "title": "ACME CFI-G final report (PSI-159)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+          "page": 23
+        }
+      },
+      {
+        "result_simple": "Burner temperature affected how the cool flames behaved.",
+        "result_expert": "The results identify the importance of burner temperature on the behavior of these cool diffusion flames.",
+        "safety_meaning": "Hot surfaces can support or reignite low-temperature combustion after a visible flame ends.",
+        "job": "prevent",
+        "source": "D1 p23",
+        "source_detail": {
+          "title": "ACME CFI-G final report (PSI-159)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+          "page": 23
+        }
+      },
+      {
+        "result_simple": "Cool flames sometimes reignited hot flames after the hot flame went out.",
+        "result_expert": "Two tests exhibited repeated hot flame quenching and reignition from intervening low-temperature combustion, aided by platinum catalysis on the thermocouple.",
+        "safety_meaning": "A fire that seems out can flare back up, so extinguishment must be confirmed over time.",
+        "job": "put_out",
+        "source": "D1 p15",
+        "source_detail": {
+          "title": "ACME CFI-G final report (PSI-159)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+          "page": 15
+        }
+      }
+    ],
+    "jobs": [
+      "detect"
+    ],
+    "equipment": [
+      {
+        "area": "detectors",
+        "note": "Flame detectors must sense low-temperature, low-light cool flames that normal cameras may miss."
+      },
+      {
+        "area": "extinguishers",
+        "note": "Extinguishment procedures should verify that cool flames cannot reignite after hot flames vanish."
+      },
+      {
+        "area": "materials",
+        "note": "Material flammability limits should account for cool flame chemistry in fuel-rich, low-temperature zones."
+      }
+    ],
+    "earth_uses": [
+      "cleaner and more efficient internal combustion engines",
+      "improved fuel octane and cetane number understanding"
+    ],
+    "glossary": [
+      {
+        "term": "cool diffusion flame",
+        "definition": "A low-temperature flame that burns without visible hot flame and can persist after hot flame extinction."
+      },
+      {
+        "term": "microgravity",
+        "definition": "Near-weightlessness aboard the ISS that removes buoyancy-driven flame flicker."
+      },
+      {
+        "term": "inverse flame",
+        "definition": "A flame where oxidizer flows from the burner into a surrounding fuel mixture, reversing the normal arrangement."
+      },
+      {
+        "term": "mixture fraction",
+        "definition": "A measure of the local ratio of fuel to oxidizer in a combustion zone."
+      }
+    ],
+    "open_questions": [
+      "Cool flame kinetics mechanisms still need testing and advancement across more conditions.",
+      "Data analysis and publication of results were still underway as of the 2022 final report."
+    ],
+    "ai_jobs": [
+      "detect"
+    ],
+    "jobs_source": "AI (top 2)"
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "study_id": "bass-ii",
+  "model": "baidu/ernie-5.5-flash-preview:free",
+  "seconds": 66.9,
+  "generated": "2026-11-14T14:09:57",
+  "sources": [
+    {
+      "label": "D1",
+      "title": "BASS-II final report (PSI-25)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+      "file": "PSI\\BASS-II PSI-25\\BASS-II Summary Report.pdf"
+    },
+    {
+      "label": "D2",
+      "title": "On-Board CSA-CP and CDM Sensor Readings during BASS-II",
+      "url": "https://ntrs.nasa.gov/citations/20150019858",
+      "file": "NTRS Reference Documents\\20150019858.pdf"
+    },
+    {
+      "label": "D3",
+      "title": "Combustion of Solids in Microgravity: Results from the BASS-II Experiment",
+      "url": "https://ntrs.nasa.gov/citations/20160000593",
+      "file": "NTRS Reference Documents\\20160000593.pdf"
+    }
+  ],
+  "numbers_not_in_sources": [],
+  "word_counts": {
+    "summary_simple": 69,
+    "summary_expert": 130
+  },
+  "profile": {
+    "earth_uses": [
+      "Validated microgravity data help build combustion models that apply to many terrestrial combustion problems on Earth."
+    ],
+    "equipment": [
+      {
+        "area": "detectors",
+        "note": "CO and CO2 sensor data show microgravity flames produce more CO, guiding combustion-product detector design."
+      },
+      {
+        "area": "ventilation",
+        "note": "Fuel-rich burning (equivalence ratio 1.3) under low flow shows ventilation strongly affects combustion completeness."
+      },
+      {
+        "area": "materials",
+        "note": "Flammability limits and worst-case burning geometry help screen which materials are safe for spacecraft."
+      }
+    ],
+    "experiment_goal": "BASS-II set out to learn how solid materials burn in the microgravity of a spacecraft — including the worst-case conditions for material flammability, how fast flames grow, and what combustion products and heat release rates they produce — to improve fire safety for crews.",
+    "glossary": [
+      {
+        "definition": "Very weak gravity, as on the ISS, where hot gases do not rise by buoyancy as on Earth.",
+        "term": "Microgravity"
+      },
+      {
+        "definition": "Polymethylmethacrylate, a clear acrylic plastic burned as solid fuel samples in the tests.",
+        "term": "PMMA"
+      },
+      {
+        "definition": "How fast a fire gives off heat, measured in watts (W).",
+        "term": "Heat release rate"
+      },
+      {
+        "definition": "Ratio of fuel to air; above 1 means fuel-rich, with too little air to burn fully.",
+        "term": "Global equivalence ratio"
+      }
+    ],
+    "jobs": [
+      "prevent"
+    ],
+    "key_facts": {
+      "airflow": "0 to ~55 cm/s (maximum ~55 cm/s; ~35 cm/s with two restrictors)",
+      "fuels": [
+        "PMMA (acrylic)",
+        "cotton-fiberglass blend (SIBAL)",
+        "Nomex",
+        "wax candle",
+        "cellulosic fuels"
+      ],
+      "gravity": "Microgravity aboard the ISS, compared with normal gravity (1 g)",
+      "number_of_tests": "129",
+      "oxygen": "13.6 to 22.2 percent O2 (ambient ISS ~21 percent down to ~14 percent for near-limit flames)",
+      "pressure": "1 atm",
+      "sample_shapes": [
+        "PMMA rods, 6.35 to 12.7 mm diameter",
+        "PMMA slabs, 0.125 to 5 mm thick",
+        "section of a 4-cm-diameter sphere",
+        "flat cotton-fiberglass fabric, 1 or 2 cm wide",
+        "thin PMMA films, 20 mm wide, ~95 mm long, 100 to 400 µm thick"
+      ],
+      "sensors": [
+        "CSA-CP (O2, CO)",
+        "Carbon Dioxide Monitor (CO2)",
+        "Major Constituents Analyzer (O2 reference)",
+        "video camera and 35-mm still camera",
+        "radiometer (thermopile detector)",
+        "airspeed transducer"
+      ],
+      "what_changed": [
+        "ambient O2 concentration",
+        "ventilation flow velocity",
+        "fuel type",
+        "fuel thickness",
+        "fuel geometry"
+      ]
+    },
+    "open_questions": [
+      "There is insufficient data at lower O2 levels for the extinction velocity.",
+      "Some samples could be burned further if future operational time becomes available."
+    ],
+    "results": [
+      {
+        "job": "detect",
+        "result_expert": "Across a wide range of initial O2, flow velocities, and geometries, PMMA O2 depletion and CO2 production agreed closely with the 6:5 stoichiometric ratio (C5H8O2 + 6 O2 → 5 CO2 + 4 H2O), indicating near-complete gas-phase oxidation of the fuel carbon to CO2.",
+        "result_simple": "When PMMA plastic burned, the oxygen used up matched the carbon dioxide made almost exactly, following the expected 6-to-5 chemical ratio across many test conditions.",
+        "safety_meaning": "Predictable oxygen use lets crews estimate how much air a fire consumes and how much CO2 it adds to the cabin.",
+        "source": "D1 p15",
+        "source_detail": {
+          "title": "BASS-II final report (PSI-25)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+          "page": 15
+        }
+      },
+      {
+        "job": "detect",
+        "result_expert": "CO-to-CO2 ratios were an order of magnitude above the <0.004 typical of efficient flue gases. Concurrent rods produced ~550 ppm CO per 1% CO2 and opposed thick slabs ~370 ppm, indicating comparatively inefficient microgravity combustion that generates more toxic CO.",
+        "result_simple": "Space flames made far more carbon monoxide per carbon dioxide than efficient Earth furnaces — about ten times more — showing the fires burned inefficiently.",
+        "safety_meaning": "Inefficient space fires release lots of toxic carbon monoxide, so crews need working CO detectors and prompt response.",
+        "source": "D1 p16",
+        "source_detail": {
+          "title": "BASS-II final report (PSI-25)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+          "page": 16
+        }
+      },
+      {
+        "job": "put_out",
+        "result_expert": "Using O2-consumption calorimetry (13.1 kJ per gram O2), heat release rates were typically well below 100 W and rose with ambient O2. One long opposed thick-slab test neared 100 W and damaged the front window; a brief concurrent-rod test reached almost 110 W.",
+        "result_simple": "Most small space fires released heat slowly — well under 100 watts — though one long, strong burn came close and damaged the glovebox window.",
+        "safety_meaning": "Small material fires stay low-power, but longer, hotter burns can still damage equipment, so fire size and duration matter.",
+        "source": "D1 p16",
+        "source_detail": {
+          "title": "BASS-II final report (PSI-25)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+          "page": 16
+        }
+      },
+      {
+        "job": "prevent",
+        "result_expert": "Mass-loss and O2-consumption data gave a global equivalence ratio of about 1.3, indicating fuel-rich, under-ventilated flames under low-velocity forced flow. Some fuel left as soot, CO, and unburned hydrocarbons rather than fully oxidizing.",
+        "result_simple": "On average the flames were fuel-rich, about 1.3 times the ideal mix, meaning there was not enough air to burn all the fuel completely.",
+        "safety_meaning": "Under-ventilated fires leave unburned fuel, soot, and CO, so good airflow helps fires burn cleaner and reduces toxic buildup.",
+        "source": "D1 p18",
+        "source_detail": {
+          "title": "BASS-II final report (PSI-25)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+          "page": 18
+        }
+      },
+      {
+        "job": "prevent",
+        "result_expert": "For thin PMMA, the critical opposed-flow velocity for radiative extinction was independent of fuel thickness — about 1 cm/s for 100–300 µm and 1.5 cm/s for 400 µm at 21% O2. Extinction velocity rose as O2 fell, about 2.6 cm/s (100 µm) and 4 cm/s (200 µm) at 16% O2.",
+        "result_simple": "For thin plastic sheets, the airflow speed at which flames went out did not depend on thickness, but the flames needed faster flow to survive at lower oxygen.",
+        "safety_meaning": "Knowing the airflow and oxygen where flames self-extinguish helps set ventilation and flammability limits for spacecraft materials.",
+        "source": "D1 p23",
+        "source_detail": {
+          "title": "BASS-II final report (PSI-25)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+          "page": 23
+        }
+      }
+    ],
+    "summary_expert": "BASS-II burned solid fuels (PMMA, cotton-fiberglass, Nomex, wax) in a 0.25 m³ Microgravity Science Glovebox aboard the ISS. Tests varied ambient O2 (13.6–22.2%), ventilation flow (0 to ~55 cm/s), and fuel type, thickness, and geometry, at 1 atm. Nitrogen dilution set reduced O2 levels. Onboard CSA-CP, Carbon Dioxide Monitor, and Major Constituents Analyzer measured O2, CO, and CO2 before and after each burn. PMMA burned nearly stoichiometrically (6 O2 : 5 CO2). CO-to-CO2 ratios ran an order of magnitude above efficient flue gases (<0.004), showing inefficient combustion. Heat release rates, from O2-consumption calorimetry (13.1 kJ/g O2), were mostly well below 100 W. The global equivalence ratio averaged 1.3 (fuel-rich). For thin PMMA, the radiative extinction velocity was independent of thickness (~1–1.5 cm/s at 21% O2) and rose as O2 fell.",
+    "summary_simple": "BASS-II burned solid materials like plastic and fabric inside a glovebox on the International Space Station, in the near-weightless environment of orbit. Astronauts lit small samples while a fan blew air over them at different speeds and oxygen levels. Sensors measured oxygen, carbon monoxide, and carbon dioxide. The team wanted to learn how materials burn in space, how much toxic gas fires make, and how to keep crews safe.",
+    "ai_jobs": [
+      "prevent",
+      "detect"
+    ],
+    "jobs_source": "our research"
+  }
+}

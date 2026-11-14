@@ -1,0 +1,147 @@
+{
+  "study_id": "saffire-i",
+  "model": "baidu/ernie-5.5-flash-preview:free",
+  "seconds": 45.7,
+  "generated": "2026-11-14T14:34:29",
+  "sources": [
+    {
+      "label": "D1",
+      "title": "Saffire Offgas Testing Strategy",
+      "url": "https://ntrs.nasa.gov/citations/20150003025",
+      "file": "NTRS Reference Documents\\20150003025.pdf"
+    },
+    {
+      "label": "D2",
+      "title": "The Spacecraft Fire Experiment (Saffire): Objectives, Development and Status",
+      "url": "https://ntrs.nasa.gov/citations/20170001636",
+      "file": "NTRS Reference Documents\\20170001636.pdf"
+    },
+    {
+      "label": "D3",
+      "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+      "url": "https://ntrs.nasa.gov/citations/20180005168",
+      "file": "NTRS Reference Documents\\20180005168.pdf"
+    }
+  ],
+  "numbers_not_in_sources": [],
+  "word_counts": {
+    "summary_simple": 63,
+    "summary_expert": 119
+  },
+  "profile": {
+    "earth_uses": [],
+    "equipment": [
+      {
+        "area": "materials",
+        "note": "Spread-rate data on cotton-fiberglass fabric helps compare and select spacecraft materials."
+      },
+      {
+        "area": "ventilation",
+        "note": "Flame spread increases with airflow and duct size, informing cabin ventilation design."
+      }
+    ],
+    "experiment_goal": "To determine how rapidly a large-scale fire grows in low-gravity over a large fabric sample and whether it reaches a steady-state spread rate.",
+    "glossary": [
+      {
+        "definition": "The very weak gravity felt in orbit, where objects appear to float.",
+        "term": "Microgravity (low-g)"
+      },
+      {
+        "definition": "Flame spreading in the same direction as the airflow, like fire blown by wind.",
+        "term": "Concurrent flame spread"
+      },
+      {
+        "definition": "Flame spreading against the oncoming airflow direction.",
+        "term": "Opposed flame spread"
+      },
+      {
+        "definition": "A cotton-fiberglass fabric for space fire tests; burns like cotton but keeps its shape.",
+        "term": "SIBAL cloth"
+      }
+    ],
+    "jobs": [
+      "prevent"
+    ],
+    "key_facts": {
+      "airflow": "20 cm/s",
+      "fuels": [
+        "SIBAL cloth (cotton-fiberglass), 75% cotton / 25% fiberglass by weight"
+      ],
+      "gravity": "microgravity (low-g)",
+      "number_of_tests": "2",
+      "oxygen": "about 21.5-21.7% O2 by volume",
+      "pressure": null,
+      "sample_shapes": [
+        "Thin rectangular fabric sheets; main sample 40.6 cm wide by 94 cm long, 0.37 mm thick; plus a shorter ~10 cm opposed-flow sample"
+      ],
+      "sensors": [
+        "cameras (primary data), thermocouples, radiometers, CO2 sensor, O2 sensor, pressure sensor, anemometers, smoke wire"
+      ],
+      "what_changed": [
+        "Between the two tests, airflow direction (concurrent vs. opposed) and sample length (94 cm vs. ~10 cm)"
+      ]
+    },
+    "open_questions": [
+      "How a large fire affects the whole vehicle and its habitability is not yet known.",
+      "Fire detection, suppression, and post-fire cleanup in spacecraft remain to be studied.",
+      "A thorough evaluation needs many more samples and a wider range of materials.",
+      "Flame behavior in high-oxygen, low-pressure exploration atmospheres is still untested."
+    ],
+    "results": [
+      {
+        "job": "prevent",
+        "result_expert": "Flame spread over a large, thin, charring cotton-fiberglass surface in low-gravity reached a steady spread rate, behavior not seen in normal gravity.",
+        "result_simple": "A large fabric fire in microgravity kept spreading steadily, unlike a fire in normal gravity.",
+        "safety_meaning": "A big cabin fire can keep growing steadily rather than dying out on its own.",
+        "source": "D3 p18",
+        "source_detail": {
+          "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+          "url": "https://ntrs.nasa.gov/citations/20180005168",
+          "page": 18
+        }
+      },
+      {
+        "job": "prevent",
+        "result_expert": "For 40.6-cm-wide SIBAL fabric in 20 cm/s concurrent flow, the average flame spread rate was 1.8 mm/s and the estimated average flame power was 1200 ± 300 W.",
+        "result_simple": "The fire spread about 1.8 mm/s and released roughly 1200 watts of heat.",
+        "safety_meaning": "Gives real numbers for how fast and how hot a large spacecraft fire can burn.",
+        "source": "D3 p25",
+        "source_detail": {
+          "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+          "url": "https://ntrs.nasa.gov/citations/20180005168",
+          "page": 25
+        }
+      },
+      {
+        "job": "prevent",
+        "result_expert": "Concurrent flame spread (with the wind) was more sensitive to the flow-duct dimension than previously anticipated; overall concurrent spread rates are strongly influenced by flow-duct size.",
+        "result_simple": "Concurrent flame spread was more sensitive to the flow duct's size than expected.",
+        "safety_meaning": "Cabin size and airflow strongly affect fire growth, so vehicle layout matters for safety.",
+        "source": "D3 p20",
+        "source_detail": {
+          "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+          "url": "https://ntrs.nasa.gov/citations/20180005168",
+          "page": 20
+        }
+      },
+      {
+        "job": "prevent",
+        "result_expert": "Flame speed is proportional to air-flow velocity; the faster airflow in Saffire-III produced a proportionally faster flame than Saffire-I's 20 cm/s flow.",
+        "result_simple": "Flame speed rises in proportion to the speed of air flowing over the sample.",
+        "safety_meaning": "Higher cabin airflow can speed up fire spread, a factor for ventilation design.",
+        "source": "D3 p16",
+        "source_detail": {
+          "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+          "url": "https://ntrs.nasa.gov/citations/20180005168",
+          "page": 16
+        }
+      }
+    ],
+    "summary_expert": "Saffire-I burned a 40.6 cm wide by 94 cm long cotton-fiberglass (SIBAL) fabric sample (0.37 mm thick) in microgravity inside an uncrewed Cygnus vehicle after it left the ISS. Tests ran in about 21.5-21.7% O2 at 20 cm/s airflow. A concurrent-flow sample (I-1) and a shorter opposed-flow sample (I-2) were burned. The concurrent flame spread steadily over the large thin charring surface, reaching an average spread rate of 1.8 mm/s and an estimated average flame power of 1200 ± 300 W. Concurrent spread was more sensitive to flow-duct size than expected, and flame speed scaled with airflow velocity. The data are intended to validate models of spacecraft fire growth and to compare low-gravity flammability with NASA's normal-gravity screening tests.",
+    "summary_simple": "Saffire-I was a NASA fire experiment that burned a large piece of cotton-fiberglass fabric inside an uncrewed spacecraft, far from the space station. Scientists wanted to see how fast a big fire spreads in the weak gravity of space. The fire kept spreading steadily and moved faster when air blew across it. The results help NASA design safer spacecraft and choose safer materials.",
+    "ai_jobs": [
+      "prevent"
+    ],
+    "jobs_source": "our research"
+  }
+}

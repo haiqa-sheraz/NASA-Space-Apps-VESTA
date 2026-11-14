@@ -1,0 +1,151 @@
+{
+  "study_id": "saffire-iii",
+  "model": "baidu/ernie-5.5-flash-preview:free",
+  "seconds": 52.4,
+  "generated": "2026-11-14T14:36:30",
+  "sources": [
+    {
+      "label": "D1",
+      "title": "Saffire Offgas Testing Strategy",
+      "url": "https://ntrs.nasa.gov/citations/20150003025",
+      "file": "NTRS Reference Documents\\20150003025.pdf"
+    },
+    {
+      "label": "D2",
+      "title": "The Spacecraft Fire Experiment (Saffire): Objectives, Development and Status",
+      "url": "https://ntrs.nasa.gov/citations/20170001636",
+      "file": "NTRS Reference Documents\\20170001636.pdf"
+    },
+    {
+      "label": "D3",
+      "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+      "url": "https://ntrs.nasa.gov/citations/20180005168",
+      "file": "NTRS Reference Documents\\20180005168.pdf"
+    }
+  ],
+  "numbers_not_in_sources": [],
+  "word_counts": {
+    "summary_simple": 66,
+    "summary_expert": 111
+  },
+  "profile": {
+    "earth_uses": [],
+    "equipment": [
+      {
+        "area": "materials",
+        "note": "Large fabric samples can reach steady flame spread in low-g, so material flammability needs realistic full-scale testing."
+      },
+      {
+        "area": "ventilation",
+        "note": "Concurrent flame spread speeds up with airflow and depends on duct size, so cabin airflow strongly affects fire growth."
+      }
+    ],
+    "experiment_goal": "To measure how rapidly a large fabric fire spreads and grows in low gravity, and whether it reaches a steady spread rate.",
+    "glossary": [
+      {
+        "definition": "The near-weightless condition in orbit, where flames behave very differently than in normal gravity.",
+        "term": "Microgravity (low-g)"
+      },
+      {
+        "definition": "Air moving in the same direction the flame spreads, like a wind pushing the fire forward.",
+        "term": "Concurrent flow"
+      },
+      {
+        "definition": "Air moving against the direction the flame spreads, like a headwind facing the fire.",
+        "term": "Opposed flow"
+      },
+      {
+        "definition": "The test fabric, made of 75% cotton and 25% fiberglass, used as the fuel in Saffire.",
+        "term": "SIBAL cloth"
+      }
+    ],
+    "jobs": [
+      "prevent"
+    ],
+    "key_facts": {
+      "airflow": "25 cm/s in results (D3); 30 cm/s planned (D2 and table)",
+      "fuels": [
+        "SIBAL cloth (75% cotton, 25% fiberglass by weight)"
+      ],
+      "gravity": "Microgravity (low-g)",
+      "number_of_tests": "2",
+      "oxygen": "About 21% O2 (21.2% to 21.0% during the test)",
+      "pressure": null,
+      "sample_shapes": [
+        "Flat rectangular fabric sheet, 40.6 cm wide x 94 cm long, 0.37 mm thick"
+      ],
+      "sensors": [
+        "Thermocouples (flow, flame, and plume temperature)",
+        "Radiometers (flame radiation)",
+        "Solid-state sensors (CO2, O2, pressure)",
+        "Anemometers (flow velocity)",
+        "Cameras (flame images)",
+        "Smoke wire (flow uniformity)"
+      ],
+      "what_changed": [
+        "Flow direction: concurrent (with the airflow) versus opposed (against it)"
+      ]
+    },
+    "open_questions": [
+      "Only a small number of tests were done; a thorough evaluation would need many more samples and a wider range of materials.",
+      "The findings are expected to raise additional questions about material flammability in spacecraft.",
+      "The impact of a fire on vehicle habitability, thick materials, fire detection, and post-fire cleanup were left for later Saffire experiments."
+    ],
+    "results": [
+      {
+        "job": "prevent",
+        "result_expert": "Flame spread over a large, thin, charring SIBAL surface in microgravity reached a steady spread rate, behavior not seen in normal gravity where such large samples burn differently. This shows low-g fires can sustain growth over realistic spacecraft-scale materials.",
+        "result_simple": "A large fabric fire can keep spreading steadily in low gravity, which does not happen the same way in normal gravity on Earth.",
+        "safety_meaning": "Fires on a spacecraft can keep growing steadily, so crews cannot assume a large fire will slow or stop on its own.",
+        "source": "D3 p18",
+        "source_detail": {
+          "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+          "url": "https://ntrs.nasa.gov/citations/20180005168",
+          "page": 18
+        }
+      },
+      {
+        "job": "prevent",
+        "result_expert": "Concurrent flame spread (with the airflow) was more sensitive to the flow-duct dimensions than previously anticipated. The spread rate is strongly influenced by duct size, meaning the geometry of a spacecraft cabin can change how fast a fire grows.",
+        "result_simple": "When air blows the same way the fire spreads, the fire's speed depends strongly on the size of the space around it.",
+        "safety_meaning": "A cabin's size and airflow can make a fire spread faster, so vehicle design must account for how layout affects fire growth.",
+        "source": "D3 p18",
+        "source_detail": {
+          "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+          "url": "https://ntrs.nasa.gov/citations/20180005168",
+          "page": 18
+        }
+      },
+      {
+        "job": "prevent",
+        "result_expert": "Flame speed is proportional to air flow velocity. Saffire-III burned for 320 s versus Saffire-I's 400 s, matching the inverse ratio of their flow speeds (25 cm/s versus 20 cm/s). Higher cabin airflow therefore produces faster-moving flames.",
+        "result_simple": "Faster airflow makes the flame move faster. Saffire-III used more airflow than Saffire-I, so its fire spread more quickly.",
+        "safety_meaning": "More ventilation airflow can speed a fire, so cabin fans and airflow settings matter for how dangerous a fire becomes.",
+        "source": "D3 p16",
+        "source_detail": {
+          "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+          "url": "https://ntrs.nasa.gov/citations/20180005168",
+          "page": 16
+        }
+      },
+      {
+        "job": "prevent",
+        "result_expert": "In Saffire-III, the concurrent burn (III-1) spread at 2.3 mm/s over about 84 cm, while the opposed burn (III-2) spread at 0.98 mm/s over about 10 cm. The concurrent flame spread faster than the opposed flame.",
+        "result_simple": "The fire spread about 2.3 mm/s with the airflow and about 0.98 mm/s against it, so it moved faster when blown along.",
+        "safety_meaning": "A fire driven by airflow can spread much faster, giving crews less time to respond.",
+        "source": "D3 p31",
+        "source_detail": {
+          "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+          "url": "https://ntrs.nasa.gov/citations/20180005168",
+          "page": 31
+        }
+      }
+    ],
+    "summary_expert": "Saffire-III (Spacecraft Fire Experiment-III) burned a 40.6 cm x 94 cm sheet of SIBAL cloth (75% cotton, 25% fiberglass) in the Cygnus vehicle after it left the ISS. Tests ran in microgravity at about 21% O2 (21.2% to 21.0%) with an airflow of 25 cm/s (planned 30 cm/s). Two burns compared concurrent flow (with the airflow) and opposed flow (against it). The concurrent flame spread steadily at 2.3 mm/s over about 84 cm; the opposed flame spread at 0.98 mm/s over about 10 cm. Concurrent spread was more sensitive to flow-duct size than expected, and flame speed scaled with airflow. The results help validate models of how large spacecraft fires grow.",
+    "summary_simple": "Saffire-III was a NASA fire experiment that burned a large piece of fabric in the near-weightless space inside a Cygnus cargo ship. The fabric was mostly cotton woven with fiberglass. NASA lit it and watched how fast the flame spread across the material. This was one of the first times scientists studied a fire this big in low gravity, helping them learn how spacecraft fires grow.",
+    "ai_jobs": [
+      "prevent"
+    ],
+    "jobs_source": "our research"
+  }
+}

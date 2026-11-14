@@ -1,0 +1,174 @@
+{
+  "study_id": "acme-e-field",
+  "model": "baidu/ernie-5.5-flash-preview:free",
+  "seconds": 60.6,
+  "generated": "2026-11-14T14:28:14",
+  "sources": [
+    {
+      "label": "D1",
+      "title": "ACME E-FIELD Flames final report (PSI-22)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22",
+      "file": "PSI\\ACME E-Field PSI-22\\E-FIELD Flames Final Report.pdf"
+    },
+    {
+      "label": "D2",
+      "title": "ACME on the ISS (poster, NTRS 20210015913)",
+      "url": null,
+      "file": "NTRS Reference Documents\\PS-03403 ACME on the ISS.pdf"
+    },
+    {
+      "label": "D3",
+      "title": "ACME: Advanced Combustion via Microgravity Experiments (poster, NTRS 20220015583)",
+      "url": null,
+      "file": "NTRS Reference Documents\\PS-03790 ACME poster 13thUSNCM 2023.pdf"
+    },
+    {
+      "label": "D4",
+      "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+      "url": null,
+      "file": "combustion science mini book.pdf"
+    }
+  ],
+  "numbers_not_in_sources": [],
+  "word_counts": {
+    "summary_simple": 65,
+    "summary_expert": 131
+  },
+  "profile": {
+    "earth_uses": [
+      "Electrodynamic combustion control (ClearSign Combustion Corp.) to control flames in practical burners.",
+      "Reducing soot and pollutant emissions and directing heat transfer in combustion."
+    ],
+    "equipment": [
+      {
+        "area": "detectors",
+        "note": "Ion current from a flame could be a sensor to detect fires and sense when flames near extinction."
+      },
+      {
+        "area": "extinguishers",
+        "note": "Electric fields can blow flames out, pointing to possible electric, no-spray fire suppression for spacecraft."
+      },
+      {
+        "area": "ventilation",
+        "note": "Ion-driven wind can direct gas flow and heat transfer, a possible way to steer air without fans."
+      }
+    ],
+    "experiment_goal": "To learn how electric fields acting on flame-produced ions can be used to sense and control non-premixed flames once buoyancy is removed in microgravity.",
+    "glossary": [
+      {
+        "definition": "The creation of charged particles (ions) by chemical reactions inside a flame.",
+        "term": "chemi-ionization"
+      },
+      {
+        "definition": "Gas flow pushed along by electric forces acting on the ions in a flame.",
+        "term": "ion wind"
+      },
+      {
+        "definition": "A flame where fuel and oxygen meet and burn only at the boundary between them.",
+        "term": "diffusion flame"
+      },
+      {
+        "definition": "The upward push on hot gas caused by gravity; nearly absent in microgravity.",
+        "term": "buoyancy"
+      }
+    ],
+    "jobs": [
+      "detect",
+      "put_out"
+    ],
+    "key_facts": {
+      "airflow": "Coflow of 3.1 cm/s or none (0 cm/s); fuel jet velocity 15, 19, or 24 cm/s.",
+      "fuels": [
+        "Methane (CH4) and ethylene (C2H4), diluted with nitrogen; tested from 25% to 100% fuel by volume."
+      ],
+      "gravity": "Microgravity aboard the ISS (no numeric g value given in sources).",
+      "number_of_tests": "32",
+      "oxygen": "21% O2 / 79% N2 by volume (synthetic air) in the chamber and coflow.",
+      "pressure": "Nominal 100 kPa; chamber capable of up to 300 kPa.",
+      "sample_shapes": [
+        "Gaseous fuel from a coflow burner and a gas-jet burner (fuel tube ~2.2 mm inner diameter); microgravity flames are rounded (spherical to hemispherical)."
+      ],
+      "sensors": [
+        "Ion current (voltage across a resistor), applied voltage, 6 thermopile radiometers (0.2-11 microns), 3 photomultiplier tubes (230-700 nm; OH*, CH*), color and intensified cameras, chamber pressure and temperature, gas flow rates, and SAMS acceleration."
+      ],
+      "what_changed": [
+        "Burner type (coflow vs gas-jet), fuel (methane vs ethylene), nitrogen dilution (25-100%), fuel velocity (15-24 cm/s), coflow on/off, field polarity (positive/negative), and field strength (up to 10 kV)."
+      ]
+    },
+    "open_questions": [
+      "Why the flame expands and ion current drops at higher voltages is not yet clearly understood.",
+      "Why peak ion current is higher in microgravity than in 1-g is not obvious.",
+      "Whether electric fields change soot only through residence time or also through chemistry has not been confirmed.",
+      "Data analysis and publication of results are still underway, and more tests may follow."
+    ],
+    "results": [
+      {
+        "job": "detect",
+        "result_expert": "Because chemi-ion current per unit flame area indicates flame strength, measuring it (average and fluctuating) at low voltage can detect flames approaching their limit condition, enabling open-loop electrical flame sensing.",
+        "result_simple": "The tiny electric current a flame makes can act like a sensor. It shows how strong the flame is and warns when a flame is about to go out.",
+        "safety_meaning": "A flame's own ion current could serve as a sensor to detect a spacecraft fire and warn when it is near burning out.",
+        "source": "D1 p9",
+        "source_detail": {
+          "title": "ACME E-FIELD Flames final report (PSI-22)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22",
+          "page": 9
+        }
+      },
+      {
+        "job": "detect",
+        "result_expert": "In microgravity, ion current rose parabolically with field strength to a distinct peak, then decreased severely to a saturation plateau, unlike 1-g flames, which lack the sharp peak. This difference is more dramatic without coflow, showing entrainment's role.",
+        "result_simple": "As the voltage rose, the flame's electric current climbed to a peak, then dropped sharply and leveled off. This peak-then-drop pattern differs from flames on Earth.",
+        "safety_meaning": "The current-vs-voltage signature is unique to microgravity, so detectors tuned for space must account for this different flame behavior.",
+        "source": "D1 p25",
+        "source_detail": {
+          "title": "ACME E-FIELD Flames final report (PSI-22)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22",
+          "page": 25
+        }
+      },
+      {
+        "job": "put_out",
+        "result_expert": "With a positive field, microgravity jet and coflow flames became compact and soot aggregated then cleared at the tip. Beyond the peak-current voltage, the flame expanded and reaction intensity dropped, reducing ion current, behavior absent in normal gravity where buoyancy dominates.",
+        "result_simple": "A positive electric field squeezed the flame smaller and pushed soot away. But at higher voltages the flame swelled and its current fell, a change not seen on Earth.",
+        "safety_meaning": "Electric fields can reshape flames and move soot, hinting at ways to steer or suppress flames and manage smoke in spacecraft.",
+        "source": "D1 p27",
+        "source_detail": {
+          "title": "ACME E-FIELD Flames final report (PSI-22)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22",
+          "page": 27
+        }
+      },
+      {
+        "job": "put_out",
+        "result_expert": "With a negative field, ion current stayed below 0.3 microamps for 70% and 40% methane, peaked near 0.4 kV/cm, then decayed until the flame extinguished. The blowout (flammability) limit was 1.46 kV/cm for 70% and 1.30 kV/cm for 40% methane.",
+        "result_simple": "With a negative field, the current stayed low and the flame soon went out. Flames blew out near 1.30 to 1.46 kV/cm, showing fields can snuff a flame.",
+        "safety_meaning": "An electric field can force a flame to blow out, suggesting a possible no-spray way to extinguish fires aboard spacecraft.",
+        "source": "D1 p30",
+        "source_detail": {
+          "title": "ACME E-FIELD Flames final report (PSI-22)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22",
+          "page": 30
+        }
+      },
+      {
+        "job": "none",
+        "result_expert": "The electric field stabilized microgravity diffusion flames at very high dilution, most effectively with no coflow. The ion-driven wind pulled the flame upward and entrained oxidizer, increasing reaction intensity and ion production and extending the stability limit.",
+        "result_simple": "The electric field held very weak, highly diluted flames steady, especially with no surrounding air. This proved electricity can keep a nearly-dying flame alive.",
+        "safety_meaning": "Shows fields can extend how far a flame can weaken before failing, key for predicting flammability limits in spacecraft atmospheres.",
+        "source": "D1 p23",
+        "source_detail": {
+          "title": "ACME E-FIELD Flames final report (PSI-22)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22",
+          "page": 23
+        }
+      }
+    ],
+    "summary_expert": "ACME E-FIELD Flames studied laminar diffusion flames of methane (CH4) and ethylene (C2H4), diluted with nitrogen, aboard the ISS in microgravity. Using a coflow burner and a gas-jet burner in a 21% O2 / 79% N2 atmosphere near 100 kPa, researchers applied up to 10 kV to a mesh electrode 37 mm above the burner. Fuel velocities were 15-24 cm/s, with coflow at 3.1 cm/s or none. Ion current rose parabolically to a peak, then dropped to a saturation plateau, unlike 1-g flames. Peak current scaled with fuel velocity and was higher than in 1-g. Positive fields compacted flames and reduced soot; negative fields kept current below 0.3 microamps and extinguished flames near 1.30-1.46 kV/cm. Ion current can detect flames nearing their limits, and electric fields can manipulate stability and soot.",
+    "summary_simple": "Scientists burned methane and ethylene flames on the International Space Station, where there is almost no gravity. They put a strong electric field near each flame and watched how it changed. The electric field pulled the flame into new shapes, changed how much electric current it made, and could even blow the flame out. This helps them learn to sense and steer flames using electricity.",
+    "ai_jobs": [
+      "detect",
+      "put_out"
+    ],
+    "jobs_source": "AI (top 2)"
+  }
+}

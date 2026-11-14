@@ -1,0 +1,5 @@
+{
+  "expert": "NASA fire data has 0 partial-gravity studies, 19 about 0 g studies, and 5 1 g studies. Solid-material tests reach only about 22.2% oxygen. FLEX-2 has only a planned test matrix, not results. Moon base air may be 30% oxygen or more at 10.2 psi or less. This matters because the data do not cover fire in partial gravity or at Moon base oxygen levels. LUCI simulated Moon gravity on a spinning rocket, and FM2 is planned.",
+  "simple": "NASA fire data has no partial-gravity tests. Solid-material tests reach only about 22.2% oxygen. Moon base air may be 30% oxygen or more at 10.2 psi or less. This matters because fire data do not cover Moon gravity or Moon base oxygen levels.",
+  "numbers_not_in_sources": []
+}

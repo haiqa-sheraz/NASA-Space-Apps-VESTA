@@ -1,0 +1,1152 @@
+[
+  {
+    "id": "bass",
+    "short_name": "BASS",
+    "psi_id": "PSI-26",
+    "full_name": "Burning and Suppression of Solids",
+    "hardware_family": "glovebox_air_tunnel",
+    "hardware_family_name": "Glovebox air tunnel",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/58h4-dy80",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+    "authors": [
+      "Ferkul,Paul",
+      "Takahashi,Funiaki",
+      "T'ien,James",
+      "Olson,Sandra L."
+    ],
+    "citation_year": "2013",
+    "tables": [
+      {
+        "file": "PSI-26_Experimental table_BASS.csv",
+        "encoding": "utf-8-sig",
+        "rows": 122,
+        "records": 122
+      }
+    ],
+    "table_rows": 122,
+    "tests": 122,
+    "years": [
+      2012,
+      2013
+    ],
+    "oxygen_pct_range": null,
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": null,
+    "fuels": [],
+    "materials": [
+      "PMMA",
+      "Wax candle",
+      "SIBAL (cotton-fiberglass)",
+      "Nomex"
+    ],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": "Table lists samples only (no airflow, oxygen or results). Use the reports.",
+    "known_mismatches": [],
+    "notes": [
+      "Normalized sample names (for example 'pmma 2 cm' and 'PMMA 2 cm' are the same)."
+    ]
+  },
+  {
+    "id": "bass-ii",
+    "short_name": "BASS-II",
+    "psi_id": "PSI-25",
+    "full_name": "Burning and Suppression of Solids - II",
+    "hardware_family": "glovebox_air_tunnel",
+    "hardware_family_name": "Glovebox air tunnel",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/4qc4-de67",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+    "authors": [
+      "Ferkul,Paul",
+      "Fernandez-Pello,Carlos",
+      "Miller,Fletcher J.",
+      "T'ien,James",
+      "Bhattachjee,Subrata"
+    ],
+    "citation_year": "2022",
+    "tables": [
+      {
+        "file": "PSI-25_Experimental table_BASS-II.csv",
+        "encoding": "utf-8-sig",
+        "rows": 129,
+        "records": 129
+      }
+    ],
+    "table_rows": 129,
+    "tests": 129,
+    "years": [
+      2014,
+      2018
+    ],
+    "oxygen_pct_range": [
+      13.6,
+      22.2
+    ],
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": null,
+    "fuels": [],
+    "materials": [
+      "PMMA",
+      "SIBAL (cotton-fiberglass)",
+      "Nomex",
+      "Wax candle"
+    ],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": null,
+    "known_mismatches": [],
+    "notes": [
+      "Airflow is stored as fan and air display readings, not cm/s. Kept as-is and flagged."
+    ]
+  },
+  {
+    "id": "spice",
+    "short_name": "SPICE",
+    "psi_id": "PSI-107",
+    "full_name": "Smoke Point In Co-flow Experiment",
+    "hardware_family": "glovebox_air_tunnel",
+    "hardware_family_name": "Glovebox air tunnel",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/9kbh-e962",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107",
+    "authors": [
+      "Urban,David",
+      "Sunderland,Peter"
+    ],
+    "citation_year": "2024",
+    "tables": [
+      {
+        "file": "PSI-107_Experimental table_Spice.csv",
+        "encoding": "utf-8-sig",
+        "rows": 469,
+        "records": 469
+      }
+    ],
+    "table_rows": 469,
+    "tests": 435,
+    "years": null,
+    "oxygen_pct_range": null,
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": [
+      -5.92,
+      85.28
+    ],
+    "fuels": [
+      "75% Propylene",
+      "Propylene",
+      "50% Propylene",
+      "Propane",
+      "Ethylene",
+      "Methane"
+    ],
+    "materials": [],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": null,
+    "known_mismatches": [],
+    "notes": [
+      "Fuel spelling unified ('75 % Propylene' = '75% Propylene').",
+      "Exact duplicate rows marked (duplicate_of) and not counted as separate tests.",
+      "Smoke points are in the SPICE final report (Table 1), not in this table."
+    ]
+  },
+  {
+    "id": "slice",
+    "short_name": "SLICE",
+    "psi_id": "PSI-106",
+    "full_name": "Structure and Liftoff In Combustion Experiment",
+    "hardware_family": "glovebox_air_tunnel",
+    "hardware_family_name": "Glovebox air tunnel",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/pm12-rg61",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-106",
+    "authors": [
+      "Long,Marshall",
+      "Smooke,Mitchell",
+      "Takahashi,Fumiaki",
+      "Stocker,Dennis"
+    ],
+    "citation_year": "2024",
+    "tables": [
+      {
+        "file": "PSI-106_Experimental table_Slice.csv",
+        "encoding": "utf-8-sig",
+        "rows": 12,
+        "records": 12
+      }
+    ],
+    "table_rows": 12,
+    "tests": 12,
+    "years": [
+      2012,
+      2012
+    ],
+    "oxygen_pct_range": null,
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": null,
+    "fuels": [
+      "100% CH4",
+      "70% CH4 (balance N2)",
+      "40% CH4 (balance N2)",
+      "20% C2H4 (balance N2)",
+      "100% C2H6",
+      "100% C2H4"
+    ],
+    "materials": [],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": "Table lists test dates and fuels only. Use the reports.",
+    "known_mismatches": [],
+    "notes": []
+  },
+  {
+    "id": "flex",
+    "short_name": "FLEX",
+    "psi_id": "PSI-69",
+    "full_name": "Flame Extinguishment Experiment",
+    "hardware_family": "burning_droplets",
+    "hardware_family_name": "Burning droplets",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/mbq8-0451",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69",
+    "authors": [
+      "Williams,Forman",
+      "Shaw,Benjamin",
+      "Hicks,Michael",
+      "Nayagam,Vedha",
+      "Choi,Mun",
+      "Dryer,Frederick",
+      "Dietrich,Daniel"
+    ],
+    "citation_year": "2016",
+    "tables": [
+      {
+        "file": "PSI-69_Experimental table_FLEX.csv",
+        "encoding": "cp1252",
+        "rows": 274,
+        "records": 274
+      }
+    ],
+    "table_rows": 274,
+    "tests": 274,
+    "years": [
+      2009,
+      2011
+    ],
+    "oxygen_pct_range": [
+      12.0,
+      34.0
+    ],
+    "pressure_atm_range": [
+      0.6925,
+      3.0525
+    ],
+    "airflow_cm_s_range": null,
+    "fuels": [
+      "Methanol",
+      "Heptane"
+    ],
+    "materials": [],
+    "outcomes": {
+      "disruption": 61,
+      "extinction": 186,
+      "completion": 27
+    },
+    "flames_ignited": null,
+    "thin_table": null,
+    "known_mismatches": [],
+    "notes": [
+      "Column names fixed: 'O' = O2, 'N' = N2, 'CO' = CO2 (not carbon monoxide), 'He' = helium.",
+      "Burning rate unit fixed to mm²/s. File read as Windows-1252 text."
+    ]
+  },
+  {
+    "id": "flex-2",
+    "short_name": "FLEX-2",
+    "psi_id": "PSI-68",
+    "full_name": "Flame Extinguishment Experiment - 2",
+    "hardware_family": "burning_droplets",
+    "hardware_family_name": "Burning droplets",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/byp8-h018",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-68",
+    "authors": [
+      "Williams,Forman",
+      "Dryer,Frederick",
+      "Shaw,Benjamin D.",
+      "Choi,Mun",
+      "Nayagam,Vedha",
+      "Avedisian,Thomas",
+      "Dietrich,Daniel",
+      "Hicks,Michael"
+    ],
+    "citation_year": "2019",
+    "tables": [
+      {
+        "file": "PSI-68_Experimental table_Flex2.csv",
+        "encoding": "utf-8-sig",
+        "rows": 8,
+        "records": 8
+      }
+    ],
+    "table_rows": 8,
+    "tests": 0,
+    "years": null,
+    "oxygen_pct_range": null,
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": null,
+    "fuels": [],
+    "materials": [],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": "Table is the planned test matrix, not results.",
+    "known_mismatches": [],
+    "notes": []
+  },
+  {
+    "id": "cfi",
+    "short_name": "CFI",
+    "psi_id": "PSI-39",
+    "full_name": "Cool Flames Investigation",
+    "hardware_family": "burning_droplets",
+    "hardware_family_name": "Burning droplets",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/m6pj-a914",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39",
+    "authors": [
+      "Williams,Forman",
+      "Dryer,Frederick",
+      "Farouk,Tanvir",
+      "Nayagam,Vedha",
+      "Dietrich,Daniel"
+    ],
+    "citation_year": "2024",
+    "tables": [
+      {
+        "file": "PSI-39_Experimental table_CFI.csv",
+        "encoding": "utf-8-sig",
+        "rows": 87,
+        "records": 87
+      }
+    ],
+    "table_rows": 87,
+    "tests": 87,
+    "years": [
+      2017,
+      2017
+    ],
+    "oxygen_pct_range": [
+      17.0,
+      21.0
+    ],
+    "pressure_atm_range": [
+      0.5,
+      5.0
+    ],
+    "airflow_cm_s_range": null,
+    "fuels": [
+      "60/40 n-dodecane/iso-dodecane",
+      "75/25 n-dodecane/iso-dodecane",
+      "n-dodecane"
+    ],
+    "materials": [],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": null,
+    "known_mismatches": [],
+    "notes": [
+      "Results (flame behavior) are in the report's figures, not in this table."
+    ]
+  },
+  {
+    "id": "acme-bre",
+    "short_name": "ACME BRE",
+    "psi_id": "PSI-20",
+    "full_name": "Advanced Combustion via Microgravity Experiments - Burning Rate Emulator",
+    "hardware_family": "acme_gas_flames",
+    "hardware_family_name": "Gas flames (ACME)",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/vb93-3y72",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20",
+    "authors": [
+      "Quintiere,James",
+      "Ris,John L de",
+      "Sunderland,Peter",
+      "Stocker,Dennis"
+    ],
+    "citation_year": "2022",
+    "tables": [
+      {
+        "file": "PSI-20_Experimental table_ACME BRE.csv",
+        "encoding": "utf-8-sig",
+        "rows": 18,
+        "records": 18
+      }
+    ],
+    "table_rows": 18,
+    "tests": 18,
+    "years": [
+      2019,
+      2021
+    ],
+    "oxygen_pct_range": [
+      21.0,
+      40.0
+    ],
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": null,
+    "fuels": [
+      "100% C2H4",
+      "50% C2H4",
+      "100%C2H4",
+      "100% CH4"
+    ],
+    "materials": [],
+    "outcomes": {},
+    "flames_ignited": 194.0,
+    "thin_table": null,
+    "known_mismatches": [],
+    "notes": [
+      "Each row is a test day; oxygen cells list several levels. Imitates burning solids with a gas burner."
+    ]
+  },
+  {
+    "id": "acme-cld-flame",
+    "short_name": "ACME CLD Flame",
+    "psi_id": "PSI-21",
+    "full_name": "Advanced Combustion via Microgravity Experiments / Coflow Laminar Diffusion Flame",
+    "hardware_family": "acme_gas_flames",
+    "hardware_family_name": "Gas flames (ACME)",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/23e1-9950",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-21",
+    "authors": [
+      "Long,Marshall",
+      "Smooke,Mitchell",
+      "Stocker,Dennis"
+    ],
+    "citation_year": "2023",
+    "tables": [
+      {
+        "file": "PSI-21_Experimental table_CLD Flame.csv",
+        "encoding": "utf-8-sig",
+        "rows": 32,
+        "records": 32
+      }
+    ],
+    "table_rows": 32,
+    "tests": 32,
+    "years": [
+      2017,
+      2021
+    ],
+    "oxygen_pct_range": null,
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": null,
+    "fuels": [
+      "40% CH4",
+      "100% CH4",
+      "100% C2H4",
+      "100% C2H5",
+      "100% C2H6",
+      "100% C2H7",
+      "100% C2H8",
+      "100% C2H9",
+      "100% C2H10",
+      "100% C2H11",
+      "50% C2H4",
+      "50% C2H5"
+    ],
+    "materials": [],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": null,
+    "known_mismatches": [],
+    "notes": [
+      "Fuel bottle names had spreadsheet auto-increment typos ('40% CH5' ... 'CH14'); fixed to CH4."
+    ]
+  },
+  {
+    "id": "acme-e-field",
+    "short_name": "ACME E-FIELD Flames",
+    "psi_id": "PSI-22",
+    "full_name": "Advanced Combustion via Microgravity Experiments Electric-Field Effects on Laminar Diffusion Flames",
+    "hardware_family": "acme_gas_flames",
+    "hardware_family_name": "Gas flames (ACME)",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/se5a-8c73",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22",
+    "authors": [
+      "Dunn-Rankin,Derek",
+      "Stocker,Dennis",
+      "Chien,Alice"
+    ],
+    "citation_year": "2019",
+    "tables": [
+      {
+        "file": "PSI-22_Experimental table_ACME E-FIELD Flames.csv",
+        "encoding": "utf-8-sig",
+        "rows": 32,
+        "records": 32
+      }
+    ],
+    "table_rows": 32,
+    "tests": 32,
+    "years": [
+      2018,
+      2018
+    ],
+    "oxygen_pct_range": null,
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": null,
+    "fuels": [
+      "100% C2H4",
+      "100% CH4",
+      "40% CH4",
+      "30% C2H4"
+    ],
+    "materials": [],
+    "outcomes": {},
+    "flames_ignited": 230.0,
+    "thin_table": null,
+    "known_mismatches": [],
+    "notes": []
+  },
+  {
+    "id": "acme-s-flame",
+    "short_name": "ACME s-Flame",
+    "psi_id": "PSI-23",
+    "full_name": "Advanced Combustion via Microgravity Experiments-Structure and Response of Spherical Diffusion Flames",
+    "hardware_family": "acme_gas_flames",
+    "hardware_family_name": "Gas flames (ACME)",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/k57n-p030",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23",
+    "authors": [
+      "Law,Chung",
+      "Tse,Stephen",
+      "Stocker,Dennis"
+    ],
+    "citation_year": "2018",
+    "tables": [
+      {
+        "file": "PSI-23_Experimental table_ACME s-Flame.csv",
+        "encoding": "utf-8-sig",
+        "rows": 18,
+        "records": 18
+      }
+    ],
+    "table_rows": 18,
+    "tests": 18,
+    "years": [
+      2019,
+      2020
+    ],
+    "oxygen_pct_range": [
+      21.0,
+      30.0
+    ],
+    "pressure_atm_range": [
+      1.0,
+      1.0
+    ],
+    "airflow_cm_s_range": null,
+    "fuels": [
+      "50% C2H4 with N2",
+      "45% CH4 with N2",
+      "100% H2",
+      "44.4% H2 with CH4",
+      "66.7% H2 with CH4",
+      "25% H2, 20% CH4, with He",
+      "20% H2, 25% CH4, with He",
+      "30% H2, 15% CH4, with He",
+      "45% H2 with He",
+      "45% CH4 with He",
+      "20% C2H4 with He",
+      "25% C2H4 with He"
+    ],
+    "materials": [],
+    "outcomes": {},
+    "flames_ignited": 276.0,
+    "thin_table": null,
+    "known_mismatches": [],
+    "notes": [
+      "Diluent names had auto-increment typos ('with N3' ... 'N6'); fixed to N2."
+    ]
+  },
+  {
+    "id": "acme-flame-design",
+    "short_name": "ACME Flame Design",
+    "psi_id": "PSI-10",
+    "full_name": "Advanced Combustion via Microgravity Experiments / Flame Design",
+    "hardware_family": "acme_gas_flames",
+    "hardware_family_name": "Gas flames (ACME)",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/w4zy-bt45",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10",
+    "authors": [
+      "Axelbaum,Richard",
+      "Sunderland,Peter",
+      "Urban,David",
+      "Stocker,Dennis",
+      "Frolov,Sergey"
+    ],
+    "citation_year": "2025",
+    "tables": [
+      {
+        "file": "PSI-10_Experimental table_Flame Design_Inverse Flame.csv",
+        "encoding": "utf-8-sig",
+        "rows": 120,
+        "records": 120
+      },
+      {
+        "file": "PSI-10_Experimental table_Flame Design_Normal Flame.csv",
+        "encoding": "utf-8-sig",
+        "rows": 207,
+        "records": 207
+      }
+    ],
+    "table_rows": 327,
+    "tests": 327,
+    "years": null,
+    "oxygen_pct_range": [
+      19.805,
+      84.998
+    ],
+    "pressure_atm_range": [
+      0.42596796,
+      3.01818033
+    ],
+    "airflow_cm_s_range": null,
+    "fuels": [
+      "C2H4",
+      "C2H4 (fuel side, inverse flame)",
+      "C3H8"
+    ],
+    "materials": [],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": null,
+    "known_mismatches": [],
+    "notes": [
+      "Inverse flame table cleaned. Oxygen converted from mole fraction to percent.",
+      "Normal flame table cleaned. Oxygen converted from mole fraction to percent."
+    ]
+  },
+  {
+    "id": "acme-cfi-g",
+    "short_name": "ACME CFI-G",
+    "psi_id": "PSI-159",
+    "full_name": "Advanced Combustion via Microgravity Experiments / Cool Flames Investigation with Gases",
+    "hardware_family": "acme_gas_flames",
+    "hardware_family_name": "Gas flames (ACME)",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/cyt1-kh64",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+    "authors": [
+      "Sunderland,Peter",
+      "Axelbaum,Richard",
+      "Williams,Forman",
+      "Stocker,Dennis"
+    ],
+    "citation_year": "2025",
+    "tables": [
+      {
+        "file": "PSI-159_Experimental table_CFI-G_Normal Flames.csv",
+        "encoding": "utf-8-sig",
+        "rows": 179,
+        "records": 179
+      }
+    ],
+    "table_rows": 179,
+    "tests": 179,
+    "years": null,
+    "oxygen_pct_range": [
+      17.969,
+      39.97
+    ],
+    "pressure_atm_range": [
+      0.5,
+      3.0001
+    ],
+    "airflow_cm_s_range": null,
+    "fuels": [
+      "30% butane",
+      "30% propane",
+      "50% butane",
+      "30% ethane",
+      "propane",
+      "ethane"
+    ],
+    "materials": [],
+    "outcomes": {
+      "self-extinguished": 102,
+      "flow terminated": 31
+    },
+    "flames_ignited": null,
+    "thin_table": null,
+    "known_mismatches": [],
+    "notes": [
+      "Only normal flames are in this table; inside-out flames (up to 85% oxygen) are only in the report."
+    ]
+  },
+  {
+    "id": "saffire-i",
+    "short_name": "Saffire-I",
+    "psi_id": "PSI-98",
+    "full_name": "Spacecraft Fire Safety Experiment-I",
+    "hardware_family": "cargo_ship_fires",
+    "hardware_family_name": "Big fires on a cargo ship",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/0t15-1z43",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
+    "authors": [
+      "Urban,David"
+    ],
+    "citation_year": "2024",
+    "tables": [
+      {
+        "file": "PSI-98_Experimental table_SAFFIRE-1.csv",
+        "encoding": "utf-8-sig",
+        "rows": 4,
+        "records": 4
+      }
+    ],
+    "table_rows": 4,
+    "tests": 2,
+    "years": null,
+    "oxygen_pct_range": [
+      21.5,
+      21.7
+    ],
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": [
+      20.0,
+      20.0
+    ],
+    "fuels": [],
+    "materials": [
+      "SIBAL (cotton-fiberglass)"
+    ],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": null,
+    "known_mismatches": [
+      "Burn time: table says 420 s for sample S1; NASA's 2018 Saffire talk (NTRS 20180005168) says 400 s."
+    ],
+    "notes": []
+  },
+  {
+    "id": "saffire-ii",
+    "short_name": "Saffire-II",
+    "psi_id": "PSI-99",
+    "full_name": "Spacecraft Fire Experiment-II",
+    "hardware_family": "cargo_ship_fires",
+    "hardware_family_name": "Big fires on a cargo ship",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/2chp-m469",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+    "authors": [
+      "Urban,David",
+      "Ruff,Gary"
+    ],
+    "citation_year": "2024",
+    "tables": [
+      {
+        "file": "PSI-99_Experimental table_SAFFIRE-2.csv",
+        "encoding": "utf-8-sig",
+        "rows": 15,
+        "records": 15
+      }
+    ],
+    "table_rows": 15,
+    "tests": 7,
+    "years": null,
+    "oxygen_pct_range": [
+      21.5,
+      22.1
+    ],
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": [
+      20.0,
+      20.0
+    ],
+    "fuels": [],
+    "materials": [
+      "Silicone",
+      "PMMA",
+      "SIBAL (cotton-fiberglass)"
+    ],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": null,
+    "known_mismatches": [],
+    "notes": [
+      "Column names fixed: '?-g' = microgravity (μg), 'Samle' = Sample. Units split from numbers ('20 cm/s' -> 20)."
+    ]
+  },
+  {
+    "id": "saffire-iii",
+    "short_name": "Saffire-III",
+    "psi_id": "PSI-100",
+    "full_name": "Spacecraft Fire Experiment-III",
+    "hardware_family": "cargo_ship_fires",
+    "hardware_family_name": "Big fires on a cargo ship",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/040q-4h36",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100",
+    "authors": [
+      "Urban,David"
+    ],
+    "citation_year": "2024",
+    "tables": [
+      {
+        "file": "PSI-100_Experimental table_SAFFIRE-3.csv",
+        "encoding": "utf-8-sig",
+        "rows": 2,
+        "records": 2
+      }
+    ],
+    "table_rows": 2,
+    "tests": 2,
+    "years": null,
+    "oxygen_pct_range": null,
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": [
+      30.0,
+      30.0
+    ],
+    "fuels": [],
+    "materials": [
+      "SIBAL (cotton-fiberglass)"
+    ],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": "Table has 2 rows.",
+    "known_mismatches": [
+      "Airflow: table says 30 cm/s; NASA's 2018 Saffire talk (NTRS 20180005168) says 25 cm/s."
+    ],
+    "notes": []
+  },
+  {
+    "id": "same",
+    "short_name": "SAME",
+    "psi_id": "PSI-102",
+    "full_name": "Smoke and Aerosol Measurement Experiment",
+    "hardware_family": "smoke_and_dust_sensors",
+    "hardware_family_name": "Smoke and dust sensors",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/gd4k-8h62",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102",
+    "authors": [
+      "Urban,David",
+      "Mulholland,George",
+      "Cleary,Thomas",
+      "Yang,Jiann",
+      "Fortenberry,Claire"
+    ],
+    "citation_year": "2024",
+    "tables": [
+      {
+        "file": "PSI-102_Experimental table_SAME.csv",
+        "encoding": "utf-8-sig",
+        "rows": 8,
+        "records": 20
+      }
+    ],
+    "table_rows": 20,
+    "tests": 20,
+    "years": null,
+    "oxygen_pct_range": null,
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": [
+      5.0,
+      10.0
+    ],
+    "fuels": [],
+    "materials": [
+      "Teflon",
+      "Kapton",
+      "Silicone Rubber",
+      "Lampwick",
+      "Dibutyl Phthalate"
+    ],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": "Table has 8 rows; samples 5 to 8 reuse the conditions of samples 1 to 4.",
+    "known_mismatches": [],
+    "notes": [
+      "Samples 5 to 8 said 'same conditions as 1-4'; expanded into one row per condition."
+    ]
+  },
+  {
+    "id": "same-r",
+    "short_name": "SAME-R",
+    "psi_id": "PSI-101",
+    "full_name": "Smoke Aerosol Measurement Experiment-Reflight",
+    "hardware_family": "smoke_and_dust_sensors",
+    "hardware_family_name": "Smoke and dust sensors",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/2np7-jv14",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101",
+    "authors": [
+      "Urban,David",
+      "Yuan,Zeng-guang",
+      "Yang,Jiann",
+      "Cleary,Thomas",
+      "Mulholland,George",
+      "Fortenberry,Claire"
+    ],
+    "citation_year": "2024",
+    "tables": [
+      {
+        "file": "PSI-101_Experimental table_SAME-R.csv",
+        "encoding": "utf-8-sig",
+        "rows": 109,
+        "records": 109
+      }
+    ],
+    "table_rows": 109,
+    "tests": 109,
+    "years": null,
+    "oxygen_pct_range": null,
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": [
+      0.0,
+      8.1
+    ],
+    "fuels": [],
+    "materials": [
+      "Kapton",
+      "Silicone",
+      "Lampwick",
+      "Pyrell",
+      "Teflon"
+    ],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": null,
+    "known_mismatches": [],
+    "notes": []
+  },
+  {
+    "id": "daft",
+    "short_name": "DAFT",
+    "psi_id": "PSI-47",
+    "full_name": "Dust and Aerosol Measurement Feasibility Test / Dust and Aerosol Measurement Feasibility Test-2",
+    "hardware_family": "smoke_and_dust_sensors",
+    "hardware_family_name": "Smoke and dust sensors",
+    "environment": "space",
+    "gravity": "about 0 g",
+    "doi": "10.60555/ztgj-d202",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47",
+    "authors": [
+      "Urban,David",
+      "Fortenberry,Claire"
+    ],
+    "citation_year": "2009",
+    "tables": [
+      {
+        "file": "PSI-47_Experimental table_DAFT.csv",
+        "encoding": "utf-8-sig",
+        "rows": 2,
+        "records": 2
+      }
+    ],
+    "table_rows": 2,
+    "tests": 2,
+    "years": [
+      2005,
+      2005
+    ],
+    "oxygen_pct_range": null,
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": null,
+    "fuels": [],
+    "materials": [
+      "Arizona Road Dust (ARD Fine)"
+    ],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": "Table lists 2 test sessions only.",
+    "known_mismatches": [],
+    "notes": []
+  },
+  {
+    "id": "psi-60",
+    "short_name": "PSI-60",
+    "psi_id": "PSI-60",
+    "full_name": "Computational and Experimental Analysis of SPICE Data Sets",
+    "hardware_family": "ground_study",
+    "hardware_family_name": "Ground studies",
+    "environment": "ground",
+    "gravity": "1 g",
+    "doi": "10.60555/mzjm-yv57",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-60",
+    "authors": [
+      "Smooke,Mitchell",
+      "Long,Marshall",
+      "Dietrich,Daniel"
+    ],
+    "citation_year": "2025",
+    "tables": [],
+    "table_rows": 0,
+    "tests": 0,
+    "years": null,
+    "oxygen_pct_range": null,
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": null,
+    "fuels": [],
+    "materials": [],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": null,
+    "known_mismatches": [],
+    "notes": []
+  },
+  {
+    "id": "psi-62",
+    "short_name": "PSI-62",
+    "psi_id": "PSI-62",
+    "full_name": "Concurrent Flame Spread Modeling using Flamelet Generated Manifolds in Microgravity with Comparison to BASS Experiments using Two-Color Tomography",
+    "hardware_family": "ground_study",
+    "hardware_family_name": "Ground studies",
+    "environment": "ground",
+    "gravity": "1 g",
+    "doi": "10.60555/e9xp-ex83",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-62",
+    "authors": [
+      "DesJardin,Paul",
+      "Urban,David"
+    ],
+    "citation_year": "2025",
+    "tables": [],
+    "table_rows": 0,
+    "tests": 0,
+    "years": null,
+    "oxygen_pct_range": null,
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": null,
+    "fuels": [],
+    "materials": [],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": null,
+    "known_mismatches": [],
+    "notes": []
+  },
+  {
+    "id": "psi-115",
+    "short_name": "PSI-115",
+    "psi_id": "PSI-115",
+    "full_name": "Utilization of the Smoke Aerosol Measurement Experiment Data for Advanced Modeling and Simulation of Smoke Generation in Micro-Gravity",
+    "hardware_family": "ground_study",
+    "hardware_family_name": "Ground studies",
+    "environment": "ground",
+    "gravity": "1 g",
+    "doi": "10.60555/q0v5-1v28",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-115",
+    "authors": [
+      "Garrick,Sean",
+      "Hicks,Michael"
+    ],
+    "citation_year": "2024",
+    "tables": [],
+    "table_rows": 0,
+    "tests": 0,
+    "years": null,
+    "oxygen_pct_range": null,
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": null,
+    "fuels": [],
+    "materials": [],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": null,
+    "known_mismatches": [],
+    "notes": []
+  },
+  {
+    "id": "psi-117",
+    "short_name": "PSI-117",
+    "psi_id": "PSI-117",
+    "full_name": "Effect of External Thermo-Convective Perturbation on Cool Flame Dynamics: A Multidimensional Multi-Physics CFD Analysis",
+    "hardware_family": "ground_study",
+    "hardware_family_name": "Ground studies",
+    "environment": "ground",
+    "gravity": "1 g",
+    "doi": "10.60555/gz0q-b577",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-117",
+    "authors": [
+      "Farouk T",
+      "Hicks M"
+    ],
+    "citation_year": "2026",
+    "tables": [],
+    "table_rows": 0,
+    "tests": 0,
+    "years": null,
+    "oxygen_pct_range": null,
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": null,
+    "fuels": [],
+    "materials": [],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": null,
+    "known_mismatches": [],
+    "notes": []
+  },
+  {
+    "id": "psi-142",
+    "short_name": "PSI-142",
+    "psi_id": "PSI-142",
+    "full_name": "Quantitative Studies of Cool Flame Transitions at Radiation / Stretch Extinction Using Counterflow Flames",
+    "hardware_family": "ground_study",
+    "hardware_family_name": "Ground studies",
+    "environment": "ground",
+    "gravity": "1 g",
+    "doi": "10.60555/80qf-vj95",
+    "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-142",
+    "authors": [
+      "Ju,Yiguang",
+      "Reuter,Christopher",
+      "Dietrich,Daniel"
+    ],
+    "citation_year": "2024",
+    "tables": [],
+    "table_rows": 0,
+    "tests": 0,
+    "years": null,
+    "oxygen_pct_range": null,
+    "pressure_atm_range": null,
+    "airflow_cm_s_range": null,
+    "fuels": [],
+    "materials": [],
+    "outcomes": {},
+    "flames_ignited": null,
+    "thin_table": null,
+    "known_mismatches": [],
+    "notes": []
+  }
+]
