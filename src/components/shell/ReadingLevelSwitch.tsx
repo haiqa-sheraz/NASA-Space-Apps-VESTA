@@ -8,10 +8,10 @@ const LEVELS: { value: ReadingLevel; label: string }[] = [
 ];
 
 /** Global Simple / Expert switch. The choice is saved and applies on every page. */
-export function ReadingLevelSwitch() {
+export function ReadingLevelSwitch({ label = "Reading level" }: { label?: string }) {
   const { readingLevel, setReadingLevel } = usePrefs();
   return (
-    <div className="seg" role="group" aria-label="Reading level">
+    <div className="seg" role="group" aria-label={label}>
       {LEVELS.map((level) => (
         <button
           key={level.value}

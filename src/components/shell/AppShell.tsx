@@ -3,6 +3,7 @@
 import { MessageCircleQuestionMark } from "lucide-react";
 import { useEffect, type ReactNode } from "react";
 import { AskProvider, useAsk } from "@/lib/state/ask";
+import { ToastProvider } from "@/lib/state/toast";
 import { AskPanel } from "./AskPanel";
 
 /**
@@ -12,7 +13,9 @@ import { AskPanel } from "./AskPanel";
 export function AppShell({ children }: { children: ReactNode }) {
   return (
     <AskProvider>
-      <Shell>{children}</Shell>
+      <ToastProvider>
+        <Shell>{children}</Shell>
+      </ToastProvider>
     </AskProvider>
   );
 }

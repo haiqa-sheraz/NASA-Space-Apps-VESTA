@@ -1,4 +1,6 @@
 /** Types for the files in data/ (written by the Python prep scripts). */
+import type { JobId } from "@/lib/jobs";
+import type { FuelKind, ScoringStudy } from "@/lib/scoring";
 
 export interface StudyTable {
   file: string;
@@ -23,7 +25,7 @@ export interface Study {
   tables: StudyTable[];
   table_rows: number;
   tests: number;
-  years: number[];
+  years: [number, number] | null;
   oxygen_pct_range: [number, number] | null;
   pressure_atm_range: [number, number] | null;
   airflow_cm_s_range: [number, number] | null;
@@ -32,8 +34,16 @@ export interface Study {
   outcomes: Record<string, number>;
   flames_ignited: number | null;
   thin_table: string | null;
-  known_mismatches: unknown[];
+  known_mismatches: string[];
   notes: string[];
+}
+
+export interface OxygenCoverage {
+  study_id: string;
+  short_name: string;
+  tests_with_oxygen: number;
+  highest_oxygen_pct: number;
+  tests_at_30pct_or_more: number;
 }
 
 export interface Facts {
@@ -50,15 +60,40 @@ export interface Facts {
     [key: string]: number;
   };
   tests_per_study: Record<string, number>;
-  [key: string]: unknown;
+  oxygen_coverage: OxygenCoverage[];
+  highest_oxygen_solid_materials_pct: number;
+  highest_oxygen_bre_pct: number;
+  studies_by_gravity: Record<string, number>;
+  gaps: string[];
 }
 
 export interface TestRow {
   study_id: string;
   psi_id: string;
+  source_table: string;
+  source_row: number;
+  test_id: string | null;
+  date: string | null;
+  year: number | null;
+  fuel: string | null;
+  material: string | null;
+  sample_shape: string | null;
+  sample_size: string | null;
+  oxygen_pct_min: number | null;
+  oxygen_pct_max: number | null;
+  oxygen_final_pct: number | null;
+  pressure_atm_min: number | null;
+  pressure_atm_max: number | null;
+  airflow_cm_s_min: number | null;
+  airflow_cm_s_max: number | null;
+  diluent: string | null;
+  droplet_diameter_mm: number | null;
+  burn_time_s: number | null;
+  outcome: string | null;
   is_test: boolean;
-  duplicate_of: string | null;
-  [key: string]: unknown;
+  duplicate_of: string | number | null;
+  flags: string[];
+  extra: Record<string, unknown>;
 }
 
 export interface ProfileSource {
@@ -68,13 +103,58 @@ export interface ProfileSource {
   file?: string;
 }
 
+export interface ProfileResult {
+  job: string;
+  result_simple: string;
+  result_expert: string;
+  safety_meaning: string;
+  source: string;
+  source_detail: { title: string; url: string | null; page: number | null } | null;
+}
+
+export interface ProfileKeyFacts {
+  airflow: string | null;
+  fuels: string[];
+  gravity: string | null;
+  number_of_tests: string | null;
+  oxygen: string | null;
+  pressure: string | null;
+  sample_shapes: string[];
+  sensors: string[];
+  what_changed: string[];
+}
+
+export interface Profile {
+  summary_simple: string;
+  summary_expert: string;
+  experiment_goal: string | null;
+  key_facts: ProfileKeyFacts;
+  results: ProfileResult[];
+  jobs: string[];
+  jobs_source: string;
+  equipment: { area: string; note: string }[];
+  glossary: { term: string; definition: string }[];
+  open_questions: string[];
+  earth_uses: string[];
+}
+
 export interface StudyProfileFile {
   study_id: string;
   model: string;
   generated: string;
   sources: ProfileSource[];
-  profile: Record<string, unknown>;
-  [key: string]: unknown;
+  numbers_not_in_sources: string[];
+  profile: Profile;
+}
+
+export interface Finding {
+  id: string;
+  simple: string;
+  expert: string | null;
+  job: string;
+  study_id: string | null;
+  sources: string[];
+  numbers_not_in_sources: string[];
 }
 
 export interface SiteStats {
@@ -84,4 +164,21 @@ export interface SiteStats {
   fireSafetyJobs: number;
   /** Date part (YYYY-MM-DD) of the newest "generated" stamp in the data files. */
   dataUpdated: string;
+}
+
+/** Compact, browser-safe facts about one study, for cards, filters and scoring. */
+export interface StudyIndexEntry extends ScoringStudy {
+  shortName: string;
+  fullName: string;
+  psiId: string;
+  familyName: string;
+  jobs: JobId[];
+  /** True for profiled studies with no fire-safety job: shown with a neutral "Flame science" tag. */
+  flameScience: boolean;
+  tableRows: number;
+  years: [number, number] | null;
+  fuelKind: FuelKind;
+  /** ranked: has a mission score; planned: planned tests only; ground: ground study, not scored */
+  status: "ranked" | "planned" | "ground";
+  searchText: string;
 }

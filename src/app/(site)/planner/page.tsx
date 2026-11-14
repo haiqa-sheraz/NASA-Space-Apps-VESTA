@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
+import { PlannerClient } from "@/components/planner/PlannerClient";
 import { PageHero } from "@/components/ui/PageHero";
-import { getStudies } from "@/lib/data/server";
+import { getGaps } from "@/lib/data/gaps";
+import { getSiteStats, getStudyIndex } from "@/lib/data/server";
 
 export const metadata: Metadata = { title: "Planner" };
 
 export default function PlannerPage() {
-  const count = getStudies().length;
+  const index = getStudyIndex();
   return (
-    <PageHero
-      badge="Planner"
-      title="Mission planner"
-      lead={`Rank NASA's ${count} fire studies by how well they match your mission's air, pressure and gravity.`}
-    />
+    <>
+      <div className="no-print">
+        <PageHero
+          badge="Planner"
+          title="Mission planner"
+          lead={`Rank NASA's ${index.length} fire studies by how well they match your mission's air, pressure and gravity.`}
+        />
+      </div>
+      <PlannerClient index={index} gaps={getGaps()} generated={getSiteStats().dataUpdated} />
+    </>
   );
 }

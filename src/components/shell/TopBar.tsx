@@ -11,6 +11,7 @@ import { Logo } from "./Logo";
 import { MissionPicker } from "./MissionPicker";
 import { MoreMenu } from "./MoreMenu";
 import { ReadingLevelSwitch } from "./ReadingLevelSwitch";
+import { ThemeSegmented, ThemeToggle } from "./ThemeSwitch";
 
 /**
  * Top bar on every page: logo, main menu (active page as a pill), More menu,
@@ -66,6 +67,7 @@ export function TopBar() {
         <div className="tools max-tablet:hidden">
           <MissionPicker />
           <ReadingLevelSwitch />
+          <ThemeToggle />
           <AskButton />
         </div>
 
@@ -109,6 +111,12 @@ export function TopBar() {
               <span className="small muted strong">Reading level</span>
               <div style={{ alignSelf: "flex-start" }}>
                 <ReadingLevelSwitch />
+              </div>
+            </div>
+            <div className="stack g2">
+              <span className="small muted strong">Theme</span>
+              <div style={{ alignSelf: "flex-start" }}>
+                <ThemeSegmented />
               </div>
             </div>
           </div>

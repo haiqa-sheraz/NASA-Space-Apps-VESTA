@@ -35,10 +35,10 @@ export const viewport: Viewport = {
 };
 
 /**
- * Sets data-theme on <html> before first paint: a saved choice ("vesta:theme") if there is one,
- * otherwise the system setting, which it keeps following.
+ * Sets data-theme on <html> before first paint: the visitor's saved choice ("vesta:theme",
+ * set by the theme switch) if there is one, otherwise the system setting, which it keeps following.
  */
-const themeScript = `(function(){try{var d=document.documentElement,s=localStorage.getItem("vesta:theme"),m=window.matchMedia("(prefers-color-scheme: light)");function a(){d.setAttribute("data-theme",s==="light"||s==="dark"?s:m.matches?"light":"dark")}a();m.addEventListener("change",a)}catch(e){}})();`;
+const themeScript = `(function(){try{var d=document.documentElement,m=window.matchMedia("(prefers-color-scheme: light)");function a(){var s=null;try{s=localStorage.getItem("vesta:theme")}catch(e){}d.setAttribute("data-theme",s==="light"||s==="dark"?s:m.matches?"light":"dark")}a();m.addEventListener("change",a)}catch(e){}})();`;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

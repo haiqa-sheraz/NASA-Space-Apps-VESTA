@@ -49,7 +49,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="border-t border-rule">
+    <footer className="site-footer no-print border-t border-rule">
       <div className="wrap pt-12">
         <div className="statstrip">
           {statItems.map((item) => (
@@ -98,8 +98,16 @@ export function Footer() {
 
         <div className="row between wrapx g3 small muted border-t border-rule pt-5 pb-7">
           <span>© 2026{SITE.creatorName ? ` ${SITE.creatorName}` : ""}</span>
-          {SITE.codeLicense && <span>Code: {SITE.codeLicense}</span>}
+          {SITE.codeLicense && (
+            <span>
+              Code:{" "}
+              <a href={`${SITE.githubUrl}/blob/main/LICENSE`} className="text-text-2 hover:text-text">
+                {SITE.codeLicense}
+              </a>
+            </span>
+          )}
           <span>Data: NASA PSI and NTRS</span>
+          <span>{SITE.disclaimer}</span>
           <span>Data updated {formatIsoDate(stats.dataUpdated)}</span>
         </div>
       </div>
