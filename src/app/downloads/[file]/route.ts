@@ -1,29 +1,43 @@
-import { getStudies, getStudyCsv } from "@/lib/data/server";
+import { columnGuideCsv } from "@/lib/column-guide";
+import { getStudies, getStudyCsv, getTestsCsv, getTestsJsonDownload } from "@/lib/data/server";
 
 /**
- * Per-study CSV downloads, e.g. /downloads/bass-ii-tests.csv: that study's rows from
- * data/tests.csv, byte for byte, with the same header. Built once at build time.
+ * Downloads, built once at build time:
+ *   /downloads/vesta-tests.csv          every row of data/tests.csv, byte for byte
+ *   /downloads/vesta-tests.json         the same rows as JSON, with the column guide included
+ *   /downloads/vesta-column-guide.csv   what each column means, and its unit
+ *   /downloads/{study}-tests.csv        one study's rows from data/tests.csv
  */
 export const dynamic = "force-static";
 export const dynamicParams = false;
 
-const SUFFIX = "-tests.csv";
+const STUDY_SUFFIX = "-tests.csv";
+
+type FileSpec = { body: () => string; type: string };
+
+function files(): Record<string, FileSpec> {
+  const csv = "text/csv; charset=utf-8";
+  const registry: Record<string, FileSpec> = {
+    "vesta-tests.csv": { body: getTestsCsv, type: csv },
+    "vesta-tests.json": { body: getTestsJsonDownload, type: "application/json; charset=utf-8" },
+    "vesta-column-guide.csv": { body: columnGuideCsv, type: csv },
+  };
+  for (const s of getStudies()) {
+    if (s.table_rows > 0) registry[`${s.id}${STUDY_SUFFIX}`] = { body: () => getStudyCsv(s.id), type: csv };
+  }
+  return registry;
+}
 
 export function generateStaticParams() {
-  return getStudies()
-    .filter((s) => s.table_rows > 0)
-    .map((s) => ({ file: `${s.id}${SUFFIX}` }));
+  return Object.keys(files()).map((file) => ({ file }));
 }
 
 export async function GET(_request: Request, { params }: { params: Promise<{ file: string }> }) {
   const { file } = await params;
-  const id = file.endsWith(SUFFIX) ? file.slice(0, -SUFFIX.length) : "";
-  const study = getStudies().find((s) => s.id === id && s.table_rows > 0);
-  if (!study) return new Response("No test table for this study.", { status: 404 });
-  return new Response(getStudyCsv(study.id), {
-    headers: {
-      "Content-Type": "text/csv; charset=utf-8",
-      "Content-Disposition": `attachment; filename="vesta-${study.id}${SUFFIX}"`,
-    },
+  const spec = files()[file];
+  if (!spec) return new Response("This file doesn't exist.", { status: 404 });
+  const name = file.startsWith("vesta-") ? file : `vesta-${file}`;
+  return new Response(spec.body(), {
+    headers: { "Content-Type": spec.type, "Content-Disposition": `attachment; filename="${name}"` },
   });
 }

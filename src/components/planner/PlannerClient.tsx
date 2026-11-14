@@ -19,6 +19,7 @@ import { rankedFor, type RankedItem } from "@/lib/ranked";
 import { atmToPsi } from "@/lib/scoring";
 import type { SourceRef } from "@/lib/sources";
 import { usePrefs } from "@/lib/state/prefs";
+import { replaceQuery } from "@/lib/url";
 
 const PREVIEW = 5;
 const SLIDERS = {
@@ -108,7 +109,7 @@ export function PlannerClient({
       params.delete("psi");
       params.delete("g");
     }
-    window.history.replaceState(null, "", `${window.location.pathname}?${params.toString()}${window.location.hash}`);
+    replaceQuery(params);
   }, [urlLoaded, mission, custom]);
 
   useEffect(() => setShowAll(false), [mission, tags]);

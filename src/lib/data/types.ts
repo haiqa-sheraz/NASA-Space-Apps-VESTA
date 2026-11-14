@@ -1,6 +1,7 @@
 /** Types for the files in data/ (written by the Python prep scripts). */
 import type { JobId } from "@/lib/jobs";
 import type { FuelKind, ScoringStudy } from "@/lib/scoring";
+import type { SourceRef } from "@/lib/sources";
 
 export interface StudyTable {
   file: string;
@@ -164,6 +165,39 @@ export interface SiteStats {
   fireSafetyJobs: number;
   /** Date part (YYYY-MM-DD) of the newest "generated" stamp in the data files. */
   dataUpdated: string;
+}
+
+/** A value for Compare: its text, and whether it is AI-written (from the profile) or from the PSI table. */
+export interface CompareValue {
+  text: string | null;
+  ai: boolean;
+}
+
+/** A measured range from the PSI table, with the AI profile's wording as a fallback when the table lacks it. */
+export interface CompareRange {
+  range: [number, number] | null;
+  fallback: CompareValue;
+}
+
+export interface CompareStudy {
+  id: string;
+  shortName: string;
+  fullName: string;
+  psiId: string;
+  psiUrl: string;
+  familyName: string;
+  environment: "space" | "ground";
+  jobs: JobId[];
+  flameScience: boolean;
+  goal: CompareValue;
+  fuels: CompareValue;
+  sensors: CompareValue;
+  tests: string;
+  oxygen: CompareRange;
+  airflow: CompareRange;
+  pressureAtm: CompareRange;
+  sources: SourceRef[];
+  searchText: string;
 }
 
 /** Compact, browser-safe facts about one study, for cards, filters and scoring. */

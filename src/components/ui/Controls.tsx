@@ -201,16 +201,21 @@ export function SelectBox({
   value,
   options,
   onChange,
+  hideLabel = false,
+  width,
 }: {
   label: string;
   value: string;
   options: { value: string; label: string }[];
   onChange: (value: string) => void;
+  /** Keep the label for screen readers only (when the first option already says what it is). */
+  hideLabel?: boolean;
+  width?: number;
 }) {
   const id = useId();
   return (
-    <div className="stack g1" style={{ flex: 1, minWidth: 0 }}>
-      <label htmlFor={id} className="small strong">
+    <div className="stack g1" style={width ? { width, maxWidth: "100%" } : { flex: 1, minWidth: 0 }}>
+      <label htmlFor={id} className={hideLabel ? "sr-only" : "small strong"}>
         {label}
       </label>
       <div className="select-wrap">

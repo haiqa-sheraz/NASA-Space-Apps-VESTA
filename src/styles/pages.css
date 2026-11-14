@@ -73,8 +73,8 @@
   fieldset.plain { border: 0; padding: 0; margin: 0; min-width: 0; }
 
   /* ---------- bottom sheet (phone filters, "Why Vesta?") ---------- */
-  .sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 61; max-height: 88dvh; background: var(--surface); border-top: 1px solid var(--rule-input); border-radius: 12px 12px 0 0; display: flex; flex-direction: column; transform: translateY(100%); visibility: hidden; transition: transform var(--dur-fast) var(--ease-in), visibility 0s linear var(--dur-fast); }
-  .sheet[data-open="true"] { transform: none; visibility: visible; transition: transform var(--dur-panel) var(--ease-out), visibility 0s; }
+  .sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 61; max-height: 88dvh; background: var(--surface); border-top: 1px solid var(--rule-input); border-radius: 12px 12px 0 0; display: flex; flex-direction: column; transform: translateY(100%); visibility: hidden; pointer-events: none; transition: transform var(--dur-fast) var(--ease-in), visibility 0s linear var(--dur-fast); }
+  .sheet[data-open="true"] { transform: none; visibility: visible; pointer-events: auto; transition: transform var(--dur-panel) var(--ease-out), visibility 0s; }
   .sheet .handle { width: 40px; height: 4px; border-radius: 2px; background: var(--rule-input); margin: 8px auto 0; flex: none; }
   .sheet > header { display: flex; align-items: center; justify-content: space-between; padding: 4px 8px 8px 16px; border-bottom: 1px solid var(--rule); }
   .sheet > .sheet-body { padding: 16px; overflow: auto; flex: 1; overscroll-behavior: contain; }
@@ -101,6 +101,61 @@
   .name-link:hover { color: var(--text); text-decoration: underline; }
   .print-only { display: none; }
 
+  /* ---------- test tables: short values on one line, long text wraps in a readable width ---------- */
+  .data-table td { white-space: nowrap; }
+  .data-table td.wrap-cell { white-space: normal; min-width: 160px; max-width: 280px; }
+
+  /* ---------- step 3: Compare ---------- */
+  .compare-table th[scope="row"] { position: static; background: transparent; font-weight: 700; width: 20%; white-space: normal; vertical-align: top; border-bottom: 1px solid var(--rule); }
+  .compare-table td { min-width: 200px; }
+  .range-row { display: grid; grid-template-columns: 110px minmax(0, 1fr) 150px; gap: 12px; align-items: center; }
+  .range i.c { background: transparent; border: 2px solid var(--blue); }
+  .input:has(input:disabled) { opacity: 0.6; }
+  .input input:disabled { cursor: not-allowed; }
+
+  /* ---------- step 3: side drawer (column guide) ---------- */
+  .drawer { width: min(480px, 100%); transform: translateX(100%); visibility: hidden; pointer-events: none; transition: transform var(--dur-fast) var(--ease-in), visibility 0s linear var(--dur-fast); }
+  .drawer[data-open="true"] { transform: none; visibility: visible; pointer-events: auto; transition: transform var(--dur-panel) var(--ease-out), visibility 0s; }
+  .drawer > header { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 12px 12px 12px 24px; border-bottom: 1px solid var(--rule); }
+  .drawer > footer { border-top: 1px solid var(--rule); padding: 16px 24px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
+
+  /* ---------- step 3: Insights ---------- */
+  .insight-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px; align-items: start; }
+  .insight-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .insight-icon { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex: none; }
+  .result-item { display: flex; flex-direction: column; gap: 8px; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+  .coverage-chart { position: relative; --track-x: 166px; padding-bottom: calc(var(--label-rows, 3) * 22px + 6px); }
+  .coverage-ref-list { display: none; }
+  .coverage-row { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--rule); }
+  .coverage-track { position: relative; height: 16px; }
+  .coverage-ref { position: absolute; top: 0; width: 0; pointer-events: none; }
+  /* Row text sits above the reference lines, on the panel color, so the lines never cross words. */
+  .coverage-row .small { position: relative; z-index: 1; width: fit-content; background: var(--surface); padding: 0 4px; margin-left: -4px; }
+  .coverage-ref-label { position: absolute; transform: translateX(-50%); white-space: nowrap; line-height: 22px; }
+
+  /* gravity scale: 0 g to 1 g */
+  .gscale-chart { position: relative; height: 244px; margin: 0 60px; }
+  .gscale-line { position: absolute; left: 0; right: 0; top: 110px; height: 1px; background: var(--rule-input); }
+  .gscale-tick { position: absolute; top: 104px; width: 1px; height: 13px; background: var(--rule-input); }
+  .gscale-mk { position: absolute; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 13px; white-space: nowrap; }
+  .gscale-mk.start { transform: none; align-items: flex-start; }
+  .gscale-mk.end { transform: translateX(-100%); align-items: flex-end; }
+  .gscale-dot { position: absolute; top: 101px; width: 18px; height: 18px; margin-left: -9px; border-radius: 50%; background: var(--blue); }
+  .gscale-ring { position: absolute; top: 99px; width: 22px; height: 22px; margin-left: -11px; border-radius: 50%; border: 2px solid var(--blue); background: var(--bg); }
+  .gscale-planned { position: absolute; top: 64px; width: 18px; height: 18px; margin-left: -9px; border-radius: 3px; border: 2px dashed var(--caution); transform: rotate(45deg); }
+  .gscale-standin { position: absolute; width: 14px; height: 14px; margin-left: -7px; border: 1px dashed var(--text-2); border-radius: 2px; background-image: repeating-linear-gradient(135deg, transparent 0 3px, color-mix(in srgb, var(--text-2) 45%, transparent) 3px 4px); }
+  .gscale-legend .inline { position: static; margin: 0; flex: none; }
+  .gscale-legend .gscale-dot.inline { width: 14px; height: 14px; }
+  .gscale-legend .gscale-ring.inline { width: 14px; height: 14px; }
+  .gscale-legend .gscale-planned.inline { width: 12px; height: 12px; }
+  .gscale-list { display: none; }
+
+  @media (max-width: 1023.98px) {
+    .insight-grid { grid-template-columns: minmax(0, 1fr); }
+    .gscale-chart { display: none; }
+    .gscale-list { display: flex; }
+  }
+
   @media (max-width: 767.98px) {
     .hero-grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "intro" "chamber" "ask" "actions"; }
     .tagline { font-size: var(--fs-md); }
@@ -116,6 +171,14 @@
     .result-row { grid-template-columns: minmax(0, 1fr); }
     .study-top { grid-template-columns: minmax(0, 1fr); gap: 32px; }
     .toast-region { left: 16px; bottom: 16px; right: 88px; }
+    .range-row { grid-template-columns: 76px minmax(0, 1fr); }
+    .range-row > :last-child:not(:first-child) { grid-column: 2; }
+    .insight-cards { grid-template-columns: minmax(0, 1fr); }
+    .coverage-chart { --track-x: 0px; padding-bottom: 6px; }
+    .coverage-chart .coverage-ref { bottom: 0 !important; }
+    .coverage-ref-label { display: none; }
+    .coverage-ref-list { display: flex; }
+    .coverage-row { grid-template-columns: minmax(0, 1fr); gap: 6px; }
   }
   @media (max-width: 1023.98px) {
     .home-split { grid-template-columns: minmax(0, 1fr); gap: 48px; }

@@ -254,7 +254,9 @@
   .facts > div { padding: 16px 20px 18px 0; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 4px; }
   .facts dt { font-size: 14px; color: var(--text-2); font-weight: 700; }
   .facts dd { font-size: 17px; line-height: 1.45; }
-  .tablebox { border: 1px solid var(--rule); border-radius: var(--r-data); overflow: auto; background: var(--surface); }
+  /* position: relative keeps absolutely positioned children (like screen-reader-only link text)
+     inside the scroll box, so a wide table can't widen the page. */
+  .tablebox { position: relative; border: 1px solid var(--rule); border-radius: var(--r-data); overflow: auto; background: var(--surface); }
   .table { width: 100%; border-collapse: collapse; font-size: 15px; }
   .table th { position: sticky; top: 0; background: var(--surface-2); text-align: left; font-weight: 700; font-size: 14px; padding: 12px 14px; border-bottom: 1px solid var(--rule-input); white-space: nowrap; color: var(--text); }
   .table th .u { font-weight: 400; color: var(--text-2); }
@@ -302,10 +304,11 @@
   .media .credit { position: absolute; left: 0; right: 0; bottom: 0; padding: 6px 10px; font-size: 12px; color: #dccfc7; background: rgba(14, 6, 4, 0.8); }
 
   /* ---------- overlays ---------- */
-  .scrim { position: fixed; inset: 0; z-index: 60; background: var(--scrim); opacity: 0; visibility: hidden; transition: opacity var(--dur-fast) var(--ease-in), visibility 0s linear var(--dur-fast); }
-  .scrim[data-open="true"] { opacity: 1; visibility: visible; transition: opacity var(--dur-panel) var(--ease-out), visibility 0s; }
-  .askpanel { position: fixed; top: 0; right: 0; bottom: 0; z-index: 61; width: 420px; max-width: 100%; background: var(--surface); border-left: 1px solid var(--rule-input); display: flex; flex-direction: column; transform: translateX(100%); visibility: hidden; transition: transform var(--dur-fast) var(--ease-in), visibility 0s linear var(--dur-fast); }
-  .askpanel[data-open="true"] { transform: none; visibility: visible; transition: transform var(--dur-panel) var(--ease-out), visibility 0s; }
+  /* While it fades out, clicks pass through to the page. */
+  .scrim { position: fixed; inset: 0; z-index: 60; background: var(--scrim); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity var(--dur-fast) var(--ease-in), visibility 0s linear var(--dur-fast); }
+  .scrim[data-open="true"] { opacity: 1; visibility: visible; pointer-events: auto; transition: opacity var(--dur-panel) var(--ease-out), visibility 0s; }
+  .askpanel { position: fixed; top: 0; right: 0; bottom: 0; z-index: 61; width: 420px; max-width: 100%; background: var(--surface); border-left: 1px solid var(--rule-input); display: flex; flex-direction: column; transform: translateX(100%); visibility: hidden; pointer-events: none; transition: transform var(--dur-fast) var(--ease-in), visibility 0s linear var(--dur-fast); }
+  .askpanel[data-open="true"] { transform: none; visibility: visible; pointer-events: auto; transition: transform var(--dur-panel) var(--ease-out), visibility 0s; }
   .askpanel > header { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 12px 12px 12px 20px; border-bottom: 1px solid var(--rule); }
   .askpanel > .body { flex: 1; overflow: auto; padding: 20px; display: flex; flex-direction: column; gap: 16px; max-width: none; }
   .askpanel > footer { border-top: 1px solid var(--rule); padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; }

@@ -10,6 +10,7 @@ import type { Profile, Study } from "@/lib/data/types";
 import { formatCount, fmtRange, joinAnd, sentenceCase } from "@/lib/format";
 import { isJobId } from "@/lib/jobs";
 import { resolveSource, type SourceRef } from "@/lib/sources";
+import { flagText } from "@/lib/test-rows";
 import { DownloadCsvButton } from "./DownloadCsvButton";
 
 const NOT_IN_SOURCES = "Not in our sources";
@@ -263,7 +264,7 @@ export function ExpertDetail({
                       <div key={name} style={{ padding: "10px 0", borderBottom: "1px solid var(--rule)" }}>
                         <dt className="row between g3">
                           <span className="strong">{info.column}</span>
-                          <span className="num small muted">{info.unit ?? "text"}</span>
+                          <span className="num small muted">{info.unit ?? info.type}</span>
                         </dt>
                         <dd className="small muted">{info.description}</dd>
                       </div>
@@ -387,7 +388,7 @@ export function DataPreview({
           <>
             <p className="small muted tablet:hidden">Scroll the table sideways.</p>
             <div className="tablebox">
-              <table className="table">
+              <table className="table data-table">
                 <thead>
                   <tr>
                     {columns.map((c) => (
@@ -403,14 +404,14 @@ export function DataPreview({
                   {rows.map((row, i) => (
                     <tr key={i}>
                       {columns.map((c) => (
-                        <td key={c.key} className={c.numeric ? "n" : undefined}>
+                        <td key={c.key} className={c.numeric ? "n" : c.wrap ? "wrap-cell" : undefined}>
                           {row.cells[c.key] || <span className="muted">–</span>}
                         </td>
                       ))}
                       {hasRowFlags && (
                         <td>
                           {row.flags.length ? (
-                            <QualityFlag text={`${row.flags.map((f) => sentenceCase(f.trim().replace(/\.$/, ""))).join(". ")}.`} />
+                            <QualityFlag text={flagText(row.flags)} />
                           ) : (
                             <span className="small muted">None</span>
                           )}

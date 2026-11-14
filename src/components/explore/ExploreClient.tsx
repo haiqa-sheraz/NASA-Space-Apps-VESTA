@@ -24,6 +24,7 @@ import {
   type Filters,
 } from "./explore-filters";
 import { RelevanceBadge, StudyCard, oxygenText, testsText } from "./StudyCard";
+import { replaceQuery } from "@/lib/url";
 
 const PAGE = 9;
 const GROUP_PREVIEW = 3;
@@ -78,8 +79,7 @@ export function ExploreClient({ index }: { index: StudyIndexEntry[] }) {
     else params.delete("view");
     if (grouped) params.set("group", "family");
     else params.delete("group");
-    const query = params.toString();
-    window.history.replaceState(null, "", `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`);
+    replaceQuery(params);
   }, [urlLoaded, filters, view, grouped]);
 
   // New filters start the list again from the top.

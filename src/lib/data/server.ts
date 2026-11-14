@@ -1,7 +1,9 @@
 import "server-only";
 import fs from "node:fs";
 import path from "node:path";
+import { COLUMN_GUIDE } from "@/lib/column-guide";
 import { roundMeasurements, roundMeasurementsDeep } from "@/lib/format";
+import { rowFlags } from "@/lib/test-rows";
 import { JOB_IDS, isJobId, type JobId } from "@/lib/jobs";
 import { MISSION_LIST } from "@/lib/missions";
 import { fuelKindOf, rankStudies } from "@/lib/scoring";
@@ -179,6 +181,50 @@ function testsCsvLines(): string[] {
   return lines;
 }
 
+/** All of data/tests.csv, byte for byte (checked in validateData). */
+export function getTestsCsv(): string {
+  validateData();
+  return readText("tests.csv");
+}
+
+/** The JSON download: every row of tests.json with the column guide and a short note. */
+export function getTestsJsonDownload(): string {
+  validateData();
+  const tests = getTests();
+  return JSON.stringify(
+    {
+      title: "Vesta test table: cleaned data from NASA's microgravity fire experiments",
+      source: "NASA Physical Sciences Informatics (PSI) experiment tables, cleaned by Vesta's data prep",
+      data_updated: getSiteStats().dataUpdated,
+      row_count: tests.length,
+      test_count: tests.filter((t) => t.is_test === true).length,
+      notes: [
+        "Each row is one record from a PSI experiment table. is_test is false for duplicate, planned, blank and flow-visualization rows.",
+        "Values are kept at full precision. The website rounds them for display.",
+        "Not an official NASA website. Data: NASA PSI and NTRS.",
+      ],
+      column_guide: COLUMN_GUIDE,
+      rows: tests,
+    },
+    null,
+    1,
+  );
+}
+
+/** Counts for the Data page summary strip. */
+export function getDataSummary() {
+  validateData();
+  const tests = getTests();
+  const header = testsCsvLines()[0];
+  return {
+    tests: tests.filter((t) => t.is_test === true).length,
+    rows: tests.length,
+    studiesWithTables: getStudies().filter((s) => s.table_rows > 0).length,
+    columns: header.split(",").length,
+    flaggedRows: tests.filter((t) => rowFlags(t).length > 0).length,
+  };
+}
+
 /** One study's rows from data/tests.csv, byte for byte, with the same header. */
 export function getStudyCsv(id: string): string {
   validateData();
@@ -225,6 +271,11 @@ export function validateData() {
   // tests.csv must have exactly one line per tests.json record, in the same order.
   const tests = getTests();
   const lines = testsCsvLines();
+  const header = lines[0]?.split(",") ?? [];
+  const guide = COLUMN_GUIDE.map((c) => c.column);
+  if (header.join(",") !== guide.join(",")) {
+    problems.push(`The column guide (${guide.length} columns) doesn't match the tests.csv header (${header.length} columns).`);
+  }
   if (lines.length - 1 !== tests.length) {
     problems.push(`tests.csv has ${lines.length - 1} data lines but tests.json has ${tests.length} rows.`);
   } else {
