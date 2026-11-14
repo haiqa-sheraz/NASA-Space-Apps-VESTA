@@ -8,14 +8,12 @@ import { useScrollLock } from "@/lib/hooks/useDismiss";
 import { MAIN_NAV, MORE_NAV } from "@/lib/nav";
 import { AskButton } from "./AskButton";
 import { Logo } from "./Logo";
-import { MissionPicker } from "./MissionPicker";
 import { MoreMenu } from "./MoreMenu";
-import { ReadingLevelSwitch } from "./ReadingLevelSwitch";
 import { ThemeSegmented, ThemeToggle } from "./ThemeSwitch";
 
 /**
- * Top bar on every page: logo, main menu (active page as a pill), More menu,
- * mission picker, Simple / Expert switch and Ask.
+ * Top bar on every page: logo, main menu (active page as a pill), More menu, theme switch and Ask.
+ * The mission picker and Simple / Expert switch sit on the pages they affect, not here.
  * Under 768 px it collapses to the logo, Ask and a menu button.
  */
 export function TopBar() {
@@ -65,8 +63,6 @@ export function TopBar() {
         </nav>
 
         <div className="tools max-tablet:hidden">
-          <MissionPicker />
-          <ReadingLevelSwitch />
           <ThemeToggle />
           <AskButton />
         </div>
@@ -106,13 +102,6 @@ export function TopBar() {
             })}
           </nav>
           <div className="stack g3" style={{ padding: 16 }}>
-            <MissionPicker variant="block" />
-            <div className="stack g2">
-              <span className="small muted strong">Reading level</span>
-              <div style={{ alignSelf: "flex-start" }}>
-                <ReadingLevelSwitch />
-              </div>
-            </div>
             <div className="stack g2">
               <span className="small muted strong">Theme</span>
               <div style={{ alignSelf: "flex-start" }}>

@@ -7,7 +7,11 @@ import { FLAME_SCIENCE, JOB_IDS, JOBS, type TagId } from "@/lib/jobs";
 /** Position of a value on the design's slider track (thumb is 20 px wide). */
 const at = (fraction: number) => `calc(10px + (100% - 20px) * ${Math.min(1, Math.max(0, fraction))})`;
 
-/** The design's slider: label, value with unit, ticked track, optional reference marker and hint. */
+/**
+ * The design's slider: label, value with unit, ticked track, optional reference markers and hint.
+ * `axis` places labels at their true values (for example "ISS air 21%"); without it the axis
+ * shows the minimum and maximum.
+ */
 export function Slider({
   label,
   value,
@@ -17,6 +21,9 @@ export function Slider({
   format,
   hint,
   marker,
+  markers,
+  axis,
+  strongLabel = false,
   onChange,
 }: {
   label: string;
@@ -27,15 +34,19 @@ export function Slider({
   format: (value: number) => string;
   hint?: string;
   marker?: number;
+  markers?: { value: number; color: string }[];
+  axis?: { value: number; label: string }[];
+  strongLabel?: boolean;
   onChange: (value: number) => void;
 }) {
   const id = useId();
   const hintId = useId();
   const fraction = (value - min) / (max - min);
+  const frac = (v: number) => (v - min) / (max - min);
   return (
     <div className="slider">
       <div className="top">
-        <label className="h5" htmlFor={id} style={{ fontWeight: 400 }}>
+        <label className="h5" htmlFor={id} style={{ fontWeight: strongLabel ? 700 : 400 }}>
           {label}
         </label>
         <span className="val" aria-hidden="true">
@@ -45,7 +56,10 @@ export function Slider({
       <div className="track">
         <span className="fill" style={{ left: 10, width: `calc((100% - 20px) * ${Math.min(1, Math.max(0, fraction))})` }} />
         <span className="ticks" />
-        {marker !== undefined && <span className="marker" style={{ left: at((marker - min) / (max - min)) }} />}
+        {marker !== undefined && <span className="marker" style={{ left: at(frac(marker)) }} />}
+        {markers?.map((m) => (
+          <span key={m.value} className="marker" style={{ left: at(frac(m.value)), width: 2, marginLeft: -1, background: m.color }} />
+        ))}
         <input
           id={id}
           className="rng-in"
@@ -60,10 +74,23 @@ export function Slider({
         />
         <span className="thumb" style={{ left: at(fraction) }} />
       </div>
-      <div className="axis" aria-hidden="true">
-        <span>{format(min)}</span>
-        <span>{format(max)}</span>
-      </div>
+      {axis ? (
+        <div className="axis axis-pos" aria-hidden="true">
+          {axis.map((a) => {
+            const f = frac(a.value);
+            return (
+              <span key={a.label} className={f <= 0.02 ? "start" : f >= 0.98 ? "end" : undefined} style={{ left: at(f) }}>
+                {a.label}
+              </span>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="axis" aria-hidden="true">
+          <span>{format(min)}</span>
+          <span>{format(max)}</span>
+        </div>
+      )}
       {hint && (
         <span className="hint" id={hintId}>
           {hint}

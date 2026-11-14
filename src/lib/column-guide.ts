@@ -38,7 +38,7 @@ export const COLUMN_GUIDE: ColumnInfo[] = [
   { column: "outcome", label: "Outcome", unit: null, type: "text", description: "How the test ended, as the table reports it." },
   { column: "is_test", label: "Is a test", unit: null, type: "true or false", description: "True for real tests. False for duplicate, planned, blank and flow-visualization rows." },
   { column: "duplicate_of", label: "Duplicate of", unit: null, type: "number", description: "For an exact copy of an earlier row, that row's number. Copies aren't counted as tests." },
-  { column: "flags", label: "Quality flags", unit: null, type: "list", description: "Data quality notes, such as approximate values or fixes made during cleaning. In the CSV they are separated by semicolons." },
+  { column: "flags", label: "Row notes", unit: null, type: "list", description: "Quality flags (approximate, assumed or inconsistent values, and rows that aren't tests) and cleaning notes (certain fixes, such as a typo). The site's Flag column shows only the quality flags. In the CSV the notes are separated by semicolons." },
   { column: "extra", label: "Other columns", unit: null, type: "JSON", description: "Other columns from the original PSI table, kept as written." },
 ];
 

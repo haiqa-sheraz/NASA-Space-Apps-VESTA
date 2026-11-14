@@ -3,12 +3,12 @@ import fs from "node:fs";
 import path from "node:path";
 import { COLUMN_GUIDE } from "@/lib/column-guide";
 import { roundMeasurements, roundMeasurementsDeep } from "@/lib/format";
-import { rowFlags } from "@/lib/test-rows";
+import { rowFlags, unclassifiedNotes } from "@/lib/test-rows";
 import { JOB_IDS, isJobId, type JobId } from "@/lib/jobs";
 import { MISSION_LIST } from "@/lib/missions";
 import { fuelKindOf, rankStudies } from "@/lib/scoring";
 import { RANKINGS, conditionsFromRanking } from "./rankings";
-import type { Facts, Finding, SiteStats, Study, StudyIndexEntry, StudyProfileFile, TestRow } from "./types";
+import type { EarthBenefitsFile, Facts, Finding, SiteStats, Study, StudyIndexEntry, StudyProfileFile, TestRow } from "./types";
 
 /**
  * Build-time access to data/ (the cleaned outputs of the Python prep).
@@ -77,6 +77,15 @@ export function getStudyProfiles(): StudyProfileFile[] {
 
 export function getStudyProfile(id: string): StudyProfileFile | undefined {
   return getStudyProfiles().find((p) => p.study_id === id);
+}
+
+/** The AI-written Earth-benefit stories, with over-precise % and atm values rounded for display. */
+export function getEarthBenefitsFile(): EarthBenefitsFile {
+  if (!cache.has("earth")) {
+    const raw = readJson<EarthBenefitsFile>("ai/earth_benefits.json");
+    cache.set("earth", { ...raw, stories: roundMeasurementsDeep(raw.stories) });
+  }
+  return cache.get("earth") as EarthBenefitsFile;
 }
 
 /** Fire-safety jobs for a study, from its AI profile (none for ground studies). */
@@ -283,6 +292,9 @@ export function validateData() {
       if (!lines[i + 1].startsWith(`${t.study_id},`)) problems.push(`tests.csv line ${i + 2} is not ${t.study_id}.`);
     });
   }
+
+  // Every row note must be classed as a quality flag or a cleaning note (src/lib/test-rows.ts).
+  for (const note of unclassifiedNotes(tests)) problems.push(`Row note not classified as a quality flag or cleaning note: "${note}".`);
 
   const ids = new Set(studies.map((s) => s.id));
   for (const p of getStudyProfiles()) {

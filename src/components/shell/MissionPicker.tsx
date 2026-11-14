@@ -7,10 +7,11 @@ import { MISSION_LIST, MISSIONS } from "@/lib/missions";
 import { usePrefs } from "@/lib/state/prefs";
 
 /**
- * Global mission picker: a button that opens a listbox.
- * "topbar" shows "Mission  Moon base" inline; "block" is the full-width version in the phone menu.
+ * Mission picker: a compact button ("Mission  Moon base") that opens a listbox. It sits on the
+ * pages whose content depends on the mission (Home spotlight, Explore, study relevance); the
+ * choice is saved and shared by those pages and the Planner.
  */
-export function MissionPicker({ variant = "topbar" }: { variant?: "topbar" | "block" }) {
+export function MissionPicker() {
   const { mission, setMission } = usePrefs();
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
@@ -18,7 +19,6 @@ export function MissionPicker({ variant = "topbar" }: { variant?: "topbar" | "bl
   const buttonRef = useRef<HTMLButtonElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
   const listId = useId();
-  const labelId = useId();
   const current = MISSIONS[mission];
   const selectedIndex = MISSION_LIST.findIndex((m) => m.id === mission);
 
@@ -83,39 +83,25 @@ export function MissionPicker({ variant = "topbar" }: { variant?: "topbar" | "bl
   }
 
   return (
-    <div ref={rootRef} className={variant === "block" ? "relative stack g2" : "relative"}>
-      {variant === "block" && (
-        <span id={labelId} className="small muted strong">
-          Mission
-        </span>
-      )}
+    <div ref={rootRef} className="relative">
       <button
         ref={buttonRef}
         type="button"
         className="input select"
-        style={variant === "topbar" ? { width: "auto", gap: 10, background: "var(--surface)" } : undefined}
+        style={{ width: "auto", gap: 10, background: "var(--surface)" }}
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={open ? listId : undefined}
-        aria-label={variant === "topbar" ? `Mission: ${current.label}` : undefined}
-        aria-labelledby={variant === "block" ? `${labelId} ${listId}-value` : undefined}
+        aria-label={`Mission: ${current.label}`}
         onClick={() => (open ? setOpen(false) : openList())}
         onKeyDown={onButtonKeyDown}
       >
-        {variant === "topbar" ? (
-          <>
-            <span className="muted" style={{ fontSize: 14, flex: "none" }}>
-              Mission
-            </span>
-            <span className="strong" style={{ fontSize: 15 }}>
-              {current.label}
-            </span>
-          </>
-        ) : (
-          <b id={`${listId}-value`} style={{ fontSize: 15 }}>
-            {current.label}
-          </b>
-        )}
+        <span className="muted" style={{ fontSize: 14, flex: "none" }}>
+          Mission
+        </span>
+        <span className="strong" style={{ fontSize: 15 }}>
+          {current.label}
+        </span>
         <ChevronDown className="ic sm" aria-hidden="true" />
       </button>
 
@@ -128,7 +114,7 @@ export function MissionPicker({ variant = "topbar" }: { variant?: "topbar" | "bl
           aria-label="Mission"
           aria-activedescendant={`${listId}-opt-${active}`}
           className="menu popover listbox"
-          style={variant === "topbar" ? { left: 0, width: 260 } : { left: 0, right: 0, top: "calc(100% + 6px)" }}
+          style={{ left: 0, width: 260, maxWidth: "calc(100vw - 32px)" }}
           onKeyDown={onListKeyDown}
         >
           {MISSION_LIST.map((m, index) => (

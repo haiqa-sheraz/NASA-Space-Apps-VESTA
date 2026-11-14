@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { DataClient, type DataStudy } from "@/components/data/DataClient";
+import { PredictionTool } from "@/components/data/PredictionTool";
 import { DownloadLink } from "@/components/ui/DownloadLink";
 import { PageHero } from "@/components/ui/PageHero";
+import { getPredictionData } from "@/lib/data/prediction";
 import { getDataSummary, getStudies, getStudyIndex } from "@/lib/data/server";
 import { formatCount, plural } from "@/lib/format";
 
@@ -59,6 +61,7 @@ export default function DataPage() {
         </p>
         <DataClient studies={studies} />
       </section>
+      <PredictionTool data={getPredictionData()} />
     </>
   );
 }

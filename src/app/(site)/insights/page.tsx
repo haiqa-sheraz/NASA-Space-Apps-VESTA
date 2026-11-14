@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { EquipmentPanel, GapsPanel, JobPanel, OxygenLimitChart } from "@/components/insights/InsightPanels";
 import { InsightsClient, type InsightTab } from "@/components/insights/InsightsClient";
+import { ReadingLevelSwitch } from "@/components/shell/ReadingLevelSwitch";
 import { PageHero } from "@/components/ui/PageHero";
 import { getGaps } from "@/lib/data/gaps";
 import { getCoverage, getEquipmentInsights, getGravityBounds, getJobInsights, getOxygenLimitChart } from "@/lib/data/insights";
@@ -30,6 +31,12 @@ export default function InsightsPage() {
         badge="Insights"
         title="Fire-safety insights"
         lead="What NASA's tests mean for preventing, detecting and putting out fires, and what's still unknown."
+        actions={
+          <div className="row g3 wrapx">
+            <span className="small muted strong">Wording</span>
+            <ReadingLevelSwitch label="Insights reading level" />
+          </div>
+        }
       />
       <InsightsClient panels={panels} />
     </>

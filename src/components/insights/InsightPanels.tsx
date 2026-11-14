@@ -444,24 +444,27 @@ function GravityScale({ data }: { data: ReturnType<typeof getGravityBounds> }) {
                 No data at Mars gravity
               </span>
             </div>
-            {/* First row below the line. */}
+            {/* Below the line, one row per label, so labels never meet at any chart width. */}
+            {/* Row 1: measured data at the two ends. */}
             <div className="gscale-mk start" style={{ left: at(0), top: 132 }}>
               <span className="small strong">PSI tests</span>
               <span className="small muted">{plural(data.space, "space study", "space studies")}</span>
             </div>
-            <div className="gscale-mk start" style={{ left: at(data.moonG), top: 132 }}>
-              <span className="small strong">LUCI, simulated Moon gravity</span>
-              <span className="small muted">on a spinning rocket</span>
-            </div>
-            {/* Second row below the line: the stand-in method, which ran at about 0 g. */}
-            <span className="gscale-standin" style={{ left: at(0), top: 196 }} />
-            <div className="gscale-mk start" style={{ left: "18px", top: 190 }}>
-              <span className="small strong">{data.eField.shortName}, a stand-in method</span>
-              <span className="small muted">An electric field mimics some gravity effects. Its tests ran at about 0 g.</span>
-            </div>
             <div className="gscale-mk end" style={{ left: at(1), top: 132 }}>
               <span className="small strong">Earth tests</span>
               <span className="small muted">{plural(data.ground, "ground study", "ground studies")}</span>
+            </div>
+            {/* Row 2: simulated Moon gravity, joined to its ring by a leader line. */}
+            <span className="gscale-leader" style={{ left: at(data.moonG), top: 122, height: 64 }} />
+            <div className="gscale-mk start" style={{ left: at(data.moonG), top: 190 }}>
+              <span className="small strong">LUCI, simulated Moon gravity</span>
+              <span className="small muted">on a spinning rocket</span>
+            </div>
+            {/* Row 3: the stand-in method, which ran at about 0 g. */}
+            <span className="gscale-standin" style={{ left: at(0), top: 254 }} />
+            <div className="gscale-mk start gscale-wrap" style={{ left: "18px", top: 248 }}>
+              <span className="small strong">{data.eField.shortName}, a stand-in method</span>
+              <span className="small muted">An electric field mimics some gravity effects. Its tests ran at about 0 g.</span>
             </div>
           </div>
 

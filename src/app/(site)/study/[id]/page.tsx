@@ -2,6 +2,7 @@ import { ArrowLeftRight, ChevronLeft, Info, Layers } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { SmokePointInline } from "@/components/explainers/SmokePoint";
 import { AskAboutStudyButton } from "@/components/study/AskAboutStudyButton";
 import { DataPreview, ExpertDetail, KeyFacts, Results } from "@/components/study/StudySections";
 import { StudyRelevance } from "@/components/study/StudyRelevance";
@@ -9,6 +10,7 @@ import { ReadingLevelSwitch } from "@/components/shell/ReadingLevelSwitch";
 import { ByLevel } from "@/components/ui/ByLevel";
 import { SourceChip, SourceLine } from "@/components/ui/SourceChip";
 import { AiLabel, StudyTags } from "@/components/ui/Tags";
+import { SMOKE_POINT_TEXT, smokePointSources } from "@/lib/data/explainers";
 import { formatAuthor, getStudies, getStudy, getStudyIndex, getStudyProfile } from "@/lib/data/server";
 import { buildPreview, relatedStudies } from "@/lib/data/study-view";
 import { dedupeSources, resolveSource, type SourceRef } from "@/lib/sources";
@@ -16,6 +18,9 @@ import { AskContextSetter } from "@/lib/state/ask";
 
 // One static page per study in data/studies.json; any other id is a 404.
 export const dynamicParams = false;
+
+/** Study pages that show the inline smoke-point explainer under the summary. */
+const SMOKE_POINT_STUDIES = new Set(["spice", "slice"]);
 
 export function generateStaticParams() {
   return getStudies().map((study) => ({ id: study.id }));
@@ -124,6 +129,8 @@ export default async function StudyPage({ params }: Props) {
                 </span>
               </p>
             )}
+            {/* SPICE measured smoke points; SLICE gets the same explainer as background on soot (approved design). */}
+            {SMOKE_POINT_STUDIES.has(study.id) && <SmokePointInline text={SMOKE_POINT_TEXT} sources={smokePointSources()} />}
           </div>
           <StudyRelevance study={entry} index={index} />
         </div>

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo } from "react";
+import { MissionPicker } from "@/components/shell/MissionPicker";
 import { AiLabel, MatchBar } from "@/components/ui/Tags";
 import type { StudyIndexEntry } from "@/lib/data/types";
 import { MISSIONS } from "@/lib/missions";
@@ -16,15 +17,20 @@ export function MissionSpotlight({ index }: { index: StudyIndexEntry[] }) {
 
   return (
     <section className="stack g4" aria-labelledby="spotlight-title">
-      <div className="row between g3 wrapx">
+      <div className="row between g3 wrapx" style={{ alignItems: "flex-end" }}>
         <div className="stack g1">
           <span className="label">Mission spotlight</span>
           <h2 id="spotlight-title" className="h3">
             Top 3 for {MISSIONS[mission].inSentence}
           </h2>
         </div>
-        {anyAi && <AiLabel text="AI-written reasons" />}
+        <MissionPicker />
       </div>
+      {anyAi && (
+        <span className="self-start">
+          <AiLabel text="AI-written reasons" />
+        </span>
+      )}
       <ol>
         {top.map((item, i) => (
           <li key={item.study.id} className="spot-row">

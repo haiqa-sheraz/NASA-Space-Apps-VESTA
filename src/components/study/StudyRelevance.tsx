@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import { MissionPicker } from "@/components/shell/MissionPicker";
 import { MatchBar, MatchChip } from "@/components/ui/Tags";
 import type { StudyIndexEntry } from "@/lib/data/types";
 import { explainMatch, matchChipLabel, missionView } from "@/lib/mission-view";
@@ -22,9 +23,14 @@ export function StudyRelevance({ study, index }: { study: StudyIndexEntry; index
 
   return (
     <aside className="panel pad stack g4" aria-labelledby="relevance-title">
-      <h2 id="relevance-title" className="h4">
-        {title}
-      </h2>
+      <div className="stack g3">
+        <h2 id="relevance-title" className="h4">
+          {title}
+        </h2>
+        <span className="self-start">
+          <MissionPicker />
+        </span>
+      </div>
       {!item ? (
         <p className="small muted">
           {study.status === "ground"

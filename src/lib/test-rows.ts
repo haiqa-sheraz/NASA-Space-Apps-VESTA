@@ -42,9 +42,56 @@ export const TEST_COLUMNS: TestColumn[] = [
   { key: "outcome", label: "Outcome", unit: null, numeric: false, wrap: true, sourceColumns: ["outcome"], get: (r) => r.outcome },
 ];
 
-/** A row's quality flags, plus a note for exact copies of earlier rows. */
+/**
+ * The prep's notes on each row (tests.json `flags`) are of two kinds:
+ *
+ * Quality flags, shown with the caution icon: the value is approximate, assumed, ramped, in
+ * other units, inconsistent, or the row isn't a measured test.
+ *
+ * Cleaning notes, not shown as flags: a typo or formatting fix whose result is certain, or a cell
+ * that is simply blank in the source (the table already shows it as blank). They stay in the
+ * downloads, where the flags column lists every note.
+ *
+ * Every note must match one list; validateData() stops the build on a new kind of note.
+ */
+const QUALITY_FLAGS: RegExp[] = [
+  /approximate/,
+  /^airflow given as display readings/,
+  /^inside-out flame/,
+  /^ramped test/,
+  /^expanded from '/,
+  /^fuel bottle blank in the table; assumed/,
+  /^planned test matrix/,
+  /^blank row in the table$/,
+  /^flow visualization row/,
+  /^burn time listed as '/,
+  /^final O2 .* check against the report$/,
+  /^marked '.*' in the table/,
+  /^pressure recorded as .* treated as missing$/,
+];
+
+const CLEANING_NOTES: RegExp[] = [
+  /^year not in the table/,
+  /^date has no year in the table$/,
+  /^material not stated in the table$/,
+  /^fixed spreadsheet auto-increment typo/,
+  /^notes were mixed into the date or fuel cell/,
+  /^stray character removed from date/,
+  /^year typo fixed/,
+  /^spreadsheet error: '.*' read as /,
+];
+
+export const isQualityFlag = (note: string) => QUALITY_FLAGS.some((re) => re.test(note));
+export const isCleaningNote = (note: string) => CLEANING_NOTES.some((re) => re.test(note));
+
+/** Row notes that match neither list (the build stops on these, so each new kind gets reviewed). */
+export function unclassifiedNotes(rows: TestRow[]): string[] {
+  return [...new Set(rows.flatMap((r) => r.flags).filter((f) => !isQualityFlag(f) && !isCleaningNote(f)))];
+}
+
+/** A row's quality flags (not its cleaning notes), plus a note for exact copies of earlier rows. */
 export function rowFlags(r: TestRow): string[] {
-  const flags = [...r.flags];
+  const flags = r.flags.filter(isQualityFlag);
   if (r.duplicate_of !== null && r.duplicate_of !== undefined) {
     flags.push(`Exact copy of table row ${r.duplicate_of}; not counted as a separate test.`);
   }

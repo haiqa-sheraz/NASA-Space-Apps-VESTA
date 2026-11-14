@@ -3,6 +3,7 @@
 import { TriangleAlert } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { ReadingLevelSwitch } from "@/components/shell/ReadingLevelSwitch";
 import { SourceLine } from "@/components/ui/SourceChip";
 import { AiLabel, JobTag } from "@/components/ui/Tags";
 import type { JobId } from "@/lib/jobs";
@@ -36,11 +37,10 @@ export function HeadlineFindings({ items }: { items: FindingItem[] }) {
             <span className="label">Headline findings</span>
             <h2 className="h2">What NASA&apos;s fire tests found</h2>
           </div>
-          <span className="small muted">
-            {expert
-              ? "Expert wording, AI-written from the sources. Switch to Simple for plain language."
-              : "Simple wording. Switch to Expert for the technical version."}
-          </span>
+          <div className="stack g2 findings-level">
+            <ReadingLevelSwitch label="Findings reading level" />
+            <span className="small muted">{expert ? "Expert wording, AI-written from the sources." : "Plain language. Expert gives the technical version."}</span>
+          </div>
         </div>
         <ol>
           {items.map((item, i) => {

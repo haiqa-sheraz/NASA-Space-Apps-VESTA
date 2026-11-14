@@ -2,34 +2,17 @@
 
 import { Globe, Orbit } from "lucide-react";
 import { useState } from "react";
-import { FlameSvg } from "@/components/ui/FlameSvg";
-
-const STATES = {
-  space: {
-    gravity: "about 0 g",
-    air: "Doesn't rise",
-    shape: "Sphere",
-    label: "A candle flame in orbit: a dim blue sphere.",
-    caption: "In orbit, hot air doesn't rise. Oxygen drifts in from all sides, so the flame turns round, dim and blue.",
-  },
-  earth: {
-    gravity: "1 g",
-    air: "Rises",
-    shape: "Teardrop",
-    label: "A candle flame on Earth: a tall amber teardrop.",
-    caption: "On Earth, hot air rises and pulls the flame into a tall teardrop.",
-  },
-} as const;
+import { FLAME_STATES as STATES, FlameSvg } from "@/components/ui/FlameSvg";
 
 /**
  * Home hero: the signature flame with its Earth / Space switch. The chamber stays dark in both
  * themes. The shape swaps instantly here; the morph and first-load motion arrive in step 6.
  */
-export function FlameChamber() {
+export function FlameChamber({ compact = false, idPrefix = "hero-flame" }: { compact?: boolean; idPrefix?: string }) {
   const [mode, setMode] = useState<"earth" | "space">("space");
   const state = STATES[mode];
   return (
-    <figure data-theme="dark" className="chamber stack g3" style={{ padding: "24px 28px 20px" }}>
+    <figure data-theme="dark" className="chamber stack g3" style={{ padding: "24px 28px 20px", margin: 0 }}>
       <div className="row between" style={{ alignItems: "flex-start" }}>
         <div className="readout">
           <span>Gravity</span>
@@ -45,8 +28,8 @@ export function FlameChamber() {
         </div>
       </div>
       <div className="ticks-rule" style={{ opacity: 0.8 }} />
-      <div className="mx-auto w-[200px] max-w-full tablet:w-[360px]">
-        <FlameSvg mode={mode} idPrefix="hero-flame" label={state.label} />
+      <div className={compact ? "mx-auto w-[160px] max-w-full" : "mx-auto w-[200px] max-w-full tablet:w-[360px]"}>
+        <FlameSvg mode={mode} idPrefix={idPrefix} label={state.label} />
       </div>
       <div className="row" style={{ justifyContent: "center" }}>
         <div className="seg lg" role="group" aria-label="Gravity">

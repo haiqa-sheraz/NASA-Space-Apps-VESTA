@@ -7,7 +7,7 @@ const LEVELS: { value: ReadingLevel; label: string }[] = [
   { value: "expert", label: "Expert" },
 ];
 
-/** Global Simple / Expert switch. The choice is saved and applies on every page. */
+/** Simple / Expert switch, shown on the pages whose text it changes. The choice is saved and shared by them. */
 export function ReadingLevelSwitch({ label = "Reading level" }: { label?: string }) {
   const { readingLevel, setReadingLevel } = usePrefs();
   return (

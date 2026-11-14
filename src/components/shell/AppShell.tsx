@@ -1,6 +1,7 @@
 "use client";
 
 import { MessageCircleQuestionMark } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useEffect, type ReactNode } from "react";
 import { AskProvider, useAsk } from "@/lib/state/ask";
 import { ToastProvider } from "@/lib/state/toast";
@@ -22,6 +23,9 @@ export function AppShell({ children }: { children: ReactNode }) {
 
 function Shell({ children }: { children: ReactNode }) {
   const { open, openAsk } = useAsk();
+  // The Journey has its own full-screen frame with no floating button (approved design);
+  // its last chapter has an "Ask a question" card instead.
+  const onJourney = usePathname()?.startsWith("/learn/journey") ?? false;
 
   // Deep link: any page with ?ask=open starts with the panel open.
   useEffect(() => {
@@ -35,7 +39,7 @@ function Shell({ children }: { children: ReactNode }) {
       </div>
       <AskPanel />
       {/* Hidden, not removed, while the panel is open, so focus can return to it on close. */}
-      <button type="button" className="fab" aria-label="Ask about fire in space" hidden={open} onClick={() => openAsk()}>
+      <button type="button" className="fab" aria-label="Ask about fire in space" hidden={open || onJourney} onClick={() => openAsk()}>
         <MessageCircleQuestionMark className="ic lg" aria-hidden="true" />
       </button>
     </>

@@ -3,6 +3,7 @@
 import { ChevronDown, Filter, LayoutGrid, List, Search, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { MissionPicker } from "@/components/shell/MissionPicker";
 import { BottomSheet } from "@/components/ui/BottomSheet";
 import { CheckRow, RadioRow, RangeSlider, SelectBox, TagFilterChips } from "@/components/ui/Controls";
 import { StudyTags } from "@/components/ui/Tags";
@@ -160,7 +161,10 @@ export function ExploreClient({ index }: { index: StudyIndexEntry[] }) {
             <p className="strong" aria-live="polite">
               {plural(results.length, "study", "studies")}
             </p>
-            <span className="small muted">Relevance badges show each study&apos;s match to {MISSIONS[mission].inSentence}, from the Planner.</span>
+            <div className="row g3 wrapx">
+              <span className="small muted">Relevance badges for</span>
+              <MissionPicker />
+            </div>
           </div>
 
           {results.length === 0 ? (

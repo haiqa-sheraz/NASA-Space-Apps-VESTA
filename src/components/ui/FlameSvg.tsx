@@ -8,6 +8,24 @@ export const FLAME_PATH = {
   space: "M100 100 C133 100 160 127 160 160 C160 193 133 220 100 220 C67 220 40 193 40 160 C40 127 67 100 100 100 Z",
 } as const;
 
+/** Readouts and captions for the two flame states (approved design text, Home hero and the gravity switch). */
+export const FLAME_STATES = {
+  space: {
+    gravity: "about 0 g",
+    air: "Doesn't rise",
+    shape: "Sphere",
+    label: "A candle flame in orbit: a dim blue sphere.",
+    caption: "In orbit, hot air doesn't rise. Oxygen drifts in from all sides, so the flame turns round, dim and blue.",
+  },
+  earth: {
+    gravity: "1 g",
+    air: "Rises",
+    shape: "Teardrop",
+    label: "A candle flame on Earth: a tall amber teardrop.",
+    caption: "On Earth, hot air rises and pulls the flame into a tall teardrop.",
+  },
+} as const;
+
 export function FlameSvg({ mode, idPrefix, label }: { mode: "earth" | "space"; idPrefix: string; label?: string }) {
   const earth = mode === "earth";
   const id = (name: string) => `${idPrefix}-${name}`;

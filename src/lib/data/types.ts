@@ -148,6 +148,13 @@ export interface StudyProfileFile {
   profile: Profile;
 }
 
+/** data/ai/earth_benefits.json: three AI-written stories and the documents they cite (E1, E2, ...). */
+export interface EarthBenefitsFile {
+  stories: { topic: string; in_space: string; on_earth: string; key_facts: string[]; sources: string[] }[];
+  sources: { label: string; title: string; url: string | null; file?: string }[];
+  numbers_not_in_sources: string[];
+}
+
 export interface Finding {
   id: string;
   simple: string;
