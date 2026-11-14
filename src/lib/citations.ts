@@ -128,7 +128,8 @@ export const SOFTWARE_CREDITS: Citation[] = [
 /** AI tools and models. */
 export const AI_CREDITS: Citation[] = [
   { title: "Claude Code", detail: "Anthropic, with the Claude Opus 5.5 model: assisted in code generation and development", url: "https://code.claude.com/docs" },
-  { title: "ERNIE 5.5 Flash", detail: "Baidu, baidu/ernie-5.5-flash-preview:free on OpenRouter: wrote the saved summaries, results, findings, stories and ranking reasons", url: "https://openrouter.ai/" },
-  { title: "Nemotron 3.5 Super VL", detail: "NVIDIA, nvidia/nemotron-3.5-super-vl:free on OpenRouter: read scanned pages and wrote study profiles when ERNIE failed", url: "https://openrouter.ai/" },
+  { title: "ERNIE 5.5 Flash", detail: "Baidu, baidu/ernie-5.5-flash-preview:free on OpenRouter: wrote the saved summaries, results, findings, stories and ranking reasons, and answers Ask AI when Nemotron is busy", url: "https://openrouter.ai/" },
+  { title: "Nemotron 3.5 Super VL", detail: "NVIDIA, nvidia/nemotron-3.5-super-vl:free on OpenRouter: read scanned pages, wrote study profiles when ERNIE failed, and answers Ask AI and the Compare explanation live", url: "https://openrouter.ai/" },
+  { title: "OpenRouter free router", detail: "openrouter/free: the last backup for live answers; it picks one of OpenRouter's free models", url: "https://openrouter.ai/" },
   { title: "OpenRouter", detail: "The service the AI models were called through", url: "https://openrouter.ai/" },
 ];

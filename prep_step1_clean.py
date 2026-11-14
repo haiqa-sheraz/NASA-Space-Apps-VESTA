@@ -292,6 +292,11 @@ def clean_spice(c, st, rows, name):
                            "hc_fuel_rate_mg_s": num(r.get("HC Fuel Rate (mg/s)")),
                            "ignition_gmt": r.get("GMT ignition"), "flame_off_gmt": r.get("GMT  Flame Off") or r.get("GMT Flame Off")})
         rec["flags"].append("year not in the table (GMT day only)")
+        # A few rows have an air rate below 0 cm/s, which can't be an air speed (the report gives
+        # co-flow of 5.4 to 65 cm/s for the smoke points). Like FLEX's 0 pressure: treated as missing.
+        if rec["airflow_cm_s_min"] is not None and rec["airflow_cm_s_min"] < 0:
+            rec["flags"].append(f"air rate recorded as {r.get('Air Rate (cm/s)', '').strip()} cm/s (below 0): treated as missing")
+            rec["airflow_cm_s_min"] = rec["airflow_cm_s_max"] = None
         if key in seen:
             rec["duplicate_of"] = seen[key]
             rec["is_test"] = False
@@ -384,16 +389,20 @@ def clean_bre(c, st, rows, name):
                 o2.append(pct(v / 100 if "%" in tok and v > 100 else v))
         month = MONTHS.get(str(r.get("Month", ""))[:3].lower())
         rec = c.add(st, name, i, test_id=f"{r.get('Year')}-{r.get('Month')}-{r.get('Date')}",
-                    date=date_iso(r.get("Year"), month, r.get("Date")), fuel=r.get("Fuel Bottle"),
+                    date=date_iso(r.get("Year"), month, r.get("Date")),
+                    fuel=re.sub(r"(\d)%(?=\S)", r"\1% ", r.get("Fuel Bottle")) if r.get("Fuel Bottle") else r.get("Fuel Bottle"),
                     oxygen_pct_min=min(o2) if o2 else None, oxygen_pct_max=max(o2) if o2 else None,
                     extra={**acme_common(r), "burner_mm": num(r.get("Burner Size (mm)")), "oxygen_pct_values": o2})
         if re.search(r"\d{4,}\s*%", raw):
             bad = re.search(r"(\d{4,})\s*%", raw).group(1)
             rec["flags"].append(f"spreadsheet error: '{bad}%' read as {float(bad) / 100:g}%")
     c.note(st[0], "Each row is a test day; oxygen cells list several levels. Imitates burning solids with a gas burner.")
+    c.note(st[0], "Fuel spelling unified ('100%C2H4' = '100% C2H4').")
 
 
 AUTOINC_CH = re.compile(r"\bCH(1[0-9]|[5-9])\b")
+# Same typo for ethylene: the rows say "Ethylene based test" but count up C2H5, C2H6 ... C2H11.
+AUTOINC_C2H = re.compile(r"\bC2H(1[0-9]|[5-9])\b")
 AUTOINC_N = re.compile(r"\bN([3-9])\b")
 
 
@@ -401,13 +410,13 @@ def clean_cld(c, st, rows, name):
     for i, r in enumerate(rows, 1):
         iso, year = yyddd(r.get("Test Day"))
         bottle = r.get("Fuel Bottle", "")
-        fixed = AUTOINC_CH.sub("CH4", bottle)
+        fixed = AUTOINC_C2H.sub("C2H4", AUTOINC_CH.sub("CH4", bottle))
         rec = c.add(st, name, i, test_id=r.get("Test Day"), date=iso, year=year, fuel=fixed,
                     extra={**acme_common(r), "test_type": r.get("Test Type"), "fuel_conc_range": r.get("Fuel conc. Range"),
                            "fuel_mfc": num(r.get("Fuel MFC")), "n2_mfc": num(r.get("N2 MFC"))})
         if fixed != bottle:
             rec["flags"].append(f"fixed spreadsheet auto-increment typo: '{bottle}' -> '{fixed}'")
-    c.note(st[0], "Fuel bottle names had spreadsheet auto-increment typos ('40% CH5' ... 'CH14'); fixed to CH4.")
+    c.note(st[0], "Fuel bottle names had spreadsheet auto-increment typos ('40% CH5' ... 'CH14', '100% C2H5' ... 'C2H11'); fixed to CH4 and C2H4.")
 
 
 def clean_efield(c, st, rows, name):

@@ -34,6 +34,8 @@ Generated 2026-11-14T14:05:47
 - Fix/note: Exact duplicate rows marked (duplicate_of) and not counted as separate tests.
 - Fix/note: Smoke points are in the SPICE final report (Table 1), not in this table.
 - Flag (469 rows): year not in the table (GMT day only)
+- Flag (5 rows): air rate recorded as -0.28 cm/s (below 0): treated as missing
+- Flag (3 rows): air rate recorded as -5.92 cm/s (below 0): treated as missing
 
 ## SLICE (PSI-106)
 
@@ -68,6 +70,7 @@ Generated 2026-11-14T14:05:47
 - Tables: PSI-20_Experimental table_ACME BRE.csv (18 rows, utf-8-sig)
 - Tests counted: 18 of 18 rows
 - Fix/note: Each row is a test day; oxygen cells list several levels. Imitates burning solids with a gas burner.
+- Fix/note: Fuel spelling unified ('100%C2H4' = '100% C2H4').
 - Flag (1 rows): spreadsheet error: '3400%' read as 34%
 - Flag (1 rows): spreadsheet error: '2100%' read as 21%
 
@@ -75,7 +78,7 @@ Generated 2026-11-14T14:05:47
 
 - Tables: PSI-21_Experimental table_CLD Flame.csv (32 rows, utf-8-sig)
 - Tests counted: 32 of 32 rows
-- Fix/note: Fuel bottle names had spreadsheet auto-increment typos ('40% CH5' ... 'CH14'); fixed to CH4.
+- Fix/note: Fuel bottle names had spreadsheet auto-increment typos ('40% CH5' ... 'CH14', '100% C2H5' ... 'C2H11'); fixed to CH4 and C2H4.
 - Flag (2 rows): fixed spreadsheet auto-increment typo: '40% CH5' -> '40% CH4'
 - Flag (1 rows): fixed spreadsheet auto-increment typo: '40% CH6' -> '40% CH4'
 - Flag (1 rows): fixed spreadsheet auto-increment typo: '40% CH7' -> '40% CH4'
@@ -88,6 +91,19 @@ Generated 2026-11-14T14:05:47
 - Flag (1 rows): fixed spreadsheet auto-increment typo: '40% CH14' -> '40% CH4'
 - Flag (1 rows): fixed spreadsheet auto-increment typo: '100% CH5' -> '100% CH4'
 - Flag (1 rows): fixed spreadsheet auto-increment typo: '100% CH6' -> '100% CH4'
+- Flag (1 rows): fixed spreadsheet auto-increment typo: '100% C2H5' -> '100% C2H4'
+- Flag (1 rows): fixed spreadsheet auto-increment typo: '100% C2H6' -> '100% C2H4'
+- Flag (1 rows): fixed spreadsheet auto-increment typo: '100% C2H7' -> '100% C2H4'
+- Flag (1 rows): fixed spreadsheet auto-increment typo: '100% C2H8' -> '100% C2H4'
+- Flag (1 rows): fixed spreadsheet auto-increment typo: '100% C2H9' -> '100% C2H4'
+- Flag (1 rows): fixed spreadsheet auto-increment typo: '100% C2H10' -> '100% C2H4'
+- Flag (1 rows): fixed spreadsheet auto-increment typo: '100% C2H11' -> '100% C2H4'
+- Flag (1 rows): fixed spreadsheet auto-increment typo: '50% C2H5' -> '50% C2H4'
+- Flag (1 rows): fixed spreadsheet auto-increment typo: '50% C2H6' -> '50% C2H4'
+- Flag (1 rows): fixed spreadsheet auto-increment typo: '50% C2H7' -> '50% C2H4'
+- Flag (1 rows): fixed spreadsheet auto-increment typo: '50% C2H8' -> '50% C2H4'
+- Flag (1 rows): fixed spreadsheet auto-increment typo: '50% C2H9' -> '50% C2H4'
+- Flag (1 rows): fixed spreadsheet auto-increment typo: '30% C2H5' -> '30% C2H4'
 
 ## ACME E-FIELD Flames (PSI-22)
 

@@ -35,17 +35,10 @@
     "key_facts": {
       "fuels": [
         "40% CH4",
-        "100% CH4",
         "100% C2H4",
-        "100% C2H5",
-        "100% C2H6",
-        "100% C2H7",
-        "100% C2H8",
-        "100% C2H9",
-        "100% C2H10",
-        "100% C2H11",
         "50% C2H4",
-        "50% C2H5"
+        "100% CH4",
+        "30% C2H4"
       ],
       "sample_shapes": [
         "gas-jet flame with coaxial air flow"

@@ -14,3 +14,5 @@ The planning notes (READ_ME_FIRST.md, DESIGN_BRIEF.md, READ_ME_AFTER_IMPLEMENTAT
 | 2026-11-14 22:33 | Step 4: Learn, Journey (10 chapters), Earth benefits, About | Claude Code |
 | 2026-11-14 23:42 | About page wording; console error fix | Claude Code |
 | 2026-11-15 00:03 | Mission picker and Simple/Expert moved onto the pages they affect; quality flags reviewed; Data prediction tool | Claude Code |
+| 2026-11-15 02:10 | Step 5: Ask AI and Compare explanation (keyword search over NASA passages, Netlify Functions, OpenRouter free models with fallbacks, saved answers); fixed CLD Flame and BRE fuel name typos | Claude Code |
+| 2026-11-15 02:40 | Step 5 follow-ups: SPICE negative air rates marked missing and flagged; planning notes updated for no database | Claude Code |

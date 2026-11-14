@@ -5,9 +5,13 @@
   "description": "Vesta: summaries, rankings and plain-language fire-safety insights from NASA's microgravity fire experiments. NASA Space Apps Challenge 2026.",
   "scripts": {
     "dev": "bun --bun next dev",
+    "dev:ai": "bun scripts/dev-ai.ts",
+    "dev:api": "bun scripts/dev-functions.ts",
     "build": "bun --bun next build",
     "start": "bun --bun next start",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build:passages": "bun scripts/build-passages.ts",
+    "save-answers": "bun scripts/save-answers.ts"
   },
   "dependencies": {
     "lucide-react": "^1.73.0",

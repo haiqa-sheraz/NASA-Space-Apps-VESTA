@@ -19,6 +19,12 @@ export const ntrsUrl = (id: string) => `https://ntrs.nasa.gov/citations/${id}`;
 const KNOWN_DOCUMENTS: { test: RegExp; label: string; url: string; title?: string }[] = [
   { test: /fire detection white paper/i, label: "NTRS 20210022143", url: ntrsUrl("20210022143") },
   {
+    // The 2015 guide is cited by page, so it links to the PDF those pages are in.
+    test: /researcher'?s guide to iss combustion science/i,
+    label: "Researcher's Guide",
+    url: "https://www.nasa.gov/wp-content/uploads/2016/05/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf",
+  },
+  {
     test: /researcher'?s guide/i,
     label: "Researcher's Guide",
     url: "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/",
@@ -71,6 +77,34 @@ const KNOWN_DOCUMENTS: { test: RegExp; label: string; url: string; title?: strin
     label: "Spinoff 1982: fire attire",
     url: "https://spinoff.nasa.gov/node/9918",
     title: "New Technology for the Fire Attire (NASA Spinoff, 1982)",
+  },
+  {
+    test: /fire aboard space station mir/i,
+    label: "NASA: Mir fire",
+    url: "https://www.nasa.gov/history/25-years-ago-fire-aboard-space-station-mir/",
+    title: "25 Years Ago: Fire Aboard Space Station Mir (NASA, 2022)",
+  },
+  { test: /^apollo 1 \(/i, label: "NASA: Apollo 1", url: "https://sma.nasa.gov/sma-disciplines/accllp/apollo-1" },
+  { test: /^apollo 13 \(/i, label: "NASA: Apollo 13", url: "https://sma.nasa.gov/sma-disciplines/accllp/apollo-13" },
+  {
+    test: /\(FLARE\)/,
+    label: "NASA FLARE",
+    url: "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/flammability-limits-at-reduced-g-experiment-flare/",
+  },
+  {
+    test: /\(FM2\)/,
+    label: "NASA FM2",
+    url: "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/flammability-of-materials-on-the-moon-fm2/",
+  },
+  {
+    test: /\(SoFIE\)/,
+    label: "NASA SoFIE",
+    url: "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/solid-fuel-ignition-and-extinction-sofie/",
+  },
+  {
+    test: /fluids and combustion facility/i,
+    label: "NASA FCF",
+    url: "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/science-facilities-on-the-iss/fluids-combustion-facility/",
   },
   {
     test: /tech briefs/i,

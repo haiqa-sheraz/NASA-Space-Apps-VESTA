@@ -1,0 +1,1378 @@
+{
+  "generated": "2026-11-14T22:49:01.807Z",
+  "answers": [
+    {
+      "question": "Which experiments tested above 30% oxygen?",
+      "studyId": null,
+      "answer": "The sources show that ACME BRE tested in an atmosphere of about 30% oxygen [5]. ACME s-Flame tested at approximately 30% oxygen with nitrogen and helium atmospheres [2][3][4]. ACME CFI-G tested at approximately 40% oxygen [6][7]. ACME Flame Design tested oxygen from 19.8 to 40% in surrounding air and 21.2 to 85% oxygen flowing out of the burner for inverse flames [1]. FLEX tested oxygen from 12 to 34% [1]. ACME CFI-G tested oxygen from 18 to 40% [1]. ACME BRE tested oxygen from 21 to 40% [1]. ACME s-Flame tested oxygen from 21 to 30% [1].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NASA PSI",
+          "title": "Computed from the NASA PSI test tables (see the Data page)",
+          "page": null,
+          "url": "/data"
+        },
+        {
+          "n": 2,
+          "label": "PSI-23",
+          "title": "ACME s-Flame final report (PSI-23)",
+          "page": 24,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23"
+        },
+        {
+          "n": 3,
+          "label": "PSI-23",
+          "title": "ACME s-Flame final report (PSI-23)",
+          "page": 28,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23"
+        },
+        {
+          "n": 4,
+          "label": "PSI-23",
+          "title": "ACME s-Flame final report (PSI-23)",
+          "page": 29,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23"
+        },
+        {
+          "n": 5,
+          "label": "PSI-20",
+          "title": "ACME BRE final report (PSI-20)",
+          "page": 158,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20"
+        },
+        {
+          "n": 6,
+          "label": "PSI-159",
+          "title": "ACME CFI-G final report (PSI-159)",
+          "page": 21,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
+        },
+        {
+          "n": 7,
+          "label": "PSI-159",
+          "title": "ACME CFI-G final report (PSI-159)",
+          "page": 39,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:46:58.053Z"
+    },
+    {
+      "question": "Is there fire data in Moon gravity?",
+      "studyId": null,
+      "answer": "Yes. The LUCI project achieved the first-ever extended duration combustion tests greater than 25 seconds in simulated Lunar gravity [1]. The FM2 experiment will conduct the first-ever observations and measurements of flame spread on the Moon at its 1/6 reduced gravity level [2]. FM2 will verify whether some materials burning in partial-gravity environments may be more flammable compared to 1g [3]. The sources do not cover fire data from actual Moon surface conditions yet, as FM2 is planned to launch in late 2026 [4].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NTRS 20250010653",
+          "title": "Lunar Combustion Investigation (LUCI): Flammability Results from a Rotating Sounding Rocket",
+          "page": 37,
+          "url": "https://ntrs.nasa.gov/citations/20250010653"
+        },
+        {
+          "n": 2,
+          "label": "NASA FM2",
+          "title": "Flammability of Materials on the Moon (FM2), NASA",
+          "page": null,
+          "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/flammability-of-materials-on-the-moon-fm2/"
+        },
+        {
+          "n": 3,
+          "label": "NASA FM2",
+          "title": "Flammability of Materials on the Moon (FM2), NASA",
+          "page": null,
+          "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/flammability-of-materials-on-the-moon-fm2/"
+        },
+        {
+          "n": 4,
+          "label": "NTRS 20250010653",
+          "title": "Lunar Combustion Investigation (LUCI): Flammability Results from a Rotating Sounding Rocket",
+          "page": 12,
+          "url": "https://ntrs.nasa.gov/citations/20250010653"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20210022143",
+          "title": "NASA fire detection white paper (2021)",
+          "page": 3,
+          "url": "https://ntrs.nasa.gov/citations/20210022143"
+        },
+        {
+          "n": 6,
+          "label": "Researcher's Guide",
+          "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+          "page": 34,
+          "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:09:26.655Z"
+    },
+    {
+      "question": "What did SAME find about the station's smoke detectors?",
+      "studyId": null,
+      "answer": "The ISS smoke detector failed to alarm for Kapton smoke in half of the SAME tests and for Teflon smoke in two-thirds of the tests [6]. It also does not select for smoke particles, so suspended dust can cause nuisance alarms [6]. SAME results show that substantial portions of smoke particles are below 500 nm in diameter and that mixing dominates smoke transport, leading to longer detection time lags than in normal gravity [2].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "PSI-102",
+          "title": "SAME final report (PSI-102)",
+          "page": 3,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102"
+        },
+        {
+          "n": 2,
+          "label": "PSI-102",
+          "title": "SAME final report (PSI-102)",
+          "page": 4,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102"
+        },
+        {
+          "n": 3,
+          "label": "NTRS 20130000422",
+          "title": "Particle Morphology and Size Results from SAME-2",
+          "page": 12,
+          "url": "https://ntrs.nasa.gov/citations/20130000422"
+        },
+        {
+          "n": 4,
+          "label": "PSI-102",
+          "title": "SAME final report (PSI-102)",
+          "page": 29,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20130000422",
+          "title": "Particle Morphology and Size Results from SAME-2",
+          "page": 2,
+          "url": "https://ntrs.nasa.gov/citations/20130000422"
+        },
+        {
+          "n": 6,
+          "label": "NTRS 20210022143",
+          "title": "NASA fire detection white paper (2021)",
+          "page": 2,
+          "url": "https://ntrs.nasa.gov/citations/20210022143"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:09:31.276Z"
+    },
+    {
+      "question": "Did NASA invent the smoke detector?",
+      "studyId": null,
+      "answer": "No, NASA did not invent the smoke detector. Ionization detectors were becoming broadly available for home use in the 1970s, and the Space Shuttle used the most advanced detection technology available at that time [2]. The ISS forward light scattering detector utilized improvements in photodiode technology developed in the 1990s [2]. The sources do not cover who invented the smoke detector.",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "PSI-102",
+          "title": "SAME final report (PSI-102)",
+          "page": 12,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102"
+        },
+        {
+          "n": 2,
+          "label": "NTRS 20210022143",
+          "title": "NASA fire detection white paper (2021)",
+          "page": 2,
+          "url": "https://ntrs.nasa.gov/citations/20210022143"
+        },
+        {
+          "n": 3,
+          "label": "PSI-101",
+          "title": "SAME-R final report (PSI-101)",
+          "page": 84,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101"
+        },
+        {
+          "n": 4,
+          "label": "NTRS 20130000422",
+          "title": "Particle Morphology and Size Results from SAME-2",
+          "page": 12,
+          "url": "https://ntrs.nasa.gov/citations/20130000422"
+        },
+        {
+          "n": 5,
+          "label": "PSI-102",
+          "title": "SAME final report (PSI-102)",
+          "page": 4,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102"
+        },
+        {
+          "n": 6,
+          "label": "PSI-102",
+          "title": "SAME final report (PSI-102)",
+          "page": 13,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:09:35.790Z"
+    },
+    {
+      "question": "What cabin air is planned for the Moon?",
+      "studyId": null,
+      "answer": "The sources state that future lunar habitats plan to use elevated O2 at 34% and reduced pressure at 8.2 psi [3]. The sources do not cover any other cabin air details for the Moon.",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NTRS 20210022143",
+          "title": "NASA fire detection white paper (2021)",
+          "page": 4,
+          "url": "https://ntrs.nasa.gov/citations/20210022143"
+        },
+        {
+          "n": 2,
+          "label": "NASA: Apollo 13",
+          "title": "Apollo 13 (NASA Safety Center)",
+          "page": null,
+          "url": "https://sma.nasa.gov/sma-disciplines/accllp/apollo-13"
+        },
+        {
+          "n": 3,
+          "label": "NTRS 20210022143",
+          "title": "NASA fire detection white paper (2021)",
+          "page": 2,
+          "url": "https://ntrs.nasa.gov/citations/20210022143"
+        },
+        {
+          "n": 4,
+          "label": "NTRS 20210022143",
+          "title": "NASA fire detection white paper (2021)",
+          "page": 6,
+          "url": "https://ntrs.nasa.gov/citations/20210022143"
+        },
+        {
+          "n": 5,
+          "label": "NASA: Apollo 13",
+          "title": "Apollo 13 (NASA Safety Center)",
+          "page": null,
+          "url": "https://sma.nasa.gov/sma-disciplines/accllp/apollo-13"
+        },
+        {
+          "n": 6,
+          "label": "Researcher's Guide",
+          "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+          "page": 34,
+          "url": "https://www.nasa.gov/wp-content/uploads/2016/05/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:47:02.528Z"
+    },
+    {
+      "question": "Which studies burned solid materials?",
+      "studyId": null,
+      "answer": "BASS burned PMMA, wax candle, SIBAL cotton-fiberglass, and Nomex [1]. BASS-II burned PMMA, SIBAL cotton-fiberglass, Nomex, and wax candle [1]. Saffire-II burned silicone, PMMA, and SIBAL cotton-fiberglass [1]. SAME and SAME-R heated materials to make smoke below the ignition point rather than burning them [1].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NASA PSI",
+          "title": "Computed from the NASA PSI test tables (see the Data page)",
+          "page": null,
+          "url": "/data"
+        },
+        {
+          "n": 2,
+          "label": "PSI-20",
+          "title": "ACME BRE final report (PSI-20)",
+          "page": 163,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20"
+        },
+        {
+          "n": 3,
+          "label": "NTRS 20120015928",
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "page": 43,
+          "url": "https://ntrs.nasa.gov/citations/20120015928"
+        },
+        {
+          "n": 4,
+          "label": "NASA: combustion research",
+          "title": "Studying Combustion and Fire Safety (NASA)",
+          "page": null,
+          "url": "https://www.nasa.gov/missions/station/iss-research/studying-combustion-and-fire-safety/"
+        },
+        {
+          "n": 5,
+          "label": "PSI-20",
+          "title": "ACME BRE final report (PSI-20)",
+          "page": 128,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20"
+        },
+        {
+          "n": 6,
+          "label": "PSI-20",
+          "title": "ACME BRE final report (PSI-20)",
+          "page": 165,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20"
+        },
+        {
+          "n": 7,
+          "label": "PSI-25",
+          "title": "BASS-II final report (PSI-25)",
+          "page": 63,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:48:56.934Z"
+    },
+    {
+      "question": "How does BASS-II compare to BASS?",
+      "studyId": null,
+      "answer": "BASS ran from 2012 to 2013 with 122 tests, while BASS-II ran from 2014 to 2018 with 129 tests [1]. BASS-II tested oxygen levels from 13.6 to 22.2 percent [1]. BASS tested PMMA, wax candle, SIBAL cotton-fiberglass, and Nomex [1]. BASS-II tested PMMA, SIBAL cotton-fiberglass, Nomex, and wax candle [1]. Both were flown in space at about 0 g [1]. The sources do not provide a direct comparison of results between BASS and BASS-II.",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NASA PSI",
+          "title": "Computed from the NASA PSI test tables (see the Data page)",
+          "page": null,
+          "url": "/data"
+        },
+        {
+          "n": 2,
+          "label": "PSI-25",
+          "title": "BASS-II final report (PSI-25)",
+          "page": 93,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+        },
+        {
+          "n": 3,
+          "label": "PSI-25",
+          "title": "BASS-II final report (PSI-25)",
+          "page": 28,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+        },
+        {
+          "n": 4,
+          "label": "PSI-25",
+          "title": "BASS-II final report (PSI-25)",
+          "page": 86,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20140011099",
+          "title": "Thickness and Fuel Preheating Effects on Material Flammability (BASS)",
+          "page": 47,
+          "url": "https://ntrs.nasa.gov/citations/20140011099"
+        },
+        {
+          "n": 6,
+          "label": "NTRS 20140011099",
+          "title": "Thickness and Fuel Preheating Effects on Material Flammability (BASS)",
+          "page": 54,
+          "url": "https://ntrs.nasa.gov/citations/20140011099"
+        },
+        {
+          "n": 7,
+          "label": "NTRS 20160000593",
+          "title": "Combustion of Solids in Microgravity: Results from the BASS-II Experiment",
+          "page": 6,
+          "url": "https://ntrs.nasa.gov/citations/20160000593"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:47:12.276Z"
+    },
+    {
+      "question": "How do FLEX and FLEX-2 differ?",
+      "studyId": null,
+      "answer": "FLEX studies droplet combustion to improve chemical kinetic models and evaluate inert gas flame extinguishment for spacecraft safety [1][5]. FLEX-2 is the follow-on experiment and uses fuels and environmental conditions that mimic real combustor conditions [1]. It studies sub-buoyant convective flows on combustion rates, the influence of a second burning droplet on a linear array, and practical fuels such as bi-component and surrogate fuels [1]. FLEX-2 also continues to examine steady and unsteady liquid and gas-phase phenomena, flame extinction, soot formation mechanisms, and radiative heat transfer [5]. It uses the MDCA insert in the CIR with the same diagnostic packages plus a second HiBMS camera [1].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NTRS 20120015928",
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "page": 14,
+          "url": "https://ntrs.nasa.gov/citations/20120015928"
+        },
+        {
+          "n": 2,
+          "label": "NTRS 20150023456",
+          "title": "Detailed Results From the Flame Extinguishment Experiment (FLEX)",
+          "page": 28,
+          "url": "https://ntrs.nasa.gov/citations/20150023456"
+        },
+        {
+          "n": 3,
+          "label": "NTRS 20150023456",
+          "title": "Detailed Results From the Flame Extinguishment Experiment (FLEX)",
+          "page": 32,
+          "url": "https://ntrs.nasa.gov/citations/20150023456"
+        },
+        {
+          "n": 4,
+          "label": "NTRS 20150023456",
+          "title": "Detailed Results From the Flame Extinguishment Experiment (FLEX)",
+          "page": 31,
+          "url": "https://ntrs.nasa.gov/citations/20150023456"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20120015928",
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "page": 2,
+          "url": "https://ntrs.nasa.gov/citations/20120015928"
+        },
+        {
+          "n": 6,
+          "label": "NTRS 20120015928",
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "page": 15,
+          "url": "https://ntrs.nasa.gov/citations/20120015928"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:09:55.257Z"
+    },
+    {
+      "question": "How did FLEX test fire suppressants?",
+      "studyId": null,
+      "answer": "FLEX tested fire suppressants by burning liquid fuel droplets in microgravity aboard the ISS from 2009 to 2011 [1]. The chamber was filled with various concentrations of suppressants or suppressant blends along with enough oxygen to support a flame [5]. Droplet extinction diameters and droplet regression rates were used as figures of merit to compare suppressant effectiveness [5]. Tests covered oxygen levels from 12 to 34 percent and pressures from 0.69 to 3.05 atmospheres using methanol and heptane fuels [1]. The sources do not state how suppressants were delivered or which specific suppressants were tested.",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NASA PSI",
+          "title": "Computed from the NASA PSI test tables (see the Data page)",
+          "page": null,
+          "url": "/data"
+        },
+        {
+          "n": 2,
+          "label": "NTRS 20040142397",
+          "title": "FLEX: Flammability and Extinction Investigations (2004 workshop)",
+          "page": 6,
+          "url": "https://ntrs.nasa.gov/citations/20040142397"
+        },
+        {
+          "n": 3,
+          "label": "NTRS 20120015928",
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "page": 26,
+          "url": "https://ntrs.nasa.gov/citations/20120015928"
+        },
+        {
+          "n": 4,
+          "label": "NTRS 20040142397",
+          "title": "FLEX: Flammability and Extinction Investigations (2004 workshop)",
+          "page": 15,
+          "url": "https://ntrs.nasa.gov/citations/20040142397"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20040142397",
+          "title": "FLEX: Flammability and Extinction Investigations (2004 workshop)",
+          "page": 12,
+          "url": "https://ntrs.nasa.gov/citations/20040142397"
+        },
+        {
+          "n": 6,
+          "label": "NTRS 20120015928",
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "page": 18,
+          "url": "https://ntrs.nasa.gov/citations/20120015928"
+        },
+        {
+          "n": 7,
+          "label": "NTRS 20120015928",
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "page": 9,
+          "url": "https://ntrs.nasa.gov/citations/20120015928"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:49:01.807Z"
+    },
+    {
+      "question": "Which studies measured smoke particles?",
+      "studyId": null,
+      "answer": "SAME-2 measured smoke particles by collecting samples on Transmission Electron Microscope grids and analyzing particle morphology and size parameters [2]. It used moment diagnostics to determine particle number concentration, diameter concentration, and mass concentration, then calculated count mean diameter, diameter of average mass, geometric mean diameter, and geometric standard deviation [2]. SAME-R also collected smoke particle samples on TEM grids for post-flight analysis and measured particle morphology and size parameters using the same moment diagnostics [3]. SAME was the first study to examine oxidative pyrolysis particles in microgravity [5].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "PSI-102",
+          "title": "SAME final report (PSI-102)",
+          "page": 3,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102"
+        },
+        {
+          "n": 2,
+          "label": "NTRS 20130000422",
+          "title": "Particle Morphology and Size Results from SAME-2",
+          "page": 1,
+          "url": "https://ntrs.nasa.gov/citations/20130000422"
+        },
+        {
+          "n": 3,
+          "label": "PSI-101",
+          "title": "SAME-R final report (PSI-101)",
+          "page": 72,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101"
+        },
+        {
+          "n": 4,
+          "label": "PSI-101",
+          "title": "SAME-R final report (PSI-101)",
+          "page": 73,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20210022143",
+          "title": "NASA fire detection white paper (2021)",
+          "page": 2,
+          "url": "https://ntrs.nasa.gov/citations/20210022143"
+        },
+        {
+          "n": 6,
+          "label": "NTRS 20210022143",
+          "title": "NASA fire detection white paper (2021)",
+          "page": 4,
+          "url": "https://ntrs.nasa.gov/citations/20210022143"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:10:05.134Z"
+    },
+    {
+      "question": "What did SPICE measure?",
+      "studyId": null,
+      "answer": "SPICE measured laminar smoke points in non-buoyant laminar jet diffusion flames in co-flowing air aboard the International Space Station [2]. It found fifty-two smoke points for ethylene, propane, propylene, and propylene/nitrogen mixtures [2]. SPICE also measured overall flame shape, flame stabilization heights, and temperature field [1]. The sources do not state what specific instruments were used to make these measurements.",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NTRS 20090014827",
+          "title": "Smoke Point In Co-flow Experiment (SPICE) description",
+          "page": 2,
+          "url": "https://ntrs.nasa.gov/citations/20090014827"
+        },
+        {
+          "n": 2,
+          "label": "PSI-107",
+          "title": "SPICE final report (PSI-107)",
+          "page": 2,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107"
+        },
+        {
+          "n": 3,
+          "label": "PSI-107",
+          "title": "SPICE final report (PSI-107)",
+          "page": 24,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107"
+        },
+        {
+          "n": 4,
+          "label": "NTRS 20140011099",
+          "title": "Thickness and Fuel Preheating Effects on Material Flammability (BASS)",
+          "page": 8,
+          "url": "https://ntrs.nasa.gov/citations/20140011099"
+        },
+        {
+          "n": 5,
+          "label": "Researcher's Guide",
+          "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+          "page": 15,
+          "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:10:09.756Z"
+    },
+    {
+      "question": "Why are flames round and blue in space?",
+      "studyId": null,
+      "answer": "In microgravity, buoyant gravity-driven flow is absent, so flames take a spherical shape [5]. The blue color comes from chemiluminescence of the excited CH molecule, which emits blue 431-nm light [4]. The sources do not explain why flames are round and blue together as a combined phenomenon.",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "Researcher's Guide",
+          "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+          "page": 2,
+          "url": "https://www.nasa.gov/wp-content/uploads/2016/05/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf"
+        },
+        {
+          "n": 2,
+          "label": "PSI-159",
+          "title": "ACME CFI-G final report (PSI-159)",
+          "page": 46,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
+        },
+        {
+          "n": 3,
+          "label": "PSI-10",
+          "title": "ACME Flame Design final report (PSI-10)",
+          "page": 101,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10"
+        },
+        {
+          "n": 4,
+          "label": "PSI-23",
+          "title": "ACME s-Flame final report (PSI-23)",
+          "page": 76,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23"
+        },
+        {
+          "n": 5,
+          "label": "PSI-10",
+          "title": "ACME Flame Design final report (PSI-10)",
+          "page": 33,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10"
+        },
+        {
+          "n": 6,
+          "label": "PSI-20",
+          "title": "ACME BRE final report (PSI-20)",
+          "page": 66,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:47:21.877Z"
+    },
+    {
+      "question": "What is a cool flame?",
+      "studyId": null,
+      "answer": "A cool flame is a low-temperature combustion regime marked by very weak but sustained burning [6]. It appears after hot flames radiatively extinguish, with no visible luminosity for about one second before becoming evident [1]. Cool flames are dimmer and smaller than hot flames, and their reaction intensity gradually decreases from the peak outward rather than forming a sharp flame sheet [1]. Cool flame extinction is controlled primarily by chemical kinetics [4].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "PSI-159",
+          "title": "ACME CFI-G final report (PSI-159)",
+          "page": 44,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
+        },
+        {
+          "n": 2,
+          "label": "PSI-159",
+          "title": "ACME CFI-G final report (PSI-159)",
+          "page": 29,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
+        },
+        {
+          "n": 3,
+          "label": "PSI-159",
+          "title": "ACME CFI-G final report (PSI-159)",
+          "page": 36,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
+        },
+        {
+          "n": 4,
+          "label": "PSI-39",
+          "title": "CFI final report (PSI-39)",
+          "page": 9,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39"
+        },
+        {
+          "n": 5,
+          "label": "PSI-39",
+          "title": "CFI final report (PSI-39)",
+          "page": 12,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39"
+        },
+        {
+          "n": 6,
+          "label": "Researcher's Guide",
+          "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+          "page": 41,
+          "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:10:19.363Z"
+    },
+    {
+      "question": "What is the smoke point?",
+      "studyId": null,
+      "answer": "The smoke point is the condition and luminous flame length where a flame begins to emit soot. It indicates the sooting propensity of a fuel in diffusion flames and represents the properties of the largest laminar jet diffusion flames that do not emit soot [3][5]. The SPICE project measured laminar smoke points in non-buoyant laminar jet diffusion flames in co-flowing air aboard the International Space Station [3].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "PSI-107",
+          "title": "SPICE final report (PSI-107)",
+          "page": 22,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107"
+        },
+        {
+          "n": 2,
+          "label": "PSI-107",
+          "title": "SPICE final report (PSI-107)",
+          "page": 20,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107"
+        },
+        {
+          "n": 3,
+          "label": "PSI-107",
+          "title": "SPICE final report (PSI-107)",
+          "page": 2,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107"
+        },
+        {
+          "n": 4,
+          "label": "Researcher's Guide",
+          "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+          "page": 14,
+          "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20090014827",
+          "title": "Smoke Point In Co-flow Experiment (SPICE) description",
+          "page": 2,
+          "url": "https://ntrs.nasa.gov/citations/20090014827"
+        },
+        {
+          "n": 6,
+          "label": "NTRS 20090014827",
+          "title": "Smoke Point In Co-flow Experiment (SPICE) description",
+          "page": 4,
+          "url": "https://ntrs.nasa.gov/citations/20090014827"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:10:24.078Z"
+    },
+    {
+      "question": "How did space research lead to lighter firefighter air tanks?",
+      "studyId": null,
+      "answer": "NASA-Johnson developed breathing equipment concepts and hardware for astronauts working outside spacecraft or on the moon [1]. Through a NASA-sponsored program, Scott Aviation created a lighter firefighter air tank based on that work [2]. The new backpack system weighed 20 pounds for a 30-minute air supply, 13 pounds less than conventional tanks, and was pressurized at 4,500 psi, about twice the pressure of current tanks [1][2]. It used an aluminum liner wrapped by resin-impregnated glass fibers, which eliminated corrosion and lightened the load [1][2]. The harness shifted most of the weight from the shoulders to the hips [1][2].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "Spinoff 1976: air tanks",
+          "title": "Fireman's Air Tanks (NASA Spinoff, 1976)",
+          "page": 1,
+          "url": "https://spinoff.nasa.gov/node/9582"
+        },
+        {
+          "n": 2,
+          "label": "AIAA 2009-6536",
+          "title": "NASA Technologies and Emergency First Responders (AIAA 2009-6536, NASA Spinoff)",
+          "page": null,
+          "url": "https://spinoff.nasa.gov/pdf/PV2009_6536.pdf"
+        },
+        {
+          "n": 3,
+          "label": "NASA Spinoff: tanks",
+          "title": "Spaceship Storage Tanks Take Off on Earth (NASA Spinoff)",
+          "page": null,
+          "url": "https://www.nasa.gov/technology/tech-transfer-spinoffs/spaceship-storage-tanks-take-off-on-earth/"
+        },
+        {
+          "n": 4,
+          "label": "NASA Spinoff: tanks",
+          "title": "Spaceship Storage Tanks Take Off on Earth (NASA Spinoff)",
+          "page": null,
+          "url": "https://www.nasa.gov/technology/tech-transfer-spinoffs/spaceship-storage-tanks-take-off-on-earth/"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20020090888",
+          "title": "Spinoff 1986: Space Technology for the Fire Department",
+          "page": 2,
+          "url": "https://ntrs.nasa.gov/citations/20020090888"
+        },
+        {
+          "n": 6,
+          "label": "Spinoff 1976: air tanks",
+          "title": "Fireman's Air Tanks (NASA Spinoff, 1976)",
+          "page": 3,
+          "url": "https://spinoff.nasa.gov/node/9582"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:10:29.111Z"
+    },
+    {
+      "question": "What replaced the station's CO₂ fire extinguishers?",
+      "studyId": null,
+      "answer": "Fine-water-mist portable fire extinguishers replaced the station's CO₂ fire extinguishers [3][5][6]. A set of nine fine-water-mist extinguishers were built to replace the carbon dioxide extinguishers that were incompatible with astronaut emergency breathing equipment [5][6]. The first two were sent to the ISS in December 2015, and the rest arrived in three more missions [3].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NTRS 20130011664",
+          "title": "Development of the ISS Fine Water Mist Portable Fire Extinguisher",
+          "page": 2,
+          "url": "https://ntrs.nasa.gov/citations/20130011664"
+        },
+        {
+          "n": 2,
+          "label": "NTRS 20130011664",
+          "title": "Development of the ISS Fine Water Mist Portable Fire Extinguisher",
+          "page": 5,
+          "url": "https://ntrs.nasa.gov/citations/20130011664"
+        },
+        {
+          "n": 3,
+          "label": "Researcher's Guide",
+          "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+          "page": 26,
+          "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/"
+        },
+        {
+          "n": 4,
+          "label": "Spinoff 2020: valve",
+          "title": "Zero-Leak Valve Holds Tight in Demanding Environments (NASA Spinoff, 2020)",
+          "page": null,
+          "url": "https://spinoff.nasa.gov/node/11065"
+        },
+        {
+          "n": 5,
+          "label": "Spinoff 2020: valve",
+          "title": "Zero-Leak Valve Holds Tight in Demanding Environments (NASA Spinoff, 2020)",
+          "page": null,
+          "url": "https://spinoff.nasa.gov/node/11065"
+        },
+        {
+          "n": 6,
+          "label": "Spinoff 2020: valve",
+          "title": "Zero-Leak Valve Holds Tight in Demanding Environments (NASA Spinoff, 2020)",
+          "page": null,
+          "url": "https://spinoff.nasa.gov/node/11065"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:10:33.725Z"
+    },
+    {
+      "question": "What did BASS find?",
+      "studyId": "bass",
+      "answer": "BASS completed 115 burns on 41 solid samples aboard the International Space Station [2]. It measured flame appearance, behavior, spread rate, and extinction dynamics while varying airflow speed up to 40 cm/s in opposed and concurrent flow [2][3]. The results improve material fire safety rating tests, guide fire detection and suppression strategies in microgravity, and validate combustion models [5]. BASS tested the hypothesis that materials in microgravity with adequate ventilation burn as well if not better than in normal gravity [6].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NTRS 20140011099",
+          "title": "Thickness and Fuel Preheating Effects on Material Flammability (BASS)",
+          "page": 57,
+          "url": "https://ntrs.nasa.gov/citations/20140011099"
+        },
+        {
+          "n": 2,
+          "label": "NTRS 20140011099",
+          "title": "Thickness and Fuel Preheating Effects on Material Flammability (BASS)",
+          "page": 8,
+          "url": "https://ntrs.nasa.gov/citations/20140011099"
+        },
+        {
+          "n": 3,
+          "label": "NTRS 20140011099",
+          "title": "Thickness and Fuel Preheating Effects on Material Flammability (BASS)",
+          "page": 2,
+          "url": "https://ntrs.nasa.gov/citations/20140011099"
+        },
+        {
+          "n": 4,
+          "label": "PSI-25",
+          "title": "BASS-II final report (PSI-25)",
+          "page": 7,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+        },
+        {
+          "n": 5,
+          "label": "Researcher's Guide",
+          "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+          "page": 21,
+          "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/"
+        },
+        {
+          "n": 6,
+          "label": "PSI-25",
+          "title": "BASS-II final report (PSI-25)",
+          "page": 11,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:10:38.466Z"
+    },
+    {
+      "question": "Why did the rod burn at lower oxygen in space?",
+      "studyId": "bass-ii",
+      "answer": "In microgravity, buoyant flow is eliminated, so convective cooling of the rod is lower and heat losses are reduced. Gas-phase radiative feedback becomes an important heat transfer process that extends the flammability limit to lower oxygen concentrations. BASS-II obtained steady spreading at 13.6% oxygen for the ¼-inch PMMA rod, compared with a 1g blowoff at 16% oxygen [5][4]. Microgravity flames can burn at as much as 2-3 percent less oxygen than under normal gravity [6].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NTRS 20150019858",
+          "title": "On-Board CSA-CP and CDM Sensor Readings during BASS-II",
+          "page": 7,
+          "url": "https://ntrs.nasa.gov/citations/20150019858"
+        },
+        {
+          "n": 2,
+          "label": "PSI-25",
+          "title": "BASS-II final report (PSI-25)",
+          "page": 60,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+        },
+        {
+          "n": 3,
+          "label": "PSI-25",
+          "title": "BASS-II final report (PSI-25)",
+          "page": 74,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+        },
+        {
+          "n": 4,
+          "label": "PSI-25",
+          "title": "BASS-II final report (PSI-25)",
+          "page": 98,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20160000593",
+          "title": "Combustion of Solids in Microgravity: Results from the BASS-II Experiment",
+          "page": 18,
+          "url": "https://ntrs.nasa.gov/citations/20160000593"
+        },
+        {
+          "n": 6,
+          "label": "NTRS 20120015928",
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "page": 13,
+          "url": "https://ntrs.nasa.gov/citations/20120015928"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:10:43.275Z"
+    },
+    {
+      "question": "What did SLICE find?",
+      "studyId": "slice",
+      "answer": "SLICE used the SPICE hardware in the space station glovebox to study lifted and lifting flames [2]. Its twin purposes were increased fuel efficiency and reduced pollutant emission in practical combustion devices [1]. SLICE started and completed its operations in 2012 [2].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "Researcher's Guide",
+          "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+          "page": 15,
+          "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/"
+        },
+        {
+          "n": 2,
+          "label": "Researcher's Guide",
+          "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+          "page": 14,
+          "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/"
+        },
+        {
+          "n": 3,
+          "label": "PSI-159",
+          "title": "ACME CFI-G final report (PSI-159)",
+          "page": 26,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
+        },
+        {
+          "n": 4,
+          "label": "PSI-10",
+          "title": "ACME Flame Design final report (PSI-10)",
+          "page": 29,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20120015928",
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "page": 3,
+          "url": "https://ntrs.nasa.gov/citations/20120015928"
+        },
+        {
+          "n": 6,
+          "label": "Researcher's Guide",
+          "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+          "page": 53,
+          "url": "https://www.nasa.gov/missions/station/a-researchers-guide-to-combustion-science/"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:11:03.171Z"
+    },
+    {
+      "question": "What did FLEX-2 find?",
+      "studyId": "flex-2",
+      "answer": "FLEX-2 studies droplet combustion under conditions that mimic real combustors. It examines sub-buoyant convective flows on combustion rates, the influence of a second burning droplet on a linear array, and practical fuels such as bi-component and surrogate fuels. It also continues studying pure fuels to examine steady and unsteady liquid and gas-phase phenomena, flame extinction, soot formation mechanisms, and radiative heat transfer. [1][2] The sources do not report specific findings or results from FLEX-2.",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NTRS 20120015928",
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "page": 14,
+          "url": "https://ntrs.nasa.gov/citations/20120015928"
+        },
+        {
+          "n": 2,
+          "label": "NTRS 20120015928",
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "page": 2,
+          "url": "https://ntrs.nasa.gov/citations/20120015928"
+        },
+        {
+          "n": 3,
+          "label": "NTRS 20120015928",
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "page": 15,
+          "url": "https://ntrs.nasa.gov/citations/20120015928"
+        },
+        {
+          "n": 4,
+          "label": "NTRS 20040142397",
+          "title": "FLEX: Flammability and Extinction Investigations (2004 workshop)",
+          "page": 12,
+          "url": "https://ntrs.nasa.gov/citations/20040142397"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20040142397",
+          "title": "FLEX: Flammability and Extinction Investigations (2004 workshop)",
+          "page": 18,
+          "url": "https://ntrs.nasa.gov/citations/20040142397"
+        },
+        {
+          "n": 6,
+          "label": "NTRS 20040142397",
+          "title": "FLEX: Flammability and Extinction Investigations (2004 workshop)",
+          "page": 13,
+          "url": "https://ntrs.nasa.gov/citations/20040142397"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:11:13.186Z"
+    },
+    {
+      "question": "What did ACME CLD Flame find?",
+      "studyId": "acme-cld-flame",
+      "answer": "ACME CLD Flame found that microgravity flames contain five to eight times more soot than equivalent normal-gravity flames [2]. Microgravity flames are taller and wider [2]. Microgravity increases the limits of fuel dilution for both methane and ethylene flames [2]. Near limits, microgravity flames are more stable, allowing for lifted flames at lower fuel concentrations [2]. Early results show that dilution limits are extended in microgravity compared to normal gravity [5]. Steady microgravity flames are more stable and have lower lift-off heights due to the lack of buoyancy [5].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NTRS 20220015583",
+          "title": "ACME: Advanced Combustion via Microgravity Experiments (poster, NTRS 20220015583)",
+          "page": 1,
+          "url": "https://ntrs.nasa.gov/citations/20220015583"
+        },
+        {
+          "n": 2,
+          "label": "NTRS 20210015913",
+          "title": "ACME on the ISS (poster, NTRS 20210015913)",
+          "page": 1,
+          "url": "https://ntrs.nasa.gov/citations/20210015913"
+        },
+        {
+          "n": 3,
+          "label": "PSI-22",
+          "title": "ACME E-FIELD Flames final report (PSI-22)",
+          "page": 74,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22"
+        },
+        {
+          "n": 4,
+          "label": "PSI-20",
+          "title": "ACME BRE final report (PSI-20)",
+          "page": 20,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20"
+        },
+        {
+          "n": 5,
+          "label": "PSI-159",
+          "title": "ACME CFI-G final report (PSI-159)",
+          "page": 51,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
+        },
+        {
+          "n": 6,
+          "label": "PSI-10",
+          "title": "ACME Flame Design final report (PSI-10)",
+          "page": 20,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:11:27.655Z"
+    },
+    {
+      "question": "What did ACME E-FIELD Flames find?",
+      "studyId": "acme-e-field",
+      "answer": "The ACME E-FIELD Flames study found that high-voltage electric fields create forces similar to buoyancy, which dramatically affected flame shape, intensity, and soot production [1]. The ion-driven wind from charged ions produced by combustion influences flame stability and sooting behavior [1][2]. Tests were conducted in microgravity to simplify analysis and develop more efficient, less polluting combustion technology for Earth [1][2]. The sources do not provide specific quantitative findings for E-FIELD Flames beyond these qualitative results.",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "PSI-22",
+          "title": "ACME E-FIELD Flames final report (PSI-22)",
+          "page": 77,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22"
+        },
+        {
+          "n": 2,
+          "label": "PSI-22",
+          "title": "ACME E-FIELD Flames final report (PSI-22)",
+          "page": 91,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22"
+        },
+        {
+          "n": 3,
+          "label": "PSI-22",
+          "title": "ACME E-FIELD Flames final report (PSI-22)",
+          "page": 89,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22"
+        },
+        {
+          "n": 4,
+          "label": "NTRS 20220015583",
+          "title": "ACME: Advanced Combustion via Microgravity Experiments (poster, NTRS 20220015583)",
+          "page": 1,
+          "url": "https://ntrs.nasa.gov/citations/20220015583"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20210015913",
+          "title": "ACME on the ISS (poster, NTRS 20210015913)",
+          "page": 1,
+          "url": "https://ntrs.nasa.gov/citations/20210015913"
+        },
+        {
+          "n": 6,
+          "label": "PSI-23",
+          "title": "ACME s-Flame final report (PSI-23)",
+          "page": 20,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:11:32.339Z"
+    },
+    {
+      "question": "What did ACME s-Flame find?",
+      "studyId": "acme-s-flame",
+      "answer": "ACME s-Flame advanced the ability to predict the structure and dynamics, including extinction and instabilities, of both soot-free and sooty flames [2][3]. With helium dilution instead of nitrogen, extinction limits shifted and kinetic extinction became generally difficult to discern [5]. The results may contribute to lean-burn engines for improved efficiency and reduced pollutant emissions on Earth [2]. The sources do not state specific quantitative findings from the s-Flame tests.",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "PSI-23",
+          "title": "ACME s-Flame final report (PSI-23)",
+          "page": 34,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23"
+        },
+        {
+          "n": 2,
+          "label": "PSI-23",
+          "title": "ACME s-Flame final report (PSI-23)",
+          "page": 93,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23"
+        },
+        {
+          "n": 3,
+          "label": "PSI-23",
+          "title": "ACME s-Flame final report (PSI-23)",
+          "page": 87,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23"
+        },
+        {
+          "n": 4,
+          "label": "NTRS 20220015583",
+          "title": "ACME: Advanced Combustion via Microgravity Experiments (poster, NTRS 20220015583)",
+          "page": 1,
+          "url": "https://ntrs.nasa.gov/citations/20220015583"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20210015913",
+          "title": "ACME on the ISS (poster, NTRS 20210015913)",
+          "page": 1,
+          "url": "https://ntrs.nasa.gov/citations/20210015913"
+        },
+        {
+          "n": 6,
+          "label": "PSI-22",
+          "title": "ACME E-FIELD Flames final report (PSI-22)",
+          "page": 41,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:11:36.936Z"
+    },
+    {
+      "question": "What did ACME Flame Design find?",
+      "studyId": "acme-flame-design",
+      "answer": "ACME Flame Design studied soot production and control to optimize oxygen-enriched combustion and design robust, soot-free flames [5]. Flame size increases with reactant flow rate and decreases with ambient oxygen concentration [5]. Very small flames have low soot [5]. Soot can adversely affect efficiency, emissions, and equipment lifetime, so this may lead to more efficient and cleaner burner designs [2]. The sources do not provide the complete list of all findings.",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "PSI-10",
+          "title": "ACME Flame Design final report (PSI-10)",
+          "page": 75,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10"
+        },
+        {
+          "n": 2,
+          "label": "PSI-10",
+          "title": "ACME Flame Design final report (PSI-10)",
+          "page": 78,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10"
+        },
+        {
+          "n": 3,
+          "label": "PSI-10",
+          "title": "ACME Flame Design final report (PSI-10)",
+          "page": 77,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10"
+        },
+        {
+          "n": 4,
+          "label": "NTRS 20220015583",
+          "title": "ACME: Advanced Combustion via Microgravity Experiments (poster, NTRS 20220015583)",
+          "page": 1,
+          "url": "https://ntrs.nasa.gov/citations/20220015583"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20210015913",
+          "title": "ACME on the ISS (poster, NTRS 20210015913)",
+          "page": 1,
+          "url": "https://ntrs.nasa.gov/citations/20210015913"
+        },
+        {
+          "n": 6,
+          "label": "PSI-23",
+          "title": "ACME s-Flame final report (PSI-23)",
+          "page": 88,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:11:41.933Z"
+    },
+    {
+      "question": "What did SAME find?",
+      "studyId": "same",
+      "answer": "SAME found that for the materials tested, a substantial portion of smoke particles were below 500 nm in diameter [4]. It also found that smoke transport in microgravity is dominated by mixing, causing longer detection time lags than in normal gravity [4]. The knowledge gained can be used to establish design requirements for smoke detectors on future spacecraft [4]. SAME-2 also demonstrated that a two-moment smoke detector could predict smoke number and mass concentration from its output [6].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NTRS 20130000422",
+          "title": "Particle Morphology and Size Results from SAME-2",
+          "page": 3,
+          "url": "https://ntrs.nasa.gov/citations/20130000422"
+        },
+        {
+          "n": 2,
+          "label": "PSI-102",
+          "title": "SAME final report (PSI-102)",
+          "page": 9,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102"
+        },
+        {
+          "n": 3,
+          "label": "PSI-102",
+          "title": "SAME final report (PSI-102)",
+          "page": 24,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102"
+        },
+        {
+          "n": 4,
+          "label": "PSI-102",
+          "title": "SAME final report (PSI-102)",
+          "page": 4,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20130000422",
+          "title": "Particle Morphology and Size Results from SAME-2",
+          "page": 2,
+          "url": "https://ntrs.nasa.gov/citations/20130000422"
+        },
+        {
+          "n": 6,
+          "label": "NTRS 20130000422",
+          "title": "Particle Morphology and Size Results from SAME-2",
+          "page": 9,
+          "url": "https://ntrs.nasa.gov/citations/20130000422"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:12:06.867Z"
+    },
+    {
+      "question": "What did SAME-R find?",
+      "studyId": "same-r",
+      "answer": "SAME-R used the SAME hardware already on orbit with reloaded sample carousels, 30 extra loose samples, rebuilt thermal precipitators, and a refilled alcohol cartridge for P-trak use [4]. It included newly added parts, improved data reduction methods, and new results of particle distributions [4]. The report does not state the specific findings from those new results.",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "PSI-101",
+          "title": "SAME-R final report (PSI-101)",
+          "page": 9,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101"
+        },
+        {
+          "n": 2,
+          "label": "NTRS 20130000422",
+          "title": "Particle Morphology and Size Results from SAME-2",
+          "page": 3,
+          "url": "https://ntrs.nasa.gov/citations/20130000422"
+        },
+        {
+          "n": 3,
+          "label": "PSI-101",
+          "title": "SAME-R final report (PSI-101)",
+          "page": 74,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101"
+        },
+        {
+          "n": 4,
+          "label": "PSI-101",
+          "title": "SAME-R final report (PSI-101)",
+          "page": 3,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20130000422",
+          "title": "Particle Morphology and Size Results from SAME-2",
+          "page": 2,
+          "url": "https://ntrs.nasa.gov/citations/20130000422"
+        },
+        {
+          "n": 6,
+          "label": "NTRS 20130000422",
+          "title": "Particle Morphology and Size Results from SAME-2",
+          "page": 9,
+          "url": "https://ntrs.nasa.gov/citations/20130000422"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-14T22:12:11.694Z"
+    }
+  ]
+}

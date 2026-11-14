@@ -1,6 +1,7 @@
 import "server-only";
 import fs from "node:fs";
 import path from "node:path";
+import type { SavedAnswersFile } from "@/lib/ask/types";
 import { COLUMN_GUIDE } from "@/lib/column-guide";
 import { roundMeasurements, roundMeasurementsDeep } from "@/lib/format";
 import { rowFlags, unclassifiedNotes } from "@/lib/test-rows";
@@ -73,6 +74,11 @@ export function getStudyProfiles(): StudyProfileFile[] {
     );
   }
   return cache.get("profiles") as StudyProfileFile[];
+}
+
+/** Saved answers to the suggested Ask AI questions (scripts/save-answers.ts). */
+export function getSavedAnswers(): SavedAnswersFile {
+  return readJson<SavedAnswersFile>("saved_answers.json");
 }
 
 export function getStudyProfile(id: string): StudyProfileFile | undefined {

@@ -21179,8 +21179,8 @@
   "oxygen_final_pct": null,
   "pressure_atm_min": null,
   "pressure_atm_max": null,
-  "airflow_cm_s_min": -0.28,
-  "airflow_cm_s_max": -0.28,
+  "airflow_cm_s_min": null,
+  "airflow_cm_s_max": null,
   "diluent": null,
   "droplet_diameter_mm": null,
   "burn_time_s": null,
@@ -21188,7 +21188,8 @@
   "is_test": true,
   "duplicate_of": null,
   "flags": [
-   "year not in the table (GMT day only)"
+   "year not in the table (GMT day only)",
+   "air rate recorded as -0.28 cm/s (below 0): treated as missing"
   ],
   "extra": {
    "gmt_day": 136.0,
@@ -21255,8 +21256,8 @@
   "oxygen_final_pct": null,
   "pressure_atm_min": null,
   "pressure_atm_max": null,
-  "airflow_cm_s_min": -0.28,
-  "airflow_cm_s_max": -0.28,
+  "airflow_cm_s_min": null,
+  "airflow_cm_s_max": null,
   "diluent": null,
   "droplet_diameter_mm": null,
   "burn_time_s": null,
@@ -21264,7 +21265,8 @@
   "is_test": true,
   "duplicate_of": null,
   "flags": [
-   "year not in the table (GMT day only)"
+   "year not in the table (GMT day only)",
+   "air rate recorded as -0.28 cm/s (below 0): treated as missing"
   ],
   "extra": {
    "gmt_day": 136.0,
@@ -21293,8 +21295,8 @@
   "oxygen_final_pct": null,
   "pressure_atm_min": null,
   "pressure_atm_max": null,
-  "airflow_cm_s_min": -0.28,
-  "airflow_cm_s_max": -0.28,
+  "airflow_cm_s_min": null,
+  "airflow_cm_s_max": null,
   "diluent": null,
   "droplet_diameter_mm": null,
   "burn_time_s": null,
@@ -21302,7 +21304,8 @@
   "is_test": true,
   "duplicate_of": null,
   "flags": [
-   "year not in the table (GMT day only)"
+   "year not in the table (GMT day only)",
+   "air rate recorded as -0.28 cm/s (below 0): treated as missing"
   ],
   "extra": {
    "gmt_day": 136.0,
@@ -21331,8 +21334,8 @@
   "oxygen_final_pct": null,
   "pressure_atm_min": null,
   "pressure_atm_max": null,
-  "airflow_cm_s_min": -0.28,
-  "airflow_cm_s_max": -0.28,
+  "airflow_cm_s_min": null,
+  "airflow_cm_s_max": null,
   "diluent": null,
   "droplet_diameter_mm": null,
   "burn_time_s": null,
@@ -21340,7 +21343,8 @@
   "is_test": true,
   "duplicate_of": null,
   "flags": [
-   "year not in the table (GMT day only)"
+   "year not in the table (GMT day only)",
+   "air rate recorded as -0.28 cm/s (below 0): treated as missing"
   ],
   "extra": {
    "gmt_day": 136.0,
@@ -21369,8 +21373,8 @@
   "oxygen_final_pct": null,
   "pressure_atm_min": null,
   "pressure_atm_max": null,
-  "airflow_cm_s_min": -0.28,
-  "airflow_cm_s_max": -0.28,
+  "airflow_cm_s_min": null,
+  "airflow_cm_s_max": null,
   "diluent": null,
   "droplet_diameter_mm": null,
   "burn_time_s": null,
@@ -21378,7 +21382,8 @@
   "is_test": true,
   "duplicate_of": null,
   "flags": [
-   "year not in the table (GMT day only)"
+   "year not in the table (GMT day only)",
+   "air rate recorded as -0.28 cm/s (below 0): treated as missing"
   ],
   "extra": {
    "gmt_day": 136.0,
@@ -22737,8 +22742,8 @@
   "oxygen_final_pct": null,
   "pressure_atm_min": null,
   "pressure_atm_max": null,
-  "airflow_cm_s_min": -5.92,
-  "airflow_cm_s_max": -5.92,
+  "airflow_cm_s_min": null,
+  "airflow_cm_s_max": null,
   "diluent": null,
   "droplet_diameter_mm": null,
   "burn_time_s": null,
@@ -22746,7 +22751,8 @@
   "is_test": true,
   "duplicate_of": null,
   "flags": [
-   "year not in the table (GMT day only)"
+   "year not in the table (GMT day only)",
+   "air rate recorded as -5.92 cm/s (below 0): treated as missing"
   ],
   "extra": {
    "gmt_day": 167.0,
@@ -22775,8 +22781,8 @@
   "oxygen_final_pct": null,
   "pressure_atm_min": null,
   "pressure_atm_max": null,
-  "airflow_cm_s_min": -5.92,
-  "airflow_cm_s_max": -5.92,
+  "airflow_cm_s_min": null,
+  "airflow_cm_s_max": null,
   "diluent": null,
   "droplet_diameter_mm": null,
   "burn_time_s": null,
@@ -22784,7 +22790,8 @@
   "is_test": true,
   "duplicate_of": null,
   "flags": [
-   "year not in the table (GMT day only)"
+   "year not in the table (GMT day only)",
+   "air rate recorded as -5.92 cm/s (below 0): treated as missing"
   ],
   "extra": {
    "gmt_day": 167.0,
@@ -22813,8 +22820,8 @@
   "oxygen_final_pct": null,
   "pressure_atm_min": null,
   "pressure_atm_max": null,
-  "airflow_cm_s_min": -5.92,
-  "airflow_cm_s_max": -5.92,
+  "airflow_cm_s_min": null,
+  "airflow_cm_s_max": null,
   "diluent": null,
   "droplet_diameter_mm": null,
   "burn_time_s": null,
@@ -22822,7 +22829,8 @@
   "is_test": true,
   "duplicate_of": null,
   "flags": [
-   "year not in the table (GMT day only)"
+   "year not in the table (GMT day only)",
+   "air rate recorded as -5.92 cm/s (below 0): treated as missing"
   ],
   "extra": {
    "gmt_day": 167.0,
@@ -40980,7 +40988,7 @@
   "test_id": "2019-March-28",
   "date": "2019-03-28",
   "year": 2019,
-  "fuel": "100%C2H4",
+  "fuel": "100% C2H4",
   "material": null,
   "sample_shape": null,
   "sample_size": null,
@@ -41016,7 +41024,7 @@
   "test_id": "2019-April-1",
   "date": "2019-04-01",
   "year": 2019,
-  "fuel": "100%C2H4",
+  "fuel": "100% C2H4",
   "material": null,
   "sample_shape": null,
   "sample_size": null,
@@ -41053,7 +41061,7 @@
   "test_id": "2019-April-4",
   "date": "2019-04-04",
   "year": 2019,
-  "fuel": "100%C2H4",
+  "fuel": "100% C2H4",
   "material": null,
   "sample_shape": null,
   "sample_size": null,
@@ -41968,7 +41976,7 @@
   "test_id": "18151",
   "date": "2018-05-31",
   "year": 2018,
-  "fuel": "100% C2H5",
+  "fuel": "100% C2H4",
   "material": null,
   "sample_shape": null,
   "sample_size": null,
@@ -41985,7 +41993,9 @@
   "outcome": null,
   "is_test": true,
   "duplicate_of": null,
-  "flags": [],
+  "flags": [
+   "fixed spreadsheet auto-increment typo: '100% C2H5' -> '100% C2H4'"
+  ],
   "extra": {
    "flames_ignited": null,
    "notes": null,
@@ -42003,7 +42013,7 @@
   "test_id": "18177",
   "date": "2018-06-26",
   "year": 2018,
-  "fuel": "100% C2H6",
+  "fuel": "100% C2H4",
   "material": null,
   "sample_shape": null,
   "sample_size": null,
@@ -42020,7 +42030,9 @@
   "outcome": null,
   "is_test": true,
   "duplicate_of": null,
-  "flags": [],
+  "flags": [
+   "fixed spreadsheet auto-increment typo: '100% C2H6' -> '100% C2H4'"
+  ],
   "extra": {
    "flames_ignited": null,
    "notes": null,
@@ -42038,7 +42050,7 @@
   "test_id": "18186",
   "date": "2018-07-05",
   "year": 2018,
-  "fuel": "100% C2H7",
+  "fuel": "100% C2H4",
   "material": null,
   "sample_shape": null,
   "sample_size": null,
@@ -42055,7 +42067,9 @@
   "outcome": null,
   "is_test": true,
   "duplicate_of": null,
-  "flags": [],
+  "flags": [
+   "fixed spreadsheet auto-increment typo: '100% C2H7' -> '100% C2H4'"
+  ],
   "extra": {
    "flames_ignited": null,
    "notes": null,
@@ -42073,7 +42087,7 @@
   "test_id": "18192",
   "date": "2018-07-11",
   "year": 2018,
-  "fuel": "100% C2H8",
+  "fuel": "100% C2H4",
   "material": null,
   "sample_shape": null,
   "sample_size": null,
@@ -42090,7 +42104,9 @@
   "outcome": null,
   "is_test": true,
   "duplicate_of": null,
-  "flags": [],
+  "flags": [
+   "fixed spreadsheet auto-increment typo: '100% C2H8' -> '100% C2H4'"
+  ],
   "extra": {
    "flames_ignited": null,
    "notes": null,
@@ -42108,7 +42124,7 @@
   "test_id": "18199",
   "date": "2018-07-18",
   "year": 2018,
-  "fuel": "100% C2H9",
+  "fuel": "100% C2H4",
   "material": null,
   "sample_shape": null,
   "sample_size": null,
@@ -42125,7 +42141,9 @@
   "outcome": null,
   "is_test": true,
   "duplicate_of": null,
-  "flags": [],
+  "flags": [
+   "fixed spreadsheet auto-increment typo: '100% C2H9' -> '100% C2H4'"
+  ],
   "extra": {
    "flames_ignited": null,
    "notes": null,
@@ -42143,7 +42161,7 @@
   "test_id": "18214",
   "date": "2018-08-02",
   "year": 2018,
-  "fuel": "100% C2H10",
+  "fuel": "100% C2H4",
   "material": null,
   "sample_shape": null,
   "sample_size": null,
@@ -42160,7 +42178,9 @@
   "outcome": null,
   "is_test": true,
   "duplicate_of": null,
-  "flags": [],
+  "flags": [
+   "fixed spreadsheet auto-increment typo: '100% C2H10' -> '100% C2H4'"
+  ],
   "extra": {
    "flames_ignited": null,
    "notes": null,
@@ -42178,7 +42198,7 @@
   "test_id": "18218",
   "date": "2018-08-06",
   "year": 2018,
-  "fuel": "100% C2H11",
+  "fuel": "100% C2H4",
   "material": null,
   "sample_shape": null,
   "sample_size": null,
@@ -42195,7 +42215,9 @@
   "outcome": null,
   "is_test": true,
   "duplicate_of": null,
-  "flags": [],
+  "flags": [
+   "fixed spreadsheet auto-increment typo: '100% C2H11' -> '100% C2H4'"
+  ],
   "extra": {
    "flames_ignited": null,
    "notes": null,
@@ -42248,7 +42270,7 @@
   "test_id": "18239",
   "date": "2018-08-27",
   "year": 2018,
-  "fuel": "50% C2H5",
+  "fuel": "50% C2H4",
   "material": null,
   "sample_shape": null,
   "sample_size": null,
@@ -42265,7 +42287,9 @@
   "outcome": null,
   "is_test": true,
   "duplicate_of": null,
-  "flags": [],
+  "flags": [
+   "fixed spreadsheet auto-increment typo: '50% C2H5' -> '50% C2H4'"
+  ],
   "extra": {
    "flames_ignited": null,
    "notes": null,
@@ -42283,7 +42307,7 @@
   "test_id": "18241",
   "date": "2018-08-29",
   "year": 2018,
-  "fuel": "50% C2H6",
+  "fuel": "50% C2H4",
   "material": null,
   "sample_shape": null,
   "sample_size": null,
@@ -42300,7 +42324,9 @@
   "outcome": null,
   "is_test": true,
   "duplicate_of": null,
-  "flags": [],
+  "flags": [
+   "fixed spreadsheet auto-increment typo: '50% C2H6' -> '50% C2H4'"
+  ],
   "extra": {
    "flames_ignited": null,
    "notes": null,
@@ -42318,7 +42344,7 @@
   "test_id": "18249",
   "date": "2018-09-06",
   "year": 2018,
-  "fuel": "50% C2H7",
+  "fuel": "50% C2H4",
   "material": null,
   "sample_shape": null,
   "sample_size": null,
@@ -42335,7 +42361,9 @@
   "outcome": null,
   "is_test": true,
   "duplicate_of": null,
-  "flags": [],
+  "flags": [
+   "fixed spreadsheet auto-increment typo: '50% C2H7' -> '50% C2H4'"
+  ],
   "extra": {
    "flames_ignited": null,
    "notes": null,
@@ -42353,7 +42381,7 @@
   "test_id": "18253",
   "date": "2018-09-10",
   "year": 2018,
-  "fuel": "50% C2H8",
+  "fuel": "50% C2H4",
   "material": null,
   "sample_shape": null,
   "sample_size": null,
@@ -42370,7 +42398,9 @@
   "outcome": null,
   "is_test": true,
   "duplicate_of": null,
-  "flags": [],
+  "flags": [
+   "fixed spreadsheet auto-increment typo: '50% C2H8' -> '50% C2H4'"
+  ],
   "extra": {
    "flames_ignited": null,
    "notes": null,
@@ -42388,7 +42418,7 @@
   "test_id": "18257",
   "date": "2018-09-14",
   "year": 2018,
-  "fuel": "50% C2H9",
+  "fuel": "50% C2H4",
   "material": null,
   "sample_shape": null,
   "sample_size": null,
@@ -42405,7 +42435,9 @@
   "outcome": null,
   "is_test": true,
   "duplicate_of": null,
-  "flags": [],
+  "flags": [
+   "fixed spreadsheet auto-increment typo: '50% C2H9' -> '50% C2H4'"
+  ],
   "extra": {
    "flames_ignited": null,
    "notes": null,
@@ -42458,7 +42490,7 @@
   "test_id": "21046",
   "date": "2021-02-15",
   "year": 2021,
-  "fuel": "30% C2H5",
+  "fuel": "30% C2H4",
   "material": null,
   "sample_shape": null,
   "sample_size": null,
@@ -42475,7 +42507,9 @@
   "outcome": null,
   "is_test": true,
   "duplicate_of": null,
-  "flags": [],
+  "flags": [
+   "fixed spreadsheet auto-increment typo: '30% C2H5' -> '30% C2H4'"
+  ],
   "extra": {
    "flames_ignited": null,
    "notes": null,

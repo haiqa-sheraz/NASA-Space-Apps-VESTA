@@ -56,7 +56,7 @@ export default async function StudyPage({ params }: Props) {
 
   return (
     <>
-      <AskContextSetter context={{ kind: "study", id: study.id, label: study.short_name }} />
+      <AskContextSetter context={{ kind: "study", id: study.id, label: study.short_name, ground: study.environment === "ground" }} />
 
       {/* Header */}
       <section className="wrap pt-6 pb-10">

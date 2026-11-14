@@ -115,6 +115,14 @@
   .input:has(input:disabled) { opacity: 0.6; }
   .input input:disabled { cursor: not-allowed; }
 
+  /* ---------- Ask AI answers (panel and Compare) ---------- */
+  .spin { animation: vesta-spin 1s linear infinite; }
+  .notfound { padding: 20px; border: 1px dashed var(--caution); border-radius: var(--r-data); background: var(--caution-tint); }
+  .notice-block { padding: 14px 16px; border: 1px solid var(--rule); border-radius: var(--r-data); background: var(--surface-2); }
+  .ans-foot { padding-top: 12px; border-top: 1px solid var(--rule); }
+  .ans-sources { padding-left: 0; }
+  .ans-sources a { font-weight: 700; }
+
   /* ---------- Data: prediction tool ---------- */
   .predict-grid { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 32px; align-items: start; }
 

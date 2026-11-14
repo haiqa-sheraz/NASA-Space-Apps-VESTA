@@ -19,8 +19,9 @@ import { GithubIcon } from "@/components/ui/GithubIcon";
 import { PageHero } from "@/components/ui/PageHero";
 import { SourceLine } from "@/components/ui/SourceChip";
 import { AI_CREDITS, NASA_WEB_CITATIONS, NTRS_CITATIONS, OTHER_CITATIONS, SOFTWARE_CREDITS, SPINOFF_CITATIONS, type Citation } from "@/lib/citations";
-import { formatAuthor, getFacts, getStudies, getStudyProfiles } from "@/lib/data/server";
-import { formatCount, plural } from "@/lib/format";
+import { modelName } from "@/lib/ask/types";
+import { formatAuthor, getFacts, getSavedAnswers, getStudies, getStudyProfiles } from "@/lib/data/server";
+import { formatCount, joinAnd, plural } from "@/lib/format";
 import { missionView } from "@/lib/mission-view";
 import { DEFAULT_CUSTOM } from "@/lib/missions";
 import { SITE } from "@/lib/site";
@@ -87,6 +88,10 @@ export default function AboutPage() {
   const byErnie = profiles.filter((p) => p.model === ERNIE).length;
   const byNemotron = profiles.filter((p) => p.model === NEMOTRON).length;
   if (byErnie + byNemotron !== profiles.length) throw new Error("A study profile names a model the About page doesn't list; review the AI-use section.");
+  // Saved Ask AI answers: how many, and which models wrote them (the free router names the model it picked).
+  const savedAnswers = getSavedAnswers().answers.filter((a) => !a.notFound && a.model);
+  const savedCount = savedAnswers.length;
+  const savedModels = [...new Set(savedAnswers.map((a) => modelName(a.model)))];
   const moon = missionView("moon", DEFAULT_CUSTOM);
   const moonChip = (kind: "oxygen" | "pressure") => moon.chips.find((c) => c.kind === kind)!.text;
   const solids = Math.round(facts.highest_oxygen_solid_materials_pct);
@@ -207,7 +212,8 @@ export default function AboutPage() {
           <p className="body muted">
             AI wrote the summaries, results, findings and ranking reasons once, ahead of time, from each study&apos;s reports. A script then looked up
             every number in those texts in its source, and match scores are computed by code from the test tables, not by AI. Only Ask AI and the
-            Compare explanation run live.
+            Compare explanation run live: a keyword search finds the best-matching passages in the NASA reports, and the AI answers from those
+            passages and the PSI test tables alone, with the sources under the answer. If no passage matches, Vesta says so without asking the AI.
           </p>
         </div>
       </section>
@@ -290,7 +296,12 @@ export default function AboutPage() {
                 {plural(byErnie, "study profile", "study profiles")}. Nemotron 3.5 Super VL (NVIDIA) read scanned pages and wrote the other{" "}
                 {formatCount(byNemotron)}. Both ran through OpenRouter, once, before the site was built.
               </li>
-              <li className="body">Ask AI answers questions live, using only our NASA sources, and cites them.</li>
+              <li className="body">
+                Ask AI and the Compare explanation answer live with Nemotron 3.5 Super VL (NVIDIA), with its thinking turned off. When it is busy,
+                ERNIE 5.5 Flash answers, then OpenRouter&apos;s free router. They use only our NASA sources and cite them.
+                {savedCount > 0 &&
+                  ` ${plural(savedCount, "suggested question has a saved answer", "suggested questions have saved answers")}, written the same way by ${joinAnd(savedModels)}.`}
+              </li>
               <li className="body">Every piece of AI-written text on the site carries an &ldquo;AI-written&rdquo; label.</li>
             </ul>
           </div>

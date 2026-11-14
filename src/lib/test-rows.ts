@@ -68,6 +68,7 @@ const QUALITY_FLAGS: RegExp[] = [
   /^final O2 .* check against the report$/,
   /^marked '.*' in the table/,
   /^pressure recorded as .* treated as missing$/,
+  /^air rate recorded as .* treated as missing$/,
 ];
 
 const CLEANING_NOTES: RegExp[] = [

@@ -3,6 +3,7 @@
 import { ArrowLeftRight, FileText, Plus, X } from "lucide-react";
 import Link from "next/link";
 import { Fragment, useCallback, useEffect, useId, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
+import { CompareExplain } from "@/components/compare/CompareExplain";
 import { SourceChip, SourceLine } from "@/components/ui/SourceChip";
 import { AiLabel, StudyTags } from "@/components/ui/Tags";
 import type { CompareRange, CompareStudy, CompareValue } from "@/lib/data/types";
@@ -176,6 +177,7 @@ export function CompareClient({ studies }: { studies: CompareStudy[] }) {
         <>
           <SideBySide studies={selected} onRemove={remove} />
           <RangeCharts studies={selected} />
+          <CompareExplain ids={selected.map((s) => s.id)} names={selected.map((s) => s.shortName)} />
         </>
       )}
     </section>

@@ -133,7 +133,7 @@
     "oxygen_pct_range": null,
     "pressure_atm_range": null,
     "airflow_cm_s_range": [
-      -5.92,
+      0.66,
       85.28
     ],
     "fuels": [
@@ -408,7 +408,6 @@
     "fuels": [
       "100% C2H4",
       "50% C2H4",
-      "100%C2H4",
       "100% CH4"
     ],
     "materials": [],
@@ -417,7 +416,8 @@
     "thin_table": null,
     "known_mismatches": [],
     "notes": [
-      "Each row is a test day; oxygen cells list several levels. Imitates burning solids with a gas burner."
+      "Each row is a test day; oxygen cells list several levels. Imitates burning solids with a gas burner.",
+      "Fuel spelling unified ('100%C2H4' = '100% C2H4')."
     ]
   },
   {
@@ -456,17 +456,10 @@
     "airflow_cm_s_range": null,
     "fuels": [
       "40% CH4",
-      "100% CH4",
       "100% C2H4",
-      "100% C2H5",
-      "100% C2H6",
-      "100% C2H7",
-      "100% C2H8",
-      "100% C2H9",
-      "100% C2H10",
-      "100% C2H11",
       "50% C2H4",
-      "50% C2H5"
+      "100% CH4",
+      "30% C2H4"
     ],
     "materials": [],
     "outcomes": {},
@@ -474,7 +467,7 @@
     "thin_table": null,
     "known_mismatches": [],
     "notes": [
-      "Fuel bottle names had spreadsheet auto-increment typos ('40% CH5' ... 'CH14'); fixed to CH4."
+      "Fuel bottle names had spreadsheet auto-increment typos ('40% CH5' ... 'CH14', '100% C2H5' ... 'C2H11'); fixed to CH4 and C2H4."
     ]
   },
   {
