@@ -1,0 +1,145 @@
+{
+  "study_id": "cfi",
+  "model": "nvidia/nemotron-3.5-super-vl:free",
+  "seconds": 9.7,
+  "generated": "2026-11-14T14:21:05",
+  "sources": [
+    {
+      "label": "D1",
+      "title": "CFI final report (PSI-39)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39",
+      "file": "PSI\\CFI PSI-39\\CFI Science Final Report.pdf"
+    }
+  ],
+  "numbers_not_in_sources": [],
+  "word_counts": {
+    "summary_simple": 32,
+    "summary_expert": 67
+  },
+  "profile": {
+    "summary_simple": "NASA studied cool flames on the space station. These are low-temperature flames around fuel droplets. Scientists tested different fuels, pressures, and helium mixtures to learn how cool flames burn and go out.",
+    "summary_expert": "The Cool Flames Investigation (CFI) ran on the ISS from January through September 2017 in the Combustion Integrated Rack. It studied n-dodecane, n-dodecane/iso-dodecane mixtures (60/40 and 75/25 by mass), and farnesane droplets at pressures from 0.5 to 5 atm and oxygen levels from 17 to 21 percent. Tests included helium dilution of 29 and 59 percent. Sensors measured droplet size, flame size, OH* emission, and radiant output.",
+    "experiment_goal": "The study set out to learn how cool flame combustion behaves for pure fuels and fuel mixtures over a range of pressures and helium dilution.",
+    "key_facts": {
+      "fuels": [
+        "60/40 n-dodecane/iso-dodecane",
+        "75/25 n-dodecane/iso-dodecane",
+        "n-dodecane"
+      ],
+      "sample_shapes": [
+        "droplet"
+      ],
+      "oxygen": "17 to 21 percent",
+      "pressure": "0.5 to 5 atm",
+      "airflow": null,
+      "gravity": "microgravity",
+      "what_changed": [
+        "fuel type",
+        "pressure",
+        "helium dilution"
+      ],
+      "sensors": [
+        "backlit black-and-white camera",
+        "UV-sensitive camera for OH* emission",
+        "color camera",
+        "narrow-band radiometers",
+        "wide-band radiometers"
+      ],
+      "number_of_tests": "87"
+    },
+    "results": [
+      {
+        "result_simple": "Cool flames can burn steadily around droplets at low temperatures and then go out as the droplet shrinks.",
+        "result_expert": "Cool flames occur in the negative temperature coefficient region at 700 to 900 K. Extinction happens when the droplet gets small enough that heat loss exceeds heat release from low-temperature chemistry.",
+        "safety_meaning": "Cool flames can persist unseen and leave partially burned fuel vapor, which may reignite later.",
+        "job": "detect",
+        "source": "D1 p3",
+        "source_detail": {
+          "title": "CFI final report (PSI-39)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39",
+          "page": 3
+        }
+      },
+      {
+        "result_simple": "Adding helium made cool flames go out sooner, leaving a larger droplet behind.",
+        "result_expert": "Increased helium dilution leads to earlier cool flame extinction and a larger extinction diameter.",
+        "safety_meaning": "Diluent gases change extinction behavior and must be considered in fire safety models.",
+        "job": "prevent",
+        "source": "D1 p9",
+        "source_detail": {
+          "title": "CFI final report (PSI-39)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39",
+          "page": 9
+        }
+      },
+      {
+        "result_simple": "Above 2 atm, flames repeatedly switched between hot and cool modes until the fuel was gone.",
+        "result_expert": "At pressures above approximately 2 atm, multiple reignition cycles occurred, alternating hot flame extinction, cool flame, and reignition until complete fuel consumption.",
+        "safety_meaning": "Fires at higher pressure may reignite after appearing to go out.",
+        "job": "put_out",
+        "source": "D1 p6",
+        "source_detail": {
+          "title": "CFI final report (PSI-39)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39",
+          "page": 6
+        }
+      },
+      {
+        "result_simple": "Soot shells around droplets became unstable and unclear at higher pressures.",
+        "result_expert": "At higher pressures, the soot shell surrounding the droplet became diffuse and ill-defined, and the mechanism is not fully understood.",
+        "safety_meaning": "Soot behavior at pressure affects smoke detection and fire monitoring.",
+        "job": "detect",
+        "source": "D1 p6",
+        "source_detail": {
+          "title": "CFI final report (PSI-39)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39",
+          "page": 6
+        }
+      }
+    ],
+    "jobs": [],
+    "equipment": [
+      {
+        "area": "detectors",
+        "note": "Cool flame and soot behavior inform smoke and flame detection design."
+      },
+      {
+        "area": "extinguishers",
+        "note": "Reignition and helium dilution results inform extinguisher effectiveness."
+      },
+      {
+        "area": "materials",
+        "note": "Fuel chemistry results help select safer spacecraft materials."
+      }
+    ],
+    "earth_uses": [
+      "validating chemical kinetic mechanisms for HCCI and RCCI engines",
+      "fuel reformulation technologies to produce hydrogen for fuel cell applications"
+    ],
+    "glossary": [
+      {
+        "term": "cool flame",
+        "definition": "A low-temperature flame controlled by low-temperature chemistry in the NTC region, around 700 to 900 K."
+      },
+      {
+        "term": "NTC region",
+        "definition": "Negative temperature coefficient region where reaction rate decreases as temperature increases."
+      },
+      {
+        "term": "OH*",
+        "definition": "Hydroxyl radical emission used to image flame size."
+      },
+      {
+        "term": "extinction diameter",
+        "definition": "The droplet size at which a cool flame becomes unstable and goes out."
+      }
+    ],
+    "open_questions": [
+      "The mechanism behind soot-shell instability at higher pressures is not fully understood.",
+      "Residual soot surrounding the droplet after hot flame extinction at higher pressures is not fully understood.",
+      "All CFI data has yet to be fully analyzed and interpreted using theoretical and numerical models."
+    ],
+    "ai_jobs": [],
+    "jobs_source": "AI (top 2)"
+  }
+}

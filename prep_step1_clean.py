@@ -4,17 +4,6 @@ Flame in Freefall: data prep, steps 1 and 2.
 Step 1  Clean every PSI experiment table into one tidy tests table (fixes the known data quirks).
 Step 2  Compute the site's facts in code: key numbers, per-study summaries, oxygen coverage, gaps.
 
-Usage:
-  python prep_step1_clean.py --data "data" --citations "citations_updated.docx"
-  (--citations is optional; it adds full names, years, authors and DOIs from your citations file)
-
-Output (folder prep_output/):
-  tests.csv / tests.json   one row per test, same columns for every study
-  studies.json             all 24 studies with their metadata and summaries
-  facts.json               key numbers and coverage, computed from the data
-  quality_report.md        every fix and flag, for a human to check
-
-Needs only Python 3.10+ (no extra packages).
 """
 
 import argparse

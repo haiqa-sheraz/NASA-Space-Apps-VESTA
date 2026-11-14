@@ -1,0 +1,57 @@
+[
+  {
+    "id": "f1",
+    "simple": "A plastic rod kept burning at 13.6% oxygen in space but stopped at 16% on Earth.",
+    "expert": "In BASS-II microgravity concurrent stagnation-point flow, a ¼-inch PMMA rod sustained steady flame spread at 13.6% oxygen; 1-g blowoff occurred at 16% oxygen.",
+    "job": "prevent",
+    "study_id": "bass-ii",
+    "sources": [
+      "NTRS 20160000593"
+    ],
+    "numbers_not_in_sources": []
+  },
+  {
+    "id": "f2",
+    "simple": "For thin plastic sheets, flames died out below about 2 cm/s of airflow and blew out near 40 cm/s.",
+    "expert": "For 0.1 mm thick PMMA sheets in opposed flow, flames radiatively quenched below 2 cm/s and neared blow-off extinction at 40 cm/s.",
+    "job": "prevent",
+    "study_id": "bass-ii",
+    "sources": [
+      "NTRS 20160000593"
+    ],
+    "numbers_not_in_sources": []
+  },
+  {
+    "id": "f3",
+    "simple": "The station's smoke detector missed Kapton smoke in half the SAME tests.",
+    "expert": "During microgravity SAME tests, the ISS smoke detector failed to alarm for Kapton smoke in half of the tests.",
+    "job": "detect",
+    "study_id": "same",
+    "sources": [
+      "Fire detection white paper"
+    ],
+    "numbers_not_in_sources": []
+  },
+  {
+    "id": "f4",
+    "simple": "Large fuel drops kept burning with an invisible cool flame after the visible flame went out.",
+    "expert": "In microgravity at 0.5-1.0 atm and 14%-25% oxygen by volume, large n-heptane, n-octane, and n-decane droplets burned quasi-steadily as low-temperature cool flames after visible-flame radiative extinction.",
+    "job": "put_out",
+    "study_id": "flex",
+    "sources": [
+      "NTRS 20140006750"
+    ],
+    "numbers_not_in_sources": []
+  },
+  {
+    "id": "f5",
+    "simple": "No solid material in PSI was tested above about 22% oxygen, but a Moon base may use 30% or more.",
+    "expert": "BASS-II tests peaked at 22.2% oxygen and had no tests at 30% or more; Moon base air may use 30% oxygen or more.",
+    "job": "prevent",
+    "study_id": null,
+    "sources": [
+      "computed from PSI tables"
+    ],
+    "numbers_not_in_sources": []
+  }
+]

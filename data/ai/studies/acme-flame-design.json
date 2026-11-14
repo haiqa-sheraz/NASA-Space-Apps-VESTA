@@ -1,0 +1,182 @@
+{
+  "study_id": "acme-flame-design",
+  "model": "baidu/ernie-5.5-flash-preview:free",
+  "seconds": 61.3,
+  "generated": "2026-11-14T14:30:51",
+  "sources": [
+    {
+      "label": "D1",
+      "title": "ACME Flame Design final report (PSI-10)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10",
+      "file": "PSI\\ACME Flame Design PSI-10\\PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf"
+    },
+    {
+      "label": "D2",
+      "title": "ACME on the ISS (poster, NTRS 20210015913)",
+      "url": null,
+      "file": "NTRS Reference Documents\\PS-03403 ACME on the ISS.pdf"
+    },
+    {
+      "label": "D3",
+      "title": "ACME: Advanced Combustion via Microgravity Experiments (poster, NTRS 20220015583)",
+      "url": null,
+      "file": "NTRS Reference Documents\\PS-03790 ACME poster 13thUSNCM 2023.pdf"
+    },
+    {
+      "label": "D4",
+      "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+      "url": null,
+      "file": "combustion science mini book.pdf"
+    }
+  ],
+  "numbers_not_in_sources": [
+    "0.43"
+  ],
+  "word_counts": {
+    "summary_simple": 64,
+    "summary_expert": 133
+  },
+  "profile": {
+    "earth_uses": [
+      "Design of more efficient, less-polluting burners and combustion devices.",
+      "Oxygen-enriched combustion to create more stable, soot-free flames.",
+      "Soot control to improve efficiency, lower emissions, and extend equipment lifetime."
+    ],
+    "equipment": [
+      {
+        "area": "extinguishers",
+        "note": "Understanding radiative extinction helps predict how flames self-extinguish, informing spacecraft fire-safety planning."
+      },
+      {
+        "area": "ventilation",
+        "note": "Critical extinction temperature (1130 K) and reactant mass-flux limits help set safe oxygen and flow conditions."
+      }
+    ],
+    "experiment_goal": "To learn how oxygen concentration, fuel dilution, flow direction, and pressure control soot formation and flame extinction in nonpremixed flames, so that cleaner, more stable, and safer flames can be designed.",
+    "glossary": [
+      {
+        "definition": "A flame where fuel and oxidizer stay separate and burn where they meet, not mixed beforehand.",
+        "term": "Diffusion (nonpremixed) flame"
+      },
+      {
+        "definition": "The moment tiny solid carbon particles first start to form inside a flame.",
+        "term": "Soot inception"
+      },
+      {
+        "definition": "A flame going out because heat lost as radiation exceeds the heat the burning releases.",
+        "term": "Radiative extinction"
+      },
+      {
+        "definition": "Very weak gravity, as on the ISS, where buoyant rising of hot gas is nearly absent.",
+        "term": "Microgravity"
+      }
+    ],
+    "jobs": [
+      "prevent",
+      "put_out"
+    ],
+    "key_facts": {
+      "airflow": "Reactant mass flow rate 0.6–12.2 mg/s (normal flames) and 2.3–11.3 mg/s (inverse flames); no bulk airflow velocity reported.",
+      "fuels": [
+        "Ethylene (C2H4)",
+        "Propane (C3H8)"
+      ],
+      "gravity": "Microgravity aboard the ISS (required levels on the order of 10 μg; jitter-free below 10^-5 g).",
+      "number_of_tests": "327",
+      "oxygen": "Oxygen mole fraction about 0.20–0.85 (normal flames up to 0.40; inverse-flame burner supply 0.40–0.85); balance nitrogen.",
+      "pressure": "About 0.43–3.0 atm (chamber limit raised from 1.5 atm to 3 atm for the final round-2 tests).",
+      "sample_shapes": [
+        "Spherical diffusion flames on a porous stainless-steel sphere, 6.35 mm (0.25 in) diameter"
+      ],
+      "sensors": [
+        "Color video cameras",
+        "Thin-filament pyrometry (silicon-carbide fibers) for gas temperature",
+        "Thermocouples for burner temperature",
+        "Photomultiplier tubes for flame emission",
+        "Radiometers",
+        "Gas chromatograph (sometimes)"
+      ],
+      "what_changed": [
+        "Oxygen concentration",
+        "Fuel dilution with nitrogen (stoichiometric mixture fraction, Zst)",
+        "Reactant mass flow rate",
+        "Chamber pressure",
+        "Flame direction (normal vs. inverse)"
+      ]
+    },
+    "open_questions": [
+      "Whether permanently-blue (soot-free) flames are caused mainly by convection direction or by flame structure is not known.",
+      "Data analysis and publication of results were still underway at the time of the report.",
+      "Tests with methane fuel, carbon-dioxide diluent, and coflow-burner flames were planned but not conducted and would add value."
+    ],
+    "results": [
+      {
+        "job": "prevent",
+        "result_expert": "Across oxygen mole fractions of 0.20–0.85 and varied flow rates, all normal and inverse ethylene flames extinguished at a critical temperature of 1130 K, a fuel-based mass flux of 0.2 g/m²·s (normal), and an oxygen-based mass flux of 0.68 g/m²·s (inverse).",
+        "result_simple": "Every flame burned on the station went out at the same critical temperature, 1130 K, and at set fuel or oxygen flow rates.",
+        "safety_meaning": "Knowing the exact conditions where flames die helps set safe oxygen and flow limits for spacecraft.",
+        "source": "D1 p26",
+        "source_detail": {
+          "title": "ACME Flame Design final report (PSI-10)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10",
+          "page": 26
+        }
+      },
+      {
+        "job": "put_out",
+        "result_expert": "Microgravity flames grow as the diffusion-limited system approaches steady state; as temperature falls, radiation losses rise until they approach the chemical heat release, causing radiative extinction (radiation-induced growth).",
+        "result_simple": "As the flames slowly grew, they lost more and more heat as radiation until that loss finally snuffed them out.",
+        "safety_meaning": "Shows how flames can die out on their own as they enlarge, a natural self-extinguishing process relevant to spacecraft.",
+        "source": "D1 p26",
+        "source_detail": {
+          "title": "ACME Flame Design final report (PSI-10)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10",
+          "page": 26
+        }
+      },
+      {
+        "job": "prevent",
+        "result_expert": "Steady-state microgravity spherical diffusion flames can exist despite radiation heat loss, provided the steady-state flame size stays below the radiative-extinction size and the flame develops before radiation drops it below 1130 K.",
+        "result_simple": "Small, slow-growing flames can reach a steady state and keep burning, as long as they stay below the extinction size.",
+        "safety_meaning": "Some flames can persist for a long time, so certain conditions sustain fire rather than letting it fade.",
+        "source": "D1 p26",
+        "source_detail": {
+          "title": "ACME Flame Design final report (PSI-10)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10",
+          "page": 26
+        }
+      },
+      {
+        "job": "none",
+        "result_expert": "In an infinite spherical domain, the diffusion-controlled system needs on the order of 100,000 s to reach steady state; aboard the ISS, steady-state-like flames were observed for up to 870 s despite the finite boundary.",
+        "result_simple": "In this weightless setup, flames take a very long time to settle; the model needs about 100,000 seconds, though real flames were watched up to 870 seconds.",
+        "safety_meaning": "Microgravity flames evolve very slowly, so a fire's behavior may change gradually rather than quickly.",
+        "source": "D1 p26",
+        "source_detail": {
+          "title": "ACME Flame Design final report (PSI-10)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10",
+          "page": 26
+        }
+      },
+      {
+        "job": "prevent",
+        "result_expert": "A simple equation estimates the flame size (peak-temperature location) at extinction for any atmospheric-pressure ethylene spherical diffusion flame from the reactant mass flow rate alone.",
+        "result_simple": "The team made a simple formula that predicts a flame's size when it goes out, using only how fast gas flows in.",
+        "safety_meaning": "Lets engineers predict when and where a flame will extinguish from flow rate, aiding spacecraft fire modeling.",
+        "source": "D1 p25",
+        "source_detail": {
+          "title": "ACME Flame Design final report (PSI-10)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10",
+          "page": 25
+        }
+      }
+    ],
+    "summary_expert": "Flame Design burned ethylene (C2H4) and propane (C3H8), diluted with nitrogen, in normal and inverse spherical diffusion flames on a 6.35 mm porous sphere aboard the ISS. Tests ran at oxygen mole fractions of about 0.20–0.85, chamber pressures near 0.43–3.0 atm, and reactant mass flow rates of 0.6–12.2 mg/s. In microgravity, buoyancy is absent, so flames grow slowly toward steady state and lose heat by radiation. Across this wide range, all flames extinguished at a critical temperature of 1130 K, at a fuel-based mass flux of 0.2 g/m²·s (normal) and an oxygen-based mass flux of 0.68 g/m²·s (inverse). Steady-state flames can persist if they stay below the radiative-extinction size. The team developed an equation to estimate flame size at extinction from reactant flow rate alone, informing cleaner burner design and spacecraft fire safety.",
+    "summary_simple": "Scientists burned ethylene and propane in near-weightless conditions on the International Space Station. Without gravity pulling hot gas upward, flames form slow-growing spheres around a porous burner. The team studied how these flames make soot and when they finally go out. They found every flame died at the same critical temperature, helping them learn how to build cleaner, safer flames for spacecraft and engines.",
+    "ai_jobs": [
+      "prevent",
+      "put_out"
+    ],
+    "jobs_source": "AI (top 2)"
+  }
+}

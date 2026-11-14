@@ -1,0 +1,191 @@
+{
+  "study_id": "acme-s-flame",
+  "model": "nvidia/nemotron-3.5-super-vl:free",
+  "seconds": 18.5,
+  "generated": "2026-11-14T14:29:47",
+  "sources": [
+    {
+      "label": "D1",
+      "title": "ACME s-Flame final report (PSI-23)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23",
+      "file": "PSI\\ACME s-flame PSI-23\\s_Flame_final_report_20210729.pdf"
+    },
+    {
+      "label": "D2",
+      "title": "ACME on the ISS (poster, NTRS 20210015913)",
+      "url": null,
+      "file": "NTRS Reference Documents\\PS-03403 ACME on the ISS.pdf"
+    },
+    {
+      "label": "D3",
+      "title": "ACME: Advanced Combustion via Microgravity Experiments (poster, NTRS 20220015583)",
+      "url": null,
+      "file": "NTRS Reference Documents\\PS-03790 ACME poster 13thUSNCM 2023.pdf"
+    },
+    {
+      "label": "D4",
+      "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+      "url": null,
+      "file": "combustion science mini book.pdf"
+    }
+  ],
+  "numbers_not_in_sources": [],
+  "word_counts": {
+    "summary_simple": 39,
+    "summary_expert": 81
+  },
+  "profile": {
+    "summary_simple": "NASA studied spherical flames in microgravity on the ISS using hydrogen, methane, and ethylene fuels. Scientists wanted to learn how these flames grow and go out without gravity. The results help improve computer models of fire and spacecraft safety.",
+    "summary_expert": "ACME s-Flame ran 18 tests on the ISS during 2019-2020 inside the Combustion Integrated Rack at about 1 atm. Fuels included hydrogen, methane, and ethylene diluted with nitrogen or helium, burning in oxygen atmospheres of about 21% or 30%. Tests used a 6.35 mm porous spherical burner and flow rates from about 1 to 17.5 cc/s. Sensors included cameras, radiometers, PMTs, thermocouples, and a gas chromatograph. The study examined radiative and kinetic extinction limits, flame oscillations, and soot behavior in microgravity.",
+    "experiment_goal": "The study set out to learn how spherical diffusion flames grow, oscillate, and extinguish in microgravity to improve chemical kinetic and transport models.",
+    "key_facts": {
+      "fuels": [
+        "50% C2H4 with N2",
+        "45% CH4 with N2",
+        "100% H2",
+        "44.4% H2 with CH4",
+        "66.7% H2 with CH4",
+        "25% H2, 20% CH4, with He",
+        "20% H2, 25% CH4, with He",
+        "30% H2, 15% CH4, with He",
+        "45% H2 with He",
+        "45% CH4 with He",
+        "20% C2H4 with He",
+        "25% C2H4 with He"
+      ],
+      "sample_shapes": [
+        "spherical diffusion flame from porous spherical burner"
+      ],
+      "oxygen": "21-30%",
+      "pressure": "1 atm",
+      "airflow": null,
+      "gravity": "microgravity",
+      "what_changed": [
+        "fuel mixture",
+        "diluent (nitrogen or helium)",
+        "oxygen concentration (~21% or ~30%)",
+        "flow rate"
+      ],
+      "sensors": [
+        "color cameras",
+        "radiometers",
+        "photomultiplier tubes",
+        "thermocouples",
+        "gas chromatograph",
+        "thin filament pyrometry fibers"
+      ],
+      "number_of_tests": "18"
+    },
+    "results": [
+      {
+        "result_simple": "Flames went out from radiative heat loss at high flow rates and from chemistry limits at low flow rates.",
+        "result_expert": "Both radiative extinction at high system Damköhler number and kinetic extinction at low system Damköhler number were observed for ethylene and methane mixtures.",
+        "safety_meaning": "Shows how flames can extinguish in spacecraft atmospheres, helping predict fire behavior.",
+        "job": "prevent",
+        "source": "D1 p26",
+        "source_detail": {
+          "title": "ACME s-Flame final report (PSI-23)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23",
+          "page": 26
+        }
+      },
+      {
+        "result_simple": "Soot appeared only during ignition and disappeared as flames became steady.",
+        "result_expert": "Soot was observed only during ignition for low ethylene contents and low flow rates, then vanished as flames established.",
+        "safety_meaning": "Helps crew understand early soot signals during fire ignition.",
+        "job": "detect",
+        "source": "D1 p26",
+        "source_detail": {
+          "title": "ACME s-Flame final report (PSI-23)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23",
+          "page": 26
+        }
+      },
+      {
+        "result_simple": "Hydrogen flames were very dim and hard to see with standard cameras.",
+        "result_expert": "Pure hydrogen and diluted hydrogen flames were not apparent or hardly visible to the DataCam and analog operations camera.",
+        "safety_meaning": "Indicates hydrogen fires may be hard for crew to see visually.",
+        "job": "detect",
+        "source": "D1 p18",
+        "source_detail": {
+          "title": "ACME s-Flame final report (PSI-23)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23",
+          "page": 18
+        }
+      },
+      {
+        "result_simple": "Some flames flashed or re-ignited before final extinction in helium mixtures.",
+        "result_expert": "For helium-diluted mixtures, flames seemed to disappear and re-ignite with a flash before final extinction.",
+        "safety_meaning": "Highlights unexpected flame behavior that could affect suppression tactics.",
+        "job": "put_out",
+        "source": "D1 p28",
+        "source_detail": {
+          "title": "ACME s-Flame final report (PSI-23)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23",
+          "page": 28
+        }
+      },
+      {
+        "result_simple": "Flame oscillations and instabilities appeared near extinction limits.",
+        "result_expert": "Flame-front instabilities and wavy oscillating behavior were observed just prior to extinction for some mixtures.",
+        "safety_meaning": "Instability signals may warn of approaching flame extinction or transition.",
+        "job": "detect",
+        "source": "D1 p26",
+        "source_detail": {
+          "title": "ACME s-Flame final report (PSI-23)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23",
+          "page": 26
+        }
+      }
+    ],
+    "jobs": [
+      "prevent",
+      "detect"
+    ],
+    "equipment": [
+      {
+        "area": "detectors",
+        "note": "OH* and CH* chemiluminescence sensors can detect flame behavior near extinction."
+      },
+      {
+        "area": "ventilation",
+        "note": "Oxygen concentration changes affect ignition and extinction, informing cabin airflow design."
+      },
+      {
+        "area": "materials",
+        "note": "Soot onset data helps select materials that minimize smoke in spacecraft fires."
+      }
+    ],
+    "earth_uses": [
+      "lean-burn engines for improved efficiency and reduced pollutant emissions"
+    ],
+    "glossary": [
+      {
+        "term": "diffusion flame",
+        "definition": "A flame where fuel and oxidizer mix by diffusion rather than premixing."
+      },
+      {
+        "term": "microgravity",
+        "definition": "Near-weightlessness on the ISS that removes buoyancy from flames."
+      },
+      {
+        "term": "radiative extinction",
+        "definition": "Flame goes out because heat radiates away faster than it is replaced."
+      },
+      {
+        "term": "kinetic extinction",
+        "definition": "Flame goes out because chemical reactions cannot sustain it at low flow rates."
+      }
+    ],
+    "open_questions": [
+      "Data analysis and publication of results is still underway.",
+      "The flash phenomenon in helium-diluted flames is under investigation.",
+      "Kinetic extinction for hydrogen mixtures needs further analysis."
+    ],
+    "ai_jobs": [
+      "prevent",
+      "detect"
+    ],
+    "jobs_source": "AI (top 2)"
+  }
+}

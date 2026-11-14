@@ -1,0 +1,198 @@
+{
+  "study_id": "flex",
+  "model": "baidu/ernie-5.5-flash-preview:free",
+  "seconds": 47.0,
+  "generated": "2026-11-14T14:17:58",
+  "sources": [
+    {
+      "label": "D1",
+      "title": "FLEX: Flammability and Extinction Investigations (2004 workshop)",
+      "url": "https://ntrs.nasa.gov/citations/20040142397",
+      "file": "NTRS Reference Documents\\20040142397.pdf"
+    },
+    {
+      "label": "D2",
+      "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+      "url": "https://ntrs.nasa.gov/citations/20120015928",
+      "file": "NTRS Reference Documents\\20120015928.pdf"
+    },
+    {
+      "label": "D3",
+      "title": "Methanol Droplet Combustion in Oxygen-Inert Environments in Microgravity",
+      "url": "https://ntrs.nasa.gov/citations/20130014061",
+      "file": "NTRS Reference Documents\\20130014061.pdf"
+    },
+    {
+      "label": "D4",
+      "title": "Cool-Flame Extinction during n-Alkane Droplet Combustion in Microgravity",
+      "url": "https://ntrs.nasa.gov/citations/20140006750",
+      "file": "NTRS Reference Documents\\20140006750.pdf"
+    },
+    {
+      "label": "D5",
+      "title": "Detailed Results From the Flame Extinguishment Experiment (FLEX)",
+      "url": "https://ntrs.nasa.gov/citations/20150023456",
+      "file": "NTRS Reference Documents\\20150023456.pdf"
+    },
+    {
+      "label": "D6",
+      "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+      "url": null,
+      "file": "combustion science mini book.pdf"
+    },
+    {
+      "label": "D7",
+      "title": "NASA ScienceCasts: The Power of Studying Combustion on the ISS (transcript)",
+      "url": null,
+      "file": "NASA ScienceCasts - The Power of Studying Combustion on the ISS.txt"
+    }
+  ],
+  "numbers_not_in_sources": [],
+  "word_counts": {
+    "summary_simple": 62,
+    "summary_expert": 123
+  },
+  "profile": {
+    "earth_uses": [
+      "Better engine design for higher efficiency and lower emissions, including alternative fuels and biofuels.",
+      "Improved understanding of cool flames could reduce engine knock and raise engine efficiency and mileage.",
+      "Validated chemical kinetic models for practical liquid fuels such as diesel and jet fuel."
+    ],
+    "equipment": [
+      {
+        "area": "extinguishers",
+        "note": "Data guides selection and design of inert-gas suppressants such as CO2, N2, and He for spacecraft."
+      },
+      {
+        "area": "detectors",
+        "note": "Flames are harder to detect and cool flames are invisible, informing better spacecraft fire detectors."
+      },
+      {
+        "area": "materials",
+        "note": "The lower limiting oxygen index informs safe cabin oxygen levels and atmosphere choices."
+      }
+    ],
+    "experiment_goal": "To measure how well inert gases extinguish single fuel-droplet flames in microgravity and to find the lowest oxygen level that can sustain combustion.",
+    "glossary": [
+      {
+        "definition": "Very weak gravity, as aboard the ISS, where buoyancy and convection nearly disappear.",
+        "term": "Microgravity"
+      },
+      {
+        "definition": "The lowest oxygen concentration that will just keep a flame burning.",
+        "term": "Limiting oxygen index (LOI)"
+      },
+      {
+        "definition": "A flame where fuel and oxygen meet and burn at their boundary, not premixed.",
+        "term": "Diffusion flame"
+      },
+      {
+        "definition": "A faint, low-temperature flame from slow chemistry that can burn after a hot flame goes out.",
+        "term": "Cool flame"
+      }
+    ],
+    "jobs": [
+      "put_out"
+    ],
+    "key_facts": {
+      "airflow": null,
+      "fuels": [
+        "Methanol",
+        "n-heptane"
+      ],
+      "gravity": "Microgravity (aboard the ISS)",
+      "number_of_tests": "274",
+      "oxygen": "12.0–34.0% oxygen (balance inert diluents)",
+      "pressure": "0.6925–3.0525 atm",
+      "sample_shapes": [
+        "Spherical fuel droplets, about 2–4 mm initial diameter"
+      ],
+      "sensors": [
+        "Backlit droplet image-capture camera",
+        "UV-sensitive flame-imaging camera",
+        "CCD color camera",
+        "Wide-band and narrow-band radiometers"
+      ],
+      "what_changed": [
+        "Fuel type (methanol or n-heptane)",
+        "Oxygen and inert-diluent concentrations",
+        "Ambient pressure",
+        "Initial droplet diameter"
+      ]
+    },
+    "open_questions": [
+      "The pre-conditions, chemistry, and mechanisms for cool-flame spontaneous re-ignition are poorly understood.",
+      "Whether a cool flame can reignite in the hot mode and restart an extinguished fire is unresolved.",
+      "How to generalize these results to other configurations and to microgravity fire suppression is still underway."
+    ],
+    "results": [
+      {
+        "job": "prevent",
+        "result_expert": "Microgravity sustains flaming combustion at oxygen concentrations as much as 2–3% lower than under normal gravity, yielding a lower limiting oxygen index for steady combustion.",
+        "result_simple": "Flames in space keep burning at oxygen levels about 2–3% lower than on Earth.",
+        "safety_meaning": "Spacecraft atmospheres can support fire at oxygen levels considered safe on Earth.",
+        "source": "D2 p13",
+        "source_detail": {
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "url": "https://ntrs.nasa.gov/citations/20120015928",
+          "page": 13
+        }
+      },
+      {
+        "job": "put_out",
+        "result_expert": "For quiescent flames with no airflow, radiation is the predominant factor determining extinction, not convection as on Earth; models assuming a flame cannot self-sustain without convection are incorrect.",
+        "result_simple": "In still air, heat radiation, not air movement, decides when a space flame goes out.",
+        "safety_meaning": "Still air alone will not stop a space fire; flames can persist without airflow.",
+        "source": "D2 p13",
+        "source_detail": {
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "url": "https://ntrs.nasa.gov/citations/20120015928",
+          "page": 13
+        }
+      },
+      {
+        "job": "put_out",
+        "result_expert": "For oxygen concentrations approximately below 14%, radiative extinction occurs rather than diffusive extinction; the burning rate constant deviates from quasi-steady predictions, showing only transient combustion leading to radiative flame extinction.",
+        "result_simple": "Below about 14% oxygen, flames go out mainly by radiating heat away.",
+        "safety_meaning": "Knowing how space flames die helps design extinguishers and predict fire limits.",
+        "source": "D2 p12",
+        "source_detail": {
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "url": "https://ntrs.nasa.gov/citations/20120015928",
+          "page": 12
+        }
+      },
+      {
+        "job": "detect",
+        "result_expert": "After visible hot-flame extinction, larger n-heptane droplets kept vaporizing, sustained by a low-temperature, soot-free cool flame that could potentially reignite in the hot mode, restarting an apparently extinguished fire.",
+        "result_simple": "After the visible flame died, a hidden cool flame kept burning and could reignite the fire.",
+        "safety_meaning": "A fire that looks out could secretly restart, endangering the crew.",
+        "source": "D2 p13",
+        "source_detail": {
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "url": "https://ntrs.nasa.gov/citations/20120015928",
+          "page": 13
+        }
+      },
+      {
+        "job": "detect",
+        "result_expert": "Microgravity flames burn at lower temperature with lower burning rates, making them weaker; they are harder to detect, harder to extinguish, and more persistent than terrestrial flames.",
+        "result_simple": "Space flames are cooler, weaker, and longer-lasting, making them harder to see and stop.",
+        "safety_meaning": "Cooler, longer-lasting fires are tougher to see and stop, raising crew risk.",
+        "source": "D2 p13",
+        "source_detail": {
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "url": "https://ntrs.nasa.gov/citations/20120015928",
+          "page": 13
+        }
+      }
+    ],
+    "summary_expert": "FLEX studied single, spherical fuel droplets of methanol and n-heptane burning in microgravity aboard the ISS. Tests spanned oxygen concentrations of 12.0–34.0% and pressures of 0.6925–3.0525 atm, with nitrogen, helium, or carbon dioxide as inert diluents. Diagnostics measured droplet burning rates, extinction diameters, flame dimensions, and radiative output. The study found that microgravity sustains flaming combustion at oxygen levels about 2–3% lower than on Earth, lowering the limiting oxygen index. For oxygen below about 14%, radiative extinction occurred rather than diffusive extinction. In quiescent flames, radiation, not convection, governed extinction. Microgravity flames burned cooler and weaker, and were harder to detect and extinguish. Unexpectedly, larger n-heptane droplets kept vaporizing after visible flame extinction, sustained by a low-temperature cool flame that could potentially reignite.",
+    "summary_simple": "FLEX burned single drops of fuel, methanol and heptane, in the near-weightless space station lab. Scientists wanted to learn how flames behave without gravity and how to put them out on spacecraft. They found that flames in space keep burning at lower oxygen levels, are cooler and weaker, harder to see, harder to put out, and last longer than flames on Earth.",
+    "ai_jobs": [
+      "prevent",
+      "put_out"
+    ],
+    "jobs_source": "our research"
+  }
+}

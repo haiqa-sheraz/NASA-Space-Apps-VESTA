@@ -2,7 +2,7 @@
 design/
 
 # Raw NASA data: large (one PDF is 90 MB), and some files are copyrighted non-NASA articles
-data/
+raw_data/
 
 # Data prep: keep the clean outputs, skip caches, debug files and full-text chunks
 prep_output/ocr_cache/
@@ -25,15 +25,22 @@ __pycache__/
 .venv/
 venv/
 
-# Website build files (for later)
+# Website build files
 node_modules/
 .next/
 .netlify/
 dist/
 build/
+next-env.d.ts
+*.tsbuildinfo
 
 # System and editor files
 .DS_Store
 Thumbs.db
 desktop.ini
 .vscode/
+
+READ_ME_FIRST.md
+READ_ME_AFTER_IMPLEMENTATION.md
+DESIGN_BRIEF.md
+CLAUDE.md

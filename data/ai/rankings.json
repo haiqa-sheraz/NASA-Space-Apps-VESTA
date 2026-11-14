@@ -1,0 +1,994 @@
+{
+  "generated": "2026-11-14T14:47:13",
+  "scoring": "35 oxygen + 25 pressure + 15 gravity + 25 fuel type; yes=1, partial=0.5, no=0",
+  "missions": {
+    "spacecraft-iss": {
+      "mission": {
+        "name": "Spacecraft / ISS",
+        "o2_min": 21,
+        "o2_max": 21,
+        "p_max": 1.0,
+        "p_min": 1.0,
+        "g": 0.0,
+        "note": "ISS air: 21% oxygen, 14.7 psi, about 0 g"
+      },
+      "studies": [
+        {
+          "study_id": "bass-ii",
+          "short_name": "BASS-II",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "yes",
+          "fuel": "yes",
+          "score": 100,
+          "assumed": [
+            "pressure about 1 atm"
+          ],
+          "why": "Matches ISS oxygen, pressure, gravity, and fuel; its 13.6–22.2% oxygen range covers 21% cabin air, with pressure about 1 atm assumed."
+        },
+        {
+          "study_id": "bass",
+          "short_name": "BASS",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "yes",
+          "fuel": "yes",
+          "score": 100,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Matches ISS oxygen, pressure, gravity, and fuel, assuming oxygen 21% cabin air and pressure about 1 atm; it burns PMMA, wax candle, SIBAL, and Nomex."
+        },
+        {
+          "study_id": "saffire-iii",
+          "short_name": "Saffire-III",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "yes",
+          "fuel": "yes",
+          "score": 100,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Matches ISS oxygen, pressure, gravity, and fuel, assuming oxygen 21% cabin air and pressure about 1 atm; it burns SIBAL cotton-fiberglass."
+        },
+        {
+          "study_id": "spice",
+          "short_name": "SPICE",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "yes",
+          "fuel": "partial",
+          "score": 88,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Matches ISS oxygen, pressure, and gravity, with fuel partial, assuming oxygen 21% cabin air and pressure about 1 atm; it burns propylene, propane, ethylene, and methane."
+        },
+        {
+          "study_id": "acme-flame-design",
+          "short_name": "ACME Flame Design",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "yes",
+          "fuel": "partial",
+          "score": 88,
+          "assumed": [],
+          "why": "Matches ISS oxygen, pressure, and gravity, with fuel partial; its oxygen range 19.805–84.998% and pressure range 0.42596796–3.01818033 atm include ISS conditions."
+        },
+        {
+          "study_id": "flex",
+          "short_name": "FLEX",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "yes",
+          "fuel": "partial",
+          "score": 88,
+          "assumed": [],
+          "why": "Matches ISS oxygen, pressure, and gravity, with fuel partial; its oxygen range 12.0–34.0% and pressure range 0.6925–3.0525 atm include ISS conditions."
+        },
+        {
+          "study_id": "acme-cfi-g",
+          "short_name": "ACME CFI-G",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "yes",
+          "fuel": "partial",
+          "score": 88,
+          "assumed": [],
+          "why": "Matches ISS oxygen, pressure, and gravity, with fuel partial; its oxygen range 17.969–39.97% and pressure range 0.5–3.0001 atm include ISS conditions."
+        },
+        {
+          "study_id": "same-r",
+          "short_name": "SAME-R",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "yes",
+          "fuel": "partial",
+          "score": 88,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Matches ISS oxygen, pressure, and gravity, with fuel partial, assuming oxygen 21% cabin air and pressure about 1 atm; it burns Kapton, silicone, lampwick, Pyrell, and Teflon."
+        },
+        {
+          "study_id": "cfi",
+          "short_name": "CFI",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "yes",
+          "fuel": "partial",
+          "score": 88,
+          "assumed": [],
+          "why": "Matches ISS oxygen, pressure, and gravity, with fuel partial; its oxygen range 17.0–21.0% and pressure range 0.5–5.0 atm include ISS conditions."
+        },
+        {
+          "study_id": "acme-cld-flame",
+          "short_name": "ACME CLD Flame",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "yes",
+          "fuel": "partial",
+          "score": 88,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Matches ISS oxygen, pressure, and gravity, with fuel partial, assuming oxygen 21% cabin air and pressure about 1 atm; it burns methane and ethylene."
+        },
+        {
+          "study_id": "acme-e-field",
+          "short_name": "ACME E-FIELD Flames",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "yes",
+          "fuel": "partial",
+          "score": 88,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Matches ISS oxygen, pressure, and gravity, with fuel partial, assuming oxygen 21% cabin air and pressure about 1 atm; it burns ethylene and methane."
+        },
+        {
+          "study_id": "same",
+          "short_name": "SAME",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "yes",
+          "fuel": "partial",
+          "score": 88,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Matches ISS oxygen, pressure, and gravity, with fuel partial, assuming oxygen 21% cabin air and pressure about 1 atm; it burns Teflon, Kapton, silicone rubber, lampwick, and dibutyl phthalate."
+        },
+        {
+          "study_id": "acme-bre",
+          "short_name": "ACME BRE",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "yes",
+          "fuel": "partial",
+          "score": 88,
+          "assumed": [
+            "pressure about 1 atm"
+          ],
+          "why": "Matches ISS oxygen, pressure, and gravity, with fuel partial, assuming pressure about 1 atm; its oxygen range 21.0–40.0% includes 21% cabin air."
+        },
+        {
+          "study_id": "acme-s-flame",
+          "short_name": "ACME s-Flame",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "yes",
+          "fuel": "partial",
+          "score": 88,
+          "assumed": [],
+          "why": "Matches ISS oxygen, pressure, and gravity, with fuel partial; its oxygen range 21.0–30.0% and pressure range 1.0–1.0 atm include ISS conditions."
+        },
+        {
+          "study_id": "slice",
+          "short_name": "SLICE",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "yes",
+          "fuel": "partial",
+          "score": 88,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Matches ISS oxygen, pressure, and gravity, with fuel partial, assuming oxygen 21% cabin air and pressure about 1 atm; it burns methane, ethylene, and ethane."
+        },
+        {
+          "study_id": "daft",
+          "short_name": "DAFT",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "yes",
+          "fuel": "partial",
+          "score": 88,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Matches ISS oxygen, pressure, and gravity, with fuel partial, assuming oxygen 21% cabin air and pressure about 1 atm; it burns Arizona Road Dust (ARD Fine)."
+        },
+        {
+          "study_id": "saffire-ii",
+          "short_name": "Saffire-II",
+          "oxygen": "partial",
+          "pressure": "yes",
+          "gravity": "yes",
+          "fuel": "yes",
+          "score": 82,
+          "assumed": [
+            "pressure about 1 atm"
+          ],
+          "why": "Matches ISS pressure, gravity, and fuel, with oxygen partial, assuming pressure about 1 atm; its oxygen range 21.5–22.1% is near 21% cabin air."
+        },
+        {
+          "study_id": "saffire-i",
+          "short_name": "Saffire-I",
+          "oxygen": "partial",
+          "pressure": "yes",
+          "gravity": "yes",
+          "fuel": "yes",
+          "score": 82,
+          "assumed": [
+            "pressure about 1 atm"
+          ],
+          "why": "Matches ISS pressure, gravity, and fuel, with oxygen partial, assuming pressure about 1 atm; its oxygen range 21.5–21.7% is near 21% cabin air."
+        }
+      ],
+      "model": "baidu/ernie-5.5-flash-preview:free"
+    },
+    "moon-base": {
+      "mission": {
+        "name": "Moon base",
+        "o2_min": 30,
+        "o2_max": 100,
+        "p_max": 0.694,
+        "p_min": 0.0,
+        "g": 0.17,
+        "note": "Problem statement: 30% oxygen or more, 10.2 psi or less, 1/6 g"
+      },
+      "studies": [
+        {
+          "study_id": "acme-flame-design",
+          "short_name": "ACME Flame Design",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 80,
+          "assumed": [],
+          "why": "Matches oxygen and pressure: oxygen 19.805–84.998% covers 30%+, and pressure 0.42596796–3.01818033 atm matches; gravity and fuel partial."
+        },
+        {
+          "study_id": "flex",
+          "short_name": "FLEX",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 80,
+          "assumed": [],
+          "why": "Matches oxygen and pressure: oxygen 12.0–34.0% reaches 30%+, and pressure 0.6925–3.0525 atm matches; gravity and fuel partial."
+        },
+        {
+          "study_id": "acme-cfi-g",
+          "short_name": "ACME CFI-G",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 80,
+          "assumed": [],
+          "why": "Matches oxygen and pressure: oxygen 17.969–39.97% covers 30%+, and pressure 0.5–3.0001 atm matches; gravity and fuel partial."
+        },
+        {
+          "study_id": "acme-bre",
+          "short_name": "ACME BRE",
+          "oxygen": "yes",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 55,
+          "assumed": [
+            "pressure about 1 atm"
+          ],
+          "why": "Matches oxygen: 21.0–40.0% covers 30%+; gravity and fuel partial. Pressure does not match, assumed about 1 atm."
+        },
+        {
+          "study_id": "acme-s-flame",
+          "short_name": "ACME s-Flame",
+          "oxygen": "yes",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 55,
+          "assumed": [],
+          "why": "Matches oxygen: 21.0–30.0% reaches 30%; gravity and fuel partial. Pressure fixed at 1.0 atm does not match."
+        },
+        {
+          "study_id": "cfi",
+          "short_name": "CFI",
+          "oxygen": "no",
+          "pressure": "yes",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 45,
+          "assumed": [],
+          "why": "Matches pressure: 0.5–5.0 atm matches; gravity and fuel partial. Oxygen 17.0–21.0% stays below 30%."
+        },
+        {
+          "study_id": "bass-ii",
+          "short_name": "BASS-II",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "yes",
+          "score": 32,
+          "assumed": [
+            "pressure about 1 atm"
+          ],
+          "why": "Matches fuel and gravity partial; oxygen 13.6–22.2% stays below 30%, and pressure, assumed about 1 atm, does not match."
+        },
+        {
+          "study_id": "bass",
+          "short_name": "BASS",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "yes",
+          "score": 32,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Matches fuel and gravity partial; oxygen, assumed 21% cabin air, and pressure, assumed about 1 atm, do not match mission."
+        },
+        {
+          "study_id": "saffire-ii",
+          "short_name": "Saffire-II",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "yes",
+          "score": 32,
+          "assumed": [
+            "pressure about 1 atm"
+          ],
+          "why": "Matches fuel and gravity partial; oxygen 21.5–22.1% stays below 30%, and pressure, assumed about 1 atm, does not match."
+        },
+        {
+          "study_id": "saffire-i",
+          "short_name": "Saffire-I",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "yes",
+          "score": 32,
+          "assumed": [
+            "pressure about 1 atm"
+          ],
+          "why": "Matches fuel and gravity partial; oxygen 21.5–21.7% stays below 30%, and pressure, assumed about 1 atm, does not match."
+        },
+        {
+          "study_id": "saffire-iii",
+          "short_name": "Saffire-III",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "yes",
+          "score": 32,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Matches fuel and gravity partial; oxygen, assumed 21% cabin air, and pressure, assumed about 1 atm, do not match mission."
+        },
+        {
+          "study_id": "spice",
+          "short_name": "SPICE",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Matches gravity and fuel partial; oxygen, assumed 21% cabin air, and pressure, assumed about 1 atm, do not match mission."
+        },
+        {
+          "study_id": "same-r",
+          "short_name": "SAME-R",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Matches gravity and fuel partial; oxygen, assumed 21% cabin air, and pressure, assumed about 1 atm, do not match mission."
+        },
+        {
+          "study_id": "acme-cld-flame",
+          "short_name": "ACME CLD Flame",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Matches gravity and fuel partial; oxygen, assumed 21% cabin air, and pressure, assumed about 1 atm, do not match mission."
+        },
+        {
+          "study_id": "acme-e-field",
+          "short_name": "ACME E-FIELD Flames",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Matches gravity and fuel partial; oxygen, assumed 21% cabin air, and pressure, assumed about 1 atm, do not match mission."
+        },
+        {
+          "study_id": "same",
+          "short_name": "SAME",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Matches gravity and fuel partial; oxygen, assumed 21% cabin air, and pressure, assumed about 1 atm, do not match mission."
+        },
+        {
+          "study_id": "slice",
+          "short_name": "SLICE",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Matches gravity and fuel partial; oxygen, assumed 21% cabin air, and pressure, assumed about 1 atm, do not match mission."
+        },
+        {
+          "study_id": "daft",
+          "short_name": "DAFT",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Matches gravity and fuel partial; oxygen, assumed 21% cabin air, and pressure, assumed about 1 atm, do not match mission."
+        }
+      ],
+      "model": "baidu/ernie-5.5-flash-preview:free"
+    },
+    "mars-base": {
+      "mission": {
+        "name": "Mars base",
+        "o2_min": 34,
+        "o2_max": 34,
+        "p_max": 0.558,
+        "p_min": 0.558,
+        "g": 0.38,
+        "note": "NASA's recommended exploration atmosphere, 8.2 psi and 34% oxygen (NTRS 20150021491); Mars gravity about 0.38 g"
+      },
+      "studies": [
+        {
+          "study_id": "acme-flame-design",
+          "short_name": "ACME Flame Design",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 80,
+          "assumed": [],
+          "why": "Oxygen range 19.8–85% and pressure 0.43–3.0 atm cover the mission's 34% oxygen and 8.2 psi (0.56 atm); gravity and fuels only partially match."
+        },
+        {
+          "study_id": "acme-cfi-g",
+          "short_name": "ACME CFI-G",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 80,
+          "assumed": [],
+          "why": "Oxygen range 18–40% and pressure 0.5–3.0 atm include the mission's 34% oxygen and 8.2 psi (0.56 atm); gravity and fuels partially match."
+        },
+        {
+          "study_id": "flex",
+          "short_name": "FLEX",
+          "oxygen": "yes",
+          "pressure": "partial",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 68,
+          "assumed": [],
+          "why": "Oxygen range 12–34% reaches the mission's 34% oxygen, but pressure 0.69–3.05 atm sits above 8.2 psi (0.56 atm); gravity and fuels partially match."
+        },
+        {
+          "study_id": "acme-bre",
+          "short_name": "ACME BRE",
+          "oxygen": "yes",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 55,
+          "assumed": [
+            "pressure about 1 atm"
+          ],
+          "why": "Oxygen range 21–40% includes the mission's 34% oxygen, but assumed pressure about 1 atm exceeds 8.2 psi (0.56 atm); gravity and fuels partially match."
+        },
+        {
+          "study_id": "cfi",
+          "short_name": "CFI",
+          "oxygen": "no",
+          "pressure": "yes",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 45,
+          "assumed": [],
+          "why": "Pressure range 0.5–5.0 atm includes 8.2 psi (0.56 atm), but oxygen range 17–21% falls below the mission's 34%; gravity and fuels partially match."
+        },
+        {
+          "study_id": "acme-s-flame",
+          "short_name": "ACME s-Flame",
+          "oxygen": "partial",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 38,
+          "assumed": [],
+          "why": "Oxygen range 21–30% approaches but misses the mission's 34%, and fixed 1 atm pressure exceeds 8.2 psi (0.56 atm); gravity and fuels partially match."
+        },
+        {
+          "study_id": "bass-ii",
+          "short_name": "BASS-II",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "yes",
+          "score": 32,
+          "assumed": [
+            "pressure about 1 atm"
+          ],
+          "why": "Materials like PMMA, Nomex, and SIBAL match mission fuels, but oxygen 13.6–22.2% and assumed 1 atm miss 34% and 8.2 psi; gravity partially matches."
+        },
+        {
+          "study_id": "bass",
+          "short_name": "BASS",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "yes",
+          "score": 32,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Materials like PMMA, Nomex, and SIBAL match mission fuels, but assumed 21% oxygen and 1 atm miss 34% and 8.2 psi; gravity partially matches."
+        },
+        {
+          "study_id": "saffire-ii",
+          "short_name": "Saffire-II",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "yes",
+          "score": 32,
+          "assumed": [
+            "pressure about 1 atm"
+          ],
+          "why": "Materials like Silicone, PMMA, and SIBAL match mission fuels, but oxygen 21.5–22.1% and assumed 1 atm miss 34% and 8.2 psi; gravity partially matches."
+        },
+        {
+          "study_id": "saffire-i",
+          "short_name": "Saffire-I",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "yes",
+          "score": 32,
+          "assumed": [
+            "pressure about 1 atm"
+          ],
+          "why": "SIBAL (cotton-fiberglass) matches mission fuel needs, but oxygen 21.5–21.7% and assumed 1 atm miss 34% and 8.2 psi; gravity partially matches."
+        },
+        {
+          "study_id": "saffire-iii",
+          "short_name": "Saffire-III",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "yes",
+          "score": 32,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "SIBAL (cotton-fiberglass) matches mission fuel needs, but assumed 21% oxygen and 1 atm miss the mission's 34% and 8.2 psi; gravity partially matches."
+        },
+        {
+          "study_id": "spice",
+          "short_name": "SPICE",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Fuels like propane, propylene, and methane partially match mission needs, but assumed 21% oxygen and 1 atm miss 34% and 8.2 psi; gravity partially matches."
+        },
+        {
+          "study_id": "same-r",
+          "short_name": "SAME-R",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Materials like Kapton, Teflon, and silicone partially match mission fuels, but assumed 21% oxygen and 1 atm miss 34% and 8.2 psi; gravity partially matches."
+        },
+        {
+          "study_id": "acme-cld-flame",
+          "short_name": "ACME CLD Flame",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Fuels like methane and ethylene partially match mission needs, but assumed 21% oxygen and 1 atm miss 34% and 8.2 psi; gravity partially matches."
+        },
+        {
+          "study_id": "acme-e-field",
+          "short_name": "ACME E-FIELD Flames",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Fuels like ethylene and methane partially match mission needs, but assumed 21% oxygen and 1 atm miss 34% and 8.2 psi; gravity partially matches."
+        },
+        {
+          "study_id": "same",
+          "short_name": "SAME",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Materials like Teflon, Kapton, and silicone partially match mission fuels, but assumed 21% oxygen and 1 atm miss 34% and 8.2 psi; gravity partially matches."
+        },
+        {
+          "study_id": "slice",
+          "short_name": "SLICE",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Fuels like methane, ethylene, and ethane partially match mission needs, but assumed 21% oxygen and 1 atm miss 34% and 8.2 psi; gravity partially matches."
+        },
+        {
+          "study_id": "daft",
+          "short_name": "DAFT",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Arizona Road Dust (ARD Fine) partially matches mission fuel needs, but assumed 21% oxygen and 1 atm miss 34% and 8.2 psi; gravity partially matches."
+        }
+      ],
+      "model": "baidu/ernie-5.5-flash-preview:free"
+    },
+    "rover": {
+      "mission": {
+        "name": "Pressurized rover",
+        "o2_min": 34,
+        "o2_max": 34,
+        "p_max": 0.558,
+        "p_min": 0.558,
+        "g": 0.17,
+        "note": "NASA's recommended exploration atmosphere for exploration vehicles such as pressurized rovers, 8.2 psi and 34% oxygen (NTRS 20150021491), on the Moon at 1/6 g"
+      },
+      "studies": [
+        {
+          "study_id": "acme-flame-design",
+          "short_name": "ACME Flame Design",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 80,
+          "assumed": [],
+          "why": "Mission oxygen and pressure match; gravity and fuel partially match; oxygen range includes 34%."
+        },
+        {
+          "study_id": "acme-cfi-g",
+          "short_name": "ACME CFI-G",
+          "oxygen": "yes",
+          "pressure": "yes",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 80,
+          "assumed": [],
+          "why": "Mission oxygen and pressure match; gravity and fuel partially match; oxygen range includes 34%."
+        },
+        {
+          "study_id": "flex",
+          "short_name": "FLEX",
+          "oxygen": "yes",
+          "pressure": "partial",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 68,
+          "assumed": [],
+          "why": "Mission oxygen matches, including 34%; pressure, gravity, and fuel only partially match."
+        },
+        {
+          "study_id": "acme-bre",
+          "short_name": "ACME BRE",
+          "oxygen": "yes",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 55,
+          "assumed": [
+            "pressure about 1 atm"
+          ],
+          "why": "Mission oxygen matches, including 34%; pressure does not, assumed about 1 atm; gravity and fuel partially match."
+        },
+        {
+          "study_id": "cfi",
+          "short_name": "CFI",
+          "oxygen": "no",
+          "pressure": "yes",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 45,
+          "assumed": [],
+          "why": "Mission pressure matches; oxygen does not, ranging 17-21%; gravity and fuel partially match."
+        },
+        {
+          "study_id": "acme-s-flame",
+          "short_name": "ACME s-Flame",
+          "oxygen": "partial",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 38,
+          "assumed": [],
+          "why": "Mission oxygen partially matches, 21-30%; pressure does not; gravity and fuel partially match."
+        },
+        {
+          "study_id": "bass-ii",
+          "short_name": "BASS-II",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "yes",
+          "score": 32,
+          "assumed": [
+            "pressure about 1 atm"
+          ],
+          "why": "Mission fuel matches; oxygen and pressure do not, pressure assumed about 1 atm; gravity partially matches."
+        },
+        {
+          "study_id": "bass",
+          "short_name": "BASS",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "yes",
+          "score": 32,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Mission fuel matches; oxygen and pressure do not, oxygen assumed 21% and pressure assumed about 1 atm; gravity partially matches."
+        },
+        {
+          "study_id": "saffire-ii",
+          "short_name": "Saffire-II",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "yes",
+          "score": 32,
+          "assumed": [
+            "pressure about 1 atm"
+          ],
+          "why": "Mission fuel matches; oxygen 21.5-22.1% and pressure do not, pressure assumed about 1 atm; gravity partially matches."
+        },
+        {
+          "study_id": "saffire-i",
+          "short_name": "Saffire-I",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "yes",
+          "score": 32,
+          "assumed": [
+            "pressure about 1 atm"
+          ],
+          "why": "Mission fuel matches; oxygen 21.5-21.7% and pressure do not, pressure assumed about 1 atm; gravity partially matches."
+        },
+        {
+          "study_id": "saffire-iii",
+          "short_name": "Saffire-III",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "yes",
+          "score": 32,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Mission fuel matches; oxygen and pressure do not, oxygen assumed 21% and pressure assumed about 1 atm; gravity partially matches."
+        },
+        {
+          "study_id": "spice",
+          "short_name": "SPICE",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Mission fuel partially matches; oxygen and pressure do not, oxygen assumed 21% and pressure assumed about 1 atm; gravity partially matches."
+        },
+        {
+          "study_id": "same-r",
+          "short_name": "SAME-R",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Mission fuel partially matches; oxygen and pressure do not, oxygen assumed 21% and pressure assumed about 1 atm; gravity partially matches."
+        },
+        {
+          "study_id": "acme-cld-flame",
+          "short_name": "ACME CLD Flame",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Mission fuel partially matches; oxygen and pressure do not, oxygen assumed 21% and pressure assumed about 1 atm; gravity partially matches."
+        },
+        {
+          "study_id": "acme-e-field",
+          "short_name": "ACME E-FIELD Flames",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Mission fuel partially matches; oxygen and pressure do not, oxygen assumed 21% and pressure assumed about 1 atm; gravity partially matches."
+        },
+        {
+          "study_id": "same",
+          "short_name": "SAME",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Mission fuel partially matches; oxygen and pressure do not, oxygen assumed 21% and pressure assumed about 1 atm; gravity partially matches."
+        },
+        {
+          "study_id": "slice",
+          "short_name": "SLICE",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Mission fuel partially matches; oxygen and pressure do not, oxygen assumed 21% and pressure assumed about 1 atm; gravity partially matches."
+        },
+        {
+          "study_id": "daft",
+          "short_name": "DAFT",
+          "oxygen": "no",
+          "pressure": "no",
+          "gravity": "partial",
+          "fuel": "partial",
+          "score": 20,
+          "assumed": [
+            "oxygen 21% (cabin air)",
+            "pressure about 1 atm"
+          ],
+          "why": "Mission fuel partially matches; oxygen and pressure do not, oxygen assumed 21% and pressure assumed about 1 atm; gravity partially matches."
+        }
+      ],
+      "model": "baidu/ernie-5.5-flash-preview:free"
+    }
+  }
+}

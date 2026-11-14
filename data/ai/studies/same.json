@@ -1,0 +1,179 @@
+{
+  "study_id": "same",
+  "model": "baidu/ernie-5.5-flash-preview:free",
+  "seconds": 105.6,
+  "generated": "2026-11-14T14:39:28",
+  "sources": [
+    {
+      "label": "D1",
+      "title": "SAME final report (PSI-102)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102",
+      "file": "PSI\\SAME PSI-102\\SAME Final Science report  03 18 10 with papers attached.pdf"
+    },
+    {
+      "label": "D2",
+      "title": "NASA fire detection white paper (2021)",
+      "url": null,
+      "file": "Earth benefits\\Fire detection white paper final 211031.pdf"
+    },
+    {
+      "label": "D3",
+      "title": "Particle Morphology and Size Results from SAME-2",
+      "url": "https://ntrs.nasa.gov/citations/20130000422",
+      "file": "NTRS Reference Documents\\20130000422.pdf"
+    },
+    {
+      "label": "D4",
+      "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+      "url": null,
+      "file": "combustion science mini book.pdf"
+    }
+  ],
+  "numbers_not_in_sources": [],
+  "word_counts": {
+    "summary_simple": 81,
+    "summary_expert": 136
+  },
+  "profile": {
+    "earth_uses": [],
+    "equipment": [
+      {
+        "area": "detectors",
+        "note": "Use SAME's measured particle-size data to set sensitivity requirements for future spacecraft smoke detectors."
+      },
+      {
+        "area": "detectors",
+        "note": "Build detectors that measure more than one moment or classify particles by size to catch varied smoke."
+      },
+      {
+        "area": "detectors",
+        "note": "Size discrimination helps reject large nuisance dust while still detecting small smoke particles, reducing false alarms."
+      }
+    ],
+    "experiment_goal": "The study set out to measure the size distribution of smoke particles produced by overheated spacecraft materials in low gravity, so that improved smoke detectors could be designed for future spacecraft.",
+    "glossary": [
+      {
+        "definition": "A condition of very weak gravity, like aboard the ISS, where objects seem to float.",
+        "term": "Microgravity"
+      },
+      {
+        "definition": "Breaking a material down with heat without burning, which can release smoke.",
+        "term": "Pyrolysis"
+      },
+      {
+        "definition": "Tiny solid or liquid particles floating in air, such as smoke.",
+        "term": "Aerosol"
+      },
+      {
+        "definition": "When small smoke particles stick together and form larger particles.",
+        "term": "Coagulation"
+      }
+    ],
+    "jobs": [
+      "detect"
+    ],
+    "key_facts": {
+      "airflow": "2 to 8 cm/s",
+      "fuels": [
+        "Teflon",
+        "Kapton",
+        "silicone rubber",
+        "cellulose (lamp wick)",
+        "dibutyl phthalate (reference)"
+      ],
+      "gravity": "microgravity (low-gravity)",
+      "number_of_tests": "20",
+      "oxygen": null,
+      "pressure": null,
+      "sample_shapes": [
+        "approximately 3 mm diameter cylinders of sample material"
+      ],
+      "sensors": [
+        "P-Trak condensation nuclei counter (particle number, zeroth moment)",
+        "ionization chamber from a residential smoke detector (first moment)",
+        "two DustTrak light-scattering devices with 1 μm and 10 μm impactors (mass, third moment)",
+        "ISS and Space Shuttle smoke detectors (for comparison)",
+        "thermal precipitator depositing particles on TEM grids (post-flight imaging)"
+      ],
+      "what_changed": [
+        "material type (5 materials)",
+        "sample (pyrolysis) temperature",
+        "airflow rate (2 to 8 cm/s)",
+        "smoke aging duration (10 to 1800 s)"
+      ]
+    },
+    "open_questions": [
+      "Under some pre-fire conditions, smoke size distributions may extend to diameters beyond those measured in SAME.",
+      "Mie-scattering uncertainties from particle refractive index, agglomeration, and departures from a log-normal distribution still need further assessment.",
+      "TEM grids were contaminated by extraneous particles of unknown origin, limiting independent checks of particle size and shape."
+    ],
+    "results": [
+      {
+        "job": "detect",
+        "result_expert": "For the materials tested, a substantial portion of the smoke particles were below 500 nm in diameter; Kapton and Teflon produced the smallest particles, with geometric mean diameters of 80 nm and 170 nm.",
+        "result_simple": "Many smoke particles from overheated spacecraft materials are very small; a substantial portion are below 500 nm.",
+        "safety_meaning": "Detectors must catch very small particles, which are hard for light-scattering smoke detectors to see.",
+        "source": "D1 p4",
+        "source_detail": {
+          "title": "SAME final report (PSI-102)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102",
+          "page": 4
+        }
+      },
+      {
+        "job": "detect",
+        "result_expert": "ISS (light-scattering) and STS (ionization) detectors respond differently to particle size. Teflon smoke, mostly below 1 μm, gave an erratic ISS signal but a strong STS signal; silicone rubber smoke triggered both.",
+        "result_simple": "The ISS and Space Shuttle smoke detectors respond differently. Small-particle smoke (Teflon) gave a weak ISS signal but a strong Shuttle signal.",
+        "safety_meaning": "No single current detector reliably catches all spacecraft smoke types.",
+        "source": "D1 p25",
+        "source_detail": {
+          "title": "SAME final report (PSI-102)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102",
+          "page": 25
+        }
+      },
+      {
+        "job": "detect",
+        "result_expert": "During aging (10–1800 s), coagulation increased particle sizes (e.g., silicone geometric mean diameter rose from 189 nm to 352 nm); number concentration fell sharply while mass concentration stayed relatively steady.",
+        "result_simple": "When smoke was held to age, particles grew bigger by clumping together. Particle counts dropped, but total smoke mass stayed about the same.",
+        "safety_meaning": "Smoke reaching a detector after aging may have larger particles than fresh smoke.",
+        "source": "D1 p27",
+        "source_detail": {
+          "title": "SAME final report (PSI-102)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102",
+          "page": 27
+        }
+      },
+      {
+        "job": "detect",
+        "result_expert": "A smoke transport model showed that mixing, not buoyancy, dominates smoke transport in microgravity, so detection-time lags are longer than in normal gravity.",
+        "result_simple": "In microgravity, smoke spreads mainly by mixing, not by rising warm air. This makes smoke take longer to reach detectors than on Earth.",
+        "safety_meaning": "Fires may be detected later in space, so earlier detection is more important.",
+        "source": "D1 p4",
+        "source_detail": {
+          "title": "SAME final report (PSI-102)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102",
+          "page": 4
+        }
+      },
+      {
+        "job": "detect",
+        "result_expert": "Across SAME and CSD, detecting smoke across the full size range while discriminating against (large) dust will probably require a detector that measures more than one moment of the size distribution or classifies particles into size ranges.",
+        "result_simple": "To catch all smoke types without false alarms from dust, future detectors likely need to measure more than one particle property or sort particles by size.",
+        "safety_meaning": "Better size-resolving detectors could improve early fire detection and reduce false alarms.",
+        "source": "D1 p29",
+        "source_detail": {
+          "title": "SAME final report (PSI-102)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102",
+          "page": 29
+        }
+      }
+    ],
+    "summary_expert": "The Smoke Aerosol Measurement Experiment (SAME) ran in the Microgravity Science Glovebox on the ISS during Expedition 15 (September–early October 2007). Five spacecraft materials — Teflon, Kapton, silicone rubber, cellulose (lamp wick), and dibutyl phthalate (reference) — were resistively heated below ignition for ~60 s at airflow of 2–8 cm/s, with smoke aged 10–1800 s. Using the moment method (P-Trak, ionization chamber, two DustTrak light-scattering units), SAME derived particle geometric mean diameter and geometric standard deviation. For the materials tested, a substantial portion of smoke particles were below 500 nm in diameter. Aging increased particle sizes; for example, the silicone geometric mean diameter rose from 189 nm to 352 nm. The smoke transport model showed mixing dominates transport, so detection-time lags are longer than in normal gravity. Results inform design requirements for next-generation spacecraft smoke detectors.",
+    "summary_simple": "SAME studied the tiny bits of smoke (particles) made when spacecraft materials get too hot. On the International Space Station, scientists heated five materials — Teflon, Kapton, silicone rubber, lamp wick, and a reference liquid — below their burning point. They measured how big the smoke particles were. They found many particles are very small, with a substantial portion below 500 nm, and that smoke takes longer to spread in space, which affects how fast fire detectors can spot a fire.",
+    "ai_jobs": [
+      "detect"
+    ],
+    "jobs_source": "our research"
+  }
+}

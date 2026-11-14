@@ -1,0 +1,181 @@
+{
+  "study_id": "spice",
+  "model": "nvidia/nemotron-3.5-super-vl:free",
+  "seconds": 13.1,
+  "generated": "2026-11-14T14:11:53",
+  "sources": [
+    {
+      "label": "D1",
+      "title": "SPICE final report (PSI-107)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107",
+      "file": "PSI\\SPICE PSI-107\\SPICE Final Report 12_2_2012.pdf"
+    },
+    {
+      "label": "D2",
+      "title": "Smoke Point In Co-flow Experiment (SPICE) description",
+      "url": "https://ntrs.nasa.gov/citations/20090014827",
+      "file": "NTRS Reference Documents\\20090014827.pdf"
+    },
+    {
+      "label": "D3",
+      "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+      "url": null,
+      "file": "combustion science mini book.pdf"
+    }
+  ],
+  "numbers_not_in_sources": [],
+  "word_counts": {
+    "summary_simple": 46,
+    "summary_expert": 88
+  },
+  "profile": {
+    "summary_simple": "NASA studied when small gas flames start to make soot in microgravity. Astronauts burned fuels like propane and ethylene inside the space station glovebox. They changed burner size and air speed to learn how soot forms without gravity. This helps keep crews safe from spacecraft fires.",
+    "summary_expert": "SPICE measured laminar smoke points of non-buoyant gas-jet diffusion flames in microgravity aboard the ISS Microgravity Science Glovebox from February to June 2009. Tests used ethylene, propane, propylene, and propylene-nitrogen mixtures at 21±1% oxygen and 101 kPa. Burner diameters were 0.41, 0.76, and 1.6 mm, with co-flow velocities from 5.4 to 65 cm/s. Fifty-two smoke points were found among 526 ignited flames. Increasing co-flow velocity and decreasing burner diameter increased smoke point luminous length. Sooting propensity ranked ethylene < propane < 50% propylene < 75% propylene < propylene.",
+    "experiment_goal": "The study set out to find the laminar smoke-point properties of non-buoyant jet diffusion flames for several fuels under different nozzle diameter and co-flow velocity configurations in microgravity.",
+    "key_facts": {
+      "fuels": [
+        "75% Propylene",
+        "Propylene",
+        "50% Propylene",
+        "Propane",
+        "Ethylene",
+        "Methane"
+      ],
+      "sample_shapes": [
+        "round-jet gas flames",
+        "burner diameters 0.41 mm, 0.76 mm, 1.6 mm"
+      ],
+      "oxygen": "21±1%",
+      "pressure": "101 kPa",
+      "airflow": "5.4 to 65 cm/s",
+      "gravity": "microgravity",
+      "what_changed": [
+        "fuel type",
+        "burner diameter",
+        "co-flow velocity",
+        "fuel flow rate"
+      ],
+      "sensors": [
+        "still camera",
+        "video camera",
+        "thermopile radiometer",
+        "omni-directional anemometer",
+        "mass flow controller",
+        "Hall-effect sensor"
+      ],
+      "number_of_tests": "435"
+    },
+    "results": [
+      {
+        "result_simple": "Faster air flow made flames longer before they started to smoke.",
+        "result_expert": "For a given fuel and burner diameter, increasing co-flow velocity increased smoke point luminous length, attributed to decreased residence times and radiative losses.",
+        "safety_meaning": "Airflow changes can delay visible soot, so detectors should not rely on soot alone.",
+        "job": "detect",
+        "source": "D1 p20",
+        "source_detail": {
+          "title": "SPICE final report (PSI-107)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107",
+          "page": 20
+        }
+      },
+      {
+        "result_simple": "Smaller burners made flames smoke at longer lengths.",
+        "result_expert": "Smoke point luminous length increased as burner diameter decreased, scaling with diameter to the -0.91 power.",
+        "safety_meaning": "Small fuel leaks may burn longer before showing soot, requiring sensitive early detection.",
+        "job": "detect",
+        "source": "D1 p20",
+        "source_detail": {
+          "title": "SPICE final report (PSI-107)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107",
+          "page": 20
+        }
+      },
+      {
+        "result_simple": "Propane had an unusually high tendency to soot in microgravity.",
+        "result_expert": "Pseudo threshold soot index estimates indicated an unusually high sooting propensity for propane in microgravity diffusion flames.",
+        "safety_meaning": "Propane-like fuels may produce more soot and radiant heat in spacecraft fires than expected.",
+        "job": "prevent",
+        "source": "D1 p2",
+        "source_detail": {
+          "title": "SPICE final report (PSI-107)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107",
+          "page": 2
+        }
+      },
+      {
+        "result_simple": "Sooting tendency ranked ethylene lowest and propylene highest among the fuels tested.",
+        "result_expert": "Sooting propensities increased according to ethylene < propane < 50% propylene < 75% propylene < propylene.",
+        "safety_meaning": "Material and fuel selection should account for higher sooting fuels producing more radiant heat.",
+        "job": "prevent",
+        "source": "D1 p20",
+        "source_detail": {
+          "title": "SPICE final report (PSI-107)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107",
+          "page": 20
+        }
+      },
+      {
+        "result_simple": "Smoke point length related to fuel flow rate divided by stoichiometric mixture fraction.",
+        "result_expert": "Luminous flame length at the smoke point correlated with fuel mass flow rate divided by stoichiometric mixture fraction, with slight increase as air-to-fuel velocity ratio decreased.",
+        "safety_meaning": "Models can predict soot onset from flow and fuel conditions to support fire safety design.",
+        "job": "none",
+        "source": "D1 p20",
+        "source_detail": {
+          "title": "SPICE final report (PSI-107)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107",
+          "page": 20
+        }
+      }
+    ],
+    "jobs": [
+      "prevent",
+      "detect"
+    ],
+    "equipment": [
+      {
+        "area": "detectors",
+        "note": "Use flow and fuel conditions to predict soot onset rather than relying on visible soot alone."
+      },
+      {
+        "area": "materials",
+        "note": "Select spacecraft materials using microgravity sooting propensity, especially for high-sooting fuels like propane."
+      },
+      {
+        "area": "ventilation",
+        "note": "Account for co-flow velocity effects on flame length and soot emission in cabin airflow design."
+      }
+    ],
+    "earth_uses": [
+      "smoke-point phenomena used in fire modeling on Earth",
+      "understanding soot growth and emission by flames",
+      "predicting heat release from non-buoyant flames in practical combustors such as jet engines and furnaces"
+    ],
+    "glossary": [
+      {
+        "term": "smoke point",
+        "definition": "The condition where a flame begins to emit soot."
+      },
+      {
+        "term": "soot",
+        "definition": "Dark carbonaceous particulate formed inside a flame."
+      },
+      {
+        "term": "microgravity",
+        "definition": "Very weak gravity, such as aboard the International Space Station."
+      },
+      {
+        "term": "co-flow",
+        "definition": "Air flowing in the same direction as the fuel jet."
+      }
+    ],
+    "open_questions": [
+      "a universal method to define smoke point conditions from primary flame parameters has not been found",
+      "residence time theory does not yield quantitative correlations of smoke points"
+    ],
+    "ai_jobs": [
+      "prevent",
+      "detect"
+    ],
+    "jobs_source": "AI (top 2)"
+  }
+}

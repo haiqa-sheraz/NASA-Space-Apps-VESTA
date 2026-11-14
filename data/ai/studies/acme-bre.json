@@ -1,0 +1,176 @@
+{
+  "study_id": "acme-bre",
+  "model": "baidu/ernie-5.5-flash-preview:free",
+  "seconds": 59.2,
+  "generated": "2026-11-14T14:23:16",
+  "sources": [
+    {
+      "label": "D1",
+      "title": "ACME BRE final report (PSI-20)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20",
+      "file": "PSI\\ACME BRE PSI-20\\BRE_final_report_20220201.pdf"
+    },
+    {
+      "label": "D2",
+      "title": "ACME on the ISS (poster, NTRS 20210015913)",
+      "url": null,
+      "file": "NTRS Reference Documents\\PS-03403 ACME on the ISS.pdf"
+    },
+    {
+      "label": "D3",
+      "title": "ACME: Advanced Combustion via Microgravity Experiments (poster, NTRS 20220015583)",
+      "url": null,
+      "file": "NTRS Reference Documents\\PS-03790 ACME poster 13thUSNCM 2023.pdf"
+    },
+    {
+      "label": "D4",
+      "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+      "url": null,
+      "file": "combustion science mini book.pdf"
+    }
+  ],
+  "numbers_not_in_sources": [],
+  "word_counts": {
+    "summary_simple": 56,
+    "summary_expert": 145
+  },
+  "profile": {
+    "earth_uses": [],
+    "equipment": [
+      {
+        "area": "materials",
+        "note": "Flammability map shows which material properties can burn in microgravity, guiding safer material selection for spacecraft."
+      },
+      {
+        "area": "materials",
+        "note": "Supports the Cone Calorimeter (Test 2) as a ground method to screen material fire hazard before flight."
+      }
+    ],
+    "experiment_goal": "The study set out to establish the burning conditions possible in a quiescent microgravity environment by using a gas burner to emulate real condensed fuels, in order to improve understanding of material flammability and assess existing flammability test methods for spacecraft fire safety.",
+    "glossary": [
+      {
+        "definition": "The near-weightless environment experienced in orbit, where flames behave very differently than on Earth.",
+        "term": "microgravity"
+      },
+      {
+        "definition": "The energy needed to turn a solid or liquid fuel into a gas so it can burn.",
+        "term": "heat of gasification"
+      },
+      {
+        "definition": "The energy released when a fuel burns completely.",
+        "term": "heat of combustion"
+      },
+      {
+        "definition": "A chart showing the conditions under which materials will burn.",
+        "term": "flammability map"
+      }
+    ],
+    "jobs": [
+      "prevent"
+    ],
+    "key_facts": {
+      "airflow": null,
+      "fuels": [
+        "ethylene (C2H4)",
+        "methane (CH4)"
+      ],
+      "gravity": "microgravity (quiescent), aboard the ISS",
+      "number_of_tests": "18",
+      "oxygen": "21% to 40% by volume (test values 21%, 25%, 26.5%, 34%, 40%)",
+      "pressure": "varied; nominal 14.7 psia (1 atm, 21% O2), 10.2 psia (0.7 atm, 26.5% O2), 8.2 psia (0.56 atm, 34% O2)",
+      "sample_shapes": [
+        "flat circular porous burner (25 mm)",
+        "flat circular porous burner (50 mm)"
+      ],
+      "sensors": [
+        "two heat flux transducers per burner",
+        "burner surface thermocouples",
+        "thermopile radiometers",
+        "color cameras",
+        "thin filament pyrometry (SiC fibers)",
+        "photomultiplier tubes",
+        "gas chromatograph"
+      ],
+      "what_changed": [
+        "oxygen concentration",
+        "chamber pressure",
+        "fuel type (ethylene vs methane) and dilution",
+        "burner size (25 mm vs 50 mm)",
+        "fuel mass flux"
+      ]
+    },
+    "open_questions": [
+      "Data analysis and publication of results were still underway, so the final report is expected to be updated.",
+      "The importance of flame radiation (represented by the laminar smoke point) in microgravity flames needs further study.",
+      "A clearer flammability plot adding oxygen mole fraction as a third dimension was still in progress."
+    ],
+    "results": [
+      {
+        "job": "prevent",
+        "result_expert": "At 21% O2 and 14.7 psia, flames generally self-extinguished by radiative cooling, but at 27% O2/10.2 psia and 34% O2/8.2 psia they persisted for 3 minutes or more.",
+        "result_simple": "Flames went out on their own in normal air (21% oxygen), but kept burning for 3 minutes or more in air with more oxygen and lower pressure.",
+        "safety_meaning": "Shows which spacecraft air mixes let flames die out on their own, helping set safer oxygen and pressure levels for crew cabins.",
+        "source": "D1 p18",
+        "source_detail": {
+          "title": "ACME BRE final report (PSI-20)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20",
+          "page": 18
+        }
+      },
+      {
+        "job": "prevent",
+        "result_expert": "Emulation with heat of combustion ~24 kJ/g and heat of gasification ~3 kJ/g matched PMMA, a profound result showing a common plastic could burn steadily under NASA's proposed spacecraft atmospheres.",
+        "result_simple": "The burner copied a common plastic (like PMMA) and showed it could burn steadily in the higher-oxygen, lower-pressure air NASA plans for future spacecraft.",
+        "safety_meaning": "Warns that everyday plastics could keep burning in planned spacecraft air, so material choices matter for crew safety.",
+        "source": "D1 p26",
+        "source_detail": {
+          "title": "ACME BRE final report (PSI-20)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20",
+          "page": 26
+        }
+      },
+      {
+        "job": "prevent",
+        "result_expert": "The flammability map shows solid materials with heats of combustion 23.6 to 47.2 kJ/g and heats of gasification about 1 to 10 kJ/g can burn in microgravity; the Cone Calorimeter (Test 2) can measure these properties.",
+        "result_simple": "Solid materials with heats of combustion from 23.6 to 47.2 kJ/g and heats of gasification from about 1 to 10 kJ/g can burn in weightlessness.",
+        "safety_meaning": "Defines the range of solid materials that can burn in weightlessness, guiding which materials are safe to use aboard spacecraft.",
+        "source": "D1 p29",
+        "source_detail": {
+          "title": "ACME BRE final report (PSI-20)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20",
+          "page": 29
+        }
+      },
+      {
+        "job": "prevent",
+        "result_expert": "Methane was hard to ignite compared with ethylene, and its flames tended to self-extinguish faster even at high oxygen concentration.",
+        "result_simple": "Methane flames were harder to light than ethylene and went out faster, even when oxygen levels were high.",
+        "safety_meaning": "Shows fuel type affects how easily a fire starts and lasts, useful for judging fire risk of different spacecraft fuel sources.",
+        "source": "D1 p33",
+        "source_detail": {
+          "title": "ACME BRE final report (PSI-20)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20",
+          "page": 33
+        }
+      },
+      {
+        "job": "prevent",
+        "result_expert": "Because the Cone Calorimeter (Test 2) can measure heat of combustion, heat of gasification, and surface re-radiation, the study suggests NASA may put more emphasis on Test 2 to assess material flammability.",
+        "result_simple": "The results suggest NASA's Cone Calorimeter test (Test 2) could help predict whether materials will burn in spacecraft, so it may deserve more use.",
+        "safety_meaning": "Points to a ground test that could screen spacecraft materials for fire hazard before flight, improving crew fire prevention.",
+        "source": "D1 p29",
+        "source_detail": {
+          "title": "ACME BRE final report (PSI-20)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20",
+          "page": 29
+        }
+      }
+    ],
+    "summary_expert": "The Burning Rate Emulator used a flat porous gas burner (25 and 50 mm diameter) on the ISS to emulate quasi-steady burning of condensed fuels in quiescent microgravity. Tests used ethylene/nitrogen and methane/nitrogen mixtures across oxygen concentrations of 21% to 40% and pressures including 14.7 psia (21% O2), 10.2 psia (26.5% O2), and 8.2 psia (34% O2). The study mapped flammability in terms of heat of combustion, heat of gasification, and surface re-radiation. Flames generally self-extinguished at 21% O2 and 14.7 psia but persisted for 3 minutes or more at elevated oxygen and reduced pressure. Emulation with heat of combustion ~24 kJ/g and heat of gasification ~3 kJ/g matched PMMA, showing a common plastic could burn steadily under NASA's proposed spacecraft atmospheres. Solid materials with heats of combustion 23.6 to 47.2 kJ/g and heats of gasification about 1 to 10 kJ/g can burn in microgravity.",
+    "summary_simple": "The study used a gas burner on the space station to copy how real solid and liquid fuels burn in weightlessness. Scientists wanted to learn which materials can keep burning in the air of a spacecraft. They found that common plastics can burn steadily in the higher-oxygen, lower-pressure air NASA is considering for future crewed missions.",
+    "ai_jobs": [
+      "prevent"
+    ],
+    "jobs_source": "our research"
+  }
+}

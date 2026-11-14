@@ -1,0 +1,177 @@
+{
+  "study_id": "bass",
+  "model": "baidu/ernie-5.5-flash-preview:free",
+  "seconds": 57.4,
+  "generated": "2026-11-14T14:08:47",
+  "sources": [
+    {
+      "label": "D1",
+      "title": "Thickness and Fuel Preheating Effects on Material Flammability (BASS)",
+      "url": "https://ntrs.nasa.gov/citations/20140011099",
+      "file": "NTRS Reference Documents\\20140011099.pdf"
+    },
+    {
+      "label": "D2",
+      "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+      "url": null,
+      "file": "combustion science mini book.pdf"
+    }
+  ],
+  "numbers_not_in_sources": [],
+  "word_counts": {
+    "summary_simple": 69,
+    "summary_expert": 131
+  },
+  "profile": {
+    "earth_uses": [
+      "Improve combustion computer models used to design fire detection and suppression systems on Earth.",
+      "Improve 1-g (Earth) material fire-safety rating tests.",
+      "Advance the general understanding of many terrestrial combustion problems."
+    ],
+    "equipment": [
+      {
+        "area": "materials",
+        "note": "Material choices: some materials burn at lower oxygen in microgravity than Earth tests predict, affecting spacecraft material selection."
+      },
+      {
+        "area": "extinguishers",
+        "note": "Extinguishers: local nitrogen jets failed on warm, thick fuels, so spacecraft suppression methods need improvement."
+      },
+      {
+        "area": "detectors",
+        "note": "Detectors and ventilation: tiny flames can burn undetected over 5 minutes, and airflow strongly changes flame behavior."
+      }
+    ],
+    "experiment_goal": "This study set out to learn how solid fuels burn and are extinguished in microgravity—how airflow speed, oxygen, fuel thickness, and material type affect flame spread, growth, and extinction—to improve spacecraft fire safety.",
+    "glossary": [
+      {
+        "definition": "Very weak gravity, as aboard the ISS, where hot gases do not rise by buoyancy.",
+        "term": "Microgravity"
+      },
+      {
+        "definition": "Air moving against the flame's spread direction (opposed) versus air moving with it (concurrent).",
+        "term": "Opposed vs concurrent flow"
+      },
+      {
+        "definition": "A flame going out because flow or oxygen drops too low to sustain burning.",
+        "term": "Quenching extinction"
+      },
+      {
+        "definition": "Polymethylmethacrylate, a clear acrylic plastic burned as a solid fuel sample.",
+        "term": "PMMA"
+      }
+    ],
+    "jobs": [
+      "prevent",
+      "put_out"
+    ],
+    "key_facts": {
+      "airflow": "up to 40 cm/s (main variable; test flows from below 1 to about 15 cm/s)",
+      "fuels": [
+        "PMMA (acrylic)",
+        "wax (candles and porous wax slabs)",
+        "cotton-fiberglass (SIBAL) fabric",
+        "Nomex (HT90-40 and Nomex-III)",
+        "Ultem (PEI) film",
+        "Mylar with Kimwipe strip"
+      ],
+      "gravity": "microgravity (0-g) on the ISS, compared with 1-g",
+      "number_of_tests": "122",
+      "oxygen": "16–21.5% O2 (ISS cabin air ~21%; nitrogen vitiation down to 16%)",
+      "pressure": "nominally 1 atm (14.7 psia); some tests at 10.2 psia",
+      "sample_shapes": [
+        "thin flat sheets",
+        "thick flat slabs",
+        "spheres (1–2 cm diameter)",
+        "candles"
+      ],
+      "sensors": [
+        "digital still camera",
+        "video camera",
+        "air flow",
+        "fuel flow",
+        "radiometer"
+      ],
+      "what_changed": [
+        "airflow speed (main variable)",
+        "flow direction (opposed vs concurrent)",
+        "oxygen concentration",
+        "fuel material and thickness",
+        "sample shape"
+      ]
+    },
+    "open_questions": [
+      "A transient flame-growth model for purely forced microgravity flows is still under development.",
+      "Predicting the flame standoff distance needs improved solid-phase chemical kinetic parameters."
+    ],
+    "results": [
+      {
+        "job": "prevent",
+        "result_expert": "In opposed flow, the flame quickly reached steady spread, fastest at an intermediate flow speed. In concurrent flow, spread rate rose linearly with flow, with quenching extinction near 1 cm/s. At ~10 cm/s, concurrent spread (2.55 mm/s) exceeded opposed (1.21 mm/s).",
+        "result_simple": "In opposed flow, flames spread fastest at a medium air speed. In concurrent flow, faster air spread flames faster until they went out near 1 cm/s.",
+        "safety_meaning": "Ventilation speed strongly changes how fast flames spread, so controlling airflow matters for fire safety.",
+        "source": "D1 p22; D1 p20",
+        "source_detail": {
+          "title": "Thickness and Fuel Preheating Effects on Material Flammability (BASS)",
+          "url": "https://ntrs.nasa.gov/citations/20140011099",
+          "page": 22
+        }
+      },
+      {
+        "job": "detect",
+        "result_expert": "Microgravity flames were especially sensitive to airflow from 0 to 5 cm/s. The gas phase responds almost instantly to flow changes. Below 1 cm/s, flames became dim blue and very stable, and low heat loss let them burn for a long time.",
+        "result_simple": "Space flames are very sensitive to air speeds between 0 and 5 cm/s. Below 1 cm/s they turn dim blue, stay steady, and can burn for a long time.",
+        "safety_meaning": "Slow, dim flames can persist unnoticed, posing a hidden fire risk.",
+        "source": "D1 p54",
+        "source_detail": {
+          "title": "Thickness and Fuel Preheating Effects on Material Flammability (BASS)",
+          "url": "https://ntrs.nasa.gov/citations/20140011099",
+          "page": 54
+        }
+      },
+      {
+        "job": "detect",
+        "result_expert": "Only the smallest flames on acrylic slabs were strongly affected by solid heat loss, yet still burned over 5 minutes before self-extinguishing. A tiny flame might go undetected for a long time and could flare up if convection increased or it spread to other fuel.",
+        "result_simple": "The smallest acrylic flames burned for over 5 minutes before going out. A tiny flame could stay hidden, then flare up if air flow suddenly rises.",
+        "safety_meaning": "Small hidden flames may escape detection and later flare, so early detection is critical.",
+        "source": "D1 p55",
+        "source_detail": {
+          "title": "Thickness and Fuel Preheating Effects on Material Flammability (BASS)",
+          "url": "https://ntrs.nasa.gov/citations/20140011099",
+          "page": 55
+        }
+      },
+      {
+        "job": "prevent",
+        "result_expert": "Ultem and Nomex HT90-40 did not burn in ISS air (21–22% O2) at ~15 cm/s, similar to 1-g, but Nomex-III burned. BASS indicates NASA-STD-6001 Test 1 is not conservative; materials can burn at lower oxygen levels in microgravity than on Earth.",
+        "result_simple": "Some fire-resistant materials did not burn in 21–22% oxygen, but others did. Materials can burn at lower oxygen in space than on Earth.",
+        "safety_meaning": "Earth-based material tests may under-predict flammability, so spacecraft material selection needs caution.",
+        "source": "D1 p26; D2 p31",
+        "source_detail": {
+          "title": "Thickness and Fuel Preheating Effects on Material Flammability (BASS)",
+          "url": "https://ntrs.nasa.gov/citations/20140011099",
+          "page": 26
+        }
+      },
+      {
+        "job": "put_out",
+        "result_expert": "A nitrogen jet failed to extinguish the flame when the solid was very warm; thick solids store much heat. Local suppressant was inadequate because the jet entrains air and sustains the flame even when ambient airflow is turned off.",
+        "result_simple": "A nitrogen jet failed to extinguish a flame on a warm, thick sample. Thick solids store heat, and the jet pulls in air that sustains the flame.",
+        "safety_meaning": "Local gas suppressants may fail on warm, thick fuels, so suppression methods need improvement.",
+        "source": "D1 p52; D2 p31",
+        "source_detail": {
+          "title": "Thickness and Fuel Preheating Effects on Material Flammability (BASS)",
+          "url": "https://ntrs.nasa.gov/citations/20140011099",
+          "page": 52
+        }
+      }
+    ],
+    "summary_expert": "BASS burned solid fuels (PMMA, wax, cotton-fiberglass, Nomex, Ultem) in the ISS Microgravity Science Glovebox using the SPICE flow duct, imposing airflows up to 40 cm/s in opposed and concurrent configurations. Oxygen ranged from about 16% to 21.5% (ISS cabin air ~21%, with nitrogen vitiation), at 10.2–14.7 psia. Airflow speed was the main variable. Microgravity flames were especially sensitive to flows of 0–5 cm/s; below 1 cm/s they became dim, blue, and long-lived. In opposed flow, spread rate peaked at an intermediate speed; in concurrent flow it rose linearly with flow, with quenching near 1 cm/s. At ~10 cm/s, concurrent spread (2.55 mm/s) exceeded opposed (1.21 mm/s). Ultem and Nomex HT90-40 did not burn at 21–22% O2 and ~15 cm/s, but Nomex-III did. Nitrogen jets failed to extinguish warm, thick samples.",
+    "summary_simple": "Astronauts on the International Space Station burned solid fuels like plastic, wax, and fabric in a small wind tunnel. They changed the air flow speed and oxygen to see how flames spread and go out in the near-weightless environment. They found that flames are very sensitive to slow air flows, small flames can hide and burn for minutes, and some materials burn more easily in space than on Earth.",
+    "ai_jobs": [
+      "prevent",
+      "put_out"
+    ],
+    "jobs_source": "our research"
+  }
+}

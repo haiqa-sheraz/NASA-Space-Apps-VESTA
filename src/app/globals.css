@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+@import "../styles/components.css";
+
+/* Listbox focus: show the ring on the active option, not around the whole list. */
+@layer components {
+  .listbox:focus-visible {
+    outline: none;
+  }
+  .listbox:focus-visible [role="option"].is-active {
+    outline: 2px solid var(--blue);
+    outline-offset: -2px;
+  }
+}

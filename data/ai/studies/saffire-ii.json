@@ -1,0 +1,164 @@
+{
+  "study_id": "saffire-ii",
+  "model": "baidu/ernie-5.5-flash-preview:free",
+  "seconds": 62.6,
+  "generated": "2026-11-14T14:35:34",
+  "sources": [
+    {
+      "label": "D1",
+      "title": "Saffire Offgas Testing Strategy",
+      "url": "https://ntrs.nasa.gov/citations/20150003025",
+      "file": "NTRS Reference Documents\\20150003025.pdf"
+    },
+    {
+      "label": "D2",
+      "title": "The Spacecraft Fire Experiment (Saffire): Objectives, Development and Status",
+      "url": "https://ntrs.nasa.gov/citations/20170001636",
+      "file": "NTRS Reference Documents\\20170001636.pdf"
+    },
+    {
+      "label": "D3",
+      "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+      "url": "https://ntrs.nasa.gov/citations/20180005168",
+      "file": "NTRS Reference Documents\\20180005168.pdf"
+    }
+  ],
+  "numbers_not_in_sources": [],
+  "word_counts": {
+    "summary_simple": 68,
+    "summary_expert": 131
+  },
+  "profile": {
+    "earth_uses": [],
+    "equipment": [
+      {
+        "area": "materials",
+        "note": "Silicone and Nomex resisted sustained burning, favoring them as safer cabin materials."
+      },
+      {
+        "area": "ventilation",
+        "note": "Faster airflow raised flame spread rate, so ventilation design should limit cabin airflow."
+      },
+      {
+        "area": "detectors",
+        "note": "Results help test whether normal-gravity screening predicts low-gravity material flammability."
+      }
+    ],
+    "experiment_goal": "Saffire-II set out to measure how the oxygen flammability limits of spacecraft materials in long-duration low gravity differ from those found in NASA's normal-gravity screening tests.",
+    "glossary": [
+      {
+        "definition": "The range of conditions, such as oxygen level, in which a material will ignite and keep burning.",
+        "term": "flammability limit"
+      },
+      {
+        "definition": "A cotton-fiberglass fabric that burns like cotton but keeps its shape after the cotton is consumed.",
+        "term": "SIBAL"
+      },
+      {
+        "definition": "A clear plastic (polymethyl methacrylate), also called acrylic.",
+        "term": "PMMA"
+      },
+      {
+        "definition": "Flame spreading in the same direction as the airflow, like a fire fanned by wind.",
+        "term": "concurrent flame spread"
+      }
+    ],
+    "jobs": [
+      "prevent"
+    ],
+    "key_facts": {
+      "airflow": "About 20 cm/s for most samples; some at 25-30 cm/s.",
+      "fuels": [
+        "Silicone",
+        "SIBAL (cotton-fiberglass)",
+        "PMMA",
+        "Nomex"
+      ],
+      "gravity": "Low-gravity (microgravity); no numeric value given.",
+      "number_of_tests": "7",
+      "oxygen": "About 21.5-22.1% O2 by volume.",
+      "pressure": null,
+      "sample_shapes": [
+        "Nine rectangular samples, each 5 cm x 29 cm",
+        "Silicone 0.25-1.02 mm thick",
+        "SIBAL 0.33 mm thick",
+        "PMMA up to 10 mm thick (flat and structured)"
+      ],
+      "sensors": [
+        "Two flame-imaging cameras",
+        "Thermocouples (flow, flame, plume temperature)",
+        "Radiometers (flame radiation)",
+        "Solid-state O2, CO2, and pressure sensors",
+        "Anemometers (flow velocity)",
+        "Smoke wire (flow uniformity)"
+      ],
+      "what_changed": [
+        "Material type",
+        "Sample thickness",
+        "Airflow speed (20-30 cm/s)",
+        "Flow direction (concurrent vs. opposed)"
+      ]
+    },
+    "open_questions": [
+      "A thorough evaluation would need many more samples and a wider range of materials.",
+      "The results are expected to raise further significant questions about material flammability in spacecraft.",
+      "The impact on the whole vehicle, thick materials, fire detection, and post-fire cleanup still need study."
+    ],
+    "results": [
+      {
+        "job": "prevent",
+        "result_expert": "At about 22.1% O2 and 20 cm/s airflow, SIBAL cotton-fiberglass and PMMA samples sustained flame spread, while silicone and Nomex samples burned insignificantly, confirming material-specific flammability limits in low gravity.",
+        "result_simple": "In air with about 22% oxygen, some spacecraft materials kept burning while others did not, showing flammability limits differ in low gravity.",
+        "safety_meaning": "Knowing which cabin materials resist burning helps NASA pick safer materials for spacecraft.",
+        "source": "D3 p30-31",
+        "source_detail": {
+          "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+          "url": "https://ntrs.nasa.gov/citations/20180005168",
+          "page": 30
+        }
+      },
+      {
+        "job": "prevent",
+        "result_expert": "Four silicone samples (0.25-1.02 mm) and the Nomex portion of sample II-7 showed insignificant burning at about 22.1% O2 and 20 cm/s, indicating these materials resisted sustained flame spread.",
+        "result_simple": "Silicone samples of several thicknesses and a Nomex sample did not sustain flame spread under the test conditions.",
+        "safety_meaning": "Silicone and Nomex may be safer cabin materials because they resist spreading fire.",
+        "source": "D3 p31",
+        "source_detail": {
+          "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+          "url": "https://ntrs.nasa.gov/citations/20180005168",
+          "page": 31
+        }
+      },
+      {
+        "job": "prevent",
+        "result_expert": "SIBAL cotton-fiberglass samples (5 cm x 29 cm) burned completely; spread rate rose from 2.1 mm/s at 20 cm/s airflow to 2.6 mm/s at 25 cm/s, showing airflow speed increases flame spread.",
+        "result_simple": "Cotton-fiberglass fabric burned completely and spread faster with more airflow, from 2.1 to 2.6 mm/s.",
+        "safety_meaning": "Faster cabin airflow can speed flame spread, so ventilation design affects how fast a fire grows.",
+        "source": "D3 p31",
+        "source_detail": {
+          "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+          "url": "https://ntrs.nasa.gov/citations/20180005168",
+          "page": 31
+        }
+      },
+      {
+        "job": "prevent",
+        "result_expert": "Structured and flat PMMA samples (10 mm thick) burned for 600 s and 900 s but spread only about 10 cm at roughly 22% O2 and 20 cm/s, showing thick plastics burn long without spreading far.",
+        "result_simple": "Flat and structured plastic (PMMA) samples burned for 600 to 900 seconds but spread only about 10 cm.",
+        "safety_meaning": "Long-burning plastics can release heat and toxic gases for a long time, threatening crew health.",
+        "source": "D3 p31",
+        "source_detail": {
+          "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+          "url": "https://ntrs.nasa.gov/citations/20180005168",
+          "page": 31
+        }
+      }
+    ],
+    "summary_expert": "Saffire-II (Spacecraft Fire Experiment-II) burned nine samples (each 5 cm x 29 cm) on a card inside the uncrewed Cygnus vehicle after undocking from the ISS. Conducted in low-gravity at about 21.5-22.1% O2 by volume and about 20 cm/s airflow (some samples 25-30 cm/s), it aimed to quantify how low-gravity flammability limits differ from NASA's normal-gravity screening tests. Materials included silicone (0.25-1.02 mm), SIBAL cotton-fiberglass fabric (0.33 mm), PMMA (up to 10 mm, flat and structured), and Nomex. Silicone and Nomex samples showed insignificant burning, while SIBAL and PMMA sustained flame spread. SIBAL spread rate rose from 2.1 mm/s at 20 cm/s to 2.6 mm/s at 25 cm/s. PMMA samples burned 600-900 s but spread only about 10 cm. Diagnostics included cameras, thermocouples, radiometers, and solid-state O2, CO2, and pressure sensors.",
+    "summary_simple": "Saffire-II was a NASA fire experiment that burned nine small material samples inside an uncrewed Cygnus spacecraft after it left the space station. Scientists wanted to learn which materials catch fire and keep burning in the near-weightless conditions of orbit. They tested silicone, cotton-fiberglass fabric, plastic, and Nomex in air with about 22% oxygen. Some materials burned and others did not, helping NASA choose safer materials for spacecraft.",
+    "ai_jobs": [
+      "prevent"
+    ],
+    "jobs_source": "our research"
+  }
+}

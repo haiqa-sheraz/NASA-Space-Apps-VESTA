@@ -9,16 +9,7 @@ Step 4  Saved AI answers, made once with ERNIE 5.5 Flash (fallback: Super VL):
           - expert versions of the headline findings, the Earth-benefit stories, and the gap explanation
 Step 5  Fact-check: every number in every AI answer is looked up in its source text; misses are flagged.
 
-Usage (use the PAID OpenRouter key for this one-time run):
-  pip install requests pymupdf
-  python prep_step2_ai.py --data "data" --dry-run          # plan and document map, no API calls
-  python prep_step2_ai.py --data "data"                    # full run (about 90 requests, 30-60 min)
-  python prep_step2_ai.py --data "data" --only chunks,ocr  # parts: chunks, ocr, studies, rankings, findings, earth, gaps
-  Add --force to redo parts that already have saved output (otherwise finished studies are skipped).
 
-Reads prep_output/ from step 1 and writes into it:
-  chunks.jsonl, ocr_cache/, ai/studies/<id>.json, ai/rankings.json, ai/findings.json,
-  ai/earth_benefits.json, ai/gaps.json, ai_check_report.md
 """
 
 import argparse

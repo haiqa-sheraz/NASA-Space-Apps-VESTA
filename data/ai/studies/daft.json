@@ -1,0 +1,136 @@
+{
+  "study_id": "daft",
+  "model": "nvidia/nemotron-3.5-super-vl:free",
+  "seconds": 8.9,
+  "generated": "2026-11-14T14:41:52",
+  "sources": [
+    {
+      "label": "D1",
+      "title": "DAFT final report (PSI-47)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47",
+      "file": "PSI\\DAFT-DAFT2 PSI-47\\DAFT final report 6 24 08 as submitted.pdf"
+    }
+  ],
+  "numbers_not_in_sources": [],
+  "word_counts": {
+    "summary_simple": 50,
+    "summary_expert": 70
+  },
+  "profile": {
+    "summary_simple": "NASA tested a modified particle counter on the space station to make sure it works without gravity. The device helps detect smoke from fires in spacecraft. Astronauts ran tests in 2005 and 2006 using Arizona Road Dust. The test showed the counter works in microgravity and helps keep crews safe.",
+    "summary_expert": "DAFT tested a modified TSI P-Trak condensation nuclei counter and a TSI DustTrak on ISS Increments 10 and 13 in 2005 and 2006. The experiment used Arizona Road Dust (ARD Fine) aerosol generated with ISS gaseous nitrogen inside 15-liter Mylar sample bags. It validated the P-Trak's capillary-fed condenser for microgravity operation, retiring risk for the SAME fire-detector experiment. Oxygen, pressure, and airflow ranges were not stated. Two test sessions flew.",
+    "experiment_goal": "The study set out to learn whether the modified TSI P-Trak particle counter functions normally in microgravity to support smoke detector development for spacecraft.",
+    "key_facts": {
+      "fuels": [],
+      "sample_shapes": [],
+      "oxygen": null,
+      "pressure": null,
+      "airflow": null,
+      "gravity": "microgravity",
+      "what_changed": [
+        "test locations and sample sources on ISS",
+        "number of dust toggles into sample bags",
+        "use of modified versus unmodified P-Trak"
+      ],
+      "sensors": [
+        "TSI P-Trak condensation nuclei counter",
+        "TSI DustTrak laser scattering aerosol monitor"
+      ],
+      "number_of_tests": "2"
+    },
+    "results": [
+      {
+        "result_simple": "The particle counter worked in space without gravity problems.",
+        "result_expert": "The modified P-Trak operated in microgravity for extended periods with no alcohol accumulation in the optics chamber and no failures, across readings up to 30,000 pt/cc.",
+        "safety_meaning": "Confirms smoke detectors can reliably detect particles aboard spacecraft without gravity.",
+        "job": "detect",
+        "source": "D1 p23",
+        "source_detail": {
+          "title": "DAFT final report (PSI-47)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47",
+          "page": 23
+        }
+      },
+      {
+        "result_simple": "On-orbit dust particles stayed airborne longer than on Earth.",
+        "result_expert": "Without gravity-driven settling, more larger particles remained entrained, giving an on-orbit count/mass ratio lower than the 1-g ground relationship and an average particle diameter of 1.65 micron.",
+        "safety_meaning": "Smoke in space may contain larger particles that behave differently than Earth smoke.",
+        "job": "detect",
+        "source": "D1 p9",
+        "source_detail": {
+          "title": "DAFT final report (PSI-47)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47",
+          "page": 9
+        }
+      },
+      {
+        "result_simple": "ISS cabin air was very clean during the tests.",
+        "result_expert": "ISS cabin air readings were about a factor of ten lower than typical office conditions, roughly 2 to 5 pt/cc, showing the air handling system keeps particulate levels low.",
+        "safety_meaning": "Baseline cabin air quality is low, so detector alarms can be set with confidence.",
+        "job": "detect",
+        "source": "D1 p6",
+        "source_detail": {
+          "title": "DAFT final report (PSI-47)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47",
+          "page": 6
+        }
+      },
+      {
+        "result_simple": "The larger-particle filter only caught about half the big dust.",
+        "result_expert": "The DAFT Impactor was only about 50% efficient at removing particles above 2.5 microns, allowing many larger particles into the instruments.",
+        "safety_meaning": "Detectors must be able to count larger particles that do not settle in microgravity.",
+        "job": "detect",
+        "source": "D1 p9",
+        "source_detail": {
+          "title": "DAFT final report (PSI-47)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47",
+          "page": 9
+        }
+      }
+    ],
+    "jobs": [
+      "detect"
+    ],
+    "equipment": [
+      {
+        "area": "detectors",
+        "note": "Results support P-Trak-based smoke detectors for spacecraft fire detection."
+      },
+      {
+        "area": "materials",
+        "note": "Findings inform smoke particle size expectations for material selection."
+      },
+      {
+        "area": "ventilation",
+        "note": "Particle settling behavior in microgravity informs air filtration design."
+      }
+    ],
+    "earth_uses": [],
+    "glossary": [
+      {
+        "term": "aerosol",
+        "definition": "tiny solid or liquid particles suspended in air."
+      },
+      {
+        "term": "condensation nuclei counter",
+        "definition": "a device that counts particles by condensing liquid on them."
+      },
+      {
+        "term": "microgravity",
+        "definition": "the near-weightless condition aboard the space station."
+      },
+      {
+        "term": "polydisperse",
+        "definition": "containing particles of many different sizes."
+      }
+    ],
+    "open_questions": [
+      "Whether particle buildup occurs in the P-Trak optics chamber during longer runs.",
+      "The exact correlation between Velcro dust releases and P-Trak reading increases."
+    ],
+    "ai_jobs": [
+      "detect"
+    ],
+    "jobs_source": "our research"
+  }
+}

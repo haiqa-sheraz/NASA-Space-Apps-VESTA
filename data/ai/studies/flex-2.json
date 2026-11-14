@@ -1,0 +1,174 @@
+{
+  "study_id": "flex-2",
+  "model": "nvidia/nemotron-3.5-super-vl:free",
+  "seconds": 10.5,
+  "generated": "2026-11-14T14:19:31",
+  "sources": [
+    {
+      "label": "D1",
+      "title": "FLEX: Flammability and Extinction Investigations (2004 workshop)",
+      "url": "https://ntrs.nasa.gov/citations/20040142397",
+      "file": "NTRS Reference Documents\\20040142397.pdf"
+    },
+    {
+      "label": "D2",
+      "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+      "url": "https://ntrs.nasa.gov/citations/20120015928",
+      "file": "NTRS Reference Documents\\20120015928.pdf"
+    },
+    {
+      "label": "D3",
+      "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+      "url": null,
+      "file": "combustion science mini book.pdf"
+    }
+  ],
+  "numbers_not_in_sources": [
+    "68"
+  ],
+  "word_counts": {
+    "summary_simple": 32,
+    "summary_expert": 114
+  },
+  "profile": {
+    "summary_simple": "NASA's FLEX-2 study burns fuel droplets in space to learn how flames act without gravity. It tests different fuels, oxygen levels, pressures, and airflows to improve fire safety for astronauts and spacecraft.",
+    "summary_expert": "FLEX-2 (PSI-68) studies droplet combustion aboard the ISS in the Combustion Integrated Rack using the Multi-user Droplet Combustion Apparatus. It examines pure fuels and mixtures under microgravity with oxygen percentages up to 40 percent, pressures from 0 to 3 atm, and slow convective flows up to 3 cm/s. Droplets range from 1 to 5 mm. Fuels include n-decane, ethanol, propylbenzene, toluene, and mixtures such as heptane-hexadecane, propanol-glycerol, decane-propylbenzene, and n-heptane-toluene. Diagnostics include backlit droplet imaging, OH and color flame imaging, radiometric measurements, and HiBMS cameras. About 400 test point conditions were planned. The study measures burning rates, extinction diameters, flame dimensions, soot, and radiative output to validate combustion models and support spacecraft fire safety.",
+    "experiment_goal": "FLEX-2 set out to learn how droplet combustion, flame extinction, soot formation, and radiative heat transfer behave in microgravity across different fuels, oxygen levels, pressures, and flows.",
+    "key_facts": {
+      "fuels": [
+        "n-decane",
+        "ethanol",
+        "propylbenzene",
+        "toluene",
+        "heptane-hexadecane mixtures",
+        "propanol-glycerol mixtures",
+        "decane-propylbenzene mixtures",
+        "n-heptane-toluene mixtures"
+      ],
+      "sample_shapes": [
+        "spherical droplets",
+        "1 to 5 mm"
+      ],
+      "oxygen": "up to 40 percent by volume",
+      "pressure": "0 to 3 atm",
+      "airflow": "up to 3 cm/s",
+      "gravity": "microgravity",
+      "what_changed": [
+        "fuels",
+        "droplet sizes",
+        "ambient pressures",
+        "oxygen percentages",
+        "gas diluent types",
+        "droplet spacing",
+        "translation velocities"
+      ],
+      "sensors": [
+        "backlit droplet images",
+        "OH-emission images",
+        "color flame images",
+        "wide band radiometric measurements",
+        "narrow band radiometric measurements",
+        "HiBMS camera"
+      ],
+      "number_of_tests": null
+    },
+    "results": [
+      {
+        "result_simple": "FLEX-2 studies how droplets burn and go out in space to improve fire safety models.",
+        "result_expert": "FLEX-2 measures droplet burning rates, extinction diameters, flame dimensions, soot, and radiative output under microgravity with varied fuels, oxygen, pressure, and flow to validate combustion models.",
+        "safety_meaning": "Results help design better fire suppression and detection for spacecraft where flames behave differently than on Earth.",
+        "job": "prevent",
+        "source": "D2 p14",
+        "source_detail": {
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "url": "https://ntrs.nasa.gov/citations/20120015928",
+          "page": 14
+        }
+      },
+      {
+        "result_simple": "FLEX-2 uses real fuel mixtures to check models for engines and industry.",
+        "result_expert": "By burning bi-component and surrogate fuels, FLEX-2 data verifies detailed and reduced-order models of droplet combustion for real fuels used in transportation and industry.",
+        "safety_meaning": "Improved models support safer spacecraft material and fire-safety design decisions.",
+        "job": "prevent",
+        "source": "D2 p14",
+        "source_detail": {
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "url": "https://ntrs.nasa.gov/citations/20120015928",
+          "page": 14
+        }
+      },
+      {
+        "result_simple": "FLEX-2 looks at how two nearby droplets affect each other's burning.",
+        "result_expert": "The investigation determines the influence of a second burning droplet on a linear array and studies droplet-droplet interactions under microgravity.",
+        "safety_meaning": "Understanding droplet interactions helps assess risks from floating burning particles inside spacecraft.",
+        "job": "detect",
+        "source": "D2 p14",
+        "source_detail": {
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "url": "https://ntrs.nasa.gov/citations/20120015928",
+          "page": 14
+        }
+      },
+      {
+        "result_simple": "Slow airflow changes how droplets burn in microgravity.",
+        "result_expert": "FLEX-2 studies the influence of sub-buoyant convective flows on combustion rates using translation velocities up to 3 cm/s.",
+        "safety_meaning": "Airflow data informs ventilation design to reduce fire spread risk in crew habitats.",
+        "job": "prevent",
+        "source": "D2 p14",
+        "source_detail": {
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "url": "https://ntrs.nasa.gov/citations/20120015928",
+          "page": 14
+        }
+      }
+    ],
+    "jobs": [
+      "put_out"
+    ],
+    "equipment": [
+      {
+        "area": "detectors",
+        "note": "Microgravity flame and smoke behavior data help design detectors that work without convection."
+      },
+      {
+        "area": "extinguishers",
+        "note": "Extinction diameter and suppressant data support better inert-gas fire suppression systems."
+      },
+      {
+        "area": "materials",
+        "note": "Fuel and combustion results guide safer material selection for spacecraft habitats."
+      }
+    ],
+    "earth_uses": [
+      "cleaner fuels with smaller carbon footprint",
+      "fewer pollutants",
+      "better engine design",
+      "improved fuel efficiency",
+      "reduced greenhouse gases"
+    ],
+    "glossary": [
+      {
+        "term": "microgravity",
+        "definition": "Near-weightlessness aboard the ISS where gravity-driven buoyancy and convection are greatly reduced."
+      },
+      {
+        "term": "extinction diameter",
+        "definition": "The droplet size at which a flame can no longer sustain itself and goes out."
+      },
+      {
+        "term": "surrogate fuel",
+        "definition": "A mixture of simpler fuels used to represent the behavior of a real, complex fuel."
+      },
+      {
+        "term": "soot",
+        "definition": "Solid carbon particles produced during incomplete combustion of hydrocarbon fuels."
+      }
+    ],
+    "open_questions": [],
+    "ai_jobs": [
+      "prevent",
+      "detect"
+    ],
+    "jobs_source": "our research"
+  }
+}

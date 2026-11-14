@@ -1,0 +1,163 @@
+{
+  "study_id": "same-r",
+  "model": "baidu/ernie-5.5-flash-preview:free",
+  "seconds": 51.1,
+  "generated": "2026-11-14T14:40:22",
+  "sources": [
+    {
+      "label": "D1",
+      "title": "SAME-R final report (PSI-101)",
+      "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101",
+      "file": "PSI\\SAME-R PSI-101\\SAMER_Final 0602 2014.pdf"
+    },
+    {
+      "label": "D2",
+      "title": "Particle Morphology and Size Results from SAME-2",
+      "url": "https://ntrs.nasa.gov/citations/20130000422",
+      "file": "NTRS Reference Documents\\20130000422.pdf"
+    }
+  ],
+  "numbers_not_in_sources": [],
+  "word_counts": {
+    "summary_simple": 59,
+    "summary_expert": 141
+  },
+  "profile": {
+    "earth_uses": [],
+    "equipment": [
+      {
+        "area": "detectors",
+        "note": "Two-moment sensing like MPASS sizes smoke to improve sensitivity and reduce false alarms."
+      },
+      {
+        "area": "ventilation",
+        "note": "Low airflow yields larger particles, so unventilated spaces need detectors tuned for coarser smoke."
+      }
+    ],
+    "experiment_goal": "To measure the size and morphology of smoke particles from common spacecraft materials in microgravity and to test whether a two-moment detector can characterize that smoke accurately.",
+    "glossary": [
+      {
+        "definition": "Breaking down a material with heat, releasing gases that condense into smoke.",
+        "term": "Pyrolysis"
+      },
+      {
+        "definition": "When smoke particles collide and stick together, forming larger particles.",
+        "term": "Coagulation"
+      },
+      {
+        "definition": "A common particle-size pattern where many particles are small and few are large.",
+        "term": "Lognormal distribution"
+      },
+      {
+        "definition": "A method that describes a particle-size distribution using a few calculated averages.",
+        "term": "Moment method"
+      }
+    ],
+    "jobs": [
+      "detect"
+    ],
+    "key_facts": {
+      "airflow": "0 to 8.1 cm/s (baseline 8 cm/s; runs down to 2 cm/s; some no-flow).",
+      "fuels": [
+        "Kapton",
+        "Teflon",
+        "Pyrell",
+        "Silicone rubber",
+        "Lamp wick (cellulose)"
+      ],
+      "gravity": "Microgravity aboard the ISS; 1-g ground tests for comparison.",
+      "number_of_tests": "109",
+      "oxygen": null,
+      "pressure": null,
+      "sample_shapes": [
+        "Small solid samples heated on a resistive wire coil"
+      ],
+      "sensors": [
+        "Moment instruments (zeroth, first, third moments)",
+        "DustTrak",
+        "P-Trak",
+        "Ionization detector",
+        "Thermal precipitators with TEM grids",
+        "Two-moment MPASS detector",
+        "SMPS (ground reference)"
+      ],
+      "what_changed": [
+        "Sample material",
+        "Sample heating temperature (baseline vs high)",
+        "Airflow rate (8 cm/s to 2 cm/s and no-flow)",
+        "Aging time (fresh vs aged)"
+      ]
+    },
+    "open_questions": [
+      "The origin of the foreign particles that contaminated the SAME-1 TEM grids was still under investigation."
+    ],
+    "results": [
+      {
+        "job": "detect",
+        "result_expert": "Teflon and Kapton produced very small particles (diameter of average mass 0.173 and 0.106 µm unaged), while lamp wick and silicone produced much larger ones (0.271 and 0.468 µm unaged), especially after aging.",
+        "result_simple": "Different materials make different-sized smoke. Teflon and Kapton smoke is very small; lamp wick and silicone smoke is much larger.",
+        "safety_meaning": "Small Teflon and Kapton smoke is hard for light-scattering detectors to see; large lamp wick and silicone smoke gives strong signals.",
+        "source": "D1 p5",
+        "source_detail": {
+          "title": "SAME-R final report (PSI-101)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101",
+          "page": 5
+        }
+      },
+      {
+        "job": "detect",
+        "result_expert": "Particle size increased at low flow rates. With no airflow, the diameter of average mass was 30% to 40% larger than with flow across all materials, because smoke stays concentrated and coagulates more.",
+        "result_simple": "Slower airflow makes bigger smoke particles. Smoke trapped in still, unventilated spaces like avionics boxes is larger than smoke in ventilated areas.",
+        "safety_meaning": "Detectors in poorly ventilated spaces must expect larger smoke particles, which affect how well they sense and alarm.",
+        "source": "D1 p9",
+        "source_detail": {
+          "title": "SAME-R final report (PSI-101)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101",
+          "page": 9
+        }
+      },
+      {
+        "job": "detect",
+        "result_expert": "Combining two moments let MPASS scale its response to particle size, giving a more accurate smoke amount than a single-moment detector and cutting relative variance by at least a factor of 2.",
+        "result_simple": "A two-moment detector (MPASS) measured smoke mass or number across many particle sizes and materials, and could tell real smoke from large dust.",
+        "safety_meaning": "Better smoke measurement and fewer false alarms help crews trust and rely on fire detection.",
+        "source": "D1 p6",
+        "source_detail": {
+          "title": "SAME-R final report (PSI-101)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101",
+          "page": 6
+        }
+      },
+      {
+        "job": "detect",
+        "result_expert": "Ground SMPS and TEM checks confirmed the lognormal, moment-method approach is valid for spacecraft smoke overall; Kapton and lamp wick were lognormal, while silicone was not.",
+        "result_simple": "The moment method with a lognormal assumption reliably described smoke from Kapton and lamp wick, but fit silicone smoke poorly.",
+        "safety_meaning": "Validated sizing methods let engineers design and check smoke detectors for the range of spacecraft materials.",
+        "source": "D1 p22",
+        "source_detail": {
+          "title": "SAME-R final report (PSI-101)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101",
+          "page": 22
+        }
+      },
+      {
+        "job": "detect",
+        "result_expert": "Aging increased observed diameters; the count mean diameter rose more than the diameter of average mass, consistent with coagulation removing the smallest particles as they join larger ones.",
+        "result_simple": "Smoke particles grow as they age. Small particles collide and stick together, so aged smoke has larger particles than fresh smoke.",
+        "safety_meaning": "Smoke that lingers and ages becomes coarser, which changes detector response and alarm behavior.",
+        "source": "D1 p4",
+        "source_detail": {
+          "title": "SAME-R final report (PSI-101)",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101",
+          "page": 4
+        }
+      }
+    ],
+    "summary_expert": "SAMER (Smoke Aerosol Measurement Experiment-Reflight) was a re-flight of SAME aboard the ISS Microgravity Science Glovebox, running July 16 to September 9, 2010. It pyrolyzed five spacecraft materials (Kapton, Teflon, Pyrell, silicone rubber, lamp wick) on a heated wire in microgravity, at baseline airflow of 8 cm/s down to 2 cm/s and no-flow, with baseline and higher heating temperatures and controlled aging. Moment instruments, thermal precipitators with TEM grids, and the two-moment MPASS measured particle sizes; ground SMPS and TEM tests validated the lognormal moment method. Typical particle concentrations were a few million particles/cc and mass concentrations 2 to 15 mg/m3. Teflon and Kapton smoke was very small, lamp wick and silicone much larger; low flow and aging increased sizes, with zero-flow diameters 30% to 40% larger. The moment method with a lognormal assumption was confirmed valid for characterizing spacecraft smoke.",
+    "summary_simple": "SAMER studied the smoke made when common spacecraft materials are heated in microgravity aboard the International Space Station. Scientists measured how big the smoke particles are for five materials and how size changes with airflow and aging. They tested a new two-moment detector called MPASS. The results help engineers build better smoke detectors to keep astronauts safe from fire.",
+    "ai_jobs": [
+      "detect"
+    ],
+    "jobs_source": "our research"
+  }
+}

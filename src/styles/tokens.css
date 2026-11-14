@@ -1,0 +1,220 @@
+/*
+  Vesta design tokens, from the approved Claude Design handoff (15 Handoff / tokens, v2:
+  Ember black and Ash palettes). Dark is the default. The theme is set by data-theme on <html>,
+  defaulting to prefers-color-scheme (see the inline script in app/layout.tsx).
+*/
+
+/* ---------- color: dark (Ember black) ---------- */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #140a07; /* Ember black: page background */
+  --surface: #1f130f; /* Coal: panels and cards */
+  --surface-2: #2a1a14; /* Coal raised: hover, selected rows, table headers */
+  --rule: #3e2b23; /* decorative lines and dividers */
+  --rule-input: #7d695e; /* input and control borders */
+  --text: #f3eae5; /* Ash white: main text */
+  --text-2: #b5a59c; /* Dust: secondary text */
+  --on-blue: #140a07; /* text on primary buttons */
+  --soot: #8e7c71; /* soot particles only */
+  --blue: #5b8dff; /* Microgravity blue: signature, primary, links, focus */
+  --blue-hover: #7aa3ff;
+  --blue-press: #4a78e6;
+  --ember: #ff9a52; /* Earth flames, heat, Prevent */
+  --smoke: #b9b6cf; /* smoke and sensors, Detect */
+  --mist: #43cdbe; /* Put out */
+  --cool: #cdb9ff; /* cool-flame content only */
+  --caution: #f2c14e; /* data quality flags, gaps */
+  --alert: #ff6b6b; /* errors */
+  --tint: 14%;
+  --caution-tint: color-mix(in srgb, var(--caution) 12%, var(--bg));
+  --alert-tint: color-mix(in srgb, var(--alert) 12%, var(--bg));
+  --scrim: rgba(10, 5, 3, 0.72);
+  --focus-glow: 0 0 0 4px rgba(91, 141, 255, 0.28), 0 0 18px rgba(91, 141, 255, 0.45);
+}
+
+/* ---------- color: light (Ash) ---------- */
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f1efea;
+  --surface: #fbfaf7;
+  --surface-2: #e8e4dc;
+  --rule: #ddd7cd;
+  --rule-input: #8a8075;
+  --text: #1a1714;
+  --text-2: #5c554d;
+  --on-blue: #ffffff;
+  --soot: #4e443d;
+  --blue: #2d5be3;
+  --blue-hover: #2349c2;
+  --blue-press: #1c3da6;
+  --ember: #a84a0c;
+  --smoke: #5d6780;
+  --mist: #0a7065;
+  --cool: #6a4fc2;
+  --caution: #7d5a00;
+  --alert: #b82b31;
+  --tint: 12%;
+  --caution-tint: #f6eedb;
+  --alert-tint: #f6e4e1;
+  --scrim: rgba(26, 23, 20, 0.45);
+  --focus-glow: 0 0 0 4px rgba(45, 91, 227, 0.22);
+}
+
+/* Without JavaScript, follow the system setting. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+    --bg: #f1efea;
+    --surface: #fbfaf7;
+    --surface-2: #e8e4dc;
+    --rule: #ddd7cd;
+    --rule-input: #8a8075;
+    --text: #1a1714;
+    --text-2: #5c554d;
+    --on-blue: #ffffff;
+    --soot: #4e443d;
+    --blue: #2d5be3;
+    --blue-hover: #2349c2;
+    --blue-press: #1c3da6;
+    --ember: #a84a0c;
+    --smoke: #5d6780;
+    --mist: #0a7065;
+    --cool: #6a4fc2;
+    --caution: #7d5a00;
+    --alert: #b82b31;
+    --tint: 12%;
+    --caution-tint: #f6eedb;
+    --alert-tint: #f6e4e1;
+    --scrim: rgba(26, 23, 20, 0.45);
+    --focus-glow: 0 0 0 4px rgba(45, 91, 227, 0.22);
+  }
+}
+
+/* ---------- derived tints (recomputed wherever a theme is set, e.g. the always-dark Journey) ---------- */
+:root,
+[data-theme] {
+  --blue-tint: color-mix(in srgb, var(--blue) var(--tint), var(--surface));
+  --ember-tint: color-mix(in srgb, var(--ember) var(--tint), var(--surface));
+  --smoke-tint: color-mix(in srgb, var(--smoke) var(--tint), var(--surface));
+  --mist-tint: color-mix(in srgb, var(--mist) var(--tint), var(--surface));
+  --cool-tint: color-mix(in srgb, var(--cool) var(--tint), var(--surface));
+}
+
+/* ---------- type, space, radius, motion (both themes) ---------- */
+:root {
+
+  /* --font-archivo and --font-atkinson come from next/font (Google Fonts) */
+  --ff-display: var(--font-archivo), "Helvetica Neue", Arial, sans-serif; /* use with font-stretch: 125% */
+  --ff-body: var(--font-atkinson), Verdana, "Segoe UI", system-ui, sans-serif;
+  --ff-data: var(--font-archivo), "Helvetica Neue", Arial, sans-serif; /* tabular numbers */
+
+  --fs-xs: 14px;
+  --fs-sm: 17px;
+  --fs-md: 21px;
+  --fs-lg: 27px;
+  --fs-xl: 33px;
+  --fs-2xl: 42px;
+  --fs-3xl: 52px;
+  --fs-4xl: 65px;
+
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 64px;
+  --s9: 96px;
+
+  --r-data: 4px;
+  --r-btn: 8px;
+  --r-card: 12px;
+  --r-pill: 999px;
+
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-std: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --dur-fast: 150ms;
+  --dur-panel: 200ms;
+  --dur-sort: 250ms;
+  --dur-fade: 300ms;
+  --dur-flame: 900ms;
+
+  --topbar-h: 72px;
+}
+
+@media (max-width: 767.98px) {
+  :root {
+    --topbar-h: 60px;
+  }
+}
+
+/* ---------- Tailwind theme: utilities read the CSS variables, so both themes switch together ---------- */
+@theme inline {
+  --color-*: initial;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-rule: var(--rule);
+  --color-rule-input: var(--rule-input);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+  --color-on-blue: var(--on-blue);
+  --color-blue: var(--blue);
+  --color-blue-hover: var(--blue-hover);
+  --color-blue-press: var(--blue-press);
+  --color-ember: var(--ember);
+  --color-smoke: var(--smoke);
+  --color-mist: var(--mist);
+  --color-cool: var(--cool);
+  --color-caution: var(--caution);
+  --color-alert: var(--alert);
+  --color-soot: var(--soot);
+
+  --font-display: var(--ff-display);
+  --font-body: var(--ff-body);
+  --font-data: var(--ff-data);
+
+  --text-xs: 14px;
+  --text-xs--line-height: 1.5;
+  --text-sm: 17px;
+  --text-sm--line-height: 1.6;
+  --text-md: 21px;
+  --text-md--line-height: 1.45;
+  --text-lg: 27px;
+  --text-lg--line-height: 1.2;
+  --text-xl: 33px;
+  --text-xl--line-height: 1.15;
+  --text-2xl: 42px;
+  --text-2xl--line-height: 1.1;
+  --text-3xl: 52px;
+  --text-3xl--line-height: 1.08;
+  --text-4xl: 65px;
+  --text-4xl--line-height: 1.04;
+
+  --spacing-s1: 4px;
+  --spacing-s2: 8px;
+  --spacing-s3: 12px;
+  --spacing-s4: 16px;
+  --spacing-s5: 24px;
+  --spacing-s6: 32px;
+  --spacing-s7: 48px;
+  --spacing-s8: 64px;
+  --spacing-s9: 96px;
+
+  --radius-data: 4px;
+  --radius-btn: 8px;
+  --radius-card: 12px;
+  --radius-pill: 999px;
+
+  --container-content: 1200px;
+  --container-read: 720px;
+
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1280px;
+
+  --ease-std: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
