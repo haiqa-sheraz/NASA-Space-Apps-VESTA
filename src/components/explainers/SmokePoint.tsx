@@ -2,7 +2,7 @@
 
 import { Cloud, Flame } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Slider } from "@/components/ui/Controls";
 import { SourceLine } from "@/components/ui/SourceChip";
 import type { SourceRef } from "@/lib/sources";
@@ -20,6 +20,25 @@ const SOOT = [
   [-47.4, 109.5, 2.4, 0.41],
   [-55.7, 103.2, 1.6, 0.31],
   [-64.0, 95.2, 2.2, 0.2],
+] as const;
+
+/* Moving soot (design board 14): x at the tip, radius, sideways drift (px) and start offset (s). Each
+   rises 74 px and fades over 2.4 s, staggered by 350 ms, only while past the smoke point. */
+const LIVE_SOOT = [
+  [98.5, 2.6, -6, 0],
+  [101.8, 2.0, 7, -0.35],
+  [100.0, 3.0, -2, -0.7],
+  [97.8, 1.8, -11, -1.05],
+  [102.4, 2.4, 10, -1.4],
+  [100.6, 1.6, 3, -1.75],
+  [99.2, 2.2, -4, -2.1],
+] as const;
+
+/* With reduced motion: three still frames instead of the slider (design board 14). */
+const STILLS = [
+  { flow: 20, title: "Low flow", text: "No smoke. All the soot burns up inside the flame." },
+  { flow: SMOKE_POINT, title: "At the smoke point", text: "The flame tip reaches the marked size." },
+  { flow: 85, title: "Past it", text: "Soot escapes from the tip as smoke." },
 ] as const;
 
 const r1 = (n: number) => Math.round(n * 10) / 10;
@@ -48,12 +67,29 @@ export function flowText(flow: number): string {
   return "Past the smoke point";
 }
 
-/** The chamber with the burner, the flame and (past the mark) soot escaping from the tip. */
-function SootChamber({ flow }: { flow: number }) {
+/**
+ * The chamber with the burner, the flame and (past the mark) soot escaping from the tip. Live,
+ * the soot rises from the tip; back below the mark, no new soot starts and the rest fades out.
+ * `still` draws a fixed frame (the reduced-motion version).
+ */
+function SootChamber({ flow, still = false }: { flow: number; still?: boolean }) {
   const id = useSvgId("sp");
   const { path, tip, h } = jetFlame(flow);
   const past = flow > SMOKE_POINT;
   const sooty = Math.min(1, Math.max(0, (flow - SMOKE_POINT) / 25));
+  // Soot already in the air fades out for 300 ms after the flow drops below the mark.
+  const [fading, setFading] = useState(false);
+  const wasPast = useRef(past);
+  useEffect(() => {
+    if (wasPast.current && !past && !still) {
+      setFading(true);
+      const timer = window.setTimeout(() => setFading(false), 300);
+      wasPast.current = past;
+      return () => window.clearTimeout(timer);
+    }
+    wasPast.current = past;
+    if (past) setFading(false);
+  }, [past, still]);
   return (
     <div className="chamber xp-soot" data-theme="dark">
       {past && (
@@ -85,19 +121,46 @@ function SootChamber({ flow }: { flow: number }) {
               <stop offset="1" stopColor="#FF9A52" stopOpacity="0" />
             </radialGradient>
           </defs>
-          <ellipse cx="100" cy={r1(240 - h / 2)} rx="40" ry={r1(h / 2 + 22)} fill={`url(#${id}-g)`} />
+          <ellipse className="sp-glow" cx="100" cy={r1(240 - h / 2)} rx="40" ry={r1(h / 2 + 22)} fill={`url(#${id}-g)`} />
           <line x1="22" x2="178" y1="110" y2="110" stroke="#B5A59C" strokeWidth="1" strokeDasharray="4 4" />
           <text x="178" y="104" textAnchor="end" fontSize="11" fill="#B5A59C">
             Smoke point
           </text>
-          <path d={path} fill={`url(#${id}-c)`} />
-          {sooty > 0 && <path d={path} fill={`url(#${id}-s)`} opacity={r1(sooty)} />}
-          {past &&
-            SOOT.map(([dy, x, r, o], i) => <circle key={i} className="soot-p" cx={x} cy={r1(tip + dy)} r={r} opacity={o} />)}
+          <path className="sp-flame" d={path} fill={`url(#${id}-c)`} />
+          {sooty > 0 && <path className="sp-flame" d={path} fill={`url(#${id}-s)`} opacity={r1(sooty)} />}
+          {still
+            ? past && SOOT.map(([dy, x, r, o], i) => <circle key={i} className="soot-p" cx={x} cy={r1(tip + dy)} r={r} opacity={o} />)
+            : (past || fading) && (
+                <g className={past ? "smoking" : "smoking soot-going"}>
+                  {LIVE_SOOT.map(([x, r, dx, delay], i) => (
+                    <circle key={i} className="soot-p" cx={x} cy={r1(tip)} r={r} style={{ "--dx": `${dx}px`, animationDelay: `${delay}s` } as CSSProperties} />
+                  ))}
+                </g>
+              )}
           <rect x="93" y="240" width="14" height="24" rx="1" fill="#2A1A14" stroke="#7D695E" strokeWidth="1.5" />
           <rect x="66" y="264" width="68" height="8" rx="2" fill="#2A1A14" stroke="#7D695E" strokeWidth="1.5" />
         </svg>
       </div>
+    </div>
+  );
+}
+
+/** The reduced-motion version: three still frames, low flow, at the smoke point and past it. */
+function SootStills() {
+  return (
+    <div className="soot-stills stack g3">
+      <div className="soot-stills-grid">
+        {STILLS.map((frame) => (
+          <figure key={frame.flow} className="soot-still">
+            <SootChamber flow={frame.flow} still />
+            <figcaption>
+              <b>{frame.title}</b>
+              <span>{frame.text}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <p className="small muted">An illustration, not to scale. The marked point is where soot starts to escape.</p>
     </div>
   );
 }
@@ -156,8 +219,11 @@ export function SmokePointWidget() {
   const [flow, setFlow] = useState(40);
   return (
     <div className="stack g4">
-      <SootChamber flow={flow} />
-      <FlowSlider flow={flow} onChange={setFlow} />
+      <div className="soot-live stack g4">
+        <SootChamber flow={flow} />
+        <FlowSlider flow={flow} onChange={setFlow} />
+      </div>
+      <SootStills />
     </div>
   );
 }
@@ -166,8 +232,10 @@ export function SmokePointWidget() {
 export function SmokePointInline({ text, sources }: { text: string; sources: SourceRef[] }) {
   const [flow, setFlow] = useState(40);
   return (
-    <section className="panel xp-inline" aria-labelledby="smoke-point-title">
-      <SootChamber flow={flow} />
+    <section className="panel xp-inline has-stills" aria-labelledby="smoke-point-title">
+      <div className="soot-live">
+        <SootChamber flow={flow} />
+      </div>
       <div className="stack g3" style={{ minWidth: 0 }}>
         <div className="row between g3 wrapx">
           <span className="row g2 small strong muted">
@@ -182,7 +250,10 @@ export function SmokePointInline({ text, sources }: { text: string; sources: Sou
           Soot and the smoke point
         </h3>
         <p className="body">{text}</p>
-        <FlowSlider flow={flow} onChange={setFlow} />
+        <div className="soot-live">
+          <FlowSlider flow={flow} onChange={setFlow} />
+        </div>
+        <SootStills />
         <SourceLine sources={sources} />
       </div>
     </section>

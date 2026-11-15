@@ -9,7 +9,7 @@ type Mode = "earth" | "space";
 
 /**
  * Journey chapter 1: the Earth teardrop and the space sphere side by side, with the gravity
- * switch highlighting one. The highlight changes instantly; motion comes with the animations step.
+ * switch highlighting one. The highlight moves over 900 ms (motion.css); instantly with reduced motion.
  */
 export function GravityPair() {
   const [mode, setMode] = useState<Mode>("space");

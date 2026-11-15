@@ -5,6 +5,9 @@ import { XpChoice, XpStatus, useSvgId } from "./shared";
 
 type Stage = "bright" | "cool" | "out";
 
+/** The drop is drawn at this radius and scaled to each stage's size, so the change can be smooth. */
+const DROP_R = 16;
+
 const STAGES: { id: Stage; label: string; title: string; text: string; drop: number }[] = [
   { id: "bright", label: "Bright flame", title: "Bright flame", text: "A bright, hot flame surrounds the fuel drop.", drop: 16 },
   {
@@ -19,7 +22,8 @@ const STAGES: { id: Stage; label: string; title: string; text: string; drop: num
 
 /**
  * Hidden flame (FLEX, NTRS 20140006750): large fuel drops kept burning as a faint cool flame after
- * the visible flame went out, until the cool flame went out too. Stages change instantly.
+ * the visible flame went out, until the cool flame went out too. Each stage crossfades into the next
+ * (300 ms) and the drop shrinks; with reduced motion the change is instant.
  */
 export function HiddenFlame() {
   const [stage, setStage] = useState<Stage>("bright");
@@ -40,21 +44,18 @@ export function HiddenFlame() {
             <stop offset="1" stopColor="#8E7C71" />
           </radialGradient>
         </defs>
-        {stage === "bright" && <circle cx="110" cy="96" r="66" fill={`url(#${id}-b)`} />}
-        {stage === "cool" && (
-          <>
-            <circle cx="110" cy="96" r="38" fill="rgba(205, 185, 255, 0.07)" stroke="#CDB9FF" strokeOpacity="0.4" strokeWidth="5" />
-            <text x="110" y="180" textAnchor="middle" fontSize="12" fill="#CDB9FF">
-              Cool flame, very hard to see
-            </text>
-          </>
-        )}
-        {stage === "out" && (
-          <text x="110" y="180" textAnchor="middle" fontSize="12" fill="#B5A59C">
-            Drop still left
+        {/* Every stage is drawn; only the current one shows, so they can crossfade. */}
+        <circle className="xp-slow" cx="110" cy="96" r="66" fill={`url(#${id}-b)`} style={{ opacity: stage === "bright" ? 1 : 0 }} />
+        <g className="xp-slow" style={{ opacity: stage === "cool" ? 1 : 0 }} aria-hidden={stage !== "cool"}>
+          <circle cx="110" cy="96" r="38" fill="rgba(205, 185, 255, 0.07)" stroke="#CDB9FF" strokeOpacity="0.4" strokeWidth="5" />
+          <text x="110" y="180" textAnchor="middle" fontSize="12" fill="#CDB9FF">
+            Cool flame, very hard to see
           </text>
-        )}
-        <circle cx="110" cy="96" r={s.drop} fill={`url(#${id}-d)`} />
+        </g>
+        <text className="xp-slow" x="110" y="180" textAnchor="middle" fontSize="12" fill="#B5A59C" style={{ opacity: stage === "out" ? 1 : 0 }} aria-hidden={stage !== "out"}>
+          Drop still left
+        </text>
+        <circle className="xp-slow xp-scale" cx="110" cy="96" r={DROP_R} fill={`url(#${id}-d)`} style={{ transform: `scale(${s.drop / DROP_R})` }} />
       </svg>
       <div className="row" style={{ justifyContent: "center" }}>
         <XpChoice label="Stage" value={stage} options={STAGES.map(({ id: v, label }) => ({ id: v, label }))} onChange={setStage} />

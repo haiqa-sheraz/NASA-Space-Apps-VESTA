@@ -16,3 +16,4 @@ The planning notes (READ_ME_FIRST.md, DESIGN_BRIEF.md, READ_ME_AFTER_IMPLEMENTAT
 | 2026-11-15 00:03 | Mission picker and Simple/Expert moved onto the pages they affect; quality flags reviewed; Data prediction tool | Claude Code |
 | 2026-11-15 02:10 | Step 5: Ask AI and Compare explanation (keyword search over NASA passages, Netlify Functions, OpenRouter free models with fallbacks, saved answers); fixed CLD Flame and BRE fuel name typos | Claude Code |
 | 2026-11-15 02:40 | Step 5 follow-ups: SPICE negative air rates marked missing and flagged; planning notes updated for no database | Claude Code |
+| 2026-11-15 03:37 | Ask AI remembers the last two answers for follow-ups; Step 6: flame morph and first-load motion, journey crossfade, ranked rows re-sort, explainer motion, reduced-motion versions | Claude Code |

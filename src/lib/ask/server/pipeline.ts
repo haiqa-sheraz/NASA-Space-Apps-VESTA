@@ -4,7 +4,8 @@
  * No path aliases here: Netlify bundles the functions on its own.
  */
 import passagesData from "../../../../data/passages.json";
-import { buildIndex, searchPassages, studiesNamed, type SearchIndex } from "../search";
+import { buildIndex, searchPassages, studiesNamed, type SearchHit, type SearchIndex } from "../search";
+import { isFollowUp } from "../text";
 import type { AskEvent, AskSource, PassagesFile, StudyFacts } from "../types";
 import { AskFailure, MODEL_PLANS, streamChat, type ChatMessage } from "./openrouter";
 
@@ -41,6 +42,7 @@ const CHECK_CHARS = 60;
 
 const RULES = [
   "Use only the numbered NASA sources in the user's message. Don't use anything else you know.",
+  "Earlier questions and answers in the user's message are context only, to tell what the new question refers to. Take every fact from the numbered sources.",
   `If the sources don't answer the question at all, reply with exactly ${SENTINEL} and nothing else.`,
   `Rockets, rocket engines and propellants are out of scope: reply ${SENTINEL}.`,
   "End every sentence that states a fact with the numbers of the sources it uses, in square brackets, like [2] or [1][3]. Cite only the numbers given.",
@@ -142,9 +144,51 @@ async function streamAnswer(messages: ChatMessage[], env: PipelineEnv, send: Sen
   throw new AskFailure("busy");
 }
 
+/** An earlier question and its answer in the same conversation (the browser sends the last two). */
+export interface HistoryTurn {
+  question: string;
+  answer: string;
+}
+
 export interface AskRequest {
   question: string;
   studyId?: string | null;
+  history?: HistoryTurn[];
+}
+
+const MAX_HISTORY = 2;
+const MAX_HISTORY_ANSWER = 800;
+
+/** The last two turns, as plain text: citation numbers removed (they belong to the old sources). */
+function cleanHistory(history: unknown): HistoryTurn[] {
+  if (!Array.isArray(history)) return [];
+  return history
+    .filter((h): h is HistoryTurn => Boolean(h) && typeof h.question === "string" && typeof h.answer === "string")
+    .slice(-MAX_HISTORY)
+    .map((h) => ({
+      question: h.question.replace(/\s+/g, " ").trim().slice(0, MAX_QUESTION),
+      answer: trimText(h.answer.replace(/\s*\[[\d,\s–-]+\]/g, "").replace(/\s+/g, " ").trim(), MAX_HISTORY_ANSWER),
+    }))
+    .filter((h) => h.question && h.answer);
+}
+
+/** Two hit lists woven together (first, second, first, ...), without repeats, at most 3 per document. */
+function weave(first: SearchHit[], second: SearchHit[], limit = 6): SearchHit[] {
+  const out: SearchHit[] = [];
+  const seen = new Set<string>();
+  const perDoc = new Map<string, number>();
+  for (let i = 0; out.length < limit && (i < first.length || i < second.length); i++) {
+    for (const h of [first[i], second[i]]) {
+      if (!h || out.length >= limit) continue;
+      const key = `${h.doc.url}|${h.doc.title}|${h.page ?? h.text.slice(0, 40)}`;
+      const docKey = `${h.doc.url}|${h.doc.title}`;
+      if (seen.has(key) || (perDoc.get(docKey) ?? 0) >= 3) continue;
+      seen.add(key);
+      perDoc.set(docKey, (perDoc.get(docKey) ?? 0) + 1);
+      out.push(h);
+    }
+  }
+  return out;
 }
 
 /** Ask AI: answer a question from our NASA passages, citing them. */
@@ -156,17 +200,25 @@ export async function runAsk(request: AskRequest, env: PipelineEnv, send: Send, 
     return;
   }
   const study = request.studyId ? STUDIES.find((s) => s.id === request.studyId) : undefined;
+  const history = cleanHistory(request.history);
+
+  // A follow-up ("Does that happen on the Moon?") is searched together with the question before it,
+  // woven with its own best passages, so a misjudged follow-up still gets passages for itself.
+  const previous = history.at(-1)?.question;
+  const followUp = Boolean(previous) && isFollowUp(question, studiesNamed(question, STUDY_NAMES).length > 0);
+  const topic = followUp ? `${previous} ${question}` : question;
+  const search = (text: string) => searchPassages(getIndex(), text, { studyId: study?.id, studies: STUDY_NAMES });
 
   // No matching passages: say so without asking the AI.
-  const hits = OUT_OF_SCOPE.test(question) ? [] : searchPassages(getIndex(), question, { studyId: study?.id, studies: STUDY_NAMES });
+  const hits = OUT_OF_SCOPE.test(question) ? [] : followUp ? weave(search(topic), search(question)) : search(question);
   if (!hits.length) {
     send({ type: "notfound" });
     return;
   }
   // The PSI table facts: every study's for questions across studies, otherwise the studies the
   // question names or the page is about (so a table-vs-report disagreement is in front of the AI).
-  const named = studiesNamed(question, STUDY_NAMES);
-  const tableStudies = TABLE_QUESTION.test(question)
+  const named = studiesNamed(topic, STUDY_NAMES);
+  const tableStudies = TABLE_QUESTION.test(topic)
     ? STUDIES
     : named.length
       ? STUDIES.filter((s) => named.includes(s.id))
@@ -186,7 +238,11 @@ export async function runAsk(request: AskRequest, env: PipelineEnv, send: Send, 
     },
     {
       role: "user",
-      content: `Question: ${question}\n${study ? `(The reader is on the page for the study ${study.name}.)\n` : ""}\nNASA sources:\n\n${block}`,
+      content: `${
+        history.length
+          ? `Earlier in this conversation (context only, to tell what the new question refers to):\n${history.map((h) => `Q: ${h.question}\nA: ${h.answer}`).join("\n\n")}\n\nNew question: `
+          : "Question: "
+      }${question}\n${study ? `(The reader is on the page for the study ${study.name}.)\n` : ""}\nNASA sources:\n\n${block}`,
     },
   ];
   await streamAnswer(messages, env, send, signal, deadline);

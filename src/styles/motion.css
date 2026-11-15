@@ -1,0 +1,81 @@
+/* Motion (design board 14, "Motion notes"). Only motion that answers the user, plus the one
+   first-load flame. Every rule here is switched off by the reduced-motion block in components.css
+   (animation and transition: none), and the reduced-motion version is noted beside each one. */
+
+@layer components {
+  /* ---------- signature flame: first load ----------
+     The server draws the teardrop for the first-load motion. When it won't play (already seen this
+     session, or reduced motion), CSS shows the still sphere instead, before any script runs. */
+  .flame-svg .fi-still { display: none; }
+  html[data-flame-seen] .flame-intro .fi-anim { display: none; }
+  html[data-flame-seen] .flame-intro .fi-still { display: inline; }
+
+  /* ---------- gravity switch, journey chapter 1: the highlight moves with the switch (900 ms) ---------- */
+  .xp-pair .xp-flame { transition: opacity var(--dur-flame) var(--ease-std); }
+
+  /* ---------- corner messages: fade in, stay 4 s, fade out ---------- */
+  .toast-region .toast { animation: vesta-fade-in var(--dur-fast) var(--ease-out), vesta-fade-out var(--dur-fast) var(--ease-in) 3850ms forwards; }
+
+  /* ---------- swaps inside explainers: both states are drawn, and they crossfade (150 ms) ---------- */
+  .xp-swap { display: grid; grid-template-columns: minmax(0, 1fr); align-items: end; }
+  .xp-swap > * { grid-area: 1 / 1; transition: opacity var(--dur-fast) var(--ease-out); }
+  .xp-swap > [data-shown="false"] { opacity: 0; }
+  .xp-fade { transition: opacity var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out); }
+  .xp-slow { transition: opacity var(--dur-fade) var(--ease-out), transform var(--dur-fade) var(--ease-out); }
+  .xp-scale { transform-box: fill-box; transform-origin: center; }
+
+  /* ---------- smoke race: puffs travel from the fire to where the air leaves them ---------- */
+  .sr-puff { animation: vesta-puff var(--puff-ms, 900ms) var(--ease-out) both; animation-delay: var(--puff-delay, 0ms); }
+  .sr-detector { transition: fill var(--dur-fade) var(--ease-std); }
+
+  /* ---------- smoke point: 7 soot particles rise 74 px from the tip and fade, staggered 350 ms ---------- */
+  .soot-live .soot-p { opacity: 0; }
+  .soot-live .smoking .soot-p { animation: vesta-soot 2.4s linear infinite; }
+  .soot-live .soot-going { animation: vesta-fade-out var(--dur-fade) linear forwards; }
+  .soot-live .sp-flame { transition: d var(--dur-fast) linear; }
+  .soot-live .sp-glow { transition: cy var(--dur-fast) linear, ry var(--dur-fast) linear; }
+  .soot-live .smoke-flag { animation: vesta-fade-in var(--dur-fast) var(--ease-out); }
+  .soot-stills { display: none; }
+  .soot-stills-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .soot-still { display: flex; flex-direction: column; gap: 8px; margin: 0; }
+  .soot-still .chamber { padding: 12px; }
+  .soot-still figcaption { display: flex; flex-direction: column; gap: 2px; font-size: 14px; color: var(--text-2); }
+  .soot-still figcaption b { color: var(--text); }
+  @media (max-width: 560px) {
+    /* Phones: each frame is a row, a small drawing beside its caption. */
+    .soot-stills-grid { grid-template-columns: minmax(0, 1fr); }
+    .soot-still { flex-direction: row; align-items: center; gap: 12px; }
+    .soot-still > .chamber { width: 120px; flex: none; }
+    .soot-still .smoke-flag { display: none; }
+  }
+
+  /* ---------- journey: 300 ms crossfade between chapters (a copy of the old chapter fades out) ---------- */
+  .journey-frame { position: relative; }
+  .journey-leaving { position: absolute; margin: 0; pointer-events: none; }
+  .journey-bg-next { animation: vesta-fade-in var(--dur-fade) var(--ease-out); }
+
+  /* ---------- ranked rows: "Up from 2" under the rank number, for 4 s ---------- */
+  .rr-rank { display: flex; flex-direction: column; gap: 2px; }
+  .rr-move { white-space: nowrap; }
+  @media (max-width: 767.98px) {
+    .rr-move { white-space: normal; font-size: 12px; line-height: 1.2; }
+  }
+}
+
+@keyframes vesta-fade-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes vesta-puff { from { opacity: 0; transform: translate(var(--fx, 0px), var(--fy, 0px)) scale(0.4); } }
+@keyframes vesta-soot {
+  0% { opacity: 0; transform: translate(0, 0); }
+  12% { opacity: 0.95; }
+  100% { opacity: 0; transform: translate(var(--dx, 0px), -74px); }
+}
+
+/* Reduced motion: the still sphere instead of the first-load motion, and three still frames
+   instead of the smoke-point slider (design board 14). Other motion is already off. */
+@media (prefers-reduced-motion: reduce) {
+  .flame-intro .fi-anim { display: none; }
+  .flame-intro .fi-still { display: inline; }
+  .soot-live { display: none !important; }
+  .soot-stills { display: flex; }
+  .xp-inline.has-stills { grid-template-columns: minmax(0, 1fr); }
+}

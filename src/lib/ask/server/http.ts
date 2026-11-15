@@ -5,9 +5,10 @@
  * No path aliases here: Netlify bundles the functions on its own.
  */
 import type { AskEvent } from "../types";
-import { runAsk, runCompare, runSafely, type PipelineEnv, type Send } from "./pipeline";
+import { runAsk, runCompare, runSafely, type HistoryTurn, type PipelineEnv, type Send } from "./pipeline";
 
-const MAX_BODY_CHARS = 4_000;
+/** A question, plus up to two earlier questions and answers for follow-ups. */
+const MAX_BODY_CHARS = 8_000;
 /** Per visitor: at most 8 questions a minute (ASK_RATE_LIMIT overrides it), to protect the free model quota from scripts. */
 const RATE_WINDOW_MS = 60_000;
 const recent = new Map<string, number[]>();
@@ -81,11 +82,16 @@ async function handle(req: Request, context: Context, run: (body: Record<string,
   return streamEvents((send, signal) => run(body, send, signal));
 }
 
-/** POST /api/ask  { question, studyId? } */
+/** POST /api/ask  { question, studyId?, history?: [{ question, answer }] } (the pipeline checks history) */
 export function askFunction(req: Request, context?: Context): Promise<Response> {
   const env = envFromProcess();
   return handle(req, context, (body, send, signal) =>
-    runAsk({ question: String(body.question ?? ""), studyId: typeof body.studyId === "string" ? body.studyId : null }, env, send, signal),
+    runAsk(
+      { question: String(body.question ?? ""), studyId: typeof body.studyId === "string" ? body.studyId : null, history: body.history as HistoryTurn[] | undefined },
+      env,
+      send,
+      signal,
+    ),
   );
 }
 

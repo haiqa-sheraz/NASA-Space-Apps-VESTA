@@ -1,6 +1,6 @@
 "use client";
 
-import { LoaderCircle, MessageCircleQuestionMark, Send, Square, X } from "lucide-react";
+import { LoaderCircle, MessageCircleQuestionMark, Send, Square, SquarePen, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import { AnswerBody, AnswerFooter, AskError, NotInSources } from "@/components/ask/AnswerView";
@@ -18,7 +18,7 @@ import { useAsk, type AskTurn } from "@/lib/state/ask";
  * our NASA sources. Every answer is labeled AI-written.
  */
 export function AskPanel() {
-  const { open, closeAsk, context, removeContext, turns, ask, stop } = useAsk();
+  const { open, closeAsk, context, removeContext, turns, ask, stop, clear } = useAsk();
   const pathname = usePathname();
   const [draft, setDraft] = useState("");
   const [savedQuestions, setSavedQuestions] = useState<string[]>([]);
@@ -90,9 +90,26 @@ export function AskPanel() {
               </span>
             )}
           </div>
-          <button type="button" className="btn btn-icon" style={{ border: 0 }} aria-label="Close Ask panel" onClick={closeAsk}>
-            <X className="ic" aria-hidden="true" />
-          </button>
+          <div className="row g1" style={{ flex: "none" }}>
+            {turns.length > 0 && (
+              <button
+                type="button"
+                className="btn btn-icon"
+                style={{ border: 0 }}
+                aria-label="New conversation"
+                title="New conversation"
+                onClick={() => {
+                  clear();
+                  inputRef.current?.focus();
+                }}
+              >
+                <SquarePen className="ic" aria-hidden="true" />
+              </button>
+            )}
+            <button type="button" className="btn btn-icon" style={{ border: 0 }} aria-label="Close Ask panel" onClick={closeAsk}>
+              <X className="ic" aria-hidden="true" />
+            </button>
+          </div>
         </header>
 
         <div ref={bodyRef} className="body">
@@ -100,7 +117,10 @@ export function AskPanel() {
             <>
               <div className="stack g2">
                 <p className="h4">What do you want to know about {subject}?</p>
-                <p className="small muted">Answers use only NASA PSI and NTRS sources, with the sources under every paragraph.</p>
+                <p className="small muted">
+                  Answers use only NASA PSI and NTRS sources, with the sources under every paragraph. Follow-up questions, like &ldquo;Does that happen on
+                  the Moon?&rdquo;, use your last two answers.
+                </p>
               </div>
               <div className="stack g2">
                 {suggestions.map((question) => (

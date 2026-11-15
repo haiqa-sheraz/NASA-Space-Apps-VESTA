@@ -193,9 +193,10 @@ function SideBySide({ studies, onRemove }: { studies: CompareStudy[]; onRemove: 
           Side by side
         </h2>
         {several ? (
+          // A color key, not a control: a flat bar in the same tint as the cells that differ.
           <span className="row g2 small muted">
-            <span aria-hidden="true" style={{ width: 16, height: 16, borderRadius: 3, background: "var(--blue-tint)", border: "1px solid var(--blue)" }} />
-            Differs between studies
+            <span aria-hidden="true" style={{ width: 28, height: 12, borderRadius: 2, background: "var(--blue-tint)", flex: "none" }} />
+            Shaded cells differ between studies
           </span>
         ) : (
           <span className="small muted">Add another study to see what differs.</span>

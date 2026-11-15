@@ -4,16 +4,19 @@ import Link from "next/link";
 import { useMemo } from "react";
 import { MissionPicker } from "@/components/shell/MissionPicker";
 import { AiLabel, MatchBar } from "@/components/ui/Tags";
+import { useFlip, useSettled } from "@/lib/hooks/useFlip";
 import type { StudyIndexEntry } from "@/lib/data/types";
 import { MISSIONS } from "@/lib/missions";
 import { rankedFor } from "@/lib/ranked";
 import { usePrefs } from "@/lib/state/prefs";
 
-/** Home: the top 3 studies for the chosen mission, with "See full ranking". */
+/** Home: the top 3 studies for the chosen mission, with "See full ranking". Rows slide when the mission changes. */
 export function MissionSpotlight({ index }: { index: StudyIndexEntry[] }) {
   const { mission, custom } = usePrefs();
   const top = useMemo(() => rankedFor(mission, custom, index).slice(0, 3), [mission, custom, index]);
   const anyAi = top.some((item) => item.whyIsAi);
+  const settled = useSettled();
+  const listRef = useFlip<HTMLOListElement>(top.map((item) => item.study.id).join(","), settled);
 
   return (
     <section className="stack g4" aria-labelledby="spotlight-title">
@@ -31,9 +34,9 @@ export function MissionSpotlight({ index }: { index: StudyIndexEntry[] }) {
           <AiLabel text="AI-written reasons" />
         </span>
       )}
-      <ol>
+      <ol ref={listRef}>
         {top.map((item, i) => (
-          <li key={item.study.id} className="spot-row">
+          <li key={item.study.id} className="spot-row" data-flip-key={item.study.id}>
             <span className="bignum" style={{ fontSize: 27 }} aria-hidden="true">
               {i + 1}
             </span>

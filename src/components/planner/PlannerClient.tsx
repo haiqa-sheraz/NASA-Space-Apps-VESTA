@@ -2,7 +2,7 @@
 
 import { CircleQuestionMark, Download, Filter, Gauge, Orbit, Ruler, SlidersVertical } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { BottomSheet } from "@/components/ui/BottomSheet";
 import { RadioRow, Slider, TagFilterChips } from "@/components/ui/Controls";
 import { NoteText } from "@/components/ui/NoteText";
@@ -13,6 +13,7 @@ import { rankingMission } from "@/lib/data/rankings";
 import type { StudyIndexEntry } from "@/lib/data/types";
 import { fmtNum, formatIsoDate, joinAnd, plural } from "@/lib/format";
 import { hasAnyTag, type TagId } from "@/lib/jobs";
+import { useFlip, useSettled } from "@/lib/hooks/useFlip";
 import { explainMatch, matchChipLabel, missionView } from "@/lib/mission-view";
 import { MISSION_LIST, isMissionId, type CustomConditions } from "@/lib/missions";
 import { rankedFor, type RankedItem } from "@/lib/ranked";
@@ -139,6 +140,28 @@ export function PlannerClient({
   const ground = unranked.filter((s) => s.status === "ground");
   const shownTab: Tab = printing ? "ranked" : tab;
   const toggleTag = (tag: TagId) => setTags((ts) => (ts.includes(tag) ? ts.filter((t) => t !== tag) : [...ts, tag]));
+
+  // Re-sorting (design board 14): rows slide to their new place, and moved rows say where they
+  // were ("Up from 2") for 4 seconds. Not for the saved mission or URL applied while loading.
+  const settled = useSettled();
+  const order = list.map((r) => r.study.id).join(",");
+  const listRef = useFlip<HTMLOListElement>(visible.map((r) => r.study.id).join(","), settled);
+  const [moves, setMoves] = useState<Record<string, string>>({});
+  const lastOrder = useRef<string[] | null>(null);
+  useEffect(() => {
+    const ids = order ? order.split(",") : [];
+    const before = lastOrder.current;
+    lastOrder.current = ids;
+    if (!before || !settled.current) return;
+    const next: Record<string, string> = {};
+    ids.forEach((id, i) => {
+      const was = before.indexOf(id);
+      if (was >= 0 && was !== i) next[id] = was > i ? `Up from ${was + 1}` : `Down from ${was + 1}`;
+    });
+    setMoves(next);
+    const timer = window.setTimeout(() => setMoves({}), 4000);
+    return () => window.clearTimeout(timer);
+  }, [order, settled]);
 
   const controls = (place: "rail" | "sheet") => (
     <>
@@ -322,9 +345,9 @@ export function PlannerClient({
                 </div>
               ) : (
                 <>
-                  <ol>
+                  <ol ref={listRef}>
                     {visible.map((item, i) => (
-                      <RankRow key={item.study.id} item={item} rank={i + 1} />
+                      <RankRow key={item.study.id} item={item} rank={i + 1} move={moves[item.study.id]} />
                     ))}
                   </ol>
                   <div className="row between wrapx g3 no-print">
@@ -408,11 +431,14 @@ function MatchChips({ item }: { item: RankedItem }) {
   );
 }
 
-function RankRow({ item, rank }: { item: RankedItem; rank: number }) {
+function RankRow({ item, rank, move }: { item: RankedItem; rank: number; move?: string }) {
   return (
-    <li className="rank-row">
-      <span className="bignum rr-num" style={{ fontSize: 42 }} aria-hidden="true">
-        {rank}
+    <li className="rank-row" data-flip-key={item.study.id}>
+      <span className="rr-rank">
+        <span className="bignum rr-num" style={{ fontSize: 42 }} aria-hidden="true">
+          {rank}
+        </span>
+        {move && <span className="small muted rr-move">{move}</span>}
       </span>
       <div className="stack g2" style={{ minWidth: 0 }}>
         <div className="row g3 wrapx" style={{ alignItems: "baseline" }}>

@@ -29,6 +29,7 @@ import { SaffireSizes } from "@/components/explainers/SaffireSizes";
 import { SmokeRace } from "@/components/explainers/SmokeRace";
 import { SourceLine } from "@/components/ui/SourceChip";
 import type { Chapter, ChapterIcon, ChapterInteractive } from "@/lib/data/journey";
+import { DUR, prefersReducedMotion } from "@/lib/motion";
 import { useAsk } from "@/lib/state/ask";
 import { replaceQuery } from "@/lib/url";
 import { JourneyPaths } from "./JourneyPaths";
@@ -74,17 +75,27 @@ function Interactive({ item }: { item: ChapterInteractive }) {
 /** Controls that use the arrow keys themselves, so arrows there don't change the chapter. */
 const ARROW_TARGETS = "input, textarea, select, [contenteditable='true'], [role='slider'], [role='radio'], [role='tab'], [role='listbox'], [role='combobox'], [role='menu']";
 
+const XFADE_EASE = "cubic-bezier(0.2, 0.7, 0.2, 1)";
+
 /**
  * The Journey: one chapter per screen (?c=1 to 10). Back and Next chapter, the progress ticks,
  * the Left and Right arrow keys and a swipe all change chapter; Escape exits. Focus moves to the
- * new chapter's title. Chapters change instantly here; the crossfade comes with the animations step.
+ * new chapter's title. Chapters crossfade in 300 ms (design board 14): a still copy of the old
+ * chapter fades out while the new one fades in, and the background crossfades at the same time.
+ * With reduced motion the change is instant.
  */
 export function JourneyClient({ chapters }: { chapters: Chapter[] }) {
   const router = useRouter();
   const { open: askOpen } = useAsk();
   const [index, setIndex] = useState(0);
   const [urlLoaded, setUrlLoaded] = useState(false);
+  /** The background under the new one while it fades in. */
+  const [previousBg, setPreviousBg] = useState<number | null>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const frameRef = useRef<HTMLDivElement>(null);
+  const mainRef = useRef<HTMLElement>(null);
+  /** The old chapter, copied just before the change, to fade out on top of the new one. */
+  const leaving = useRef<HTMLElement | null>(null);
   const userMoved = useRef(false);
   const touch = useRef<{ x: number; y: number; ignore: boolean } | null>(null);
   const last = chapters.length - 1;
@@ -114,13 +125,39 @@ export function JourneyClient({ chapters }: { chapters: Chapter[] }) {
     titleRef.current?.focus({ preventScroll: true });
   }, [index]);
 
+  // The crossfade: the copy of the old chapter sits exactly where it was and fades out; the new
+  // chapter fades in under it. The copy is inert and hidden from screen readers.
+  useLayoutEffect(() => {
+    const copy = leaving.current;
+    leaving.current = null;
+    const frame = frameRef.current;
+    const main = mainRef.current;
+    if (!copy || !frame || !main) return;
+    frame.appendChild(copy);
+    const fadeOut = copy.animate([{ opacity: 1 }, { opacity: 0 }], { duration: DUR.fade, easing: XFADE_EASE, fill: "forwards" });
+    const drop = () => copy.remove();
+    fadeOut.finished.then(drop, drop);
+    main.animate([{ opacity: 0 }, { opacity: 1 }], { duration: DUR.fade, easing: XFADE_EASE });
+  }, [index]);
+
   const go = useCallback(
     (i: number) => {
-      if (i < 0 || i > last) return;
+      if (i < 0 || i > last || i === index) return;
       userMoved.current = true;
+      const main = mainRef.current;
+      if (main && !prefersReducedMotion()) {
+        const copy = main.cloneNode(true) as HTMLElement;
+        copy.removeAttribute("id");
+        copy.classList.add("journey-leaving");
+        copy.setAttribute("aria-hidden", "true");
+        copy.inert = true;
+        Object.assign(copy.style, { top: `${main.offsetTop}px`, left: `${main.offsetLeft}px`, width: `${main.offsetWidth}px`, height: `${main.offsetHeight}px` });
+        leaving.current = copy;
+        setPreviousBg(chapters[index].n);
+      }
       setIndex(i);
     },
-    [last],
+    [last, index, chapters],
   );
 
   useEffect(() => {
@@ -158,8 +195,9 @@ export function JourneyClient({ chapters }: { chapters: Chapter[] }) {
 
   return (
     <div className="journey" data-theme="dark">
-      <div className="journey-bg" data-bg={chapter.n} aria-hidden="true" />
-      <div className="journey-frame" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+      {previousBg !== null && <div className="journey-bg" data-bg={previousBg} aria-hidden="true" />}
+      <div key={chapter.n} className={`journey-bg${previousBg !== null ? " journey-bg-next" : ""}`} data-bg={chapter.n} aria-hidden="true" />
+      <div ref={frameRef} className="journey-frame" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
         <div className="row between">
           <Link className="btn btn-ghost journey-exit" href="/learn">
             <X className="ic" aria-hidden="true" />
@@ -170,7 +208,7 @@ export function JourneyClient({ chapters }: { chapters: Chapter[] }) {
           </span>
         </div>
 
-        <main id="main" className="journey-main">
+        <main ref={mainRef} id="main" className="journey-main">
           <span className="journey-icon">
             <Icon className="ic lg" aria-hidden="true" />
           </span>

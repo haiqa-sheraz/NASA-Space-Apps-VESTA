@@ -22,6 +22,9 @@ export function OxygenExplainer({ data }: { data: OxygenData }) {
   const [oxygen, setOxygen] = useState(15);
   const id = useSvgId("ox");
   const earthOn = oxygen > data.earth;
+  // Flames burn stronger in more oxygen: from 0.8 at the bottom of the slider to 1.2 at the top.
+  const grow = (0.8 + 0.4 * ((oxygen - min) / (max - min))).toFixed(3);
+  const growStyle = { transform: `scale(${grow})`, transformOrigin: "50% 100%" };
   const spaceState = oxygen >= data.space ? "burning" : "untested";
   const pct = (v: number) => `${fmtNum(v, 1)}%`;
 
@@ -35,15 +38,17 @@ export function OxygenExplainer({ data }: { data: OxygenData }) {
     <div className="chamber xp xp-oxygen" data-theme="dark">
       <div className="xp-pair" style={{ alignItems: "end" }}>
         <figure className="xp-flame" data-on="true">
-          <div className="xp-flame-box" style={{ width: 100 }}>
-            {earthOn ? (
+          {/* Burning and out are both drawn and crossfade (150 ms); only the shown one is announced. */}
+          <div className="xp-flame-box xp-swap" style={{ width: 100 }}>
+            <div className="xp-fade" data-shown={earthOn} aria-hidden={!earthOn} style={growStyle}>
               <FlameSvg mode="earth" idPrefix={`${id}-e`} label={`Earth flame burning at ${pct(oxygen)} oxygen`} />
-            ) : (
+            </div>
+            <div data-shown={!earthOn} aria-hidden={earthOn}>
               <svg viewBox="0 0 200 250" className="flame-svg" role="img" aria-label={`Earth flame is out at ${pct(oxygen)} oxygen`}>
                 <path d={WICK} stroke="#6B5A50" strokeWidth="3" strokeLinecap="round" />
                 <path d={WISP} stroke="#7D695E" strokeWidth="2" fill="none" strokeDasharray="3 5" />
               </svg>
-            )}
+            </div>
           </div>
           <figcaption>
             <b>{earthText.title}</b>
@@ -51,10 +56,11 @@ export function OxygenExplainer({ data }: { data: OxygenData }) {
           </figcaption>
         </figure>
         <figure className="xp-flame" data-on="true">
-          <div className="xp-flame-box" style={{ width: 100 }}>
-            {spaceState === "burning" ? (
+          <div className="xp-flame-box xp-swap" style={{ width: 100 }}>
+            <div className="xp-fade" data-shown={spaceState === "burning"} aria-hidden={spaceState !== "burning"} style={growStyle}>
               <FlameSvg mode="space" idPrefix={`${id}-s`} label={`Space flame burning at ${pct(oxygen)} oxygen`} />
-            ) : (
+            </div>
+            <div data-shown={spaceState !== "burning"} aria-hidden={spaceState === "burning"}>
               <svg viewBox="0 0 200 250" className="flame-svg" role="img" aria-label={`No space test data at ${pct(oxygen)} oxygen`}>
                 <path d={SPHERE} fill="none" stroke="#7D695E" strokeWidth="2" strokeDasharray="4 6" />
                 <path d={WICK} stroke="#6B5A50" strokeWidth="3" strokeLinecap="round" />
@@ -62,7 +68,7 @@ export function OxygenExplainer({ data }: { data: OxygenData }) {
                   ?
                 </text>
               </svg>
-            )}
+            </div>
           </div>
           <figcaption>
             <b>{spaceText.title}</b>

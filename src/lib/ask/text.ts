@@ -50,6 +50,21 @@ export function terms(text: string): string[] {
     .map(stem);
 }
 
+/** Words that point back to the question before: "Does that happen on the Moon?", "What about 30%?" */
+const POINTS_BACK =
+  /^(?:and|but|so|also|then|what about|how about|what else|tell me more)\b|\b(?:it|its|they|them|their|those|these)\b|\b(?:does|did|is|was|would|could|can|do|about|of|for|in|with|from) (?:that|this)\b/i;
+
+/**
+ * Whether a question only makes sense after the one before it: it points back ("that", "it",
+ * "what about"), or it is too short to search on its own ("Why?", "What about 30%?").
+ * A question that names a study stands on its own unless it points back.
+ */
+export function isFollowUp(question: string, namesAStudy: boolean): boolean {
+  if (POINTS_BACK.test(question)) return true;
+  if (namesAStudy) return false;
+  return terms(question).length <= 1;
+}
+
 /** How a question is matched to a saved answer: case, spacing and end punctuation don't matter. */
 export function questionKey(question: string): string {
   return question

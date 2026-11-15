@@ -13,7 +13,8 @@ const FLAME_BOTTOM = "M146 107 C146 121 160 131 182 131 C210 131 236 119 250 107
 
 /**
  * Fan slider (BASS-II, thin plastic sheets): too little airflow and the flame dies out, too much and
- * it blows out. The limits come from finding f2. An illustration; states change instantly.
+ * it blows out. The limits come from finding f2. An illustration. While it burns, the flame grows
+ * with the airflow (more air brings more oxygen), following the slider in 150 ms.
  */
 export function AirflowExplainer({ data }: { data: AirflowData }) {
   const [speed, setSpeed] = useState(10);
@@ -28,6 +29,8 @@ export function AirflowExplainer({ data }: { data: AirflowData }) {
   }[state];
   const arrow = speed === 0 ? 0 : 14 + (speed / MAX) * 86;
   const shift = state === "blown" ? 46 : 0;
+  // From 0.75 just above the quench limit to 1.1 near blowoff, scaled about the flame front.
+  const grow = 0.75 + 0.35 * Math.min(1, Math.max(0, (speed - data.quench) / (data.blowoff - data.quench)));
 
   return (
     <div className="chamber xp" data-theme="dark">
@@ -48,17 +51,15 @@ export function AirflowExplainer({ data }: { data: AirflowData }) {
         {/* Sheet: unburned ahead of the flame, charred behind it */}
         <rect x="20" y="104" width="126" height="3" fill="#B5A59C" />
         <rect x="146" y="104" width="154" height="3" fill="#4A3A33" />
-        {state === "burning" ? (
-          <g>
-            <path d={FLAME_TOP} fill={`url(#${id}-f)`} />
-            <path d={FLAME_BOTTOM} fill={`url(#${id}-f)`} />
-          </g>
-        ) : (
-          <g transform={`translate(${shift} 0)`} opacity={state === "blown" ? 0.7 : 1}>
-            <path d={FLAME_TOP} fill="none" stroke="#7D695E" strokeWidth="1.5" strokeDasharray="4 5" />
-            <path d={FLAME_BOTTOM} fill="none" stroke="#7D695E" strokeWidth="1.5" strokeDasharray="4 5" />
-          </g>
-        )}
+        {/* The flame and its dashed outline are both drawn and crossfade (150 ms); blown out slides downstream. */}
+        <g className="xp-fade" style={{ opacity: state === "burning" ? 1 : 0, transform: `scale(${grow.toFixed(3)})`, transformOrigin: "146px 105.5px" }}>
+          <path d={FLAME_TOP} fill={`url(#${id}-f)`} />
+          <path d={FLAME_BOTTOM} fill={`url(#${id}-f)`} />
+        </g>
+        <g className="xp-fade" style={{ opacity: state === "burning" ? 0 : state === "blown" ? 0.7 : 1, transform: `translateX(${shift}px)` }}>
+          <path d={FLAME_TOP} fill="none" stroke="#7D695E" strokeWidth="1.5" strokeDasharray="4 5" />
+          <path d={FLAME_BOTTOM} fill="none" stroke="#7D695E" strokeWidth="1.5" strokeDasharray="4 5" />
+        </g>
         <text x="20" y="40" fontSize="12" fill="#B5A59C">
           {speed === 0 ? "No airflow" : "Airflow"}
         </text>

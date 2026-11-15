@@ -1,10 +1,19 @@
 "use client";
 
 import { RotateCcw, Wind } from "lucide-react";
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { XpStatus, useSvgId } from "./shared";
 
-/* Smoke puffs: rising straight up on Earth; drifting with the cabin air in orbit (fixed positions). */
+/* Smoke puffs: rising straight up on Earth; drifting with the cabin air in orbit (fixed positions).
+   Released, each puff travels there from the fire: quickly on Earth, slowly in orbit, and each
+   detector lights once the smoke arrives (SAME: it takes longer in space). Reduced motion: instant. */
+const EARTH_FIRE = [110, 128] as const;
+const SPACE_FIRE = [86, 104] as const;
+const EARTH_TIMING = { each: 900, stagger: 140, detector: 1400 };
+const SPACE_TIMING = { each: 1600, stagger: 260, detector: 3600 };
+const puffStyle = (fire: readonly [number, number], x: number, y: number, i: number, t: { each: number; stagger: number }) =>
+  ({ "--fx": `${fire[0] - x}px`, "--fy": `${fire[1] - y}px`, "--puff-ms": `${t.each}ms`, "--puff-delay": `${i * t.stagger}ms` }) as CSSProperties;
+const detectorStyle = (released: boolean, delay: number): CSSProperties => ({ fill: released ? "#B9B6CF" : "#7D695E", transitionDelay: released ? `${delay}ms` : "0ms" });
 const EARTH_PUFFS = [
   [110, 128, 7],
   [107, 112, 8],
@@ -49,7 +58,7 @@ function Cabin({ earth, released, id }: { earth: boolean; released: boolean; id:
       {earth ? (
         <>
           {/* Ceiling detector */}
-          <rect x="96" y="10" width="28" height="9" rx="2" fill={released ? "#B9B6CF" : "#7D695E"} />
+          <rect className="sr-detector" x="96" y="10" width="28" height="9" rx="2" style={detectorStyle(released, EARTH_TIMING.detector)} />
           <text x="132" y="24" fontSize="11" fill="#B5A59C">
             Detector
           </text>
@@ -64,7 +73,10 @@ function Cabin({ earth, released, id }: { earth: boolean; released: boolean; id:
               </text>
             </>
           )}
-          {released && EARTH_PUFFS.map(([x, y, r], i) => <circle key={i} cx={x} cy={y} r={r} fill="#B9B6CF" opacity={0.3 + i * 0.08} />)}
+          {released &&
+            EARTH_PUFFS.map(([x, y, r], i) => (
+              <circle key={i} className="sr-puff" cx={x} cy={y} r={r} fill="#B9B6CF" opacity={0.3 + i * 0.08} style={puffStyle(EARTH_FIRE, x, y, i, EARTH_TIMING)} />
+            ))}
         </>
       ) : (
         <>
@@ -73,7 +85,7 @@ function Cabin({ earth, released, id }: { earth: boolean; released: boolean; id:
           {[68, 76, 84, 92, 100].map((y) => (
             <line key={y} x1="197" y1={y} x2="205" y2={y} stroke="#7D695E" />
           ))}
-          <rect x="184" y="76" width="9" height="18" rx="2" fill={released ? "#B9B6CF" : "#7D695E"} />
+          <rect className="sr-detector" x="184" y="76" width="9" height="18" rx="2" style={detectorStyle(released, SPACE_TIMING.detector)} />
           <text x="204" y="153" fontSize="11" fill="#B5A59C" textAnchor="end">
             Air return vent
           </text>
@@ -82,7 +94,10 @@ function Cabin({ earth, released, id }: { earth: boolean; released: boolean; id:
           <path d="M24 140 C70 150 130 132 182 100" fill="none" stroke="#7D695E" strokeWidth="1.5" strokeDasharray="3 4" markerEnd={`url(#${id}-a)`} />
           {/* Round flame in the middle of the cabin */}
           <circle cx="86" cy="104" r="12" fill={`url(#${id}-s)`} />
-          {released && SPACE_PUFFS.map(([x, y, r], i) => <circle key={i} cx={x} cy={y} r={r} fill="#B9B6CF" opacity={0.28 + (i % 4) * 0.08} />)}
+          {released &&
+            SPACE_PUFFS.map(([x, y, r], i) => (
+              <circle key={i} className="sr-puff" cx={x} cy={y} r={r} fill="#B9B6CF" opacity={0.28 + (i % 4) * 0.08} style={puffStyle(SPACE_FIRE, x, y, i, SPACE_TIMING)} />
+            ))}
         </>
       )}
     </svg>
