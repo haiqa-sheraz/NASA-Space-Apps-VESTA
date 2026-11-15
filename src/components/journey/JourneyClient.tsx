@@ -30,6 +30,7 @@ import { SmokeRace } from "@/components/explainers/SmokeRace";
 import { PageReveal } from "@/components/ui/PageReveal";
 import { SourceLine } from "@/components/ui/SourceChip";
 import type { Chapter, ChapterIcon, ChapterInteractive } from "@/lib/data/journey";
+import { useFitZoom } from "@/lib/hooks/useFitZoom";
 import { DUR, prefersReducedMotion } from "@/lib/motion";
 import { useAsk } from "@/lib/state/ask";
 import { replaceQuery } from "@/lib/url";
@@ -78,13 +79,16 @@ const ARROW_TARGETS = "input, textarea, select, [contenteditable='true'], [role=
 
 const XFADE_EASE = "cubic-bezier(0.2, 0.7, 0.2, 1)";
 
+/** How far a chapter may shrink to fit: 60% on bigger screens, 75% on phones so text stays readable. */
+const journeyMinZoom = () => (window.matchMedia("(max-width: 767.98px)").matches ? 0.75 : 0.6);
+
 /**
  * The Journey: one chapter per screen (?c=1 to 10). Back and Next chapter, the progress ticks,
  * the Left and Right arrow keys and a swipe all change chapter; Escape exits. Focus moves to the
  * new chapter's title. Opening the Journey and every chapter change play the blue flame bloom
  * (PageReveal). Under it, chapters crossfade in 300 ms (design board 14): a still copy of the old
  * chapter fades out while the new one fades in, and the background crossfades at the same time.
- * With reduced motion the change is instant.
+ * With reduced motion the change is instant. Every chapter fits on one screen (useFitZoom).
  */
 export function JourneyClient({ chapters }: { chapters: Chapter[] }) {
   const router = useRouter();
@@ -98,6 +102,7 @@ export function JourneyClient({ chapters }: { chapters: Chapter[] }) {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLElement>(null);
+  const fitRef = useRef<HTMLDivElement>(null);
   /** The old chapter, copied just before the change, to fade out on top of the new one. */
   const leaving = useRef<HTMLElement | null>(null);
   const userMoved = useRef(false);
@@ -105,6 +110,8 @@ export function JourneyClient({ chapters }: { chapters: Chapter[] }) {
   const last = chapters.length - 1;
   const chapter = chapters[index];
   const Icon = ICONS[chapter.icon];
+  // Each chapter fits on one screen, shrinking when the screen is short.
+  useFitZoom(mainRef, fitRef, journeyMinZoom, chapter.n);
 
   // Read ?c= before the first paint, so a deep link doesn't flash chapter 1.
   useLayoutEffect(() => {
@@ -215,29 +222,32 @@ export function JourneyClient({ chapters }: { chapters: Chapter[] }) {
         </div>
 
         <main ref={mainRef} id="main" className="journey-main">
-          <span className="journey-icon">
-            <Icon className="ic lg" aria-hidden="true" />
-          </span>
-          <span className="small strong muted">Chapter {chapter.n}</span>
-          <h1 ref={titleRef} tabIndex={-1} className="h1 journey-title">
-            {chapter.title}
-          </h1>
-          <p className="journey-text">{chapter.text}</p>
-          <div className="journey-interactive" key={chapter.n}>
-            <Interactive item={chapter.interactive} />
-          </div>
-          <div className="row g2 wrapx journey-chips">
-            {chapter.chips.map((c) => (
-              <Link key={c.label} className="chip" href={c.href}>
-                {c.label}
-              </Link>
-            ))}
-          </div>
-          {chapter.sources.length > 0 && (
-            <div className="journey-sources">
-              <SourceLine sources={chapter.sources} />
+          {/* The whole chapter fits on one screen: it shrinks to fit when the screen is short. */}
+          <div ref={fitRef} className="journey-fit">
+            <span className="journey-icon">
+              <Icon className="ic lg" aria-hidden="true" />
+            </span>
+            <span className="small strong muted journey-label">Chapter {chapter.n}</span>
+            <h1 ref={titleRef} tabIndex={-1} className="h1 journey-title">
+              {chapter.title}
+            </h1>
+            <p className="journey-text">{chapter.text}</p>
+            <div className="journey-interactive" key={chapter.n}>
+              <Interactive item={chapter.interactive} />
             </div>
-          )}
+            <div className="row g2 wrapx journey-chips">
+              {chapter.chips.map((c) => (
+                <Link key={c.label} className="chip" href={c.href}>
+                  {c.label}
+                </Link>
+              ))}
+            </div>
+            {chapter.sources.length > 0 && (
+              <div className="journey-sources">
+                <SourceLine sources={chapter.sources} />
+              </div>
+            )}
+          </div>
         </main>
 
         <div className="row between journey-nav">

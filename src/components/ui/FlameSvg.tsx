@@ -13,17 +13,22 @@ export const FLAME_PATH = {
 /** The bright inner core of the Earth flame. */
 const EARTH_CORE = "M100.5 76 C103 102 116 132 116 163 C116 188 109 201 100 201 C91 201 84 188 84 163 C84 132 98 102 100.5 76 Z";
 
-/** Readouts and captions for the two flame states (approved design text, Home hero and the gravity switch). */
+/**
+ * Readouts and captions for the two flame states (approved design text, Home hero and the gravity
+ * switch). `gravityNote` says what the g means, so "1 g" isn't read as grams.
+ */
 export const FLAME_STATES = {
   space: {
     gravity: "about 0 g",
+    gravityNote: "weightless",
     air: "Doesn't rise",
     shape: "Sphere",
-    label: "A candle flame in orbit: a dim blue sphere.",
+    label: "A candle flame in orbit: a dim blue sphere, with oxygen drifting in from all sides.",
     caption: "In orbit, hot air doesn't rise. Oxygen drifts in from all sides, so the flame turns round, dim and blue.",
   },
   earth: {
     gravity: "1 g",
+    gravityNote: "Earth gravity",
     air: "Rises",
     shape: "Teardrop",
     label: "A candle flame on Earth: a tall amber teardrop.",

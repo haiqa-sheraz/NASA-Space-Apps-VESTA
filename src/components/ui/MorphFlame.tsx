@@ -26,11 +26,45 @@ export function flamePath(t: number): string {
  */
 const spaceShare = (t: number) => Math.min(1, Math.max(0, (t - 0.3) / 0.7));
 
+/** Directions (degrees) the oxygen comes in from; none from straight below, where the wick is. */
+const O2_ANGLES = [-90, -45, 0, 45, 135, 180, -135];
+
+/**
+ * Oxygen drifting in from all sides of the space flame: arrows around the sphere, pointing in,
+ * that drift toward it and fade (a 2.6 s loop, staggered). Still with reduced motion.
+ */
+function OxygenArrows() {
+  return (
+    <>
+      <g fill="none" stroke="#A9C4FF" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        {O2_ANGLES.map((angle, i) => {
+          const r = (angle * Math.PI) / 180;
+          const x = 100 + 88 * Math.cos(r);
+          const y = 160 + 88 * Math.sin(r);
+          return (
+            <g key={angle} transform={`translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${angle + 180})`}>
+              <g className="o2-arrow" style={{ animationDelay: `${(-i * 0.37).toFixed(2)}s` }}>
+                <path d="M-9 0 H7 M2.5 -4 L7.5 0 L2.5 4" />
+              </g>
+            </g>
+          );
+        })}
+      </g>
+      <text x="60" y="68" textAnchor="middle" fontSize="11" fontWeight="700" fill="#A9C4FF">
+        O₂
+      </text>
+      <text x="140" y="68" textAnchor="middle" fontSize="11" fontWeight="700" fill="#A9C4FF">
+        O₂
+      </text>
+    </>
+  );
+}
+
 /**
  * The signature flame that moves (Home hero and the Learn gravity switch). Flipping the switch
  * morphs it in 900 ms and calls `onMidpoint` halfway, so the readouts and caption can change then.
- * The Earth flame flickers gently while it shows. With reduced motion, changes are instant and
- * nothing flickers.
+ * The Earth flame flickers gently while it shows; in space, arrows show oxygen drifting in from all
+ * sides. With reduced motion, changes are instant and nothing flickers or drifts.
  */
 export function MorphFlame({
   mode,
@@ -60,6 +94,7 @@ export function MorphFlame({
   const spaceGlow = useRef<SVGCircleElement>(null);
   const earthInner = useRef<SVGGElement>(null);
   const wickTip = useRef<SVGCircleElement>(null);
+  const oxygen = useRef<SVGGElement>(null);
 
   const draw = useCallback((t: number) => {
     value.current = t;
@@ -74,6 +109,7 @@ export function MorphFlame({
     spaceGlow.current?.setAttribute("opacity", s);
     earthInner.current?.setAttribute("opacity", e);
     wickTip.current?.setAttribute("opacity", e);
+    oxygen.current?.setAttribute("opacity", s);
   }, []);
 
   // The switch: morph to the new shape; the text changes halfway.
@@ -122,6 +158,10 @@ export function MorphFlame({
         </g>
       </g>
       <path ref={spaceFill} d={firstD} fill={`url(#${id("s")})`} opacity={firstSpace} />
+      {/* In space, oxygen drifts in from all sides (the arrows move only while space is showing). */}
+      <g ref={oxygen} className={mode === "space" ? "o2-flow o2-on" : "o2-flow"} opacity={firstSpace}>
+        <OxygenArrows />
+      </g>
       <path d={FLAME_WICK} stroke="#6B5A50" strokeWidth="3" strokeLinecap="round" />
       <circle ref={wickTip} {...WICK_TIP} opacity={1 - firstSpace} />
     </svg>

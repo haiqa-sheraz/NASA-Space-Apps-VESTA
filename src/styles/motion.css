@@ -15,6 +15,10 @@
   .lf-disruption { transform: skewX(-5deg); animation: vesta-sputter 1.1s linear infinite; }
   .jet-flicker { transform-box: view-box; transform-origin: 100px 240px; animation: vesta-flicker 2.2s ease-in-out infinite; }
 
+  /* ---------- space flame: oxygen arrows drift in from all sides (still with reduced motion) ---------- */
+  .o2-flow .o2-arrow { opacity: 0.8; }
+  .o2-flow.o2-on .o2-arrow { animation: vesta-o2-drift 2.6s ease-in-out infinite; }
+
   /* ---------- gravity switch, journey chapter 1: the highlight moves with the switch (900 ms) ---------- */
   .xp-pair .xp-flame { transition: opacity var(--dur-flame) var(--ease-std); }
 
@@ -95,6 +99,11 @@
   85% { transform: translateX(1px) skewX(2deg) scale(0.98, 1.03); }
 }
 @keyframes vesta-billow { from { translate: 0 0; } to { translate: var(--bx, 3px) var(--by, -2px); } }
+@keyframes vesta-o2-drift {
+  0% { transform: translateX(-6px); opacity: 0; }
+  30%, 70% { opacity: 0.9; }
+  100% { transform: translateX(10px); opacity: 0; }
+}
 @keyframes vesta-flicker {
   0%, 100% { transform: scale(1, 1) skewX(0deg); }
   22% { transform: scale(0.985, 1.03) skewX(-1.4deg); }

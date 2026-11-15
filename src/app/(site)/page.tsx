@@ -1,6 +1,7 @@
 import { CircleQuestionMark } from "lucide-react";
 import Link from "next/link";
 import { FlameChamber } from "@/components/home/FlameChamber";
+import { HeroFit } from "@/components/home/HeroFit";
 import { HeadlineFindings, type FindingItem } from "@/components/home/HeadlineFindings";
 import { HeroAskBar } from "@/components/home/HeroAskBar";
 import { MissionSpotlight } from "@/components/home/MissionSpotlight";
@@ -42,36 +43,34 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="wrap pt-14 pb-16 max-tablet:pt-8 max-tablet:pb-12">
-        <div className="hero-grid">
-          <div className="hero-intro stack g4">
-            <span className="badge blue self-start" style={{ whiteSpace: "normal", lineHeight: 1.3, paddingBlock: 4 }}>
-              {SITE.heroBadge}
-            </span>
-            <div className="row g3 wrapx" style={{ alignItems: "center" }}>
-              <h1 className="h1x">{SITE.name}</h1>
-              <WhyVesta />
-            </div>
-            <p className="tagline">{SITE.tagline}</p>
-            <p className="lead">{SITE.purpose}</p>
+      {/* Hero: one screen under the top bar (it shrinks to fit short screens) */}
+      <HeroFit>
+        <div className="hero-intro stack g4">
+          <span className="badge blue self-start" style={{ whiteSpace: "normal", lineHeight: 1.3, paddingBlock: 4 }}>
+            {SITE.heroBadge}
+          </span>
+          <div className="row g3 wrapx" style={{ alignItems: "center" }}>
+            <h1 className="h1x">{SITE.name}</h1>
+            <WhyVesta />
           </div>
-          <div className="hero-chamber">
-            <FlameChamber start="earth" />
-          </div>
-          <div className="hero-ask">
-            <HeroAskBar />
-          </div>
-          <div className="hero-actions row g3 wrapx">
-            <Link className="btn btn-primary" href="/learn/journey">
-              Start the journey
-            </Link>
-            <Link className="btn btn-secondary" href="/planner">
-              Plan a mission
-            </Link>
-          </div>
+          <p className="tagline">{SITE.tagline}</p>
+          <p className="lead">{SITE.purpose}</p>
         </div>
-      </section>
+        <div className="hero-chamber">
+          <FlameChamber start="earth" />
+        </div>
+        <div className="hero-ask">
+          <HeroAskBar />
+        </div>
+        <div className="hero-actions row g3 wrapx">
+          <Link className="btn btn-primary" href="/learn/journey">
+            Start the journey
+          </Link>
+          <Link className="btn btn-secondary" href="/planner">
+            Plan a mission
+          </Link>
+        </div>
+      </HeroFit>
 
       <PathCards topStudyId={moonTop[0]} compareIds={moonTop} />
 

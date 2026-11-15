@@ -11,7 +11,9 @@ type Mode = "earth" | "space";
  * The signature flame with its Earth / Space switch (Home hero, and Learn's gravity switch). The
  * chamber stays dark in both themes. The flame morphs between the two shapes (900 ms); the
  * readouts and caption change halfway, and the caption is announced. `start` is the state it opens
- * in (Home opens on Earth). Reduced motion: instant changes.
+ * in (Home opens on Earth). In space, arrows show oxygen drifting in from all sides. Reduced motion:
+ * instant changes, and the arrows hold still. The full-size flame (Home) sizes itself to the
+ * screen's height (.chamber-flame), so the whole hero fits on one screen.
  */
 export function FlameChamber({ compact = false, idPrefix = "hero-flame", start = "space" }: { compact?: boolean; idPrefix?: string; start?: Mode }) {
   const [mode, setMode] = useState<Mode>(start);
@@ -22,7 +24,9 @@ export function FlameChamber({ compact = false, idPrefix = "hero-flame", start =
       <div className="row between" style={{ alignItems: "flex-start" }}>
         <div className="readout">
           <span>Gravity</span>
-          <b>{state.gravity}</b>
+          <b>
+            {state.gravity} <span className="readout-note">({state.gravityNote})</span>
+          </b>
         </div>
         <div className="readout">
           <span>Hot air</span>
@@ -34,7 +38,7 @@ export function FlameChamber({ compact = false, idPrefix = "hero-flame", start =
         </div>
       </div>
       <div className="ticks-rule" style={{ opacity: 0.8 }} />
-      <div className={compact ? "mx-auto w-[160px] max-w-full" : "mx-auto w-[200px] max-w-full tablet:w-[360px]"}>
+      <div className={compact ? "mx-auto w-[160px] max-w-full" : "chamber-flame"}>
         <MorphFlame mode={mode} idPrefix={idPrefix} label={STATES[mode].label} onMidpoint={setShown} />
       </div>
       <div className="row" style={{ justifyContent: "center" }}>

@@ -61,14 +61,15 @@ export function Footer() {
         </div>
 
         <div className="grid gap-8 py-12" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(170px, 100%), 1fr))" }}>
-          <div className="stack g3 min-w-0 tablet:col-span-2">
+          {/* On phones the brand block takes the full width, so its badges don't run into the links. */}
+          <div className="stack g3 min-w-0 col-span-full tablet:col-span-2">
             <Logo idPrefix="logo-foot" />
             <p className="muted small" style={{ maxWidth: "36ch" }}>
               {SITE.description}
             </p>
             <div className="row g2 wrapx">
-              <span className="badge">Built for NASA Space Apps Challenge 2026</span>
-              <span className="badge">Data from NASA PSI and NTRS</span>
+              <span className="badge max-tablet:whitespace-normal max-tablet:py-1 max-tablet:leading-[1.3]">Built for NASA Space Apps Challenge 2026</span>
+              <span className="badge max-tablet:whitespace-normal max-tablet:py-1 max-tablet:leading-[1.3]">Data from NASA PSI and NTRS</span>
             </div>
           </div>
 
@@ -96,7 +97,8 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="row between wrapx g3 small muted border-t border-rule pt-5 pb-7">
+        {/* On phones, extra room at the bottom keeps the last line clear of the floating Ask button. */}
+        <div className="row between wrapx g3 small muted border-t border-rule pt-5 pb-7 max-tablet:pb-24">
           <span>© 2026{SITE.creatorName ? ` ${SITE.creatorName}` : ""}</span>
           {SITE.codeLicense && (
             <span>

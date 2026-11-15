@@ -15,11 +15,21 @@
   [data-theme="light"] .chamber { background: radial-gradient(120% 90% at 50% 62%, #241510 0%, #140a07 75%); border-color: #140a07; }
   .readout { display: flex; flex-direction: column; gap: 2px; font-size: 13px; color: #b5a59c; }
   .readout b { font-family: var(--ff-data); font-variant-numeric: tabular-nums; color: #f3eae5; font-size: 15px; }
+  /* What the g means ("1 g (Earth gravity)"), so it isn't read as grams. */
+  .readout-note { font-weight: 400; color: #dccfc7; }
   .flame-svg { display: block; width: 100%; height: auto; overflow: visible; }
+  /* The full-size flame (200 px on phones, 360 px wider up); in the hero it follows the screen height. */
+  .chamber-flame { width: 200px; max-width: 100%; margin-inline: auto; }
   .chamber .seg button[aria-pressed="true"].earth { color: var(--ember); }
   .chamber .seg button[aria-pressed="true"].space { color: var(--blue); }
 
-  /* ---------- hero ---------- */
+  /* ---------- hero: exactly one screen under the top bar ----------
+     The flame shrinks with the screen height (252 px is the rest of the chamber), and HeroFit
+     shrinks the whole hero if it still doesn't fit. "overflow" (only on very small screens): it
+     grows and the page scrolls as before. */
+  .hero { --hero-pad: clamp(16px, 4svh, 56px); height: calc(100svh - var(--topbar-h)); display: flex; flex-direction: column; justify-content: center; padding-top: var(--hero-pad); padding-bottom: var(--hero-pad); }
+  .hero[data-fit="overflow"] { height: auto; }
+  .hero .chamber-flame { width: clamp(120px, calc((100svh - var(--topbar-h) - 2 * var(--hero-pad) - 252px) * 0.8), 360px); }
   .hero-grid { display: grid; gap: 20px 48px; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-areas: "intro chamber" "ask chamber" "actions chamber"; align-items: center; }
   .hero-intro { grid-area: intro; align-self: end; }
   .hero-chamber { grid-area: chamber; }
@@ -224,10 +234,15 @@
   .journey-bg[data-bg="8"] { --journey-bg: radial-gradient(50% 45% at 72% 28%, rgba(220, 207, 199, 0.09), transparent 70%), radial-gradient(50% 50% at 30% 65%, rgba(46, 84, 201, 0.16), transparent 70%), #0e0604; }
   .journey-bg[data-bg="9"] { --journey-bg: radial-gradient(60% 50% at 50% 50%, rgba(46, 84, 201, 0.14), transparent 70%), #0e0604; }
   .journey-bg[data-bg="10"] { --journey-bg: radial-gradient(1px 1px at 12% 22%, #b5a59c 50%, transparent 51%), radial-gradient(1px 1px at 78% 14%, #b5a59c 50%, transparent 51%), radial-gradient(1.5px 1.5px at 64% 70%, #dccfc7 50%, transparent 51%), radial-gradient(1px 1px at 30% 80%, #b5a59c 50%, transparent 51%), radial-gradient(1px 1px at 90% 58%, #b5a59c 50%, transparent 51%), radial-gradient(1px 1px at 46% 10%, #b5a59c 50%, transparent 51%), radial-gradient(1px 1px at 6% 62%, #b5a59c 50%, transparent 51%), radial-gradient(60% 50% at 50% 50%, rgba(46, 84, 201, 0.14), transparent 70%), #0e0604; }
-  .journey-frame { position: relative; display: flex; flex-direction: column; min-height: 100dvh; padding: 20px 32px 16px; }
+  /* One chapter per screen: the frame is exactly the screen's height, and the chapter (.journey-fit)
+     shrinks to fit the space between the top row and the buttons (useFitZoom). If even 60% isn't
+     enough (very small screens), the frame grows and the page scrolls as before. */
+  .journey-frame { position: relative; display: flex; flex-direction: column; height: 100dvh; padding: 20px 32px 16px; }
+  .journey-frame:has(> .journey-main[data-fit="overflow"]) { height: auto; min-height: 100dvh; }
   .journey-exit { color: #dccfc7; padding: 0 8px; }
   .journey-count { color: #dccfc7; }
-  .journey-main { flex: 1; display: flex; flex-direction: column; gap: 12px; align-items: center; justify-content: center; text-align: center; width: 100%; max-width: 760px; margin: 0 auto; padding: 24px 0; }
+  .journey-main { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; width: 100%; max-width: 760px; margin: 0 auto; padding: 16px 0; }
+  .journey-fit { display: flex; flex-direction: column; gap: 12px; align-items: center; text-align: center; width: 100%; }
   .journey-icon { width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--blue); display: flex; align-items: center; justify-content: center; color: var(--blue); box-shadow: 0 0 0 6px rgba(91, 141, 255, 0.1); flex: none; }
   .journey-title { text-align: center; outline: none; }
   .journey-text { color: #dccfc7; font-size: 19px; line-height: 1.6; max-width: 720px; text-wrap: pretty; }
@@ -347,7 +362,7 @@
   .gallery-thumb img { display: block; width: 100%; height: 100%; object-fit: contain; }
   .gallery-zoom { position: absolute; right: 8px; bottom: 8px; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(14, 6, 4, 0.75); color: #f3eae5; }
   .lightbox { margin: 0; display: flex; flex-direction: column; gap: 12px; }
-  .lightbox img { display: block; max-width: 100%; max-height: min(66dvh, 900px); width: auto; height: auto; margin: 0 auto; background: #0e0604; border-radius: var(--r-data); }
+  .lightbox img { display: block; max-width: 100%; max-height: min(66dvh, 900px); width: auto; height: auto; margin: 0 auto; background: #0e0604; border-radius: var(--r-data); object-fit: contain; }
   .study-bottom { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 48px; }
   /* "Will the flame go out?" (Data page). Outcome colors: our ember, mist and blue, stepped so all three
      pass the colorblind checks against each theme's surface (dataviz validator, all pairs). */
@@ -396,6 +411,40 @@
   .src-group-body { padding: 4px 0 24px; }
   .cite-list a { font-weight: 700; }
 
+  /* Journey on wide screens (landscape, 1024 px and up): the chapter's words on the left and its
+     demo on the right, and Back, the progress ticks and Next share one row, so a chapter fits on
+     one laptop screen at (or near) full size. */
+  @media (min-width: 1024px) and (min-aspect-ratio: 5/4) {
+    .journey-frame { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto; column-gap: 16px; }
+    .journey-frame > :first-child { grid-column: 1 / -1; }
+    .journey-main { grid-column: 1 / -1; max-width: 1240px; }
+    .journey-nav { display: contents; }
+    .journey-nav > :first-child { grid-column: 1; grid-row: 3; justify-self: start; align-self: center; }
+    .journey-nav > :last-child { grid-column: 3; grid-row: 3; justify-self: end; align-self: center; }
+    .journey-progress { grid-column: 2; grid-row: 3; align-self: center; }
+    .journey-fit { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: minmax(0, 1fr) repeat(6, auto) minmax(0, 1fr); column-gap: 56px; row-gap: 12px; align-items: center; text-align: left; }
+    .journey-fit > * { grid-column: 1; justify-self: start; }
+    .journey-fit > .journey-icon { grid-row: 2; }
+    .journey-fit > .journey-label { grid-row: 3; }
+    .journey-fit > .journey-title { grid-row: 4; text-align: left; }
+    .journey-fit > .journey-text { grid-row: 5; }
+    .journey-fit > .journey-chips { grid-row: 6; justify-content: flex-start; }
+    .journey-fit > .journey-sources { grid-row: 7; }
+    .journey-fit > .journey-interactive { grid-column: 2; grid-row: 1 / -1; justify-self: stretch; margin-top: 0; }
+    .journey-fit .journey-sources .srcline { justify-content: flex-start; }
+    .journey-fit .journey-paths { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  /* Short screens (landscape phones): dialogs use the full height, and a photo's caption sits beside it. */
+  @media (max-height: 520px) {
+    .dialog { top: 8px; max-height: calc(100dvh - 16px); }
+    .dialog > header { padding-top: 6px; padding-bottom: 6px; }
+    .dialog-body { padding: 12px 16px; }
+    .lightbox { flex-direction: row; align-items: flex-start; gap: 16px; }
+    .lightbox img { flex: 1 1 auto; min-width: 0; }
+    .lightbox figcaption { flex: 0 0 34%; }
+  }
+
   @media (max-width: 1023.98px) {
     .journey-paths { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .about-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -403,8 +452,19 @@
     .xp-dialog-text { order: -1; }
   }
 
+  @media (min-width: 768px) {
+    .chamber-flame { width: 360px; }
+  }
+
   @media (max-width: 767.98px) {
+    /* Stacked hero: less padding, and the flame gets what's left after the text, the ask bar and the buttons. */
+    .hero { --hero-pad: clamp(8px, 2svh, 24px); }
+    .hero .chamber-flame { width: clamp(96px, calc((100svh - var(--topbar-h) - 2 * var(--hero-pad) - 690px) * 0.8), 200px); }
     .journey-frame { padding: 12px 16px 8px; }
+    /* The top row already says "Chapter N of 10", so phones skip the chapter icon and label. */
+    .journey-icon,
+    .journey-label { display: none; }
+    .journey-fit { gap: 10px; }
     .journey-text { font-size: 17px; }
     .journey-paths { grid-template-columns: minmax(0, 1fr); }
     .journey-progress .step { width: 32px; }

@@ -2,7 +2,7 @@
 
 import { ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 import Link from "next/link";
-import { useCallback, useEffect, useId, useState } from "react";
+import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import type { GalleryImage } from "@/lib/data/gallery";
 import { Dialog } from "./Dialog";
 
@@ -10,7 +10,8 @@ import { Dialog } from "./Dialog";
  * NASA photos as a grid of small copies (lazy-loaded); select one to enlarge it in a lightbox.
  * The lightbox is the site's dialog: Escape or the close button closes it, focus stays inside and
  * goes back to the photo afterward, and Left and Right move between photos. `linkStudy` adds a
- * link to each photo's study page (not wanted on that study's own page).
+ * link to each photo's study page (not wanted on that study's own page). The enlarged photo is
+ * sized to the screen, so the photo and its caption always show without scrolling.
  */
 export function Gallery({ images, linkStudy = true, compact = false }: { images: GalleryImage[]; linkStudy?: boolean; compact?: boolean }) {
   const [open, setOpen] = useState<number | null>(null);
@@ -30,6 +31,50 @@ export function Gallery({ images, linkStudy = true, compact = false }: { images:
   }, [open, images.length, step]);
 
   const current = open === null ? null : images[open];
+  const figureRef = useRef<HTMLElement>(null);
+
+  // The photo gets the height the dialog has left after its header, padding and caption.
+  useLayoutEffect(() => {
+    const figure = figureRef.current;
+    const body = figure?.parentElement;
+    const dialog = figure?.closest<HTMLElement>(".dialog");
+    const img = figure?.querySelector("img");
+    const caption = figure?.querySelector("figcaption");
+    if (!figure || !body || !dialog || !img || !caption) return;
+    let frame = 0;
+    const fit = () => {
+      const header = dialog.querySelector<HTMLElement>(":scope > header");
+      const dialogStyle = getComputedStyle(dialog);
+      const bodyStyle = getComputedStyle(body);
+      const figureStyle = getComputedStyle(figure);
+      // On short screens the caption sits beside the photo, so it takes no height.
+      const below = figureStyle.flexDirection !== "row";
+      const limit = parseFloat(dialogStyle.maxHeight) || window.innerHeight;
+      const room =
+        limit -
+        parseFloat(dialogStyle.borderTopWidth) -
+        parseFloat(dialogStyle.borderBottomWidth) -
+        (header?.offsetHeight ?? 0) -
+        parseFloat(bodyStyle.paddingTop) -
+        parseFloat(bodyStyle.paddingBottom) -
+        (below ? caption.offsetHeight + (parseFloat(figureStyle.rowGap) || 0) : 0);
+      img.style.maxHeight = `${Math.max(80, Math.floor(room))}px`;
+    };
+    const later = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(fit);
+    };
+    fit();
+    const observer = new ResizeObserver(later);
+    observer.observe(caption);
+    window.addEventListener("resize", later);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", later);
+      cancelAnimationFrame(frame);
+    };
+  }, [current]);
+
   return (
     <>
       <ul className={`gallery-grid${compact ? " compact" : ""}`}>
@@ -81,7 +126,7 @@ export function Gallery({ images, linkStudy = true, compact = false }: { images:
         }
       >
         {current && (
-          <figure className="lightbox">
+          <figure ref={figureRef} className="lightbox">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img key={current.id} src={current.src} width={current.width} height={current.height} alt={current.alt} decoding="async" />
             <figcaption className="stack g1">
