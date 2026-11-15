@@ -6,18 +6,19 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { BottomSheet } from "@/components/ui/BottomSheet";
 import { RadioRow, Slider, TagFilterChips } from "@/components/ui/Controls";
 import { NoteText } from "@/components/ui/NoteText";
+import { PrintLink, PrintNote, PrintReport, usePrintReport, type PrintStamp } from "@/components/ui/PrintReport";
 import { SourceLine } from "@/components/ui/SourceChip";
 import { TabPanel, Tabs } from "@/components/ui/Tabs";
 import { AiLabel, MatchBar, MatchChip } from "@/components/ui/Tags";
 import { rankingMission } from "@/lib/data/rankings";
 import type { StudyIndexEntry } from "@/lib/data/types";
-import { fmtNum, formatIsoDate, joinAnd, plural } from "@/lib/format";
-import { hasAnyTag, type TagId } from "@/lib/jobs";
+import { fmtNum, joinAnd, plural } from "@/lib/format";
+import { hasAnyTag, tagLabel, type TagId } from "@/lib/jobs";
 import { useFlip, useSettled } from "@/lib/hooks/useFlip";
 import { explainMatch, matchChipLabel, missionView } from "@/lib/mission-view";
 import { MISSION_LIST, isMissionId, type CustomConditions } from "@/lib/missions";
 import { rankedFor, type RankedItem } from "@/lib/ranked";
-import { atmToPsi } from "@/lib/scoring";
+import { atmToPsi, type MatchLevel } from "@/lib/scoring";
 import type { SourceRef } from "@/lib/sources";
 import { usePrefs } from "@/lib/state/prefs";
 import { replaceQuery } from "@/lib/url";
@@ -72,18 +73,15 @@ type Tab = "ranked" | "best" | "gaps";
 export function PlannerClient({
   index,
   gaps,
-  generated,
 }: {
   index: StudyIndexEntry[];
   gaps: { items: string[]; sources: SourceRef[] };
-  generated: string;
 }) {
   const { mission, custom, setMission, setCustom } = usePrefs();
   const [tags, setTags] = useState<TagId[]>([]);
   const [tab, setTab] = useState<Tab>("ranked");
   const [showAll, setShowAll] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
-  const [printing, setPrinting] = useState(false);
   const [urlLoaded, setUrlLoaded] = useState(false);
 
   // ?mission=moon (Custom adds &o2=&psi=&g=) sets the mission, then the URL follows the choice.
@@ -115,30 +113,21 @@ export function PlannerClient({
 
   useEffect(() => setShowAll(false), [mission, tags]);
 
-  // "Export PDF": show every row, open the browser's print dialog (Save as PDF), then restore.
-  useEffect(() => {
-    if (!printing) return;
-    const done = () => setPrinting(false);
-    window.addEventListener("afterprint", done);
-    const frame = requestAnimationFrame(() => window.print());
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("afterprint", done);
-    };
-  }, [printing]);
+  // "Save as PDF": the browser's print dialog, with the printed ranking below (PlannerPrint).
+  const { stamp, print } = usePrintReport();
 
   const view = missionView(mission, custom);
   const refs = useMemo(references, []);
   const ranked = useMemo(() => rankedFor(mission, custom, index), [mission, custom, index]);
   const list = tags.length ? ranked.filter((r) => hasAnyTag(r.study, tags)) : ranked;
-  const visible = showAll || printing ? list : list.slice(0, PREVIEW);
+  const visible = showAll ? list : list.slice(0, PREVIEW);
   const best = list[0];
   const tiedWithBest = best ? list.filter((r) => r !== best && r.match.score === best.match.score) : [];
   const anyAi = list.some((r) => r.whyIsAi);
   const unranked = index.filter((s) => s.status !== "ranked");
   const planned = unranked.filter((s) => s.status === "planned");
   const ground = unranked.filter((s) => s.status === "ground");
-  const shownTab: Tab = printing ? "ranked" : tab;
+  const shownTab: Tab = tab;
   const toggleTag = (tag: TagId) => setTags((ts) => (ts.includes(tag) ? ts.filter((t) => t !== tag) : [...ts, tag]));
 
   // Re-sorting (design board 14): rows slide to their new place, and moved rows say where they
@@ -230,25 +219,17 @@ export function PlannerClient({
   const chipIcon = { oxygen: Gauge, pressure: Ruler, gravity: Orbit } as const;
 
   return (
-    <section id="export" className="wrap pb-16">
-      <div className="print-only stack g2" style={{ marginBottom: 24 }}>
-        <p className="h3">Vesta mission ranking: {view.label}</p>
-        <p className="small">
-          <NoteText parts={view.note} />
-        </p>
-        <p className="small">
-          Scores come from the NASA PSI data tables: oxygen 35 points, pressure 25, gravity 15 and fuel type 25.
-          {anyAi ? " One-line reasons are AI-written." : ""} Data updated {formatIsoDate(generated)}.
-        </p>
-      </div>
+    <>
+    <PlannerPrint view={view} list={list} tags={tags} stamp={stamp} />
+    <section id="export" className="wrap pb-16 no-print">
 
       <div className="dash">
         <aside className="rail panel pad stack g5 max-tablet:hidden" aria-label="Planner controls">
           {controls("rail")}
           <div className="divider" />
-          <button type="button" className="btn btn-secondary" style={{ width: "100%" }} onClick={() => setPrinting(true)}>
+          <button type="button" className="btn btn-secondary" style={{ width: "100%" }} onClick={print}>
             <Download className="ic" aria-hidden="true" />
-            Export PDF
+            Save as PDF
           </button>
         </aside>
 
@@ -258,7 +239,7 @@ export function PlannerClient({
               <Filter className="ic" aria-hidden="true" />
               {tags.length ? `Filters (${tags.length})` : "Filters"}
             </button>
-            <button type="button" className="btn btn-secondary" aria-label="Export PDF" onClick={() => setPrinting(true)}>
+            <button type="button" className="btn btn-secondary" aria-label="Save as PDF" onClick={print}>
               <Download className="ic" aria-hidden="true" />
               PDF
             </button>
@@ -418,6 +399,70 @@ export function PlannerClient({
         <div className="stack g5">{controls("sheet")}</div>
       </BottomSheet>
     </section>
+    </>
+  );
+}
+
+const LEVEL_WORDS: Record<MatchLevel, string> = { yes: "matches", partial: "partly matches", no: "doesn't match" };
+
+/** Each condition's match in words, so the printout doesn't rely on color. */
+function matchInWords(item: RankedItem) {
+  return (["oxygen", "pressure", "gravity", "fuel"] as const)
+    .map((dim) => {
+      const chip = matchChipLabel(dim, item.match[dim], item.study.id, item.study.hardwareFamily);
+      const name = dim === "fuel" ? "Solid fuel" : chip.split(":")[0];
+      const words = chip.endsWith("imitated") ? "imitated by a gas burner" : LEVEL_WORDS[item.match[dim]];
+      return `${name}: ${words}`;
+    })
+    .join("; ");
+}
+
+/** The printed ranking ("Save as PDF"): every ranked study for this mission and filter. */
+function PlannerPrint({ view, list, tags, stamp }: { view: ReturnType<typeof missionView>; list: RankedItem[]; tags: TagId[]; stamp: PrintStamp | null }) {
+  const anyAi = list.some((r) => r.whyIsAi);
+  return (
+    <PrintReport title={`Vesta: ${view.label} ranking`} stamp={stamp} footer="Scores computed from NASA PSI data. Made with Vesta.">
+      <section className="prt-sec">
+        <h2 className="prt-h2">Mission conditions</h2>
+        <p className="prt-strong">{view.chips.map((c) => c.text).join(", ")}</p>
+        <p className="prt-small">
+          <PrintNote parts={view.note} />
+        </p>
+        {tags.length > 0 && <p className="prt-small">Showing only studies for: {joinAnd(tags.map(tagLabel))}.</p>}
+      </section>
+      <section className="prt-sec">
+        <h2 className="prt-h2">Ranked studies ({list.length})</h2>
+        <p className="prt-small">
+          Each score is out of 100: oxygen 35 points, pressure 25, gravity 15 and solid fuel 25. A full match earns all of a condition&apos;s points and a
+          partial match half.{anyAi ? " Reasons marked AI-written were written by AI; the scores were not." : ""}
+        </p>
+        {list.length === 0 ? (
+          <p>No ranked studies match this filter.</p>
+        ) : (
+          <ol className="prt-list">
+            {list.map((item, i) => (
+              <li key={item.study.id} className="prt-row">
+                <span className="prt-rank">{i + 1}</span>
+                <div className="prt-body">
+                  <p>
+                    <span className="prt-strong">{item.study.shortName}</span> <span className="prt-muted">{item.study.fullName}</span>
+                  </p>
+                  <p className="prt-strong">Match score: {item.match.score}%</p>
+                  <p>{matchInWords(item)}.</p>
+                  {item.match.assumed.length > 0 && <p className="prt-small">Not in the table, so scored as {joinAnd(item.match.assumed)}.</p>}
+                  <p>
+                    {item.why} {item.whyIsAi && <span className="prt-ai">AI-written</span>}
+                  </p>
+                  <p className="prt-small">
+                    Source: {item.study.psiId}, <PrintLink url={item.study.psiUrl} />
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        )}
+      </section>
+    </PrintReport>
   );
 }
 

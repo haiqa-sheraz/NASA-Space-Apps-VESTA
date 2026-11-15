@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-14T22:49:01.807Z",
+  "generated": "2026-11-15T10:58:11.939Z",
   "answers": [
     {
       "question": "Which experiments tested above 30% oxygen?",
@@ -271,7 +271,7 @@
     {
       "question": "Which studies burned solid materials?",
       "studyId": null,
-      "answer": "BASS burned PMMA, wax candle, SIBAL cotton-fiberglass, and Nomex [1]. BASS-II burned PMMA, SIBAL cotton-fiberglass, Nomex, and wax candle [1]. Saffire-II burned silicone, PMMA, and SIBAL cotton-fiberglass [1]. SAME and SAME-R heated materials to make smoke below the ignition point rather than burning them [1].",
+      "answer": "BASS burned PMMA, wax candle, SIBAL cotton-fiberglass, and Nomex [1]. BASS-II burned PMMA, SIBAL cotton-fiberglass, Nomex, and wax candle [1]. Saffire-II burned silicone, PMMA, and SIBAL cotton-fiberglass [1]. Saffire-I and Saffire-III burned SIBAL cotton-fiberglass [1]. SAME and SAME-R heated materials to make smoke below the ignition point rather than burning them [1]. The sources do not cover whether any other listed studies burned solid materials.",
       "notFound": false,
       "sources": [
         {
@@ -325,7 +325,7 @@
         }
       ],
       "model": "nvidia/nemotron-3.5-super-vl:free",
-      "generated": "2026-11-14T22:48:56.934Z"
+      "generated": "2026-11-15T10:57:15.984Z"
     },
     {
       "question": "How does BASS-II compare to BASS?",
@@ -959,6 +959,183 @@
       "generated": "2026-11-14T22:10:43.275Z"
     },
     {
+      "question": "How does airflow change flame spread in space?",
+      "studyId": "bass-ii",
+      "answer": "In microgravity, buoyant flow is eliminated, so forced airflow controls flame spread direction and rate. BASS-II tests used airflow speeds from 0 to 55 cm/s in opposed and concurrent flow configurations [2][7]. For thin PMMA sheets, spread rate remains relatively independent of opposing airflow velocity until it reaches 40 cm/s [3]. At low forced-flow velocities in space, flames spread upstream into the oncoming airflow, unlike normal gravity where flames spread downstream in the buoyant flow direction even without forced flow [5]. Concurrent-flow tests with PMMA rods showed flames surviving at airflow less than 1 cm/s [6]. The sources do not state the exact quantitative relationship between airflow speed and flame spread rate across all tested materials and conditions.",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NASA PSI",
+          "title": "Computed from the NASA PSI test tables (see the Data page)",
+          "page": null,
+          "url": "/data"
+        },
+        {
+          "n": 2,
+          "label": "NTRS 20160000593",
+          "title": "Combustion of Solids in Microgravity: Results from the BASS-II Experiment",
+          "page": 3,
+          "url": "https://ntrs.nasa.gov/citations/20160000593"
+        },
+        {
+          "n": 3,
+          "label": "PSI-25",
+          "title": "BASS-II final report (PSI-25)",
+          "page": 44,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+        },
+        {
+          "n": 4,
+          "label": "PSI-25",
+          "title": "BASS-II final report (PSI-25)",
+          "page": 64,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+        },
+        {
+          "n": 5,
+          "label": "Researcher's Guide",
+          "title": "A Researcher's Guide to ISS Combustion Science (2015)",
+          "page": 31,
+          "url": "https://www.nasa.gov/wp-content/uploads/2016/05/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf"
+        },
+        {
+          "n": 6,
+          "label": "PSI-25",
+          "title": "BASS-II final report (PSI-25)",
+          "page": 74,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+        },
+        {
+          "n": 7,
+          "label": "NTRS 20160000593",
+          "title": "Combustion of Solids in Microgravity: Results from the BASS-II Experiment",
+          "page": 7,
+          "url": "https://ntrs.nasa.gov/citations/20160000593"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-15T10:57:21.776Z"
+    },
+    {
+      "question": "Do materials burn more readily in space than on Earth?",
+      "studyId": "bass-ii",
+      "answer": "The sources say that materials in microgravity with adequate ventilation may burn more readily compared to normal gravity when other conditions are identical [3]. They also state that the upward burning test used on Earth may not be conservative for flammability in space [4]. The sources do not provide a definitive conclusion that materials burn more readily in space than on Earth.",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NASA PSI",
+          "title": "Computed from the NASA PSI test tables (see the Data page)",
+          "page": null,
+          "url": "/data"
+        },
+        {
+          "n": 2,
+          "label": "NTRS 20160000593",
+          "title": "Combustion of Solids in Microgravity: Results from the BASS-II Experiment",
+          "page": 5,
+          "url": "https://ntrs.nasa.gov/citations/20160000593"
+        },
+        {
+          "n": 3,
+          "label": "NTRS 20160000593",
+          "title": "Combustion of Solids in Microgravity: Results from the BASS-II Experiment",
+          "page": 6,
+          "url": "https://ntrs.nasa.gov/citations/20160000593"
+        },
+        {
+          "n": 4,
+          "label": "PSI-25",
+          "title": "BASS-II final report (PSI-25)",
+          "page": 11,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20140011099",
+          "title": "Thickness and Fuel Preheating Effects on Material Flammability (BASS)",
+          "page": 4,
+          "url": "https://ntrs.nasa.gov/citations/20140011099"
+        },
+        {
+          "n": 6,
+          "label": "PSI-159",
+          "title": "ACME CFI-G final report (PSI-159)",
+          "page": 68,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
+        },
+        {
+          "n": 7,
+          "label": "NASA FM2",
+          "title": "Flammability of Materials on the Moon (FM2), NASA",
+          "page": null,
+          "url": "https://www.nasa.gov/glenn/glenn-expertise-space-exploration/physical-sciences-program/combustion-science/flammability-of-materials-on-the-moon-fm2/"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-15T10:57:26.520Z"
+    },
+    {
+      "question": "What did SPICE find?",
+      "studyId": "spice",
+      "answer": "SPICE measured smoke points of 55 microgravity gas-jet diffusion flames in coflowing air, emphasizing small burners and the effects of coflow velocity [2]. The experiment determined the laminar smoke point properties of non-buoyant jet diffusion flames for several fuels under different nozzle diameter and co-flow velocity configurations [7]. It studied the onset of soot emission from small gas jet flames to provide a database assessing the interaction between fuel chemistry and flow conditions on soot formation [6]. The sources do not state the specific numerical smoke point results or which fuels produced which smoke points.",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NASA PSI",
+          "title": "Computed from the NASA PSI test tables (see the Data page)",
+          "page": null,
+          "url": "/data"
+        },
+        {
+          "n": 2,
+          "label": "PSI-107",
+          "title": "SPICE final report (PSI-107)",
+          "page": 24,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107"
+        },
+        {
+          "n": 3,
+          "label": "PSI-107",
+          "title": "SPICE final report (PSI-107)",
+          "page": 4,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107"
+        },
+        {
+          "n": 4,
+          "label": "PSI-107",
+          "title": "SPICE final report (PSI-107)",
+          "page": 8,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20090014827",
+          "title": "Smoke Point In Co-flow Experiment (SPICE) description",
+          "page": 3,
+          "url": "https://ntrs.nasa.gov/citations/20090014827"
+        },
+        {
+          "n": 6,
+          "label": "NTRS 20090014827",
+          "title": "Smoke Point In Co-flow Experiment (SPICE) description",
+          "page": 1,
+          "url": "https://ntrs.nasa.gov/citations/20090014827"
+        },
+        {
+          "n": 7,
+          "label": "NTRS 20090014827",
+          "title": "Smoke Point In Co-flow Experiment (SPICE) description",
+          "page": 2,
+          "url": "https://ntrs.nasa.gov/citations/20090014827"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-15T10:57:31.782Z"
+    },
+    {
       "question": "What did SLICE find?",
       "studyId": "slice",
       "answer": "SLICE used the SPICE hardware in the space station glovebox to study lifted and lifting flames [2]. Its twin purposes were increased fuel efficiency and reduced pollutant emission in practical combustion devices [1]. SLICE started and completed its operations in 2012 [2].",
@@ -1011,6 +1188,65 @@
       "generated": "2026-11-14T22:11:03.171Z"
     },
     {
+      "question": "What did FLEX find?",
+      "studyId": "flex",
+      "answer": "FLEX found that droplets continued to vaporize vigorously after visible flame extinction, sustained by a low-temperature, soot-free chemical reaction called cool flame [4]. This phenomenon was not explained by conventional droplet combustion theories and represented a new chemistry different from hot combustion [4]. Cool flames could persist after hot-flame extinction and possibly reignite in hot mode, indicating increased fire risk in microgravity habitats and the need for more rigorous suppression [4]. FLEX also obtained droplet and flame diameter histories, burning-rate constants, and extinction diameters for methanol and n-heptane droplets [7].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NASA PSI",
+          "title": "Computed from the NASA PSI test tables (see the Data page)",
+          "page": null,
+          "url": "/data"
+        },
+        {
+          "n": 2,
+          "label": "NTRS 20130014061",
+          "title": "Methanol Droplet Combustion in Oxygen-Inert Environments in Microgravity",
+          "page": 10,
+          "url": "https://ntrs.nasa.gov/citations/20130014061"
+        },
+        {
+          "n": 3,
+          "label": "NTRS 20120015928",
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "page": 19,
+          "url": "https://ntrs.nasa.gov/citations/20120015928"
+        },
+        {
+          "n": 4,
+          "label": "NTRS 20120015928",
+          "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+          "page": 31,
+          "url": "https://ntrs.nasa.gov/citations/20120015928"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20130014061",
+          "title": "Methanol Droplet Combustion in Oxygen-Inert Environments in Microgravity",
+          "page": 2,
+          "url": "https://ntrs.nasa.gov/citations/20130014061"
+        },
+        {
+          "n": 6,
+          "label": "NTRS 20140006750",
+          "title": "Cool-Flame Extinction during n-Alkane Droplet Combustion in Microgravity",
+          "page": 3,
+          "url": "https://ntrs.nasa.gov/citations/20140006750"
+        },
+        {
+          "n": 7,
+          "label": "NTRS 20150023456",
+          "title": "Detailed Results From the Flame Extinguishment Experiment (FLEX)",
+          "page": 23,
+          "url": "https://ntrs.nasa.gov/citations/20150023456"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-15T10:57:36.705Z"
+    },
+    {
       "question": "What did FLEX-2 find?",
       "studyId": "flex-2",
       "answer": "FLEX-2 studies droplet combustion under conditions that mimic real combustors. It examines sub-buoyant convective flows on combustion rates, the influence of a second burning droplet on a linear array, and practical fuels such as bi-component and surrogate fuels. It also continues studying pure fuels to examine steady and unsteady liquid and gas-phase phenomena, flame extinction, soot formation mechanisms, and radiative heat transfer. [1][2] The sources do not report specific findings or results from FLEX-2.",
@@ -1061,6 +1297,96 @@
       ],
       "model": "nvidia/nemotron-3.5-super-vl:free",
       "generated": "2026-11-14T22:11:13.186Z"
+    },
+    {
+      "question": "What did CFI find?",
+      "studyId": "cfi",
+      "answer": "The CFI final report states that cool flames were observed during n-dodecanol combustion as well as n-dodecanol/iso-dodecanol mixture cases [2]. The addition of iso-dodecanol reduces the tendency to form cool flames in n-dodecanol [2]. The report also notes that all CFI data is yet to be fully analyzed and interpreted using theoretical and numerical models [2].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NASA PSI",
+          "title": "Computed from the NASA PSI test tables (see the Data page)",
+          "page": null,
+          "url": "/data"
+        },
+        {
+          "n": 2,
+          "label": "PSI-39",
+          "title": "CFI final report (PSI-39)",
+          "page": 7,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39"
+        },
+        {
+          "n": 3,
+          "label": "PSI-39",
+          "title": "CFI final report (PSI-39)",
+          "page": 2,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39"
+        },
+        {
+          "n": 4,
+          "label": "PSI-39",
+          "title": "CFI final report (PSI-39)",
+          "page": 5,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-15T10:57:41.685Z"
+    },
+    {
+      "question": "What did ACME BRE find?",
+      "studyId": "acme-bre",
+      "answer": "The ACME BRE study found that steady burning is possible for real solids with a flat surface of 25 mm diameter in microgravity [3][4]. Flames generally persisted for 2 minutes or more at atmospheric conditions of 27% oxygen and 10.2 psia, and at 34% oxygen and 8.2 psia [3]. Solid materials with heats of combustion in the range 23.6 to 47.2 kJ/g and heats of gasification from about 1 to 10 kJ/g can burn in microgravity [2]. Lower pressure and higher oxygen concentration favor long duration burning [2].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NASA PSI",
+          "title": "Computed from the NASA PSI test tables (see the Data page)",
+          "page": null,
+          "url": "/data"
+        },
+        {
+          "n": 2,
+          "label": "PSI-20",
+          "title": "ACME BRE final report (PSI-20)",
+          "page": 128,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20"
+        },
+        {
+          "n": 3,
+          "label": "PSI-20",
+          "title": "ACME BRE final report (PSI-20)",
+          "page": 72,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20"
+        },
+        {
+          "n": 4,
+          "label": "PSI-20",
+          "title": "ACME BRE final report (PSI-20)",
+          "page": 54,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20210015913",
+          "title": "ACME on the ISS (poster, NTRS 20210015913)",
+          "page": 1,
+          "url": "https://ntrs.nasa.gov/citations/20210015913"
+        },
+        {
+          "n": 6,
+          "label": "NTRS 20220015583",
+          "title": "ACME: Advanced Combustion via Microgravity Experiments (poster, NTRS 20220015583)",
+          "page": 1,
+          "url": "https://ntrs.nasa.gov/citations/20220015583"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-15T10:57:47.008Z"
     },
     {
       "question": "What did ACME CLD Flame find?",
@@ -1271,6 +1597,235 @@
       "generated": "2026-11-14T22:11:41.933Z"
     },
     {
+      "question": "What did ACME CFI-G find?",
+      "studyId": "acme-cfi-g",
+      "answer": "ACME CFI-G observed 280 hot diffusion flames, of which 189 experienced radiative extinction and 15 subsequently reignited as cool diffusion flames [3]. Cool flames were found only with 30 vol% n-butane and 40 vol% O2, normal flames, and a pressure of 2.03 bar [3]. They give off little heat or light and were revealed by thermal radiation and burner temperature measurements after hot flames quenched [5]. The sources do not state the overall conclusion of the study.",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NASA PSI",
+          "title": "Computed from the NASA PSI test tables (see the Data page)",
+          "page": null,
+          "url": "/data"
+        },
+        {
+          "n": 2,
+          "label": "NTRS 20210015913",
+          "title": "ACME on the ISS (poster, NTRS 20210015913)",
+          "page": 1,
+          "url": "https://ntrs.nasa.gov/citations/20210015913"
+        },
+        {
+          "n": 3,
+          "label": "PSI-159",
+          "title": "ACME CFI-G final report (PSI-159)",
+          "page": 44,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
+        },
+        {
+          "n": 4,
+          "label": "PSI-159",
+          "title": "ACME CFI-G final report (PSI-159)",
+          "page": 17,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
+        },
+        {
+          "n": 5,
+          "label": "PSI-159",
+          "title": "ACME CFI-G final report (PSI-159)",
+          "page": 58,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
+        },
+        {
+          "n": 6,
+          "label": "NTRS 20220015583",
+          "title": "ACME: Advanced Combustion via Microgravity Experiments (poster, NTRS 20220015583)",
+          "page": 1,
+          "url": "https://ntrs.nasa.gov/citations/20220015583"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-15T10:57:52.123Z"
+    },
+    {
+      "question": "What did Saffire-I find?",
+      "studyId": "saffire-i",
+      "answer": "Saffire-I showed that steady flame spread over a large thin charring surface was possible in low gravity, unlike normal gravity [3]. Concurrent flame spread with the wind was more sensitive to flow duct dimensions than previously anticipated [3]. Large-scale experiments could be safely conducted in an unmanned spacecraft [3]. The sources do not state the specific burn time or other quantitative results for Saffire-I.",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NASA PSI",
+          "title": "Computed from the NASA PSI test tables (see the Data page)",
+          "page": null,
+          "url": "/data"
+        },
+        {
+          "n": 2,
+          "label": "NTRS 20170001636",
+          "title": "The Spacecraft Fire Experiment (Saffire): Objectives, Development and Status",
+          "page": 5,
+          "url": "https://ntrs.nasa.gov/citations/20170001636"
+        },
+        {
+          "n": 3,
+          "label": "NTRS 20180005168",
+          "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+          "page": 18,
+          "url": "https://ntrs.nasa.gov/citations/20180005168"
+        },
+        {
+          "n": 4,
+          "label": "NTRS 20170001636",
+          "title": "The Spacecraft Fire Experiment (Saffire): Objectives, Development and Status",
+          "page": 1,
+          "url": "https://ntrs.nasa.gov/citations/20170001636"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20180005168",
+          "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+          "page": 19,
+          "url": "https://ntrs.nasa.gov/citations/20180005168"
+        },
+        {
+          "n": 6,
+          "label": "NTRS 20170001636",
+          "title": "The Spacecraft Fire Experiment (Saffire): Objectives, Development and Status",
+          "page": 3,
+          "url": "https://ntrs.nasa.gov/citations/20170001636"
+        },
+        {
+          "n": 7,
+          "label": "NTRS 20150003025",
+          "title": "Saffire Offgas Testing Strategy",
+          "page": 8,
+          "url": "https://ntrs.nasa.gov/citations/20150003025"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-15T10:57:56.663Z"
+    },
+    {
+      "question": "What did Saffire-II find?",
+      "studyId": "saffire-ii",
+      "answer": "The sources do not report specific findings from Saffire-II. Source [6] states that the objective of Saffire-II was to quantify how low-gravity affects flammability limits using samples the same size as those used in normal-gravity tests, with some samples expected to burn and others not. Source [3] lists results for Saffire-I through III collectively, including that steady flame spread over a large thin charring surface was possible in low-gravity, concurrent flame spread was more sensitive to flow duct dimension than anticipated, and large-scale experiments could be safely conducted in an unmanned spacecraft. The sources do not separate Saffire-II-specific findings from the combined results.",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NASA PSI",
+          "title": "Computed from the NASA PSI test tables (see the Data page)",
+          "page": null,
+          "url": "/data"
+        },
+        {
+          "n": 2,
+          "label": "NTRS 20170001636",
+          "title": "The Spacecraft Fire Experiment (Saffire): Objectives, Development and Status",
+          "page": 5,
+          "url": "https://ntrs.nasa.gov/citations/20170001636"
+        },
+        {
+          "n": 3,
+          "label": "NTRS 20180005168",
+          "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+          "page": 18,
+          "url": "https://ntrs.nasa.gov/citations/20180005168"
+        },
+        {
+          "n": 4,
+          "label": "NTRS 20170001636",
+          "title": "The Spacecraft Fire Experiment (Saffire): Objectives, Development and Status",
+          "page": 1,
+          "url": "https://ntrs.nasa.gov/citations/20170001636"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20180005168",
+          "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+          "page": 19,
+          "url": "https://ntrs.nasa.gov/citations/20180005168"
+        },
+        {
+          "n": 6,
+          "label": "NTRS 20170001636",
+          "title": "The Spacecraft Fire Experiment (Saffire): Objectives, Development and Status",
+          "page": 3,
+          "url": "https://ntrs.nasa.gov/citations/20170001636"
+        },
+        {
+          "n": 7,
+          "label": "NTRS 20150003025",
+          "title": "Saffire Offgas Testing Strategy",
+          "page": 8,
+          "url": "https://ntrs.nasa.gov/citations/20150003025"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-15T10:58:01.983Z"
+    },
+    {
+      "question": "What did Saffire-III find?",
+      "studyId": "saffire-iii",
+      "answer": "The sources do not provide specific findings from Saffire-III. Source [3] lists combined Saffire-I-III results, including steady flame spread over a large thin charring surface in low gravity, concurrent flame spread sensitivity to flow duct dimension, and safe large-scale experiments in an unmanned spacecraft. Source [2] states that Saffire-I, -II, and -III evaluate low-g material flammability with two large samples and nine smaller samples. The sources do not separate Saffire-III findings from Saffire-I and Saffire-II results.",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NASA PSI",
+          "title": "Computed from the NASA PSI test tables (see the Data page)",
+          "page": null,
+          "url": "/data"
+        },
+        {
+          "n": 2,
+          "label": "NTRS 20170001636",
+          "title": "The Spacecraft Fire Experiment (Saffire): Objectives, Development and Status",
+          "page": 5,
+          "url": "https://ntrs.nasa.gov/citations/20170001636"
+        },
+        {
+          "n": 3,
+          "label": "NTRS 20180005168",
+          "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+          "page": 18,
+          "url": "https://ntrs.nasa.gov/citations/20180005168"
+        },
+        {
+          "n": 4,
+          "label": "NTRS 20170001636",
+          "title": "The Spacecraft Fire Experiment (Saffire): Objectives, Development and Status",
+          "page": 1,
+          "url": "https://ntrs.nasa.gov/citations/20170001636"
+        },
+        {
+          "n": 5,
+          "label": "NTRS 20180005168",
+          "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety",
+          "page": 19,
+          "url": "https://ntrs.nasa.gov/citations/20180005168"
+        },
+        {
+          "n": 6,
+          "label": "NTRS 20170001636",
+          "title": "The Spacecraft Fire Experiment (Saffire): Objectives, Development and Status",
+          "page": 3,
+          "url": "https://ntrs.nasa.gov/citations/20170001636"
+        },
+        {
+          "n": 7,
+          "label": "NTRS 20150003025",
+          "title": "Saffire Offgas Testing Strategy",
+          "page": 8,
+          "url": "https://ntrs.nasa.gov/citations/20150003025"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-15T10:58:06.847Z"
+    },
+    {
       "question": "What did SAME find?",
       "studyId": "same",
       "answer": "SAME found that for the materials tested, a substantial portion of smoke particles were below 500 nm in diameter [4]. It also found that smoke transport in microgravity is dominated by mixing, causing longer detection time lags than in normal gravity [4]. The knowledge gained can be used to establish design requirements for smoke detectors on future spacecraft [4]. SAME-2 also demonstrated that a two-moment smoke detector could predict smoke number and mass concentration from its output [6].",
@@ -1373,6 +1928,44 @@
       ],
       "model": "nvidia/nemotron-3.5-super-vl:free",
       "generated": "2026-11-14T22:12:11.694Z"
+    },
+    {
+      "question": "What did DAFT find?",
+      "studyId": "daft",
+      "answer": "DAFT found that overall particulate levels in the US Lab atmosphere were very low, about a factor of ten leaner than normal US office conditions [2]. It also found that the P-Trak responded well to Velcro dust, with several readings above 30,000 particles per cubic centimeter [2]. The experiment adequately demonstrated the reliability of the modified P-Trak as operated in low gravity [3].",
+      "notFound": false,
+      "sources": [
+        {
+          "n": 1,
+          "label": "NASA PSI",
+          "title": "Computed from the NASA PSI test tables (see the Data page)",
+          "page": null,
+          "url": "/data"
+        },
+        {
+          "n": 2,
+          "label": "PSI-47",
+          "title": "DAFT final report (PSI-47)",
+          "page": 9,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47"
+        },
+        {
+          "n": 3,
+          "label": "PSI-47",
+          "title": "DAFT final report (PSI-47)",
+          "page": 24,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47"
+        },
+        {
+          "n": 4,
+          "label": "PSI-47",
+          "title": "DAFT final report (PSI-47)",
+          "page": 7,
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47"
+        }
+      ],
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "generated": "2026-11-15T10:58:11.937Z"
     }
   ]
 }

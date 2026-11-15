@@ -1,14 +1,13 @@
-/* Motion (design board 14, "Motion notes"). Only motion that answers the user, plus the one
-   first-load flame. Every rule here is switched off by the reduced-motion block in components.css
-   (animation and transition: none), and the reduced-motion version is noted beside each one. */
+/* Motion (design board 14, "Motion notes"): motion that answers the user, plus the Earth flame's
+   gentle flicker and rising smoke. Every rule here is switched off by the reduced-motion block in
+   components.css (animation and transition: none), and the reduced-motion version is noted beside
+   each one. Page reveals are in reveal.css. */
 
 @layer components {
-  /* ---------- signature flame: first load ----------
-     The server draws the teardrop for the first-load motion. When it won't play (already seen this
-     session, or reduced motion), CSS shows the still sphere instead, before any script runs. */
-  .flame-svg .fi-still { display: none; }
-  html[data-flame-seen] .flame-intro .fi-anim { display: none; }
-  html[data-flame-seen] .flame-intro .fi-still { display: inline; }
+  /* ---------- Earth flame: a gentle flicker from the base (still with reduced motion) ---------- */
+  .flame-flicker { transform-box: view-box; transform-origin: 100px 214px; animation: vesta-flicker 2.6s ease-in-out infinite; }
+  .flame-flicker .fl-core { transform-box: view-box; transform-origin: 100px 201px; animation: vesta-flicker-core 1.7s ease-in-out infinite; }
+  .jet-flicker { transform-box: view-box; transform-origin: 100px 240px; animation: vesta-flicker 2.2s ease-in-out infinite; }
 
   /* ---------- gravity switch, journey chapter 1: the highlight moves with the switch (900 ms) ---------- */
   .xp-pair .xp-flame { transition: opacity var(--dur-flame) var(--ease-std); }
@@ -24,13 +23,19 @@
   .xp-slow { transition: opacity var(--dur-fade) var(--ease-out), transform var(--dur-fade) var(--ease-out); }
   .xp-scale { transform-box: fill-box; transform-origin: center; }
 
-  /* ---------- smoke race: puffs travel from the fire to where the air leaves them ---------- */
-  .sr-puff { animation: vesta-puff var(--puff-ms, 900ms) var(--ease-out) both; animation-delay: var(--puff-delay, 0ms); }
+  /* ---------- smoke: soft billowing puffs (explainers/Smoke.tsx) ---------- */
+  /* Rising from a point: each puff drifts up, swells and thins out, one after another. */
+  .smoke-rise { transform-box: fill-box; transform-origin: center; opacity: 0; animation: vesta-smoke-rise var(--smoke-ms, 2.8s) linear infinite; }
+  .smoke-still { display: none; }
+  /* Smoke race: puffs travel from the fire to where the air leaves them, then keep billowing. */
+  .sr-puff {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: vesta-puff var(--puff-ms, 900ms) var(--ease-out) var(--puff-delay, 0ms) both, vesta-billow 4.5s ease-in-out var(--billow-delay, 900ms) infinite alternate;
+  }
   .sr-detector { transition: fill var(--dur-fade) var(--ease-std); }
 
-  /* ---------- smoke point: 7 soot particles rise 74 px from the tip and fade, staggered 350 ms ---------- */
-  .soot-live .soot-p { opacity: 0; }
-  .soot-live .smoking .soot-p { animation: vesta-soot 2.4s linear infinite; }
+  /* ---------- smoke point: past the mark, smoke rises from the flame tip ---------- */
   .soot-live .soot-going { animation: vesta-fade-out var(--dur-fade) linear forwards; }
   .soot-live .sp-flame { transition: d var(--dur-fast) linear; }
   .soot-live .sp-glow { transition: cy var(--dur-fast) linear, ry var(--dur-fast) linear; }
@@ -64,17 +69,30 @@
 
 @keyframes vesta-fade-out { from { opacity: 1; } to { opacity: 0; } }
 @keyframes vesta-puff { from { opacity: 0; transform: translate(var(--fx, 0px), var(--fy, 0px)) scale(0.4); } }
-@keyframes vesta-soot {
-  0% { opacity: 0; transform: translate(0, 0); }
-  12% { opacity: 0.95; }
-  100% { opacity: 0; transform: translate(var(--dx, 0px), -74px); }
+@keyframes vesta-smoke-rise {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.7); }
+  12% { opacity: 1; }
+  60% { opacity: 0.7; }
+  100% { opacity: 0; transform: translate(var(--sway, 0px), var(--rise, -80px)) scale(2.8); }
+}
+@keyframes vesta-billow { from { translate: 0 0; } to { translate: var(--bx, 3px) var(--by, -2px); } }
+@keyframes vesta-flicker {
+  0%, 100% { transform: scale(1, 1) skewX(0deg); }
+  22% { transform: scale(0.985, 1.03) skewX(-1.4deg); }
+  48% { transform: scale(1.012, 0.985) skewX(0.9deg); }
+  74% { transform: scale(0.992, 1.02) skewX(-0.6deg); }
+}
+@keyframes vesta-flicker-core {
+  0%, 100% { transform: scale(1, 1); }
+  40% { transform: scale(0.97, 1.045); }
+  70% { transform: scale(1.02, 0.98); }
 }
 
-/* Reduced motion: the still sphere instead of the first-load motion, and three still frames
-   instead of the smoke-point slider (design board 14). Other motion is already off. */
+/* Reduced motion: still smoke instead of moving smoke, and three still frames instead of the
+   smoke-point slider (design board 14). Other motion is already off. */
 @media (prefers-reduced-motion: reduce) {
-  .flame-intro .fi-anim { display: none; }
-  .flame-intro .fi-still { display: inline; }
+  .smoke-motion { display: none; }
+  .smoke-still { display: inline; }
   .soot-live { display: none !important; }
   .soot-stills { display: flex; }
   .xp-inline.has-stills { grid-template-columns: minmax(0, 1fr); }

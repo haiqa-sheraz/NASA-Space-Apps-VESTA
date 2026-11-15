@@ -1,0 +1,173 @@
+/* Page reveals: a themed overlay each time one of six pages opens (components/ui/PageReveal.tsx),
+   and on every Journey chapter change. About 2 to 2.4 s, long enough to see what each one is.
+   The page is already loaded underneath, the overlay never takes clicks, soft glows only (no
+   flashing), colors from the tokens, and no reveal at all with reduced motion. Only opacity and
+   transform animate, so phones keep up. Every layer rests invisible (opacity 0); its animation
+   runs from visible to invisible. */
+
+@layer components {
+  .page-reveal {
+    position: fixed;
+    inset: 0;
+    z-index: 30; /* above the page, below the top bar (40), the Ask button and every dialog */
+    pointer-events: none;
+    overflow: hidden;
+    /* soft colors from the tokens, retuned for light mode below */
+    --pr-ember-hot: var(--logo-flame-a);
+    --pr-ember-strong: color-mix(in srgb, var(--ember) 65%, transparent);
+    --pr-ember-soft: color-mix(in srgb, var(--ember) 24%, transparent);
+    --pr-gas: color-mix(in srgb, color-mix(in srgb, var(--mist) 16%, var(--text)) 42%, transparent);
+    --pr-drop: color-mix(in srgb, color-mix(in srgb, var(--mist) 55%, var(--text)) 75%, transparent);
+    --pr-drop-soft: color-mix(in srgb, var(--mist) 45%, transparent);
+    --pr-smoke-c: #a29eae;
+  }
+  [data-theme="light"] .page-reveal:not([data-theme="dark"]) {
+    --pr-ember-strong: color-mix(in srgb, var(--logo-flame-b) 58%, transparent);
+    --pr-ember-soft: color-mix(in srgb, var(--logo-flame-b) 18%, transparent);
+    --pr-gas: color-mix(in srgb, color-mix(in srgb, var(--mist) 30%, var(--smoke)) 34%, transparent);
+    --pr-drop: color-mix(in srgb, color-mix(in srgb, var(--mist) 65%, var(--blue)) 55%, transparent);
+    --pr-drop-soft: color-mix(in srgb, var(--mist) 30%, transparent);
+    --pr-smoke-c: #7d8392;
+  }
+  .page-reveal > * { position: absolute; opacity: 0; pointer-events: none; will-change: opacity, transform; }
+
+  /* The veil: the page background. It holds for a moment, then clears to show the page. */
+  .pr-veil { inset: 0; background: var(--bg); animation: pr-veil var(--pr-veil-ms, 1000ms) var(--ease-std) var(--pr-veil-delay, 500ms) both; }
+
+  /* ---------- Journey: blue flame bloom (1.8 s), on opening and on every chapter change ---------- */
+  .pr-journey { --pr-veil-from: 1; --pr-veil-delay: 650ms; --pr-veil-ms: 850ms; }
+  .pr-journey .pr-veil { background: #0e0604; }
+  /* A chapter change: the veil first fades in over the old chapter, then clears to the new one. */
+  .pr-journey.pr-again .pr-veil { animation: pr-veil-again 1800ms linear both; }
+  .pr-bloom {
+    --size: min(84vmin, 680px);
+    left: 50%;
+    top: 45%;
+    width: var(--size);
+    height: var(--size);
+    margin: calc(var(--size) / -2) 0 0 calc(var(--size) / -2);
+    border-radius: 50%;
+    /* the space flame: a dim core, a blue ring and a pale edge, inside a soft halo */
+    background: radial-gradient(circle closest-side, rgba(12, 26, 68, 0.3) 0%, rgba(46, 84, 201, 0.4) 30%, rgba(62, 111, 240, 0.62) 46%, rgba(159, 190, 255, 0.45) 55%, rgba(91, 141, 255, 0.16) 66%, rgba(91, 141, 255, 0) 100%);
+    animation: pr-bloom-grow 1800ms var(--ease-std) both, pr-bloom-fade 1800ms linear both;
+  }
+
+  /* ---------- Planner: ember line (2.4 s) ----------
+     A low fire along the bottom: it flares up, flickers in place (three drawn frames crossfade
+     and stretch a little), then slowly dies down and fades. It never moves up the screen. */
+  .pr-planner { --pr-veil-from: 0.94; --pr-veil-delay: 600ms; --pr-veil-ms: 1000ms; }
+  .pr-fire { left: 0; right: 0; bottom: 0; height: 210px; transform-origin: 50% 100%; animation: pr-fire 2400ms both; }
+  .pr-fire-glow { position: absolute; left: 0; right: 0; bottom: 0; height: 160%; background: linear-gradient(to top, var(--pr-ember-soft) 0%, transparent 100%); }
+  .pr-flames { position: absolute; inset: 0; transform-origin: 50% 100%; will-change: opacity, transform; }
+  .pr-flames > svg { display: block; width: 100%; height: 100%; }
+  .pr-flames-1 { animation: pr-flick-1 560ms ease-in-out infinite alternate; }
+  .pr-flames-2 { animation: pr-flick-2 700ms ease-in-out infinite alternate; }
+  .pr-flames-3 { animation: pr-flick-3 480ms ease-in-out infinite alternate; }
+
+  /* ---------- Insights: extinguisher burst (2.2 s) ---------- */
+  .pr-insights { --pr-veil-from: 0.94; --pr-veil-delay: 550ms; --pr-veil-ms: 950ms; }
+  .pr-cone {
+    inset: 0;
+    transform-origin: 0 50%;
+    /* a cone of gas from a nozzle at the left edge, soft at its sides and fading toward the right */
+    background: conic-gradient(from 62deg at 0% 50%, transparent 0deg, var(--pr-gas) 18deg, var(--pr-gas) 38deg, transparent 56deg, transparent 360deg);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 14%, #000 42%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 14%, #000 42%, transparent 100%);
+    animation: pr-sweep 1600ms var(--ease-out) both, pr-gas 2200ms linear both;
+  }
+  .pr-cloud {
+    left: 38%;
+    top: 18%;
+    width: 64%;
+    height: 64%;
+    background: radial-gradient(closest-side, var(--pr-gas), transparent);
+    animation: pr-cloud 1800ms var(--ease-out) 400ms both;
+  }
+
+  /* ---------- Earth benefits: water-mist veil (2.4 s) ---------- */
+  .pr-earth { --pr-veil-from: 0.92; --pr-veil-delay: 500ms; --pr-veil-ms: 1100ms; }
+  .pr-earth .pr-veil { background: color-mix(in srgb, var(--mist) 8%, var(--bg)); }
+  .pr-drops { left: 0; right: 0; top: -220px; bottom: 0; }
+  .pr-drops-a {
+    background-image:
+      radial-gradient(circle, var(--pr-drop) 0 0.9px, transparent 1.5px),
+      radial-gradient(circle, var(--pr-drop) 0 1.1px, transparent 1.7px),
+      radial-gradient(circle, var(--pr-drop) 0 0.8px, transparent 1.4px),
+      radial-gradient(circle, var(--pr-drop) 0 1.3px, transparent 1.9px),
+      radial-gradient(circle, var(--pr-drop) 0 1px, transparent 1.6px),
+      radial-gradient(circle, var(--pr-drop) 0 1.2px, transparent 1.8px);
+    background-size: 59px 73px, 71px 53px, 83px 97px, 107px 89px, 47px 109px, 131px 67px;
+    background-position: 0 0, 19px 7px, 31px 41px, 11px 45px, 27px 33px, 59px 14px;
+    animation: pr-drift-a 2400ms linear both;
+  }
+  .pr-drops-b {
+    background-image:
+      radial-gradient(circle, var(--pr-drop-soft) 0 1.8px, transparent 2.8px),
+      radial-gradient(circle, var(--pr-drop-soft) 0 2.2px, transparent 3.2px),
+      radial-gradient(circle, var(--pr-drop-soft) 0 1.6px, transparent 2.6px);
+    background-size: 113px 139px, 157px 121px, 191px 173px;
+    background-position: 30px 10px, 77px 64px, 140px 101px;
+    animation: pr-drift-b 2400ms linear both;
+  }
+
+  /* ---------- Data: smoke clears (2.4 s) ---------- */
+  .pr-data { --pr-veil-from: 0.9; --pr-veil-delay: 400ms; --pr-veil-ms: 1000ms; }
+  .pr-smoke { left: -10%; right: -10%; top: -5%; bottom: -30%; }
+  .pr-smoke > svg { display: block; width: 100%; height: 100%; }
+  .pr-smoke-a { animation: pr-rise-a 2400ms linear both; }
+  .pr-smoke-b { animation: pr-rise-b 2400ms linear both; }
+
+  /* ---------- About: rising embers (2.4 s) ---------- */
+  .pr-about { --pr-veil-from: 0.8; --pr-veil-delay: 300ms; --pr-veil-ms: 900ms; }
+  .pr-hearth { left: -10%; right: -10%; bottom: -16vh; height: 48vh; background: radial-gradient(closest-side, var(--pr-ember-soft), transparent); animation: pr-hearth 2400ms var(--ease-out) both; }
+  .pr-ember {
+    left: var(--x);
+    bottom: 6vh;
+    width: var(--s);
+    height: var(--s);
+    border-radius: 50%;
+    background: var(--pr-ember-hot);
+    box-shadow: 0 0 10px 2px var(--pr-ember-strong);
+    animation: pr-ember var(--t) cubic-bezier(0.3, 0.6, 0.4, 1) var(--d) both;
+  }
+
+  @media (max-width: 767.98px) {
+    .pr-fire { height: 140px; }
+  }
+}
+
+@keyframes pr-veil { from { opacity: var(--pr-veil-from, 0.92); } to { opacity: 0; } }
+@keyframes pr-veil-again { 0% { opacity: 0; } 12% { opacity: 1; } 36% { opacity: 1; } 84% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes pr-bloom-grow { from { transform: scale(0.1); } to { transform: scale(1.35); } }
+@keyframes pr-bloom-fade { 0% { opacity: 0; } 20% { opacity: 1; } 60% { opacity: 0.95; } 100% { opacity: 0; } }
+@keyframes pr-fire {
+  0% { opacity: 0; transform: scaleY(0.55); animation-timing-function: var(--ease-out); }
+  16% { opacity: 1; transform: scaleY(1); }
+  42% { opacity: 1; transform: scaleY(1); animation-timing-function: ease-in-out; }
+  100% { opacity: 0; transform: scaleY(0.78); }
+}
+@keyframes pr-flick-1 { from { opacity: 0.95; transform: scaleY(1); } to { opacity: 0.5; transform: scaleY(1.06); } }
+@keyframes pr-flick-2 { from { opacity: 0.45; transform: scale(1.01, 1.05); } to { opacity: 0.9; transform: scale(0.99, 0.96); } }
+@keyframes pr-flick-3 { from { opacity: 0.7; transform: scaleY(0.97); } to { opacity: 0.35; transform: scaleY(1.04); } }
+@keyframes pr-sweep { from { transform: scaleX(0.1); } to { transform: scaleX(1.25) translateX(6%); } }
+@keyframes pr-gas { 0% { opacity: 0; } 12% { opacity: 1; } 55% { opacity: 0.9; } 100% { opacity: 0; } }
+@keyframes pr-cloud { 0% { opacity: 0; transform: scale(0.6); } 35% { opacity: 0.85; } 100% { opacity: 0; transform: scale(1.35); } }
+@keyframes pr-drift-a { 0% { opacity: 0; transform: translateY(0); } 15% { opacity: 1; } 60% { opacity: 0.8; } 100% { opacity: 0; transform: translateY(140px); } }
+@keyframes pr-drift-b { 0% { opacity: 0; transform: translateY(0); } 15% { opacity: 0.9; } 60% { opacity: 0.7; } 100% { opacity: 0; transform: translateY(210px); } }
+@keyframes pr-rise-a { 0% { opacity: 1; transform: translateY(0) scale(1); } 45% { opacity: 0.8; } 100% { opacity: 0; transform: translateY(-18vh) scale(1.1); } }
+@keyframes pr-rise-b { 0% { opacity: 0.9; transform: translateY(0) scale(1); } 45% { opacity: 0.7; } 100% { opacity: 0; transform: translateY(-28vh) scale(1.15); } }
+@keyframes pr-hearth { 0% { opacity: 0; } 20% { opacity: 1; } 70% { opacity: 0.6; } 100% { opacity: 0; } }
+@keyframes pr-ember {
+  0% { opacity: 0; transform: translate(0, 0) scale(1); }
+  12% { opacity: 1; }
+  70% { opacity: 0.8; }
+  100% { opacity: 0; transform: translate(var(--drift), calc(-1 * var(--rise))) scale(0.5); }
+}
+
+/* Reduced motion: no reveal at all (the component doesn't render one either). Never in print. */
+@media (prefers-reduced-motion: reduce) {
+  .page-reveal { display: none !important; }
+}
+@media print {
+  .page-reveal { display: none !important; }
+}

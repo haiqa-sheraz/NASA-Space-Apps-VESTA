@@ -89,11 +89,13 @@
 
   /* ---------- top bar ---------- */
   .topbar { border-bottom: 1px solid var(--rule); background: var(--bg); position: sticky; top: 0; z-index: 40; }
+  /* Links to a section (/about#team) and scrollIntoView stop below the sticky top bar. The Journey has no top bar. */
+  html { scroll-padding-top: var(--topbar-h); }
+  html:has(.journey) { scroll-padding-top: 0; }
   .topbar > .wrap { display: flex; align-items: center; gap: 24px; min-height: 72px; flex-wrap: wrap; }
   .logo { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-family: var(--ff-display); font-stretch: 125%; font-weight: 800; font-size: 18px; white-space: nowrap; min-height: 44px; }
   .logo:hover { color: var(--text); }
-  .logo-mark { width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 50% 55%, rgba(12, 26, 68, 0.4) 0 38%, #3e6ff0 62%, #9fbeff 82%, rgba(159, 190, 255, 0) 100%); box-shadow: 0 0 10px rgba(91, 141, 255, 0.55); flex: none; }
-  [data-theme="light"] .logo-mark { box-shadow: none; background: radial-gradient(circle at 50% 55%, #c9d7ff 0 34%, #2d5be3 64%, #1c3da6 86%); }
+  .logo-mark { width: 28px; height: 28px; flex: none; display: block; }
   .nav { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
   .nav a,
   .nav button.navbtn { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 14px; border-radius: var(--r-pill); color: var(--text-2); text-decoration: none; font-weight: 700; font-size: 15px; background: none; border: 0; cursor: pointer; transition: background var(--dur-fast) var(--ease-std), color var(--dur-fast) var(--ease-std); }
@@ -362,7 +364,8 @@
   .facts { grid-template-columns: 1fr 1fr; }
   .cta { padding: 24px; }
   .topbar > .wrap { min-height: 60px; flex-wrap: nowrap; gap: 8px; }
-  .logo { font-size: 16px; }
+  .logo { font-size: 16px; gap: 8px; }
+  .logo-mark { width: 26px; height: 26px; }
   .askpanel { width: 100%; border-left: 0; }
   .fab { right: 16px; bottom: 16px; }
 }

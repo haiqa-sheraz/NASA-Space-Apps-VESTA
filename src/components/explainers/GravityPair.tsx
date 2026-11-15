@@ -20,7 +20,7 @@ export function GravityPair() {
         {(["earth", "space"] as const).map((m) => (
           <figure key={m} className="xp-flame" data-on={mode === m}>
             <div style={{ width: m === "earth" ? 96 : 110 }}>
-              <FlameSvg mode={m} idPrefix={`${prefix}-${m}`} label={FLAME_STATES[m].label} />
+              <FlameSvg mode={m} idPrefix={`${prefix}-${m}`} label={FLAME_STATES[m].label} flicker />
             </div>
             <figcaption>{m === "earth" ? "Earth, 1 g" : "Space, about 0 g"}</figcaption>
           </figure>

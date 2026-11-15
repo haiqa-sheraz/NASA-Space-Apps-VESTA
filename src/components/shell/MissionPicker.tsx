@@ -9,10 +9,13 @@ import { usePrefs } from "@/lib/state/prefs";
 /**
  * Mission picker: a compact button ("Mission  Moon base") that opens a listbox. It sits on the
  * pages whose content depends on the mission (Home spotlight, Explore, study relevance); the
- * choice is saved and shared by those pages and the Planner.
+ * choice is saved and shared by those pages and the Planner. `presetsOnly` leaves out Custom
+ * (Home, where there are no condition sliders); if Custom was chosen on the Planner, the button
+ * still says so until another mission is picked.
  */
-export function MissionPicker() {
+export function MissionPicker({ presetsOnly = false }: { presetsOnly?: boolean }) {
   const { mission, setMission } = usePrefs();
+  const list = presetsOnly ? MISSION_LIST.filter((m) => m.id !== "custom") : MISSION_LIST;
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -20,7 +23,7 @@ export function MissionPicker() {
   const listRef = useRef<HTMLUListElement>(null);
   const listId = useId();
   const current = MISSIONS[mission];
-  const selectedIndex = MISSION_LIST.findIndex((m) => m.id === mission);
+  const selectedIndex = Math.max(0, list.findIndex((m) => m.id === mission));
 
   const close = useCallback(() => setOpen(false), []);
   useDismissOnOutsideClick(rootRef, open, close);
@@ -35,7 +38,7 @@ export function MissionPicker() {
   }
 
   function choose(index: number) {
-    setMission(MISSION_LIST[index].id);
+    setMission(list[index].id);
     setOpen(false);
     buttonRef.current?.focus();
   }
@@ -48,7 +51,7 @@ export function MissionPicker() {
   }
 
   function onListKeyDown(event: KeyboardEvent<HTMLUListElement>) {
-    const last = MISSION_LIST.length - 1;
+    const last = list.length - 1;
     switch (event.key) {
       case "ArrowDown":
         event.preventDefault();
@@ -117,7 +120,7 @@ export function MissionPicker() {
           style={{ left: 0, width: 260, maxWidth: "calc(100vw - 32px)" }}
           onKeyDown={onListKeyDown}
         >
-          {MISSION_LIST.map((m, index) => (
+          {list.map((m, index) => (
             <li
               key={m.id}
               id={`${listId}-opt-${index}`}

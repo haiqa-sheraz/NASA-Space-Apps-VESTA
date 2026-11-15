@@ -1,13 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 40 432 432" width="32" height="32">
+  <!-- Vesta icon (vesta_logo.zip). Dark triangle on light browser tabs, light triangle on dark tabs. -->
+  <style>
+    .ta { stop-color: #3A322C; } .tb { stop-color: #1A1714; } .gap { stroke: #FBFAF7; }
+    .fa { stop-color: #E58A45; } .fb { stop-color: #C25A16; } .fc { stop-color: #8C380B; }
+    @media (prefers-color-scheme: dark) {
+      .ta { stop-color: #F1EAE2; } .tb { stop-color: #CBBFB4; } .gap { stroke: #140A07; }
+      .fa { stop-color: #FFC48F; } .fb { stop-color: #FF9A52; } .fc { stop-color: #E3652A; }
+    }
+  </style>
   <defs>
-    <radialGradient id="flame" cx="50%" cy="55%" r="50%">
-      <stop offset="0" stop-color="#0C1A44" stop-opacity="0.55"/>
-      <stop offset="0.38" stop-color="#1E3A8A" stop-opacity="0.75"/>
-      <stop offset="0.62" stop-color="#3E6FF0"/>
-      <stop offset="0.86" stop-color="#9FBEFF"/>
-      <stop offset="1" stop-color="#9FBEFF" stop-opacity="0"/>
-    </radialGradient>
+    <linearGradient id="tri" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="ta"/><stop offset="1" class="tb"/></linearGradient>
+    <linearGradient id="flame" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="fa"/><stop offset="0.45" class="fb"/><stop offset="1" class="fc"/></linearGradient>
+    <radialGradient id="orb" cx="0.36" cy="0.32" r="0.75"><stop offset="0" stop-color="#D6E4FF"/><stop offset="0.25" stop-color="#7FA2FF"/><stop offset="0.7" stop-color="#3463F0"/><stop offset="1" stop-color="#1C3A9E"/></radialGradient>
   </defs>
-  <circle cx="16" cy="16" r="16" fill="#140A07"/>
-  <circle cx="16" cy="16" r="13" fill="url(#flame)"/>
+  <path d="M88 122 L424 122 L256 412 Z" fill="url(#tri)" stroke="url(#tri)" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M256 86 C271 138 320 192 320 270 A64 64 0 0 1 192 270 C192 192 241 138 256 86 Z" fill="none" class="gap" stroke-width="28" stroke-linejoin="round"/>
+  <path d="M256 86 C271 138 320 192 320 270 A64 64 0 0 1 192 270 C192 192 241 138 256 86 Z" fill="url(#flame)"/>
+  <circle cx="256" cy="292" r="42" fill="url(#orb)"/>
+  <ellipse cx="240" cy="276" rx="13" ry="8" fill="#FFFFFF" fill-opacity="0.55" transform="rotate(-25 240 276)"/>
 </svg>

@@ -118,6 +118,7 @@ export function getStudyIndex(): StudyIndexEntry[] {
       shortName: s.short_name,
       fullName: s.full_name,
       psiId: s.psi_id,
+      psiUrl: s.psi_url,
       familyName: s.hardware_family_name,
       jobs,
       // Profiled studies with no fire-safety job (CFI, SLICE) get the neutral "Flame science" tag.

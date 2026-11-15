@@ -8,9 +8,11 @@ import { DataPreview, ExpertDetail, KeyFacts, Results } from "@/components/study
 import { StudyRelevance } from "@/components/study/StudyRelevance";
 import { ReadingLevelSwitch } from "@/components/shell/ReadingLevelSwitch";
 import { ByLevel } from "@/components/ui/ByLevel";
+import { Gallery } from "@/components/ui/Gallery";
 import { SourceChip, SourceLine } from "@/components/ui/SourceChip";
 import { AiLabel, StudyTags } from "@/components/ui/Tags";
 import { SMOKE_POINT_TEXT, smokePointSources } from "@/lib/data/explainers";
+import { getStudyGallery } from "@/lib/data/gallery";
 import { formatAuthor, getStudies, getStudy, getStudyIndex, getStudyProfile } from "@/lib/data/server";
 import { buildPreview, relatedStudies } from "@/lib/data/study-view";
 import { dedupeSources, resolveSource, type SourceRef } from "@/lib/sources";
@@ -53,6 +55,7 @@ export default async function StudyPage({ params }: Props) {
   const preview = buildPreview(study.id);
   const related = relatedStudies(study);
   const authors = study.authors.map(formatAuthor);
+  const images = getStudyGallery(study.id);
 
   return (
     <>
@@ -141,9 +144,15 @@ export default async function StudyPage({ params }: Props) {
       <ExpertDetail study={study} profile={profile} columns={preview.columns} sources={sources} />
       <DataPreview study={study} columns={preview.columns} rows={preview.rows} totalRows={preview.totalRows} flaggedRows={preview.flaggedRows} />
 
-      {/* Sources and related studies */}
+      {/* Images (when the PSI record has NASA photos we can show), sources and related studies */}
       <section className="sec">
-        <div className="wrap cols-2" style={{ gap: 48 }}>
+        <div className={images.length ? "wrap study-bottom" : "wrap cols-2"} style={images.length ? undefined : { gap: 48 }}>
+          {images.length > 0 && (
+            <div className="stack g3" id="images">
+              <h2 className="h3">Images</h2>
+              <Gallery images={images} linkStudy={false} compact />
+            </div>
+          )}
           <div className="stack g3">
             <h2 className="h3">Sources</h2>
             <ul className="stack g4">

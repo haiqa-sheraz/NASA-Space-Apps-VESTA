@@ -31,6 +31,13 @@
   --alert-tint: color-mix(in srgb, var(--alert) 12%, var(--bg));
   --scrim: rgba(10, 5, 3, 0.72);
   --focus-glow: 0 0 0 4px rgba(91, 141, 255, 0.28), 0 0 18px rgba(91, 141, 255, 0.45);
+  /* logo (vesta_logo.zip, "for dark backgrounds"): light triangle, bright flame */
+  --logo-tri-a: #f1eae2;
+  --logo-tri-b: #cbbfb4;
+  --logo-gap: #140a07;
+  --logo-flame-a: #ffc48f;
+  --logo-flame-b: #ff9a52;
+  --logo-flame-c: #e3652a;
 }
 
 /* ---------- color: light (Ash) ---------- */
@@ -59,6 +66,13 @@
   --alert-tint: #f6e4e1;
   --scrim: rgba(26, 23, 20, 0.45);
   --focus-glow: 0 0 0 4px rgba(45, 91, 227, 0.22);
+  /* logo ("for light backgrounds"): dark triangle, deeper flame */
+  --logo-tri-a: #3a322c;
+  --logo-tri-b: #1a1714;
+  --logo-gap: #fbfaf7;
+  --logo-flame-a: #e58a45;
+  --logo-flame-b: #c25a16;
+  --logo-flame-c: #8c380b;
 }
 
 /* Without JavaScript, follow the system setting. */
@@ -88,6 +102,12 @@
     --alert-tint: #f6e4e1;
     --scrim: rgba(26, 23, 20, 0.45);
     --focus-glow: 0 0 0 4px rgba(45, 91, 227, 0.22);
+    --logo-tri-a: #3a322c;
+    --logo-tri-b: #1a1714;
+    --logo-gap: #fbfaf7;
+    --logo-flame-a: #e58a45;
+    --logo-flame-b: #c25a16;
+    --logo-flame-c: #8c380b;
   }
 }
 

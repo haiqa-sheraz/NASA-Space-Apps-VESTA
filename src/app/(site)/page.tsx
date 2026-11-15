@@ -57,7 +57,7 @@ export default function HomePage() {
             <p className="lead">{SITE.purpose}</p>
           </div>
           <div className="hero-chamber">
-            <FlameChamber intro />
+            <FlameChamber start="earth" />
           </div>
           <div className="hero-ask">
             <HeroAskBar />

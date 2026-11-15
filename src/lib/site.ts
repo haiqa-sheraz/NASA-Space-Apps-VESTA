@@ -24,3 +24,23 @@ export const SITE = {
   /** The challenge page (problem statement) on spaceappschallenge.org. */
   challengeUrl: "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/" as string | null,
 } as const;
+
+/** The team, as written by the project owner (About page, "About the team"). */
+export const TEAM = {
+  name: "Team Neural Nebula",
+  intro: "We built Vesta for the NASA Space Apps Challenge 2026, for the challenge “Flame in Freefall.”",
+  members: [
+    {
+      name: "Haiqa Sheraz Alhassan",
+      role: "Team lead and primary developer",
+      bio: "AI engineer, currently pursuing a master's degree in AI and Applied Data Science. Passionate about building AI tools with NASA's open data.",
+      linkedin: "https://www.linkedin.com/in/haiqa-sheraz-alhassan-630296204/",
+    },
+    {
+      name: "Hamza Hassan",
+      role: "Team member, research and analysis",
+      bio: "Pursuing a bachelor's degree in Computer Science. Helped research NASA's fire experiments and analyze the data.",
+      linkedin: "https://www.linkedin.com/in/hamza-ul-hassan-405a93274/",
+    },
+  ],
+} as const;

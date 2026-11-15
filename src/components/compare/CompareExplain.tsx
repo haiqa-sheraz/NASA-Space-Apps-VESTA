@@ -22,6 +22,12 @@ const IDLE: Explanation = { status: "idle", text: "", sources: [], model: null }
 /** Explanations already written in this visit, so asking again doesn't use the AI quota. */
 const written = new Map<string, Explanation>();
 
+/** The finished explanation for these studies, if one was written in this visit (for the printout). */
+export function writtenExplanation(ids: string[]): { text: string; sources: AskSource[] } | null {
+  const done = written.get(ids.join(","));
+  return done && done.status === "done" && done.text ? { text: done.text, sources: done.sources } : null;
+}
+
 /**
  * Compare: an AI explanation of what the chosen studies share, how they differ and what it means
  * for safety, citing their PSI records and reports. It runs only when asked, to save the free quota.

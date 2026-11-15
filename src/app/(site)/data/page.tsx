@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DataClient, type DataStudy } from "@/components/data/DataClient";
 import { PredictionTool } from "@/components/data/PredictionTool";
 import { DownloadLink } from "@/components/ui/DownloadLink";
+import { PageReveal } from "@/components/ui/PageReveal";
 import { PageHero } from "@/components/ui/PageHero";
 import { getPredictionData } from "@/lib/data/prediction";
 import { getDataSummary, getStudies, getStudyIndex } from "@/lib/data/server";
@@ -32,6 +33,7 @@ export default function DataPage() {
 
   return (
     <>
+      <PageReveal variant="data" />
       <PageHero
         badge="Data"
         title="Get the data"

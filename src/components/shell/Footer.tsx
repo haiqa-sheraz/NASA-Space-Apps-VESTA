@@ -30,7 +30,7 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "About",
     links: [
-      { label: "About me", href: "/about#about-me" },
+      { label: "About the team", href: "/about#team" },
       { label: "How it works", href: "/about#how-it-works" },
       { label: "Sources and credits", href: "/about#sources" },
       { label: "How AI was used", href: "/about#ai" },
@@ -62,7 +62,7 @@ export function Footer() {
 
         <div className="grid gap-8 py-12" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(170px, 100%), 1fr))" }}>
           <div className="stack g3 min-w-0 tablet:col-span-2">
-            <Logo />
+            <Logo idPrefix="logo-foot" />
             <p className="muted small" style={{ maxWidth: "36ch" }}>
               {SITE.description}
             </p>

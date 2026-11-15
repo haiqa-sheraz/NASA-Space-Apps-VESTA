@@ -17,3 +17,7 @@ The planning notes (READ_ME_FIRST.md, DESIGN_BRIEF.md, READ_ME_AFTER_IMPLEMENTAT
 | 2026-11-15 02:10 | Step 5: Ask AI and Compare explanation (keyword search over NASA passages, Netlify Functions, OpenRouter free models with fallbacks, saved answers); fixed CLD Flame and BRE fuel name typos | Claude Code |
 | 2026-11-15 02:40 | Step 5 follow-ups: SPICE negative air rates marked missing and flagged; planning notes updated for no database | Claude Code |
 | 2026-11-15 03:37 | Ask AI remembers the last two answers for follow-ups; Step 6: flame morph and first-load motion, journey crossfade, ranked rows re-sort, explainer motion, reduced-motion versions | Claude Code |
+| 2026-11-15 11:58 | Step 7: About the team, own logo in the top bar, footer and About, favicons, first-visit page reveals on 6 pages; section links stop below the top bar | Claude Code |
+| 2026-11-15 13:06 | Page reveals longer (about 2 to 2.4 s), on every visit, Journey bloom on every chapter; Earth flame redrawn as a real candle flame with flicker; smoke drawn as billowing grey gas; Home opens on the Earth flame | Claude Code |
+| 2026-11-15 13:41 | Planner reveal redrawn as realistic flickering fire that fades in place; Home spotlight picker stays right, no Custom there; Earth benefits in the main menu (header collapses below 1024 px) | Claude Code |
+| 2026-11-15 14:38 | Filled the last 12 saved Ask AI answers; README; Save as PDF on Planner and Compare; NASA flame gallery (Learn and study pages) with lightbox | Claude Code |

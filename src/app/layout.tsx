@@ -37,10 +37,8 @@ export const viewport: Viewport = {
 /**
  * Sets data-theme on <html> before first paint: the visitor's saved choice ("vesta:theme",
  * set by the theme switch) if there is one, otherwise the system setting, which it keeps following.
- * Also marks data-flame-seen when Home's first-load flame motion already played in this session
- * ("vesta:flame-seen", see MorphFlame), so a reload shows the still sphere without a flash.
  */
-const themeScript = `(function(){try{var d=document.documentElement,m=window.matchMedia("(prefers-color-scheme: light)");function a(){var s=null;try{s=localStorage.getItem("vesta:theme")}catch(e){}d.setAttribute("data-theme",s==="light"||s==="dark"?s:m.matches?"light":"dark")}a();m.addEventListener("change",a);try{if(sessionStorage.getItem("vesta:flame-seen")==="1")d.setAttribute("data-flame-seen","")}catch(e){}}catch(e){}})();`;
+const themeScript = `(function(){try{var d=document.documentElement,m=window.matchMedia("(prefers-color-scheme: light)");function a(){var s=null;try{s=localStorage.getItem("vesta:theme")}catch(e){}d.setAttribute("data-theme",s==="light"||s==="dark"?s:m.matches?"light":"dark")}a();m.addEventListener("change",a);}catch(e){}})();`;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

@@ -16,15 +16,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { GithubIcon } from "@/components/ui/GithubIcon";
+import { LinkedinIcon } from "@/components/ui/LinkedinIcon";
+import { PageReveal } from "@/components/ui/PageReveal";
 import { PageHero } from "@/components/ui/PageHero";
 import { SourceLine } from "@/components/ui/SourceChip";
+import { VestaMark } from "@/components/ui/VestaLogo";
 import { AI_CREDITS, NASA_WEB_CITATIONS, NTRS_CITATIONS, OTHER_CITATIONS, SOFTWARE_CREDITS, SPINOFF_CITATIONS, type Citation } from "@/lib/citations";
 import { modelName } from "@/lib/ask/types";
+import { getGallery } from "@/lib/data/gallery";
 import { formatAuthor, getFacts, getSavedAnswers, getStudies, getStudyProfiles } from "@/lib/data/server";
 import { formatCount, joinAnd, plural } from "@/lib/format";
 import { missionView } from "@/lib/mission-view";
 import { DEFAULT_CUSTOM } from "@/lib/missions";
-import { SITE } from "@/lib/site";
+import { SITE, TEAM } from "@/lib/site";
 import { APOLLO_1, APOLLO_13, MIR_FIRE, PROBLEM_STATEMENT, PSI_TABLES } from "@/lib/sources";
 
 export const metadata: Metadata = { title: "About and methods" };
@@ -81,7 +85,7 @@ function SourceGroup({ title, count, children }: { title: string; count?: number
 
 /** About and methods: the challenge, how Vesta works, the data, AI use, limits and every source. */
 export default function AboutPage() {
-  if (!SITE.creatorName || !SITE.codeLicense) throw new Error("About needs SITE.creatorName and SITE.codeLicense.");
+  if (!SITE.codeLicense) throw new Error("About needs SITE.codeLicense.");
   const studies = getStudies();
   const facts = getFacts();
   const profiles = getStudyProfiles();
@@ -113,6 +117,7 @@ export default function AboutPage() {
 
   return (
     <>
+      <PageReveal variant="about" />
       <PageHero
         badge="NASA Space Apps Challenge 2026"
         title={`About ${SITE.name}`}
@@ -267,23 +272,44 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* About me and AI use */}
-      <section className="sec">
-        <div className="wrap cols-2" style={{ gap: 48 }}>
-          <div className="stack g4" id="about-me">
-            <div className="stack g1">
-              <span className="label">About me</span>
-              <h2 className="h3">{SITE.creatorName}</h2>
-            </div>
-            <p className="body">
-              I built {SITE.name} for NASA Space Apps Challenge 2026, for the challenge &ldquo;Flame in Freefall.&rdquo;
-            </p>
+      {/* About the team */}
+      <section className="sec" id="team" aria-labelledby="team-title">
+        <div className="wrap about-split">
+          <div className="stack g4">
+            <SectionHead label="About the team" title={TEAM.name} id="team-title" />
+            <p className="body">{TEAM.intro}</p>
             <a className="btn btn-secondary btn-sm self-start" href={SITE.githubUrl} target="_blank" rel="noopener noreferrer">
               <GithubIcon className="ic sm" />
               GitHub
               <span className="sr-only"> (opens in a new tab)</span>
             </a>
+            <figure className="about-logo">
+              <VestaMark idPrefix="logo-about" className="about-logo-mark" label={`${SITE.name} logo`} />
+              <figcaption className="small muted">Logo created with AI tools.</figcaption>
+            </figure>
           </div>
+          <ul className="team-list">
+            {TEAM.members.map((m) => (
+              <li key={m.name} className="panel pad stack g3">
+                <div className="stack g1">
+                  <h3 className="h4">{m.name}</h3>
+                  <span className="small strong muted">{m.role}</span>
+                </div>
+                <p className="body">{m.bio}</p>
+                <a className="btn btn-secondary btn-sm self-start mt-auto" href={m.linkedin} target="_blank" rel="noopener noreferrer">
+                  <LinkedinIcon className="ic sm" />
+                  LinkedIn
+                  <span className="sr-only">, {m.name} (opens in a new tab)</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* AI use, limits and tech stack */}
+      <section className="sec">
+        <div className="wrap cols-2" style={{ gap: 48 }}>
           <div className="stack g4" id="ai">
             <div className="stack g1">
               <span className="label">How AI was used</span>
@@ -302,38 +328,35 @@ export default function AboutPage() {
                 {savedCount > 0 &&
                   ` ${plural(savedCount, "suggested question has a saved answer", "suggested questions have saved answers")}, written the same way by ${joinAnd(savedModels)}.`}
               </li>
+              <li className="body">The {SITE.name} logo was created with AI tools.</li>
               <li className="body">Every piece of AI-written text on the site carries an &ldquo;AI-written&rdquo; label.</li>
             </ul>
           </div>
-        </div>
-      </section>
-
-      {/* Limits and tech stack */}
-      <section className="sec">
-        <div className="wrap cols-2" style={{ gap: 48 }}>
-          <div className="stack g4" id="limits">
-            <div className="stack g1">
-              <span className="label">Limits</span>
-              <h2 className="h3">What this site can&apos;t do</h2>
+          <div className="stack g7">
+            <div className="stack g4" id="limits">
+              <div className="stack g1">
+                <span className="label">Limits</span>
+                <h2 className="h3">What this site can&apos;t do</h2>
+              </div>
+              <ul className="stack g3 bullet-list">
+                <li className="body">PSI has no partial-gravity fire data, so Moon and Mars results are estimates.</li>
+                <li className="body">AI answers can be wrong. Check the sources under each one.</li>
+                <li className="body">Match scores are a guide for reading, not a safety certification.</li>
+                <li className="body">Where a test table and a report disagree, Vesta shows both with a quality flag instead of choosing one.</li>
+              </ul>
             </div>
-            <ul className="stack g3 bullet-list">
-              <li className="body">PSI has no partial-gravity fire data, so Moon and Mars results are estimates.</li>
-              <li className="body">AI answers can be wrong. Check the sources under each one.</li>
-              <li className="body">Match scores are a guide for reading, not a safety certification.</li>
-              <li className="body">Where a test table and a report disagree, Vesta shows both with a quality flag instead of choosing one.</li>
-            </ul>
-          </div>
-          <div className="stack g4" id="stack">
-            <div className="stack g1">
-              <span className="label">Tech stack</span>
-              <h2 className="h3">Built with</h2>
-            </div>
-            <div className="row g2 wrapx">
-              {["Next.js", "React", "TypeScript", "Tailwind CSS", "Bun", "Netlify", "Python", "OpenRouter"].map((t) => (
-                <span key={t} className="chip">
-                  {t}
-                </span>
-              ))}
+            <div className="stack g4" id="stack">
+              <div className="stack g1">
+                <span className="label">Tech stack</span>
+                <h2 className="h3">Built with</h2>
+              </div>
+              <div className="row g2 wrapx">
+                {["Next.js", "React", "TypeScript", "Tailwind CSS", "Bun", "Netlify", "Python", "OpenRouter"].map((t) => (
+                  <span key={t} className="chip">
+                    {t}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -378,6 +401,9 @@ export default function AboutPage() {
             </SourceGroup>
             <SourceGroup title="Articles that aren't NASA's, linked only" count={OTHER_CITATIONS.length}>
               <CitationList items={OTHER_CITATIONS} />
+            </SourceGroup>
+            <SourceGroup title="NASA images" count={getGallery().length}>
+              <CitationList items={getGallery().map((g) => ({ title: g.caption, detail: `NASA, ${g.studyName}`, label: g.psiId, url: g.psiUrl }))} />
             </SourceGroup>
             <SourceGroup title="Code, fonts and icons" count={SOFTWARE_CREDITS.length}>
               <CitationList items={SOFTWARE_CREDITS} />

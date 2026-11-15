@@ -1,13 +1,15 @@
 "use client";
 
-import { ArrowLeftRight, FileText, Plus, X } from "lucide-react";
+import { ArrowLeftRight, Download, FileText, Plus, X } from "lucide-react";
 import Link from "next/link";
 import { Fragment, useCallback, useEffect, useId, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
-import { CompareExplain } from "@/components/compare/CompareExplain";
+import { CompareExplain, writtenExplanation } from "@/components/compare/CompareExplain";
+import { PrintLink, PrintReport, usePrintReport, type PrintStamp } from "@/components/ui/PrintReport";
 import { SourceChip, SourceLine } from "@/components/ui/SourceChip";
 import { AiLabel, StudyTags } from "@/components/ui/Tags";
 import type { CompareRange, CompareStudy, CompareValue } from "@/lib/data/types";
-import { fmtNum, fmtRange } from "@/lib/format";
+import { fmtNum, fmtRange, joinAnd } from "@/lib/format";
+import { tagLabel } from "@/lib/jobs";
 import { useDismissOnOutsideClick } from "@/lib/hooks/useDismiss";
 import { niceScale, percentOf } from "@/lib/scale";
 import { atmToPsi } from "@/lib/scoring";
@@ -20,14 +22,17 @@ interface Cell {
   /** Used to decide whether a row differs between studies. */
   key: string;
   node: ReactNode;
+  /** The value in words, for the printout. */
+  text: string;
 }
 
-const plain = (text: string): Cell => ({ key: text, node: text });
+const plain = (text: string): Cell => ({ key: text, node: text, text });
 
 function valueCell(value: CompareValue): Cell {
-  if (!value.text) return { key: "", node: <span className="muted">{NOT_IN_SOURCES}</span> };
+  if (!value.text) return { key: "", node: <span className="muted">{NOT_IN_SOURCES}</span>, text: NOT_IN_SOURCES };
   return {
     key: value.text,
+    text: value.ai ? `${value.text} (AI-written, from the reports)` : value.text,
     node: (
       <>
         {value.text}
@@ -40,7 +45,7 @@ function valueCell(value: CompareValue): Cell {
 function rangeCell(r: CompareRange, show: (range: [number, number]) => string): Cell {
   if (r.range) return plain(show(r.range));
   if (r.fallback.text) return valueCell(r.fallback);
-  return { key: "", node: <span className="muted">Not in the table</span> };
+  return { key: "", node: <span className="muted">Not in the table</span>, text: "Not in the table" };
 }
 
 const psiRange = (atm: [number, number]): [number, number] => [atmToPsi(atm[0]), atmToPsi(atm[1])];
@@ -59,6 +64,7 @@ const ROWS: RowDef[] = [
     label: "PSI record",
     cell: (s) => ({
       key: s.psiId,
+      text: s.psiId,
       node: (
         <a className="chip src" href={s.psiUrl} target="_blank" rel="noopener noreferrer">
           <FileText className="ic sm" aria-hidden="true" />
@@ -85,6 +91,7 @@ const ROWS: RowDef[] = [
     label: "Fire-safety jobs",
     cell: (s) => ({
       key: [...s.jobs].sort().join(",") + (s.flameScience ? ",flame-science" : ""),
+      text: s.jobs.length || s.flameScience ? joinAnd([...s.jobs.map(tagLabel), ...(s.flameScience ? [tagLabel("flame_science")] : [])]) : "None",
       node:
         s.jobs.length || s.flameScience ? (
           <div className="row g2 wrapx">
@@ -100,6 +107,7 @@ const ROWS: RowDef[] = [
     diff: false,
     cell: (s) => ({
       key: "",
+      text: s.sources.map((src) => src.label).join(", "),
       node: (
         <div className="row g2 wrapx">
           {s.sources.map((src) => (
@@ -137,13 +145,24 @@ export function CompareClient({ studies }: { studies: CompareStudy[] }) {
   const add = (id: string) => setIds((cur) => (cur.includes(id) || cur.length >= MAX ? cur : [...cur, id]));
   const remove = (id: string) => setIds((cur) => cur.filter((x) => x !== id));
   const swap = () => setIds((cur) => (cur.length === 2 ? [cur[1], cur[0]] : cur));
+  const { stamp, print } = usePrintReport();
 
   return (
-    <section className="wrap stack g6 pb-16">
+    <>
+    {selected.length > 0 && <ComparePrint studies={selected} stamp={stamp} />}
+    <section className="wrap stack g6 pb-16 no-print">
       <div className="panel pad stack g3">
-        <span className="h5">
-          Studies to compare ({selected.length} of {MAX})
-        </span>
+        <div className="row between wrapx g3">
+          <span className="h5">
+            Studies to compare ({selected.length} of {MAX})
+          </span>
+          {selected.length > 0 && (
+            <button type="button" className="btn btn-secondary btn-sm" onClick={print}>
+              <Download className="ic sm" aria-hidden="true" />
+              Save as PDF
+            </button>
+          )}
+        </div>
         <div className="row g3 wrapx">
           {selected.map((s, i) => (
             <Fragment key={s.id}>
@@ -181,6 +200,108 @@ export function CompareClient({ studies }: { studies: CompareStudy[] }) {
         </>
       )}
     </section>
+    </>
+  );
+}
+
+/**
+ * The printed comparison ("Save as PDF"): the side-by-side table in words, with rows that differ
+ * marked, the AI explanation if one was written in this visit, and every source as a web address.
+ */
+function ComparePrint({ studies, stamp }: { studies: CompareStudy[]; stamp: PrintStamp | null }) {
+  const several = studies.length > 1;
+  const names = studies.map((s) => s.shortName);
+  const explanation = writtenExplanation(studies.map((s) => s.id));
+  return (
+    <PrintReport
+      title={several ? `Vesta: ${joinAnd(names)} compared` : `Vesta: ${names[0]}`}
+      stamp={stamp}
+      footer="Table values from NASA PSI data and reports. Made with Vesta."
+    >
+      <section className="prt-sec">
+        <h2 className="prt-h2">Side by side</h2>
+        {several && <p className="prt-small">Rows marked &ldquo;differs&rdquo; have different values for these studies.</p>}
+        <table className="prt-table">
+          <thead>
+            <tr>
+              <th scope="col">Key fact</th>
+              {studies.map((s) => (
+                <th key={s.id} scope="col">
+                  {s.shortName}
+                  <br />
+                  <span className="prt-muted">{s.fullName}</span>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {ROWS.map((row) => {
+              const cells = studies.map((s) => row.cell(s));
+              const differs = several && row.diff !== false && new Set(cells.map((c) => c.key)).size > 1;
+              return (
+                <tr key={row.label}>
+                  <th scope="row">
+                    {row.label}
+                    {row.unit && ` (${row.unit})`}
+                    {row.aiRow && (
+                      <>
+                        {" "}
+                        <span className="prt-ai">AI-written</span>
+                      </>
+                    )}
+                    {differs && <span className="prt-small"> (differs)</span>}
+                  </th>
+                  {cells.map((c, i) => (
+                    <td key={studies[i].id}>{c.text}</td>
+                  ))}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </section>
+      {explanation && (
+        <section className="prt-sec">
+          <h2 className="prt-h2">
+            What the comparison means <span className="prt-ai">AI-written</span>
+          </h2>
+          {explanation.text
+            .split(/\n\s*\n/)
+            .map((para) => para.trim())
+            .filter(Boolean)
+            .map((para, i) => (
+              <p key={i}>{para}</p>
+            ))}
+          <ol className="prt-small" style={{ paddingLeft: 14 }}>
+            {explanation.sources.map((src) => (
+              <li key={src.n} value={src.n}>
+                {src.label}: {src.title}
+                {src.page ? `, page ${src.page}` : ""}, <PrintLink url={src.url} />
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
+      <section className="prt-sec">
+        <h2 className="prt-h2">Sources</h2>
+        {studies.map((s) => (
+          <div key={s.id} className="prt-body" style={{ breakInside: "avoid", marginBottom: 6 }}>
+            <p className="prt-strong">{s.shortName}</p>
+            <p className="prt-small">
+              {s.psiId} (PSI record): <PrintLink url={s.psiUrl} />
+            </p>
+            {s.sources
+              .filter((src) => src.url && src.url !== s.psiUrl)
+              .map((src) => (
+                <p key={`${src.label}-${src.url}`} className="prt-small">
+                  {src.label}
+                  {src.title ? `, ${src.title}` : ""}: <PrintLink url={src.url!} />
+                </p>
+              ))}
+          </div>
+        ))}
+      </section>
+    </PrintReport>
   );
 }
 

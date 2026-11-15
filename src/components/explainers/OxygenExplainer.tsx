@@ -6,15 +6,16 @@ import { FlameSvg } from "@/components/ui/FlameSvg";
 import type { OxygenData } from "@/lib/explainer-types";
 import { fmtNum } from "@/lib/format";
 import { XpLegend, XpStatus, useSvgId } from "./shared";
+import { RisingSmoke, SmokeDefs } from "./Smoke";
 
 const WICK = "M100 186 L100 240";
-const WISP = "M100 178 C94 160 110 148 102 126 C96 110 108 100 104 86";
 const SPHERE = "M100 100 C133 100 160 127 160 160 C160 193 133 220 100 220 C67 220 40 193 40 160 C40 127 67 100 100 100 Z";
 
 /**
  * Oxygen slider (BASS-II plastic rod, finding f1): on Earth the flame stopped at the Earth limit,
  * in space it kept burning down to the space limit. Below the lowest tested level there is no
- * data, so the space flame shows "no data" instead of a guess. States change instantly.
+ * data, so the space flame shows "no data" instead of a guess. When the Earth flame goes out, a
+ * wisp of smoke rises from the wick. The states crossfade.
  */
 export function OxygenExplainer({ data }: { data: OxygenData }) {
   const min = Math.min(10, Math.floor(data.space - 2));
@@ -41,12 +42,16 @@ export function OxygenExplainer({ data }: { data: OxygenData }) {
           {/* Burning and out are both drawn and crossfade (150 ms); only the shown one is announced. */}
           <div className="xp-flame-box xp-swap" style={{ width: 100 }}>
             <div className="xp-fade" data-shown={earthOn} aria-hidden={!earthOn} style={growStyle}>
-              <FlameSvg mode="earth" idPrefix={`${id}-e`} label={`Earth flame burning at ${pct(oxygen)} oxygen`} />
+              <FlameSvg mode="earth" idPrefix={`${id}-e`} label={`Earth flame burning at ${pct(oxygen)} oxygen`} flicker />
             </div>
             <div data-shown={!earthOn} aria-hidden={earthOn}>
               <svg viewBox="0 0 200 250" className="flame-svg" role="img" aria-label={`Earth flame is out at ${pct(oxygen)} oxygen`}>
+                <defs>
+                  <SmokeDefs id={`${id}-w`} area={[0, 0, 200, 250]} scale={14} />
+                </defs>
                 <path d={WICK} stroke="#6B5A50" strokeWidth="3" strokeLinecap="round" />
-                <path d={WISP} stroke="#7D695E" strokeWidth="2" fill="none" strokeDasharray="3 5" />
+                {/* Smoke from the wick, moving only while this state shows. */}
+                {!earthOn && <RisingSmoke id={`${id}-w`} x={100} y={178} rise={130} size={10} period={3.6} drift={18} density={0.9} />}
               </svg>
             </div>
           </div>

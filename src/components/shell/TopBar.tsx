@@ -14,7 +14,8 @@ import { ThemeSegmented, ThemeToggle } from "./ThemeSwitch";
 /**
  * Top bar on every page: logo, main menu (active page as a pill), More menu, theme switch and Ask.
  * The mission picker and Simple / Expert switch sit on the pages they affect, not here.
- * Under 768 px it collapses to the logo, Ask and a menu button.
+ * Under 1024 px (phones and tablets, where the six menu items don't fit on one line) it collapses
+ * to the logo, Ask and a menu button.
  */
 export function TopBar() {
   const pathname = usePathname();
@@ -27,7 +28,7 @@ export function TopBar() {
   // Close the phone menu if the window grows to desktop width, or on Escape.
   useEffect(() => {
     if (!menuOpen) return;
-    const desktop = window.matchMedia("(min-width: 768px)");
+    const desktop = window.matchMedia("(min-width: 1024px)");
     const onChange = () => desktop.matches && setMenuOpen(false);
     const onKey = (event: KeyboardEvent) => event.key === "Escape" && setMenuOpen(false);
     desktop.addEventListener("change", onChange);
@@ -43,9 +44,9 @@ export function TopBar() {
   return (
     <header className="topbar">
       <div className="wrap">
-        <Logo />
+        <Logo idPrefix="logo-top" />
 
-        <nav className="nav max-tablet:hidden" aria-label="Main">
+        <nav className="nav max-[1024px]:hidden" aria-label="Main">
           {MAIN_NAV.map((item) => {
             const active = item.isActive(pathname);
             return (
@@ -62,12 +63,12 @@ export function TopBar() {
           <MoreMenu />
         </nav>
 
-        <div className="tools max-tablet:hidden">
+        <div className="tools max-[1024px]:hidden">
           <ThemeToggle />
           <AskButton />
         </div>
 
-        <div className="tools tablet:hidden" style={{ gap: 8, flexWrap: "nowrap" }}>
+        <div className="tools min-[1024px]:hidden" style={{ gap: 8, flexWrap: "nowrap" }}>
           <AskButton iconOnly />
           <button
             type="button"
@@ -83,7 +84,7 @@ export function TopBar() {
       </div>
 
       {menuOpen && (
-        <div id="phone-menu" className="mobilemenu tablet:hidden">
+        <div id="phone-menu" className="mobilemenu min-[1024px]:hidden">
           <nav className="stack" style={{ padding: "8px 16px" }} aria-label="Main">
             {phoneLinks.map((item) => {
               const active = item.isActive(pathname);

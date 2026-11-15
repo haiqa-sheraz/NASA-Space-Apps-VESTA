@@ -1,6 +1,7 @@
 import { ArrowRight, Globe, Info, Orbit } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PageReveal } from "@/components/ui/PageReveal";
 import { PageHero } from "@/components/ui/PageHero";
 import { SourceLine } from "@/components/ui/SourceChip";
 import { AiLabel } from "@/components/ui/Tags";
@@ -20,6 +21,7 @@ export default function EarthBenefitsPage() {
 
   return (
     <>
+      <PageReveal variant="earth" />
       <PageHero
         badge="Earth benefits"
         title="Space fire research on Earth"

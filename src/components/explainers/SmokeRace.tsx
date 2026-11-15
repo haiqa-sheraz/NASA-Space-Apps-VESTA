@@ -2,38 +2,62 @@
 
 import { RotateCcw, Wind } from "lucide-react";
 import { useState, type CSSProperties } from "react";
+import { EarthFlame, FlameDefs } from "@/components/ui/FlameSvg";
 import { XpStatus, useSvgId } from "./shared";
+import { SmokeDefs, smokeFill, smokeFilter } from "./Smoke";
 
-/* Smoke puffs: rising straight up on Earth; drifting with the cabin air in orbit (fixed positions).
-   Released, each puff travels there from the fire: quickly on Earth, slowly in orbit, and each
-   detector lights once the smoke arrives (SAME: it takes longer in space). Reduced motion: instant. */
+/* Smoke: soft billowing puffs that merge into one cloud, rising straight up on Earth and drifting
+   with the cabin air in orbit (fixed positions). Released, each puff travels there from the fire:
+   quickly on Earth, slowly in orbit, then keeps billowing; each detector lights once the smoke
+   arrives (SAME: it takes longer in space). Reduced motion: the smoke is simply there. */
 const EARTH_FIRE = [110, 128] as const;
 const SPACE_FIRE = [86, 104] as const;
 const EARTH_TIMING = { each: 900, stagger: 140, detector: 1400 };
 const SPACE_TIMING = { each: 1600, stagger: 260, detector: 3600 };
 const puffStyle = (fire: readonly [number, number], x: number, y: number, i: number, t: { each: number; stagger: number }) =>
-  ({ "--fx": `${fire[0] - x}px`, "--fy": `${fire[1] - y}px`, "--puff-ms": `${t.each}ms`, "--puff-delay": `${i * t.stagger}ms` }) as CSSProperties;
+  ({
+    "--fx": `${fire[0] - x}px`,
+    "--fy": `${fire[1] - y}px`,
+    "--puff-ms": `${t.each}ms`,
+    "--puff-delay": `${i * t.stagger}ms`,
+    "--billow-delay": `${t.each + i * t.stagger}ms`,
+    "--bx": `${[3, -3, 2, -2, 4, -4][i % 6]}px`,
+    "--by": `${[-2, -3, 2, -1, 3, -2][i % 6]}px`,
+  }) as CSSProperties;
 const detectorStyle = (released: boolean, delay: number): CSSProperties => ({ fill: released ? "#B9B6CF" : "#7D695E", transitionDelay: released ? `${delay}ms` : "0ms" });
+/* [x, y, radius]: a column from the fire up to the ceiling, spreading along it to the detector. */
 const EARTH_PUFFS = [
-  [110, 128, 7],
-  [107, 112, 8],
-  [112, 96, 9],
-  [108, 80, 10],
-  [112, 64, 11],
-  [109, 48, 12],
-  [111, 33, 12],
+  [110, 116, 8],
+  [109, 103, 10],
+  [111, 90, 11],
+  [108, 77, 12],
+  [111, 64, 13],
+  [109, 51, 14],
+  [110, 39, 15],
+  [98, 30, 14],
+  [122, 30, 14],
+  [86, 27, 12],
+  [134, 27, 12],
+  [76, 26, 10],
+  [144, 26, 10],
 ] as const;
+/* [x, y, radius]: a wide, drifting cloud carried by the cabin air toward the return vent. */
 const SPACE_PUFFS = [
-  [82, 104, 7],
-  [70, 90, 8],
-  [96, 82, 8],
-  [62, 70, 9],
-  [118, 78, 9],
-  [140, 92, 10],
-  [104, 112, 9],
-  [160, 88, 10],
-  [50, 112, 8],
-  [178, 84, 9],
+  [92, 100, 10],
+  [102, 94, 12],
+  [114, 90, 13],
+  [72, 96, 10],
+  [127, 86, 14],
+  [106, 110, 11],
+  [140, 85, 14],
+  [62, 108, 9],
+  [122, 106, 13],
+  [153, 86, 14],
+  [84, 118, 10],
+  [140, 100, 13],
+  [165, 85, 13],
+  [158, 98, 12],
+  [176, 86, 12],
 ] as const;
 
 function Cabin({ earth, released, id }: { earth: boolean; released: boolean; id: string }) {
@@ -48,12 +72,9 @@ function Cabin({ earth, released, id }: { earth: boolean; released: boolean; id:
           <stop offset="0.7" stopColor="#5B8DFF" stopOpacity="0.9" />
           <stop offset="1" stopColor="#A9C4FF" stopOpacity="0.2" />
         </radialGradient>
-        <linearGradient id={`${id}-e`} x1="0" y1="1" x2="0" y2="0">
-          <stop offset="0" stopColor="#4A78E6" />
-          <stop offset="0.2" stopColor="#FF9A52" />
-          <stop offset="1" stopColor="#FFE2B0" />
-        </linearGradient>
+        <SmokeDefs id={`${id}-sm`} area={[0, 0, 220, 170]} />
       </defs>
+      <FlameDefs id={(name) => `${id}-f-${name}`} />
       <rect x="10" y="10" width="200" height="150" rx="4" fill="#1F130F" stroke="#3E2B23" />
       {earth ? (
         <>
@@ -62,8 +83,10 @@ function Cabin({ earth, released, id }: { earth: boolean; released: boolean; id:
           <text x="132" y="24" fontSize="11" fill="#B5A59C">
             Detector
           </text>
-          {/* Fire on the floor */}
-          <path d="M110 132 C116 142 120 150 120 154 C120 159 115 161 110 161 C105 161 100 159 100 154 C100 150 104 142 110 132 Z" fill={`url(#${id}-e)`} transform="translate(0 -4)" />
+          {/* Fire on the floor: the Earth flame, small */}
+          <g transform="translate(94 123.8) scale(0.16)">
+            <EarthFlame id={(name) => `${id}-f-${name}`} flicker />
+          </g>
           {!released && (
             <>
               <line x1="90" y1="140" x2="90" y2="100" stroke="#7D695E" strokeWidth="1.5" strokeDasharray="3 4" markerEnd={`url(#${id}-a)`} />
@@ -73,10 +96,13 @@ function Cabin({ earth, released, id }: { earth: boolean; released: boolean; id:
               </text>
             </>
           )}
-          {released &&
-            EARTH_PUFFS.map(([x, y, r], i) => (
-              <circle key={i} className="sr-puff" cx={x} cy={y} r={r} fill="#B9B6CF" opacity={0.3 + i * 0.08} style={puffStyle(EARTH_FIRE, x, y, i, EARTH_TIMING)} />
-            ))}
+          {released && (
+            <g filter={smokeFilter(`${id}-sm`)}>
+              {EARTH_PUFFS.map(([x, y, r], i) => (
+                <circle key={i} className="sr-puff" cx={x} cy={y} r={Math.round(r * 13) / 10} fill={smokeFill(`${id}-sm`)} style={puffStyle(EARTH_FIRE, x, y, i, EARTH_TIMING)} />
+              ))}
+            </g>
+          )}
         </>
       ) : (
         <>
@@ -94,10 +120,13 @@ function Cabin({ earth, released, id }: { earth: boolean; released: boolean; id:
           <path d="M24 140 C70 150 130 132 182 100" fill="none" stroke="#7D695E" strokeWidth="1.5" strokeDasharray="3 4" markerEnd={`url(#${id}-a)`} />
           {/* Round flame in the middle of the cabin */}
           <circle cx="86" cy="104" r="12" fill={`url(#${id}-s)`} />
-          {released &&
-            SPACE_PUFFS.map(([x, y, r], i) => (
-              <circle key={i} className="sr-puff" cx={x} cy={y} r={r} fill="#B9B6CF" opacity={0.28 + (i % 4) * 0.08} style={puffStyle(SPACE_FIRE, x, y, i, SPACE_TIMING)} />
-            ))}
+          {released && (
+            <g filter={smokeFilter(`${id}-sm`)}>
+              {SPACE_PUFFS.map(([x, y, r], i) => (
+                <circle key={i} className="sr-puff" cx={x} cy={y} r={Math.round(r * 13) / 10} fill={smokeFill(`${id}-sm`)} style={puffStyle(SPACE_FIRE, x, y, i, SPACE_TIMING)} />
+              ))}
+            </g>
+          )}
         </>
       )}
     </svg>

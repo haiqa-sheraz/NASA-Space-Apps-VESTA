@@ -1,11 +1,12 @@
 import Link from "next/link";
+import { VestaIcon } from "@/components/ui/VestaLogo";
 import { SITE } from "@/lib/site";
 
-/** Logo: the small blue sphere (a flame in microgravity) and the name. */
-export function Logo() {
+/** Logo: Vesta's mark (it follows the theme) and the name. Each copy needs its own idPrefix. */
+export function Logo({ idPrefix }: { idPrefix: string }) {
   return (
     <Link className="logo" href="/">
-      <span className="logo-mark" aria-hidden="true" />
+      <VestaIcon idPrefix={idPrefix} className="logo-mark" />
       {SITE.name}
     </Link>
   );

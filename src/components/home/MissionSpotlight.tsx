@@ -20,14 +20,17 @@ export function MissionSpotlight({ index }: { index: StudyIndexEntry[] }) {
 
   return (
     <section className="stack g4" aria-labelledby="spotlight-title">
-      <div className="row between g3 wrapx" style={{ alignItems: "flex-end" }}>
+      {/* The picker stays on the right whatever the title's length. */}
+      <div className="spot-head">
         <div className="stack g1">
           <span className="label">Mission spotlight</span>
           <h2 id="spotlight-title" className="h3">
             Top 3 for {MISSIONS[mission].inSentence}
           </h2>
         </div>
-        <MissionPicker />
+        <div className="spot-picker">
+          <MissionPicker presetsOnly />
+        </div>
       </div>
       {anyAi && (
         <span className="self-start">

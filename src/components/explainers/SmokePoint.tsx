@@ -2,37 +2,15 @@
 
 import { Cloud, Flame } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Slider } from "@/components/ui/Controls";
 import { SourceLine } from "@/components/ui/SourceChip";
 import type { SourceRef } from "@/lib/sources";
 import { useSvgId } from "./shared";
+import { RisingSmoke, SmokeDefs } from "./Smoke";
 
 /** The marked size where soot starts to escape (an illustration, not a measured value). */
 const SMOKE_POINT = 60;
-
-/* Soot puffs above the tip once past the smoke point: offset from the tip, x, radius, opacity. */
-const SOOT = [
-  [-14.3, 97.6, 2.6, 0.84],
-  [-22.6, 103.8, 2.0, 0.74],
-  [-30.9, 99.1, 3.0, 0.63],
-  [-39.1, 91.5, 1.8, 0.52],
-  [-47.4, 109.5, 2.4, 0.41],
-  [-55.7, 103.2, 1.6, 0.31],
-  [-64.0, 95.2, 2.2, 0.2],
-] as const;
-
-/* Moving soot (design board 14): x at the tip, radius, sideways drift (px) and start offset (s). Each
-   rises 74 px and fades over 2.4 s, staggered by 350 ms, only while past the smoke point. */
-const LIVE_SOOT = [
-  [98.5, 2.6, -6, 0],
-  [101.8, 2.0, 7, -0.35],
-  [100.0, 3.0, -2, -0.7],
-  [97.8, 1.8, -11, -1.05],
-  [102.4, 2.4, 10, -1.4],
-  [100.6, 1.6, 3, -1.75],
-  [99.2, 2.2, -4, -2.1],
-] as const;
 
 /* With reduced motion: three still frames instead of the slider (design board 14). */
 const STILLS = [
@@ -43,11 +21,15 @@ const STILLS = [
 
 const r1 = (n: number) => Math.round(n * 10) / 10;
 
-/** The gas-jet flame outline for a fuel flow of 0 to 100 (the approved design's shape). */
-function jetFlame(flow: number) {
-  const h = 40 + 1.5 * flow;
+/**
+ * The gas-jet flame outline for a fuel flow of 0 to 100 (the approved design's shape). With
+ * `width` and `height` below 1, the bright core inside it.
+ */
+function jetFlame(flow: number, width = 1, height = 1) {
+  const full = 40 + 1.5 * flow;
+  const h = full * height;
   const tip = 240 - h;
-  const w1 = 9.6 + 0.0336 * h;
+  const w1 = (9.6 + 0.0336 * full) * width;
   const w2 = w1 + 2;
   const w3 = 0.6 * w1;
   const w4 = 0.343 * w1;
@@ -67,9 +49,15 @@ export function flowText(flow: number): string {
   return "Past the smoke point";
 }
 
+/** The bright core of the gas flame. */
+const coreFlame = (flow: number) => jetFlame(flow, 0.5, 0.72).path;
+
+/** Smoke past the smoke point: thicker the further past the mark the flow goes. */
+const smokeDensity = (sooty: number) => Math.round((0.45 + 0.55 * sooty) * 100) / 100;
+
 /**
- * The chamber with the burner, the flame and (past the mark) soot escaping from the tip. Live,
- * the soot rises from the tip; back below the mark, no new soot starts and the rest fades out.
+ * The chamber with the burner, the flame and (past the mark) smoke escaping from the tip. Live,
+ * the smoke rises from the tip; back below the mark, no new smoke starts and the rest fades out.
  * `still` draws a fixed frame (the reduced-motion version).
  */
 function SootChamber({ flow, still = false }: { flow: number; still?: boolean }) {
@@ -120,23 +108,31 @@ function SootChamber({ flow, still = false }: { flow: number; still?: boolean })
               <stop offset="0" stopColor="#FF9A52" stopOpacity="0.22" />
               <stop offset="1" stopColor="#FF9A52" stopOpacity="0" />
             </radialGradient>
+            <radialGradient id={`${id}-k`} cx="50%" cy="70%" r="60%">
+              <stop offset="0" stopColor="#FFFDF2" />
+              <stop offset="0.45" stopColor="#FFF0C2" stopOpacity="0.85" />
+              <stop offset="1" stopColor="#FFC266" stopOpacity="0" />
+            </radialGradient>
+            <filter id={`${id}-b`} x="-40%" y="-10%" width="180%" height="120%">
+              <feGaussianBlur stdDeviation="1.8" />
+            </filter>
+            <SmokeDefs id={`${id}-sm`} area={[-20, -80, 240, 340]} />
           </defs>
           <ellipse className="sp-glow" cx="100" cy={r1(240 - h / 2)} rx="40" ry={r1(h / 2 + 22)} fill={`url(#${id}-g)`} />
           <line x1="22" x2="178" y1="110" y2="110" stroke="#B5A59C" strokeWidth="1" strokeDasharray="4 4" />
           <text x="178" y="104" textAnchor="end" fontSize="11" fill="#B5A59C">
             Smoke point
           </text>
-          <path className="sp-flame" d={path} fill={`url(#${id}-c)`} />
-          {sooty > 0 && <path className="sp-flame" d={path} fill={`url(#${id}-s)`} opacity={r1(sooty)} />}
-          {still
-            ? past && SOOT.map(([dy, x, r, o], i) => <circle key={i} className="soot-p" cx={x} cy={r1(tip + dy)} r={r} opacity={o} />)
-            : (past || fading) && (
-                <g className={past ? "smoking" : "smoking soot-going"}>
-                  {LIVE_SOOT.map(([x, r, dx, delay], i) => (
-                    <circle key={i} className="soot-p" cx={x} cy={r1(tip)} r={r} style={{ "--dx": `${dx}px`, animationDelay: `${delay}s` } as CSSProperties} />
-                  ))}
-                </g>
-              )}
+          <g className={still ? undefined : "jet-flicker"}>
+            <path className="sp-flame" d={path} fill={`url(#${id}-c)`} filter={`url(#${id}-b)`} />
+            {sooty > 0 && <path className="sp-flame" d={path} fill={`url(#${id}-s)`} opacity={r1(sooty)} filter={`url(#${id}-b)`} />}
+            <path className="sp-flame" d={coreFlame(flow)} fill={`url(#${id}-k)`} filter={`url(#${id}-b)`} opacity="0.85" />
+          </g>
+          {(past || (fading && !still)) && (
+            <g className={past ? "smoking" : "smoking soot-going"}>
+              <RisingSmoke id={`${id}-sm`} x={100} y={r1(tip - 2)} rise={80} size={8} drift={14} density={smokeDensity(sooty)} still={still} />
+            </g>
+          )}
           <rect x="93" y="240" width="14" height="24" rx="1" fill="#2A1A14" stroke="#7D695E" strokeWidth="1.5" />
           <rect x="66" y="264" width="68" height="8" rx="2" fill="#2A1A14" stroke="#7D695E" strokeWidth="1.5" />
         </svg>
@@ -181,11 +177,19 @@ export function SmokePointPreview() {
           <stop offset="0.86" stopColor="#C4743A" />
           <stop offset="1" stopColor="#6B4A3A" />
         </linearGradient>
+        <radialGradient id={`${id}-k`} cx="50%" cy="70%" r="60%">
+          <stop offset="0" stopColor="#FFFDF2" />
+          <stop offset="0.45" stopColor="#FFF0C2" stopOpacity="0.85" />
+          <stop offset="1" stopColor="#FFC266" stopOpacity="0" />
+        </radialGradient>
+        <filter id={`${id}-b`} x="-40%" y="-10%" width="180%" height="120%">
+          <feGaussianBlur stdDeviation="1.8" />
+        </filter>
+        <SmokeDefs id={`${id}-sm`} area={[-20, -80, 240, 340]} />
       </defs>
-      <path d={path} fill={`url(#${id}-s)`} />
-      {SOOT.map(([dy, x, r, o], i) => (
-        <circle key={i} className="soot-p" cx={x} cy={r1(tip + dy)} r={r} opacity={o} />
-      ))}
+      <path d={path} fill={`url(#${id}-s)`} filter={`url(#${id}-b)`} />
+      <path d={coreFlame(flow)} fill={`url(#${id}-k)`} filter={`url(#${id}-b)`} opacity="0.85" />
+      <RisingSmoke id={`${id}-sm`} x={100} y={r1(tip - 2)} rise={80} size={8} drift={14} density={smokeDensity((flow - SMOKE_POINT) / 25)} still />
       <rect x="93" y="240" width="14" height="24" rx="1" fill="#2A1A14" stroke="#7D695E" strokeWidth="1.5" />
       <rect x="66" y="264" width="68" height="8" rx="2" fill="#2A1A14" stroke="#7D695E" strokeWidth="1.5" />
     </svg>

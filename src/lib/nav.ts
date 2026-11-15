@@ -1,4 +1,4 @@
-import { BookOpen, Compass, Globe, Info, type LucideIcon } from "lucide-react";
+import { BookOpen, Compass, Info, type LucideIcon } from "lucide-react";
 
 export interface NavItem {
   label: string;
@@ -14,7 +14,7 @@ export interface MoreNavItem extends NavItem {
 const startsWith = (prefix: string) => (pathname: string) =>
   pathname === prefix || pathname.startsWith(`${prefix}/`);
 
-/** Main menu: Planner, Explore, Compare, Insights, Data. */
+/** Main menu: Planner, Explore, Compare, Insights, Data, Earth benefits (moved out of More by the owner). */
 export const MAIN_NAV: NavItem[] = [
   { label: "Planner", href: "/planner", isActive: startsWith("/planner") },
   // Study pages are opened from Explore, so Explore stays active there.
@@ -22,12 +22,12 @@ export const MAIN_NAV: NavItem[] = [
   { label: "Compare", href: "/compare", isActive: startsWith("/compare") },
   { label: "Insights", href: "/insights", isActive: startsWith("/insights") },
   { label: "Data", href: "/data", isActive: startsWith("/data") },
+  { label: "Earth benefits", href: "/earth-benefits", isActive: startsWith("/earth-benefits") },
 ];
 
-/** More menu: Journey, Learn, Earth benefits, About. */
+/** More menu: Journey, Learn, About. */
 export const MORE_NAV: MoreNavItem[] = [
   { label: "Journey", href: "/learn/journey", icon: Compass, isActive: startsWith("/learn/journey") },
   { label: "Learn", href: "/learn", icon: BookOpen, isActive: (p) => p === "/learn" },
-  { label: "Earth benefits", href: "/earth-benefits", icon: Globe, isActive: startsWith("/earth-benefits") },
   { label: "About", href: "/about", icon: Info, isActive: startsWith("/about") },
 ];

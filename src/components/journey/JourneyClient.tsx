@@ -27,6 +27,7 @@ import { MissionAir } from "@/components/explainers/MissionAir";
 import { OxygenExplainer } from "@/components/explainers/OxygenExplainer";
 import { SaffireSizes } from "@/components/explainers/SaffireSizes";
 import { SmokeRace } from "@/components/explainers/SmokeRace";
+import { PageReveal } from "@/components/ui/PageReveal";
 import { SourceLine } from "@/components/ui/SourceChip";
 import type { Chapter, ChapterIcon, ChapterInteractive } from "@/lib/data/journey";
 import { DUR, prefersReducedMotion } from "@/lib/motion";
@@ -80,7 +81,8 @@ const XFADE_EASE = "cubic-bezier(0.2, 0.7, 0.2, 1)";
 /**
  * The Journey: one chapter per screen (?c=1 to 10). Back and Next chapter, the progress ticks,
  * the Left and Right arrow keys and a swipe all change chapter; Escape exits. Focus moves to the
- * new chapter's title. Chapters crossfade in 300 ms (design board 14): a still copy of the old
+ * new chapter's title. Opening the Journey and every chapter change play the blue flame bloom
+ * (PageReveal). Under it, chapters crossfade in 300 ms (design board 14): a still copy of the old
  * chapter fades out while the new one fades in, and the background crossfades at the same time.
  * With reduced motion the change is instant.
  */
@@ -91,6 +93,8 @@ export function JourneyClient({ chapters }: { chapters: Chapter[] }) {
   const [urlLoaded, setUrlLoaded] = useState(false);
   /** The background under the new one while it fades in. */
   const [previousBg, setPreviousBg] = useState<number | null>(null);
+  /** Counts chapter changes; each one remounts the bloom so it plays again. */
+  const [blooms, setBlooms] = useState(0);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLElement>(null);
@@ -154,6 +158,7 @@ export function JourneyClient({ chapters }: { chapters: Chapter[] }) {
         Object.assign(copy.style, { top: `${main.offsetTop}px`, left: `${main.offsetLeft}px`, width: `${main.offsetWidth}px`, height: `${main.offsetHeight}px` });
         leaving.current = copy;
         setPreviousBg(chapters[index].n);
+        setBlooms((n) => n + 1);
       }
       setIndex(i);
     },
@@ -195,6 +200,7 @@ export function JourneyClient({ chapters }: { chapters: Chapter[] }) {
 
   return (
     <div className="journey" data-theme="dark">
+      <PageReveal key={blooms} variant="journey" again={blooms > 0} />
       {previousBg !== null && <div className="journey-bg" data-bg={previousBg} aria-hidden="true" />}
       <div key={chapter.n} className={`journey-bg${previousBg !== null ? " journey-bg-next" : ""}`} data-bg={chapter.n} aria-hidden="true" />
       <div ref={frameRef} className="journey-frame" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>

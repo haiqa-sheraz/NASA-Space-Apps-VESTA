@@ -212,6 +212,8 @@ export interface StudyIndexEntry extends ScoringStudy {
   shortName: string;
   fullName: string;
   psiId: string;
+  /** The study's PSI record page. */
+  psiUrl: string;
   familyName: string;
   jobs: JobId[];
   /** True for profiled studies with no fire-safety job: shown with a neutral "Flame science" tag. */
