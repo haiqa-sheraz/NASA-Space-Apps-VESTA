@@ -97,8 +97,8 @@ export function Footer() {
           </nav>
         </div>
 
-        {/* On phones, extra room at the bottom keeps the last line clear of the floating Ask button. */}
-        <div className="row between wrapx g3 small muted border-t border-rule pt-5 pb-7 max-tablet:pb-24">
+        {/* Room at the bottom keeps the last line clear of the floating Ask button and the hosting badge. */}
+        <div className="row between wrapx g3 small muted border-t border-rule pt-5 pb-[var(--fab-clear)]">
           <span>© 2026{SITE.creatorName ? ` ${SITE.creatorName}` : ""}</span>
           {SITE.codeLicense && (
             <span>

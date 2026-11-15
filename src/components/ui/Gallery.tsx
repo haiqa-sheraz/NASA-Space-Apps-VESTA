@@ -54,6 +54,8 @@ export function Gallery({ images, linkStudy = true, compact = false }: { images:
         limit -
         parseFloat(dialogStyle.borderTopWidth) -
         parseFloat(dialogStyle.borderBottomWidth) -
+        parseFloat(dialogStyle.paddingTop) -
+        parseFloat(dialogStyle.paddingBottom) -
         (header?.offsetHeight ?? 0) -
         parseFloat(bodyStyle.paddingTop) -
         parseFloat(bodyStyle.paddingBottom) -

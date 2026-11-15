@@ -27,9 +27,9 @@
      The flame shrinks with the screen height (252 px is the rest of the chamber), and HeroFit
      shrinks the whole hero if it still doesn't fit. "overflow" (only on very small screens): it
      grows and the page scrolls as before. */
-  .hero { --hero-pad: clamp(16px, 4svh, 56px); height: calc(100svh - var(--topbar-h)); display: flex; flex-direction: column; justify-content: center; padding-top: var(--hero-pad); padding-bottom: var(--hero-pad); }
+  .hero { --hero-pad: clamp(16px, 4svh, 56px); --hero-pad-b: max(var(--hero-pad), var(--badge-clear)); height: calc(100svh - var(--topbar-h)); display: flex; flex-direction: column; justify-content: center; padding-top: var(--hero-pad); padding-bottom: var(--hero-pad-b); }
   .hero[data-fit="overflow"] { height: auto; }
-  .hero .chamber-flame { width: clamp(120px, calc((100svh - var(--topbar-h) - 2 * var(--hero-pad) - 252px) * 0.8), 360px); }
+  .hero .chamber-flame { width: clamp(120px, calc((100svh - var(--topbar-h) - var(--hero-pad) - var(--hero-pad-b) - 252px) * 0.8), 360px); }
   .hero-grid { display: grid; gap: 20px 48px; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); grid-template-areas: "intro chamber" "ask chamber" "actions chamber"; align-items: center; }
   .hero-intro { grid-area: intro; align-self: end; }
   .hero-chamber { grid-area: chamber; }
@@ -102,6 +102,7 @@
   .sheet > header { display: flex; align-items: center; justify-content: space-between; padding: 4px 8px 8px 16px; border-bottom: 1px solid var(--rule); }
   .sheet > .sheet-body { padding: 16px; overflow: auto; flex: 1; overscroll-behavior: contain; }
   .sheet > footer { padding: 12px 16px; border-top: 1px solid var(--rule); }
+  .sheet { padding-bottom: var(--badge-clear); }
 
   /* ---------- tooltip (placed with fixed coordinates so table scrolling can't clip it) ---------- */
   .tooltip.floating { position: fixed; z-index: 80; pointer-events: none; }
@@ -201,7 +202,7 @@
     .rank-row .rr-num { font-size: 33px !important; }
     .result-row { grid-template-columns: minmax(0, 1fr); }
     .study-top { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-    .toast-region { left: 16px; bottom: 16px; right: 88px; }
+    .toast-region { left: 16px; bottom: calc(var(--badge-clear) + 8px); right: 88px; }
     .range-row { grid-template-columns: 76px minmax(0, 1fr); }
     .range-row > :last-child:not(:first-child) { grid-column: 2; }
     .insight-cards { grid-template-columns: minmax(0, 1fr); }
@@ -237,7 +238,7 @@
   /* One chapter per screen: the frame is exactly the screen's height, and the chapter (.journey-fit)
      shrinks to fit the space between the top row and the buttons (useFitZoom). If even 60% isn't
      enough (very small screens), the frame grows and the page scrolls as before. */
-  .journey-frame { position: relative; display: flex; flex-direction: column; height: 100dvh; padding: 20px 32px 16px; }
+  .journey-frame { position: relative; display: flex; flex-direction: column; height: 100dvh; padding: 20px 32px var(--badge-clear); }
   .journey-frame:has(> .journey-main[data-fit="overflow"]) { height: auto; min-height: 100dvh; }
   .journey-exit { color: #dccfc7; padding: 0 8px; }
   .journey-count { color: #dccfc7; }
@@ -323,7 +324,7 @@
   .xp-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr)); gap: 24px; }
   .xp-card { overflow: hidden; }
   .xp-card-preview { height: 170px; border: 0; border-radius: 0; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; }
-  .dialog { position: fixed; z-index: 61; left: 50%; top: 48px; transform: translateX(-50%); width: min(1000px, calc(100% - 48px)); max-height: calc(100dvh - 96px); display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--rule-input); border-radius: var(--r-data); visibility: hidden; opacity: 0; pointer-events: none; transition: opacity var(--dur-fast) var(--ease-in), visibility 0s linear var(--dur-fast); }
+  .dialog { position: fixed; z-index: 61; left: 50%; top: 48px; transform: translateX(-50%); width: min(1000px, calc(100% - 48px)); max-height: calc(100dvh - 48px - var(--badge-clear)); display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--rule-input); border-radius: var(--r-data); visibility: hidden; opacity: 0; pointer-events: none; transition: opacity var(--dur-fast) var(--ease-in), visibility 0s linear var(--dur-fast); }
   .dialog[data-open="true"] { visibility: visible; opacity: 1; pointer-events: auto; transition: opacity var(--dur-panel) var(--ease-out), visibility 0s; }
   .dialog > header { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 12px 12px 12px 24px; border-bottom: 1px solid var(--rule); }
   .dialog-heading { flex: 1; min-width: 0; }
@@ -437,7 +438,7 @@
 
   /* Short screens (landscape phones): dialogs use the full height, and a photo's caption sits beside it. */
   @media (max-height: 520px) {
-    .dialog { top: 8px; max-height: calc(100dvh - 16px); }
+    .dialog { top: 8px; max-height: calc(100dvh - 8px - var(--badge-clear)); }
     .dialog > header { padding-top: 6px; padding-bottom: 6px; }
     .dialog-body { padding: 12px 16px; }
     .lightbox { flex-direction: row; align-items: flex-start; gap: 16px; }
@@ -459,8 +460,8 @@
   @media (max-width: 767.98px) {
     /* Stacked hero: less padding, and the flame gets what's left after the text, the ask bar and the buttons. */
     .hero { --hero-pad: clamp(8px, 2svh, 24px); }
-    .hero .chamber-flame { width: clamp(96px, calc((100svh - var(--topbar-h) - 2 * var(--hero-pad) - 690px) * 0.8), 200px); }
-    .journey-frame { padding: 12px 16px 8px; }
+    .hero .chamber-flame { width: clamp(96px, calc((100svh - var(--topbar-h) - var(--hero-pad) - var(--hero-pad-b) - 690px) * 0.8), 200px); }
+    .journey-frame { padding: 12px 16px var(--badge-clear); }
     /* The top row already says "Chapter N of 10", so phones skip the chapter icon and label. */
     .journey-icon,
     .journey-label { display: none; }
@@ -475,7 +476,7 @@
     .xp-bar-row { grid-template-columns: 72px minmax(0, 1fr); }
     .xp-bar-row > .xp-bar-val { grid-column: 2; }
     .xp-inline { grid-template-columns: minmax(0, 1fr); }
-    .dialog { left: 0; top: 0; transform: none; width: 100%; height: 100dvh; max-height: 100dvh; border: 0; border-radius: 0; }
+    .dialog { left: 0; top: 0; transform: none; width: 100%; height: 100dvh; max-height: 100dvh; border: 0; border-radius: 0; padding-bottom: var(--badge-clear); }
     .dialog > header { padding: 8px 8px 8px 16px; gap: 4px 8px; }
     .dialog-actions { order: 3; width: 100%; justify-content: space-between; }
     .dialog-body { padding: 16px; }

@@ -168,6 +168,13 @@
   --dur-flame: 900ms;
 
   --topbar-h: 72px;
+
+  /* Kept clear at the bottom of the screen: free Netlify sites show a "Powered by Netlify" badge in
+     the bottom-right corner (about 220 × 48 px, 20 px from the edges), drawn above the page. */
+  --badge-clear: 76px;
+  /* The floating Ask button sits just above the badge; page ends leave room so it never covers the last line. */
+  --fab-bottom: calc(var(--badge-clear) + 12px);
+  --fab-clear: calc(var(--fab-bottom) + 56px + 12px);
 }
 
 @media (max-width: 767.98px) {

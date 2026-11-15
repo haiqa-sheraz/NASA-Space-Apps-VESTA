@@ -27,3 +27,4 @@ The planning notes (READ_ME_FIRST.md, DESIGN_BRIEF.md, READ_ME_AFTER_IMPLEMENTAT
 | 2026-11-15 16:29 | Flame-out map: selecting a real test's dot loads its conditions and the flame shows how that test really ended | Claude Code |
 | 2026-11-15 16:52 | Netlify setup: netlify.toml (Bun build, pinned versions), AI functions at Netlify's reserved addresses, 25-second answer limit; clean-copy build verified | Claude Code |
 | 2026-11-15 20:30 | Fit to screen: Home hero, Journey chapters (words beside the demo on wide screens) and photo lightbox fit any desktop, laptop or tablet screen without scrolling; oxygen arrows on the space flame; gravity readout says "1 g (Earth gravity)" | Claude Code |
+| 2026-11-15 21:28 | Kept the bottom-right corner clear for Netlify's free-plan badge: floating Ask button moved up (hidden while the hero's Ask bar shows), Journey buttons, hero, panels, dialogs, menus and footer end above it; phone footer badges fixed | Claude Code |
