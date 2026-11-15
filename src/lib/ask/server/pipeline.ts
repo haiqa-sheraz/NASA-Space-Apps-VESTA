@@ -23,8 +23,11 @@ const STUDY_NAMES = STUDIES.map((s) => ({ id: s.id, name: s.name }));
 let index: SearchIndex | null = null;
 const getIndex = () => (index ??= buildIndex(DATA));
 
-/** Functions must finish within 60 seconds; leave room to close the stream cleanly. */
-const TIME_BUDGET_MS = 55_000;
+/**
+ * Netlify documents a 60-second limit for streaming functions, but one report saw them cut at
+ * 30 seconds, so every answer stops by 25 seconds (with room to close the stream cleanly).
+ */
+const TIME_BUDGET_MS = 25_000;
 const MAX_QUESTION = 500;
 /** Rockets and propellants are out of scope (READ_ME_FIRST section 7). LUCI's spinning rocket is fine. */
 const OUT_OF_SCOPE = /\bpropellants?\b|\brocket (?:engines?|motors?|fuels?|propulsion)\b/i;

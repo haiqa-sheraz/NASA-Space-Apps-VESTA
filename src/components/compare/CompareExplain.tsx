@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnswerBody, AnswerFooter, AskError } from "@/components/ask/AnswerView";
 import { AiLabel } from "@/components/ui/Tags";
 import { streamApi } from "@/lib/ask/client";
+import { COMPARE_URL } from "@/lib/ask/endpoints";
 import type { AskErrorCode, AskSource } from "@/lib/ask/types";
 import { joinAnd } from "@/lib/format";
 
@@ -53,7 +54,7 @@ export function CompareExplain({ ids, names }: { ids: string[]; names: string[] 
     setState({ ...IDLE, status: "loading" });
     try {
       await streamApi(
-        "/api/compare",
+        COMPARE_URL,
         { ids },
         (event) => {
           if (c.signal.aborted) return;

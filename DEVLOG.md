@@ -25,3 +25,4 @@ The planning notes (READ_ME_FIRST.md, DESIGN_BRIEF.md, READ_ME_AFTER_IMPLEMENTAT
 | 2026-11-15 15:53 | Flame-out tool: "drop broke apart" shown in the living flame (bursts of burning bits, flash and jolt) from the 7 most similar real tests, with counts | Claude Code |
 | 2026-11-15 16:17 | Flame-out tool: bursts removed; the living flame acts out the most likely ending (goes out, burns to the end, breaks apart) | Claude Code |
 | 2026-11-15 16:29 | Flame-out map: selecting a real test's dot loads its conditions and the flame shows how that test really ended | Claude Code |
+| 2026-11-15 16:52 | Netlify setup: netlify.toml (Bun build, pinned versions), AI functions at Netlify's reserved addresses, 25-second answer limit; clean-copy build verified | Claude Code |

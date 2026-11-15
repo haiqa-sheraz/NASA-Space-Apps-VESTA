@@ -19,10 +19,12 @@ interface ModelPlan {
 const ROUTER = "openrouter/free";
 
 export const MODEL_PLANS: ModelPlan[] = [
-  { id: "nvidia/nemotron-3.5-super-vl:free", body: { reasoning: { enabled: false }, max_tokens: 900 }, firstTextMs: 25_000 },
+  // Each model may wait this long for its first words; within the 25-second budget a slow first
+  // model still leaves the next one time to answer.
+  { id: "nvidia/nemotron-3.5-super-vl:free", body: { reasoning: { enabled: false }, max_tokens: 900 }, firstTextMs: 10_000 },
   // ERNIE always thinks before answering, so it gets room for that (about 8,000 tokens).
-  { id: "baidu/ernie-5.5-flash-preview:free", body: { reasoning: { effort: "low", exclude: true }, max_tokens: 8000 }, firstTextMs: 30_000 },
-  { id: ROUTER, body: { max_tokens: 900 }, firstTextMs: 20_000 },
+  { id: "baidu/ernie-5.5-flash-preview:free", body: { reasoning: { effort: "low", exclude: true }, max_tokens: 8000 }, firstTextMs: 10_000 },
+  { id: ROUTER, body: { max_tokens: 900 }, firstTextMs: 8_000 },
 ];
 
 export class AskFailure extends Error {

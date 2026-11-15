@@ -1,6 +1,7 @@
 /**
  * Runs the Ask AI and Compare explanation functions locally on http://localhost:8888, the same
- * functions Netlify runs. In development, Next.js forwards /api/* here (next.config.ts).
+ * functions Netlify runs, at the same addresses (/.netlify/functions/ask and /compare). In
+ * development, Next.js forwards those requests here (next.config.ts).
  *
  * Run from the project root:  bun scripts/dev-functions.ts   (or: bun run dev:ai for both servers)
  * Bun reads OPENROUTER_API_KEY from .env.
@@ -10,8 +11,8 @@ import { askFunction, compareFunction } from "../src/lib/ask/server/http";
 
 const PORT = Number(process.env.FUNCTIONS_PORT ?? 8888);
 const routes: Record<string, (req: Request, context?: { ip?: string }) => Promise<Response>> = {
-  "/api/ask": askFunction,
-  "/api/compare": compareFunction,
+  "/.netlify/functions/ask": askFunction,
+  "/.netlify/functions/compare": compareFunction,
 };
 
 createServer(async (req, res) => {
@@ -49,6 +50,6 @@ createServer(async (req, res) => {
     res.end();
   }
 }).listen(PORT, () => {
-  console.log(`Ask AI functions running on http://localhost:${PORT} (/api/ask, /api/compare).`);
+  console.log(`Ask AI functions running on http://localhost:${PORT} (/.netlify/functions/ask and /compare).`);
   console.log(process.env.OPENROUTER_API_KEY ? "OpenRouter key found in the environment." : "No OPENROUTER_API_KEY: add it to .env, then restart.");
 });

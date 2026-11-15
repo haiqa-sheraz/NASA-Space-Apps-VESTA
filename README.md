@@ -44,6 +44,10 @@ bun run dev:ai
 
 Then open http://localhost:3000. Without a key, everything else still works, and the suggested Ask AI questions still show their saved answers.
 
+## Deploy
+
+The site is set up for Netlify (`netlify.toml`). Connect the repository, add `OPENROUTER_API_KEY` under the site's environment variables, and deploy. Ask AI and the Compare explanation run as Netlify Functions (`netlify/functions`).
+
 ## Sources and credits
 
 - **NASA data and reports:** 24 PSI data sets, 22 NTRS reports, 8 NASA Spinoff and technology pages, and 12 NASA web pages and challenge resources.

@@ -82,7 +82,7 @@ async function handle(req: Request, context: Context, run: (body: Record<string,
   return streamEvents((send, signal) => run(body, send, signal));
 }
 
-/** POST /api/ask  { question, studyId?, history?: [{ question, answer }] } (the pipeline checks history) */
+/** POST /.netlify/functions/ask  { question, studyId?, history?: [{ question, answer }] } (the pipeline checks history) */
 export function askFunction(req: Request, context?: Context): Promise<Response> {
   const env = envFromProcess();
   return handle(req, context, (body, send, signal) =>
@@ -95,7 +95,7 @@ export function askFunction(req: Request, context?: Context): Promise<Response> 
   );
 }
 
-/** POST /api/compare  { ids: [2 or 3 study ids] } */
+/** POST /.netlify/functions/compare  { ids: [2 or 3 study ids] } */
 export function compareFunction(req: Request, context?: Context): Promise<Response> {
   const env = envFromProcess();
   return handle(req, context, (body, send, signal) => runCompare({ ids: Array.isArray(body.ids) ? (body.ids as unknown[]).map(String) : [] }, env, send, signal));

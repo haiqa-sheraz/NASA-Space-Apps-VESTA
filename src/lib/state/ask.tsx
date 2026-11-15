@@ -2,6 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { loadSavedAnswers, splitAnswer, streamApi } from "@/lib/ask/client";
+import { ASK_URL } from "@/lib/ask/endpoints";
 import { isFollowUp, questionKey } from "@/lib/ask/text";
 import type { AskErrorCode, AskSource } from "@/lib/ask/types";
 
@@ -120,7 +121,7 @@ export function AskProvider({ children }: { children: ReactNode }) {
       let sources: AskSource[] = [];
       try {
         await streamApi(
-          "/api/ask",
+          ASK_URL,
           history.length ? { question, studyId, history } : { question, studyId },
           (event) => {
             switch (event.type) {
