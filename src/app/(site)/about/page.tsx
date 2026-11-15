@@ -23,6 +23,7 @@ import { SourceLine } from "@/components/ui/SourceChip";
 import { VestaMark } from "@/components/ui/VestaLogo";
 import { AI_CREDITS, NASA_WEB_CITATIONS, NTRS_CITATIONS, OTHER_CITATIONS, SOFTWARE_CREDITS, SPINOFF_CITATIONS, type Citation } from "@/lib/citations";
 import { modelName } from "@/lib/ask/types";
+import { getFireModelData } from "@/lib/data/fire-model";
 import { getGallery } from "@/lib/data/gallery";
 import { formatAuthor, getFacts, getSavedAnswers, getStudies, getStudyProfiles } from "@/lib/data/server";
 import { formatCount, joinAnd, plural } from "@/lib/format";
@@ -99,6 +100,8 @@ export default function AboutPage() {
   const moon = missionView("moon", DEFAULT_CUSTOM);
   const moonChip = (kind: "oxygen" | "pressure") => moon.chips.find((c) => c.kind === kind)!.text;
   const solids = Math.round(facts.highest_oxygen_solid_materials_pct);
+  const flameModel = getFireModelData().model;
+  const share = (x: number) => `${Math.round(x * 100)}%`;
 
   const features: { icon: LucideIcon; title: string; text: string }[] = [
     { icon: FileText, title: "Summaries", text: "Every study in plain words, with an expert version one click away." },
@@ -327,6 +330,13 @@ export default function AboutPage() {
                 ERNIE 5.5 Flash answers, then OpenRouter&apos;s free router. They use only our NASA sources and cite them.
                 {savedCount > 0 &&
                   ` ${plural(savedCount, "suggested question has a saved answer", "suggested questions have saved answers")}, written the same way by ${joinAnd(savedModels)}.`}
+              </li>
+              <li className="body">
+                The Data page&apos;s &ldquo;Will the flame go out?&rdquo; tool is a machine-learning model (a logistic regression) that we trained on{" "}
+                {flameModel.tests} NASA FLEX tests to give the chance a fuel drop&apos;s flame goes out on its own. We tested it with 5-fold cross-validation,
+                where each test is predicted by a model that didn&apos;t see it: it was right {share(flameModel.accuracy)} of the time (balanced accuracy{" "}
+                {share(flameModel.balanced_accuracy)}), while always guessing &ldquo;goes out&rdquo; is right {share(flameModel.baseline)} of the time. It
+                runs in your browser and is labeled as a model, not a measurement.
               </li>
               <li className="body">The {SITE.name} logo was created with AI tools.</li>
               <li className="body">Every piece of AI-written text on the site carries an &ldquo;AI-written&rdquo; label.</li>

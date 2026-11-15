@@ -12,6 +12,7 @@ import { Gallery } from "@/components/ui/Gallery";
 import { SourceChip, SourceLine } from "@/components/ui/SourceChip";
 import { AiLabel, StudyTags } from "@/components/ui/Tags";
 import { SMOKE_POINT_TEXT, smokePointSources } from "@/lib/data/explainers";
+import { getFireModelData } from "@/lib/data/fire-model";
 import { getStudyGallery } from "@/lib/data/gallery";
 import { formatAuthor, getStudies, getStudy, getStudyIndex, getStudyProfile } from "@/lib/data/server";
 import { buildPreview, relatedStudies } from "@/lib/data/study-view";
@@ -134,6 +135,23 @@ export default async function StudyPage({ params }: Props) {
             )}
             {/* SPICE measured smoke points; SLICE gets the same explainer as background on soot (approved design). */}
             {SMOKE_POINT_STUDIES.has(study.id) && <SmokePointInline text={SMOKE_POINT_TEXT} sources={smokePointSources()} />}
+            {/* FLEX: its tests trained the Data page's flame-out model. */}
+            {study.id === "flex" && (
+              <aside className="panel pad flex-model-link" aria-labelledby="flex-model-title">
+                <div className="stack g1" style={{ minWidth: 0, flex: "1 1 260px" }}>
+                  <span id="flex-model-title" className="h5">
+                    Will the flame go out?
+                  </span>
+                  <span className="small muted">
+                    Try the machine-learning model trained on {getFireModelData().model.tests} of these FLEX tests: set the fuel, oxygen, pressure, added gas and
+                    drop size, and compare with the real results.
+                  </span>
+                </div>
+                <Link className="btn btn-secondary btn-sm" href="/data#flame-model">
+                  Open the model
+                </Link>
+              </aside>
+            )}
           </div>
           <StudyRelevance study={entry} index={index} />
         </div>

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import type { FlexOutcome, GasResult, GasesData } from "@/lib/explainer-types";
 import { fmtRange, formatCount, joinAnd } from "@/lib/format";
-import { OUTCOME_LABEL } from "@/lib/prediction";
+import { OUTCOME_LABEL } from "@/lib/fire-model";
 import { XpChoice, XpStatus } from "./shared";
 
 /**

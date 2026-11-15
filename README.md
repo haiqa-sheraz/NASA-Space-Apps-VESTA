@@ -12,7 +12,7 @@ Built by Team Neural Nebula for the [NASA Space Apps Challenge 2026](https://www
 - **Explore:** search and filter all 24 studies, each with its own page.
 - **Compare:** put 2 or 3 studies side by side.
 - **Insights:** findings for preventing, detecting and putting out fires, plus the gaps in the data.
-- **Data:** browse every test and download it as CSV or JSON.
+- **Data:** browse every test, download it as CSV or JSON, and try "Will the flame go out?", a machine-learning model of NASA's FLEX fuel-drop tests.
 - **Learn and Journey:** interactive explainers and a 10-chapter guided story.
 - **Earth benefits:** how space fire research helps on Earth.
 - **Ask AI:** questions answered from NASA sources, with the sources under each answer.
@@ -28,6 +28,7 @@ Built by Team Neural Nebula for the [NASA Space Apps Challenge 2026](https://www
 - Summaries, findings and ranking reasons were written once, ahead of time, by ERNIE 5.5 Flash (Baidu) and Nemotron 3.5 Super VL (NVIDIA) through OpenRouter. A script then checked their numbers against the sources.
 - Ask AI and the Compare explanation answer live, using only our NASA sources, and cite them.
 - Match scores are computed from the NASA test tables by code, not by AI.
+- "Will the flame go out?" is a machine-learning model (logistic regression) we trained on 261 NASA FLEX tests with scikit-learn. In 5-fold cross-validation it was right 84% of the time (balanced accuracy 78%). It runs in the browser.
 - Every AI-written text on the site is labeled "AI-written."
 - The logo was created with AI tools.
 - Claude Code (Anthropic) assisted with development.
@@ -48,7 +49,7 @@ Then open http://localhost:3000. Without a key, everything else still works, and
 - **NASA data and reports:** 24 PSI data sets, 22 NTRS reports, 8 NASA Spinoff and technology pages, and 12 NASA web pages and challenge resources.
 - **NASA images:** 7 photos from the PSI records of ACME E-FIELD Flames, ACME Flame Design and ACME CFI-G, credited to NASA.
 - **Linked only, not stored:** 2 articles that aren't NASA's (Tech Briefs and EurekAlert!).
-- **Code, fonts and icons:** Next.js, React, TypeScript, Tailwind CSS, Bun, Lucide icons, the Archivo and Atkinson Hyperlegible fonts (Google Fonts, SIL Open Font License), and Python with Requests and PyMuPDF for the data prep.
+- **Code, fonts and icons:** Next.js, React, TypeScript, Tailwind CSS, Bun, Lucide icons, the Archivo and Atkinson Hyperlegible fonts (Google Fonts, SIL Open Font License), and Python with Requests, PyMuPDF, Pillow, pandas and scikit-learn for the data prep and the model.
 - **AI tools:** Claude Code (Anthropic), ERNIE 5.5 Flash (Baidu), Nemotron 3.5 Super VL (NVIDIA) and OpenRouter.
 
 Every source is listed with its link on the site's About page, under "Sources and credits."

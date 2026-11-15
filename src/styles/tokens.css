@@ -111,6 +111,11 @@
   }
 }
 
+/* The flame-out tool's light-theme colors when there is no JavaScript to set data-theme. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) .flame-model { --fm-out: #008a7e; --fm-burn: #a84a0c; --fm-broke: #2d5be3; }
+}
+
 /* ---------- derived tints (recomputed wherever a theme is set, e.g. the always-dark Journey) ---------- */
 :root,
 [data-theme] {

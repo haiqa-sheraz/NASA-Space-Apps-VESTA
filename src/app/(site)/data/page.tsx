@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { DataClient, type DataStudy } from "@/components/data/DataClient";
-import { PredictionTool } from "@/components/data/PredictionTool";
+import { FlameOutTool } from "@/components/data/FlameOutTool";
 import { DownloadLink } from "@/components/ui/DownloadLink";
 import { PageReveal } from "@/components/ui/PageReveal";
 import { PageHero } from "@/components/ui/PageHero";
-import { getPredictionData } from "@/lib/data/prediction";
+import { getFireModelData } from "@/lib/data/fire-model";
 import { getDataSummary, getStudies, getStudyIndex } from "@/lib/data/server";
 import { formatCount, plural } from "@/lib/format";
 
@@ -63,7 +63,7 @@ export default function DataPage() {
         </p>
         <DataClient studies={studies} />
       </section>
-      <PredictionTool data={getPredictionData()} />
+      <FlameOutTool data={getFireModelData()} />
     </>
   );
 }

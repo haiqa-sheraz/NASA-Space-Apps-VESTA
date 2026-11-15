@@ -123,6 +123,9 @@ export const SOFTWARE_CREDITS: Citation[] = [
   { title: "Python", detail: "Data prep scripts, Python Software Foundation License", url: "https://www.python.org/" },
   { title: "Requests", detail: "Python library for the AI calls in data prep, Apache License 2.0", url: "https://requests.readthedocs.io/" },
   { title: "PyMuPDF", detail: "Python library for reading the PDF reports in data prep, GNU AGPL 3.0", url: "https://pymupdf.readthedocs.io/" },
+  { title: "scikit-learn", detail: "Python library used to train and test the FLEX flame-out model, BSD 3-Clause license", url: "https://scikit-learn.org/" },
+  { title: "pandas", detail: "Python library used to prepare the FLEX tests for the model, BSD 3-Clause license", url: "https://pandas.pydata.org/" },
+  { title: "Pillow", detail: "Python library used to prepare the gallery images and icons, MIT-CMU license", url: "https://python-pillow.org/" },
 ];
 
 /** AI tools and models. */
@@ -132,4 +135,5 @@ export const AI_CREDITS: Citation[] = [
   { title: "Nemotron 3.5 Super VL", detail: "NVIDIA, nvidia/nemotron-3.5-super-vl:free on OpenRouter: read scanned pages, wrote study profiles when ERNIE failed, and answers Ask AI and the Compare explanation live", url: "https://openrouter.ai/" },
   { title: "OpenRouter free router", detail: "openrouter/free: the last backup for live answers; it picks one of OpenRouter's free models", url: "https://openrouter.ai/" },
   { title: "OpenRouter", detail: "The service the AI models were called through", url: "https://openrouter.ai/" },
+  { title: "FLEX flame-out model (ours)", detail: "Machine learning: a logistic regression we trained with scikit-learn on NASA FLEX tests; it runs in the browser on the Data page", url: "https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression" },
 ];

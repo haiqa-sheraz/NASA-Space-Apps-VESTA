@@ -107,6 +107,17 @@ export function DataClient({ studies }: { studies: DataStudy[] }) {
     replaceQuery(p);
   }, [urlLoaded, filters, guideOpen]);
 
+  // "Show it in the data table" (the flame-out tool on this page): filter to those tests and scroll here.
+  useEffect(() => {
+    const onShow = (event: Event) => {
+      const { study, q } = (event as CustomEvent<{ study: string; q: string }>).detail;
+      setFilters({ ...NO_FILTERS, study: byId.has(study) ? study : "", q: q.slice(0, 100) });
+      document.getElementById("filters")?.scrollIntoView({ block: "start" });
+    };
+    window.addEventListener("vesta:show-tests", onShow);
+    return () => window.removeEventListener("vesta:show-tests", onShow);
+  }, [byId]);
+
   const filterKey = JSON.stringify(filters);
   useEffect(() => setPage(0), [filterKey]);
 

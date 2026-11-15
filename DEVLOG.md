@@ -21,3 +21,7 @@ The planning notes (READ_ME_FIRST.md, DESIGN_BRIEF.md, READ_ME_AFTER_IMPLEMENTAT
 | 2026-11-15 13:06 | Page reveals longer (about 2 to 2.4 s), on every visit, Journey bloom on every chapter; Earth flame redrawn as a real candle flame with flicker; smoke drawn as billowing grey gas; Home opens on the Earth flame | Claude Code |
 | 2026-11-15 13:41 | Planner reveal redrawn as realistic flickering fire that fades in place; Home spotlight picker stays right, no Custom there; Earth benefits in the main menu (header collapses below 1024 px) | Claude Code |
 | 2026-11-15 14:38 | Filled the last 12 saved Ask AI answers; README; Save as PDF on Planner and Compare; NASA flame gallery (Learn and study pages) with lightbox | Claude Code |
+| 2026-11-15 15:24 | Data page: "Will the flame go out?" machine-learning model (logistic regression on 261 FLEX tests) with map of real tests and living flame; replaces the nearest-tests predictor; linked from FLEX; About and credits updated | Claude Code |
+| 2026-11-15 15:53 | Flame-out tool: "drop broke apart" shown in the living flame (bursts of burning bits, flash and jolt) from the 7 most similar real tests, with counts | Claude Code |
+| 2026-11-15 16:17 | Flame-out tool: bursts removed; the living flame acts out the most likely ending (goes out, burns to the end, breaks apart) | Claude Code |
+| 2026-11-15 16:29 | Flame-out map: selecting a real test's dot loads its conditions and the flame shows how that test really ended | Claude Code |
